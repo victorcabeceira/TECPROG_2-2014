@@ -1,0 +1,5 @@
+For a level to work, the Tiled TMX needs a tileset named "Meta Tileset".
+
+The tile properties for the tiles in this tileset are the following:
+	type - collision (red), jump_through (yellow), level_end (green),
+			level_begin (blue), climb (pink), checkpoint (black)

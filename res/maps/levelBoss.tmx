@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="42" height="20" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="Environment Tiles" tilewidth="64" tileheight="64">
+  <image source="tilemap_lv1.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="257" name="Meta Tileset" tilewidth="64" tileheight="64">
+  <properties>
+   <property name="meta" value=""/>
+  </properties>
+  <image source="tileSheet_2.png" width="192" height="256"/>
+  <tile id="2">
+   <properties>
+    <property name="type" value="enemy_no_patrol"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="type" value="collision"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="jump_through"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="type" value="level_end"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="type" value="level_begin"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="type" value="climb"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="type" value="black"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="type" value="enemy_patrol"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="269" name="Back" tilewidth="64" tileheight="64">
+  <image source="boss stage_back.png" width="1600" height="1200"/>
+ </tileset>
+ <tileset firstgid="719" name="Boss Tree" tilewidth="64" tileheight="64">
+  <image source="boss stage_tree.png" width="1088" height="640"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="42" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzd1FNwHmgUBuA/XaO2bTe1m9S2bdtMbdu23aa2u7Ztm90nO7nI7Ez3b6aZvdiL5+J8c+Y979UXGggEQv9Hwv8D99uxSCAQET8kEEhAQhKRmCQkJRnJSUFKUpGaNKQlHenJQEYykZksZCUb2UP+vnPfPXPIyUkucpOHvOQjPwUoSCEKR90klKIUozglKEkpSlOGspSjfBz1rCCnIpUII5zKVKEq1ahODWpSi9rUoS71qE8DGtKIxjShKc3iqGdzOS1oSSta04a2tKM9HehIJzrTha50ozs96EkvetOHvvSjfxz1HCBnIIMYzBCGMozhjGAkoxjNGMYyjgjGM4GJTGIyU5jKNKbHUc8ZcmYyi9nMYS7zmM8CFrKIxSxhKctYzgpWsorVrGEt61jPhjjquVHOJjazha1sYzs72MkudrOHvexjPwc4yCEOc4SjHOM4kZwI0vNe/7aTck5xmjOc5RznucBFLnGZK1zlGte5wU1ucZuneJpneJbneJ6wf7n/Qsi9e5GXeJlXeJXXeJ03eJO3eJt3eJf3eJ8P+JCP+JhP+JTP+JwvgvgyFr7ia77hW77je37gR37iZ37hV37jd/7gT+4QiBcIhBCPB3iQh3g4iEdi4VEe43Ge4Enik4CEJCIxSUhKMpKTgpSkIjVpSEs60pOBjEFkioXMZCEr2chODnKSi9zkIS/5yE8BClKIwhQhlKIUozglKBlEqVgoTRnKUo7yVKAilQgjnMpUoSrVqE4NalKL2tShLvWoT4MgGsZCIxrThKY0ozktaEkrWtOGtrSjPR3oSCc604WudKM7PegZRK9Y6E0f+tKP/gxgIIMYzBCGMozhjGAkoxjNGMYyjgjGM4GJQUxiMlOYyjSmR4s5z4j2z72ot5nMYjZzmMs85rOAhSxiMUtYyjKWs4KVrApiNWtYyzrWsyFazHnjXfai3jexmS1sZRvb2cFOdrGbPexlH/s5wEEOcTiIIxzlGMeJ5ES0mHPkXfZOcorTnOEs5zjPBS5yictc4SrXuM4NbnKL20H8BffZWGY=
+  </data>
+ </layer>
+ <layer name="Tree" width="42" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztztdbznEAxuFf76vsIiNli4gieysysmdGGopIKDLyX5KRFclICtlkdjt2/j36Pdd1Hz+fKIoXL168ePH+341EFN2kjVvc5g53aece93nAQx7RwWOe0JkI0/nUTxfPeM4LXtLNK3p4TS99vOEt7+jnfaDOD34+8onPfOEr3/jOAD/4yS9+84e///qSUZSSDNOZ8JNkCKmkMZRhDGcEIxnFaNLJYAxjyQzUOc7PeCYwkSwmkU0Ok5nCVKYxnRnMZBa5gTpn+5lDHnOZRz7zWUABhSxkEUUsZglLWRaoc7mfFaxkFatZw1rWsZ4NFFPCRjZRyma2BOrc6mcbZWxnBzvZxW72sJd97OcABzlEOYcDdR7xc5RjVHCcSqqopoYT1FLHSU5Rz2nOBOps8HOWRs5xngs00cxFLtHCZa5wlWu0cj1QZ+gNAhd/SmE=
+  </data>
+ </layer>
+ <layer name="Collision" width="42" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg+gIWRfpgSwEGhfnrZM+pO6toz6k7q2jPqTuLtIaZMI+ROVkYEptSdtChXcQFquXugwFB3P63BcAofZL9Qwz/swyBMCAFqh9kooD2gZ1udEgwALr8CtQ==
+  </data>
+ </layer>
+</map>
