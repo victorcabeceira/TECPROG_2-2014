@@ -17,7 +17,7 @@ void BStateAttack::enter(){
 void BStateAttack::exit(){
 	this->boss->canWalk = false;
 }
-
+//Update eh state of boss skills
 void BStateAttack::update(const double dt_){
 	((void)dt_); // Unused.
 
