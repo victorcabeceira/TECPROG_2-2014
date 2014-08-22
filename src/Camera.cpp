@@ -22,6 +22,7 @@ SDL_Rect& Camera::getClip(){
     return this->clip;
 }
 
+//This function updates the position of camera on level.
 void Camera::updatePosition(){
     this->clip.x = (this->entity->x + this->entity->getWidth() / 2) - (this->clip.w / 2);
     this->clip.y = (this->entity->y + this->entity->getHeight() / 2) - (this->clip.h / 2);
@@ -43,11 +44,11 @@ void Camera::updatePosition(){
         this->clip.y = (int)this->levelH - this->clip.h;
     }
 }
-
+//This function centralizes the camera.
 void Camera::centralizeOn(Entity* const entity_){
     this->entity = entity_;
 }
-
+//This function set the width and the height of the level. 
 void Camera::setLevelWH(const unsigned int width_, const unsigned int height_){
     this->levelW = width_;
     this->levelH = height_;
