@@ -14,7 +14,7 @@ Crosshair::~Crosshair(){
 void Crosshair::update(const double dt_){
 	((void)dt_); // Unused.
 }
-		
+//Render the crossrair of potions		
 void Crosshair::render(const double cameraX_, const double cameraY_){
 	if(this->activated && this->sprite != nullptr){
         const double dx = this->x - cameraX_;

@@ -7,7 +7,7 @@ Camera::Camera(Entity* const entity_):
     levelH(0),
     clip{0, 0, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()}
 {
-    /// @todo If the player changes the resolution, so should the clip. (?)
+    /// @todo If the player changes the resolution, so should the clip. (?) (problem?)
 }
 
 Camera::~Camera(){
