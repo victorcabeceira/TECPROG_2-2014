@@ -23,7 +23,7 @@ Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 }
 
 Animation::~Animation(){
-//destructor method, runs in the class deallocation
+//destructor method, runs when the class is deallocated
 }
 
 void Animation::update(SDL_Rect& clip, const double dt_){

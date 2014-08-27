@@ -41,6 +41,8 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	statesMap(),
 	dead(false)
 {
+
+	//Creates the Boss
 	initializeStates();
 
 	this->isRight = true;
@@ -64,6 +66,8 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 }
 
 Boss::~Boss(){
+
+	//Destructor method, runs when the class is deallocated
 	if(this->animation != nullptr){
 		delete this->animation;
 		this->animation = nullptr;
@@ -89,6 +93,8 @@ Boss::~Boss(){
 }
 
 void Boss::update(const double dt_){
+	
+	//Updates the position and animation of the Boss
 	
 	timePasssed += dt_;
 
@@ -116,6 +122,8 @@ void Boss::update(const double dt_){
 }
 
 void Boss::render(const double cameraX_, const double cameraY_){
+
+	//Render Boss's sprites
 
 	const double dx = this->x - cameraX_;
 	const double dy = this->y - cameraY_;
@@ -179,12 +187,18 @@ void Boss::destroyStates(){
 }
 
 void Boss::changeState(const BStates state_){
+
+	//Changes the States of the Boss
+
 	this->currentState->exit();
 	this->currentState = this->statesMap.at(state_);
 	this->currentState->enter();
 }
 
 void Boss::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+
+	//Handle the Collisions of the player with the Boss
+
 	if(detections_.at(CollisionSide::SOLID_TOP)){ 
 		this->vy = 0.0;
 	}
@@ -203,6 +217,9 @@ void Boss::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detectio
 }
 
 void Boss::usePotion(const int strength_, const int distance_){
+
+	//Makes the Boss use the potion
+
     if(this->potionsLeft > 0){
         this->potionsLeft--;
         const double potionX = ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x);
