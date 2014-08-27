@@ -22,16 +22,19 @@ typedef struct _SoundEffect {
 class AudioHandler {
 
 	public:
+
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
+
 		AudioHandler();
 
 		/**
 		* The destructor.
 		* Frees the allocated attributes.
 		*/
+
 		virtual ~AudioHandler();
 
 		/**
@@ -39,6 +42,7 @@ class AudioHandler {
 		* @note Will warn if there is no music loaded.
 		* @param times_ : Times to loop the song. MIX_LOOP (or -1) for infinite looping.
 		*/
+
 		void playMusic(const int times_);
 
 		/**
@@ -51,6 +55,7 @@ class AudioHandler {
 		/**
 		* Stops playing the current music.
 		*/
+
 		void stopMusic();
 
 		/**
@@ -58,6 +63,7 @@ class AudioHandler {
 		* If the percent_ is over 100, will be set to 100.
 		* @param percent_ : The volume percentage (0-100).
 		*/
+
 		void setMusicVolume(const unsigned int percent_);		
 
 		/**
@@ -65,6 +71,7 @@ class AudioHandler {
 		* If the percent_ is over 100, will be set to 100.
 		* @param percent_ : The volume percentage (0-100).
 		*/
+
 		void setEffectVolume(const unsigned int percent_);
 
 		/**
@@ -72,6 +79,7 @@ class AudioHandler {
 		* Stops the music, sets it, and plays it with infinite looping.
 		* @param path_ : The path to the desired music.
 		*/
+
 		void changeMusic(const std::string& path_);
 
 		/**
@@ -79,6 +87,7 @@ class AudioHandler {
 		* If one already exists, frees it first.
 		* @param path_ : The path to the desired music.
 		*/
+
 		void setCurrentMusic(const std::string& path_);
 
 		/**
@@ -86,11 +95,23 @@ class AudioHandler {
 		* If one already exists, frees it first.
 		* @param path_ : The path to the desired effect.
 		*/
+
 		void addSoundEffect(const std::string& path_);
+
+		/**
+		* Clear the current channel.
+		* @param channel_ : The channel to be cleared.
+		*/
 
 		void clearChannel(const int channel_);
 
 	private:
+
+		/**
+		* Notifies AudioHandler instance when channel is done playing.
+		* @param channel_ : The channel to be checked.
+		*/
+
 		static void channelDone(int channel_);
 
 		Mix_Music* currentMusic; /**< The current music that is playing. */
