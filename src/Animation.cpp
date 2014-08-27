@@ -2,10 +2,11 @@
 
 int animationCount = 0;
 
+// Method that makes the animations of the game.
 Animation::Animation(const int x_, const int y_, const int spriteWidth_,
-					 const int spriteHeight_, const unsigned int numberOfImages_, const bool loop_) : //method that makes the animations of the game
+					 const int spriteHeight_, const unsigned int numberOfImages_, const bool loop_) : 
 	
-	ANIMATION_LIMIT(10),   //setting all the variables for the animation
+	ANIMATION_LIMIT(10),   
 	x(x_),
 	y(y_),
 	initialX(0),
@@ -22,15 +23,16 @@ Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 
 }
 
+// Destructor method, runs when the class is deallocated.
 Animation::~Animation(){
-//destructor method, runs when the class is deallocated
+
 }
 
 void Animation::update(SDL_Rect& clip, const double dt_){
 
 	/* 
-	Compare the position on the sprite with the number of positions to know if is the
-	end of the animation.
+	* Compare the position on the sprite with the number of positions to know if is the
+	* end of the animation.
 	*/
 	bool endOfAnimation = ((animationCount + 1) >= this->numberOfImages);
 
@@ -74,9 +76,10 @@ void Animation::update(SDL_Rect& clip, const double dt_){
 
 }
 
+// Method that changes the animation to another one.
 void Animation::changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_,
 								const bool loop_, const double totalTime_){
-	//method that changes the animation to another one
+	
 
 	this->x = x_;
 	this->y = y_;
@@ -100,16 +103,15 @@ void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
 
 }
 
+// Return the current frame of the animation.
 int Animation::getCurrentFrame(){
-
-	//return the current frame of the animation
+	
 	return animationCount + 1;
 
 }
 
+// Return the current frame of the animation.
 void Animation::changeWidthHeight(int width_, int height_){
-
-	//changes de size of the sprite
 
 	this->spriteWidth = width_;
 	this->spriteHeight = height_;
