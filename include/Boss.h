@@ -28,13 +28,11 @@ class Boss : public DynamicEntity {
 		/**
 		* The constructor.
 		*/
-
 		Boss(const double x_, const double y_, const std::string& path_, Player* const player_);
 
 		/**
 		* The destructor.
 		*/
-
 		virtual ~Boss();
 
 		/**
@@ -43,25 +41,21 @@ class Boss : public DynamicEntity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-
 		virtual void update(const double dt_);
 
 		/**
 		* Initializes the Boss's States
 		*/
-
 		void initializeStates();
 
 		/**
 		* Destroys the Boss's States
 		*/
-
 		void destroyStates();
 
 		/**
 		* Changes the Boss's States
 		*/
-
 		void changeState(const BStates state_);
 
 		/**
@@ -71,37 +65,31 @@ class Boss : public DynamicEntity {
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-
 		virtual void render(const double cameraX_, const double cameraY_);
 
 		/**
 		* Uses a Potion.
 		*/
-
 		void usePotion(const int strength_, const int distance_);
 		
 		/**
 		* Gets the Boss's animation.
 		*/
-
 		Animation* getAnimation();
 
 		/**
 		* Checks if the Boss is Dead
 		*/
-
 		bool isDead();
 
 		/**
 		* Sets the Boss Dead
 		*/
-
 		void setDead(bool isDead_);
 
 		/**
-		* Enumares Boss's skills
+		* Enumerates Boss's skills
 		*/
-
 		enum BossSkills : uint8_t {
 			BS_MAGIC_SHIELD = 0,
 			BS_TELEPORT,
@@ -114,37 +102,31 @@ class Boss : public DynamicEntity {
 		/** 
 		* Uses random skill.
 		*/
-
 		void randomSkill(const unsigned int index_);
 
 		/**
 		* Uses the teleport skill.
 		*/
-
 		bool teleport();
 
 		/**
 		* Uses the magic projectile skill.
 		*/
-
 		bool magicProjectile();
 
 		/**
 		* Uses the invoke wind skill.
 		*/
-
 		bool invokeWind();
 
 		/**
 		* Uses the ice prision skill.
 		*/
-
 		bool icePrision();
 
 		/**
 		* Uses the final splendor skill.
 		*/
-
 		bool finalSplendor();
 
 		unsigned int potionsLeft; /**< Number of potions left */
@@ -172,13 +154,11 @@ class Boss : public DynamicEntity {
 		/**
 		* Updates de Bounding Box of the Boss.
 		*/
-
 		virtual void updateBoundingBox();
 
 		/**
 		* Handle collision with the Boss.
 		*/
-
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		
 		StateBoss* currentState;
