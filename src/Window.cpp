@@ -6,7 +6,7 @@
 
 SDL_Renderer* Window::sdlRenderer = nullptr;
 
-
+// Constructor of window class, creates a window.
 Window::Window(const unsigned int width_, const unsigned int height_, const std::string& title_) :
 	windowTitle(title_),
 	sdlWindow(nullptr)
@@ -14,10 +14,12 @@ Window::Window(const unsigned int width_, const unsigned int height_, const std:
 	create(width_, height_);
 }
 
+// Destructor method, runs when the class is deallocated.
 Window::~Window(){
 	destroy();
 }
 
+// Deallocate all resourses used in this class.
 void Window::destroy(){
 	// Destroys the Window renderer.
 	SDL_DestroyRenderer(Window::sdlRenderer);
@@ -28,27 +30,31 @@ void Window::destroy(){
 	this->sdlWindow = nullptr;
 }
 
+// Method that minimizes the window.
 void Window::minimize(){
 	SDL_MinimizeWindow(this->sdlWindow);
 }
 
+// Method that maximizes the window.
 void Window::maximize(){
 	SDL_MaximizeWindow(this->sdlWindow);
 }
 
+// Draw a white rect filling the whole screen, used for clean.
 void Window::clear(){
 	SDL_SetRenderDrawColor(Window::sdlRenderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderClear(Window::sdlRenderer);
 }
 
+// Render the window
 void Window::render(){
 	SDL_RenderPresent(Window::sdlRenderer);
 }
 
+// Creates the SDL window, with the width and height.
 void Window::create(const unsigned int width_, const unsigned int height_){
 	/// @todo Toggle VSync.
 
-	// Creates the SDL window.
 	const Uint32 windowFlags = SDL_WINDOW_SHOWN;
 	this->sdlWindow = SDL_CreateWindow(
 		this->windowTitle.c_str(), 
@@ -87,10 +93,12 @@ void Window::create(const unsigned int width_, const unsigned int height_){
 	}
 }
 
+// Resize the window with a new width and height.
 void Window::resize(const unsigned int width_, const unsigned int height_){
 	SDL_SetWindowSize(this->sdlWindow, width_, height_);
 }
 
+// Apply a scale on the screen.
 void Window::rescale(unsigned int size_){
 	// Just a precaution, so there is no abuse on the size.
 	if(size_ > 10){
