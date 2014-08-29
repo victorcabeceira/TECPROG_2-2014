@@ -50,5 +50,4 @@ BStateIdle::BStateIdle(Boss* const boss_) :
 	StateBoss(boss_)
 	
 {
-
 }

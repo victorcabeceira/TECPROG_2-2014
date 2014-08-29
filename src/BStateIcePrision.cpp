@@ -65,5 +65,4 @@ BStateIcePrision::BStateIcePrision(Boss* const boss_) :
 	StateBoss(boss_)
 	
 {
-
 }
