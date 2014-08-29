@@ -1,7 +1,6 @@
 #include "Configuration.h"
 #include "LuaScript.h"
 
-
 // 16:10
 const unsigned int Configuration::resolutionWidth = 192;
 const unsigned int Configuration::resolutionHeight = 108;
@@ -16,7 +15,7 @@ unsigned int Configuration::cameraDistanceHeight = 0;
 
 
 void Configuration::initialize(){
-	/// @todo Make sure recieved ints are not negative.
+	/// @todo Make sure received ints are not negative.
 
 	LuaScript luaConfig("lua/Config.lua");
 
@@ -43,37 +42,55 @@ void Configuration::initialize(){
 }
 
 unsigned int Configuration::getResolutionWidth(){
+
 	return Configuration::resolutionWidth;
+
 }
 
 unsigned int Configuration::getResolutionHeight(){
+
 	return Configuration::resolutionHeight;
+
 }
 
 uint32_t Configuration::getMaxFramerate(){
+
 	return Configuration::maxFramerate;
+
 }
 
 std::string Configuration::getWindowTitle(){
+
 	return Configuration::windowTitle;
+
 }
 
 unsigned int Configuration::getLogicalRenderSize(){
+
 	return Configuration::logicalRenderSize;
+
 }
 
 unsigned int Configuration::getScreenWidth(){
+
 	return Configuration::screenWidth;
+
 }
 
 unsigned int Configuration::getScreenHeight(){
+
 	return Configuration::screenHeight;
+
 }
 
 unsigned int Configuration::getCameraDistanceWidth(){
+
 	return Configuration::cameraDistanceWidth;
+
 }
 
 unsigned int Configuration::getCameraDistanceHeight(){
+
 	return Configuration::cameraDistanceHeight;
+
 }
