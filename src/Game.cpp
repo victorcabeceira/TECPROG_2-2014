@@ -27,11 +27,14 @@
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GStates, StateGame*>(stateEnum, new stateClass()))
 
 Game& Game::instance(){
+
 	static Game* instance = new Game();
 	return *instance;
+
 }
 
 Game::Game() :
+
 	isCutscene(false),
 	isPaused(false),
 	currentLine(0),
@@ -53,7 +56,9 @@ Game::Game() :
 	selectorYPositionLeft {400, 470},
 	selectorXPositionRight {930, 930},
 	selectorYPositionRight {400, 470}
+
 {
+
 	this->window = new Window(Configuration::getScreenWidth(),
 		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
@@ -65,11 +70,14 @@ Game::Game() :
 	std::string extension = ".png";	
 
 	for(int i = 0; i < numLines; i++){
+
 		this->dialog[i] = nullptr;
 		this->dialog[i] = getResources().get(path + Util::toString(i) + extension);
 	
 		if(this->dialog[i] == nullptr){
+
 			Log(ERROR) << "Invalid dialog image.";
+
 		}
 	}
 
@@ -79,35 +87,53 @@ Game::Game() :
 
 	this->isRunning = true;
 	FPSWrapper::initialize(this->fpsManager);
+
 }
 
 Game::~Game(){
+
 	if(this->currentState != nullptr){
+
 		this->currentState->unload();
+
 	}
 
 	destroyStates();
 
 	if(this->audioHandler != nullptr){
+
 		delete this->audioHandler;
+
 	}
+
 	if(this->inputHandler != nullptr){
+
 		delete this->inputHandler;
+
 	}
+
 	if(this->resourceManager != nullptr){
+
 		delete this->resourceManager;
+
 	}
+
 	if(this->fadeScreen != nullptr){
+
 		delete this->fadeScreen;
+
 	}
 
 	if(this->window != nullptr){
+
 		delete this->window;
 		this->window = nullptr;
+
 	}
 }
 
 void Game::runGame(){
+
 	this->fadeScreen = new FadeScreen();
 
 	this->currentState = this->statesMap.at(GStates::SPLASH);
@@ -126,31 +152,43 @@ void Game::runGame(){
 
 		// Update.
 		while(accumulatedTime >= deltaTime){
+
 			this->inputHandler->handleInput();
 
 			// Check for an exit signal from input.
 			if(this->inputHandler->isQuitFlag() == true){
+
 				stop();
 				return;
+			
 			}
 
 			std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 			if(keyStates[GameKeys::ESCAPE] && isPauseable()){
+		
 				this->currentSelection = PSelection::RESUME;
 				this->isPaused = true;
+		
 			}
 
 			if(!this->isPaused){
+		
 				this->currentState->update(deltaTime);
+		
 			}
+		
 			else if(!this->isCutscene){
+		
 				this->passedTime += deltaTime;
 				updatePause();
+		
 			}
 			else{
+		
 				this->passedTime += deltaTime;
 				updateDialog();
+		
 			}
 
 			this->fadeScreen->update(deltaTime);
@@ -163,34 +201,43 @@ void Game::runGame(){
 		window->clear();
 		
 		this->currentState->render();				    
+		
 		if(this->isPaused){
+		
 			renderPause();
+		
 		}
+		
 		else if(this->isCutscene){
+		
 			if(currentLine < numLines)
-				renderDialog();
+				renderDialog();	
 			else{
+		
 				currentLine = 0;
 				isCutscene = false;
+			
 			}
 		}
 
 		this->fadeScreen->render();
 
 		window->render();
-		
+	
 	}
-
 }
 
 void Game::setState(const GStates state_){
+
 	/// @todo Implement the transition between states.
 	this->currentState->unload();
 	this->currentState = this->statesMap.at(state_);
 	this->currentState->load();
+
 }
 
 void Game::initializeStates(){
+
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
@@ -209,13 +256,16 @@ void Game::initializeStates(){
 	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
 	ADD_STATE_INSERT(TRANSITION, GStateTransition);
 	ADD_STATE_INSERT(VICTORY, GStateVictory);
+
 }
 
 void Game::renderDialog(){
 
 	if(currentLine > numLines){
+
 		currentLine = 0;
 		return;
+
 	}
 
 	if(this->dialog[currentLine])
@@ -224,13 +274,17 @@ void Game::renderDialog(){
 }
 
 void Game::handleDialog(){
+
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
 
 	if(keyStates[GameKeys::SPACE] == true ){
+
 		if(this->passedTime >= selectorDelayTime){
+
 			currentLine++;
+
 		}
 	}
 }
@@ -242,7 +296,9 @@ void Game::updateDialog(){
 }
 
 void Game::renderPause(){
+	
 	if(this->pauseImage != nullptr){
+	
 		this->pauseImage->render(0, 0, nullptr, true);
 
 		this->pauseSelector->render(selectorXPositionLeft[currentSelection],
@@ -250,105 +306,162 @@ void Game::renderPause(){
 
 		this->pauseSelector->render(selectorXPositionRight[currentSelection],
 			selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+	
 	}
 	else{
+	
 		Log(WARN) << "No image set to display on the menu!";
+	
 	}
 }
+
 void Game::updatePause(){
 
 	handleSelectorMenu();
+
 }
 
 void Game::handleSelectorMenu(){
+
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
 
 	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
+
 		if(this->passedTime >= selectorDelayTime){
+
 			if(currentSelection < (PSelection::TOTAL - 1)){
+
 				currentSelection++;
+
 			}
 			else{
+
 				currentSelection = PSelection::RESUME;
 			}
+
 			this->passedTime = 0.0;
 		}
 	}
+
 	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
+
 		if(this->passedTime >= selectorDelayTime){
+			
 			if(currentSelection > PSelection::RESUME){
+			
 				currentSelection--;
+			
 			}
 			else{
+			
 				currentSelection = (PSelection::TOTAL - 1);
+			
 			}
+			
 			this->passedTime = 0.0;
+		
 		}
 	}
+
 	else if(currentSelection == PSelection::RESUME && keyStates[GameKeys::SPACE] == true){
+
 		this->isPaused = false;
+
 	}
 
 	else if(currentSelection == PSelection::EXIT && keyStates[GameKeys::SPACE] == true){
+
 		Game::instance().setState(Game::GStates::MENU);
 		this->isPaused = false;
+
 	}
 }
 
 void Game::destroyStates(){
+
 	std::map<GStates, StateGame*>::const_iterator it;
+
     for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+
         delete it->second;
+
     }
 }
 
 AudioHandler& Game::getAudioHandler(){
+
 	return (*(this->audioHandler));
+
 }
 
 std::array<bool, GameKeys::MAX> Game::getInput(){
+
 	return this->inputHandler->getKeyStates();
+
 }
 
 ResourceManager& Game::getResources(){
+
 	return (*(this->resourceManager));
+
 }
 
 GameSave& Game::getSaves(){
+
 	return (*(this->gameSave));
+
 }
 
 void Game::stop(){
+
 	this->isRunning = false;
+
 }
 
 void Game::clearKeyFromInput(const GameKeys key_){
+
 	this->inputHandler->clearKey(key_);
+
 }
 
 FadeScreen& Game::getFade(){
+
 	return (*(this->fadeScreen));
+
 }
 
 void Game::resizeWindow(const unsigned int width_, const unsigned int height_){
+
 	this->window->resize(width_, height_);
+
 }
 
 bool Game::isPauseable(){
 
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_ONE))
+
 		return true;
+
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_TWO))
+
 		return true;
+
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_THREE))
+
 		return true;
+
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FOUR))
+
 		return true;
+
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FIVE))
+
 		return true;
+
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_BOSS))
+
 		return true;
 
 	return false;
