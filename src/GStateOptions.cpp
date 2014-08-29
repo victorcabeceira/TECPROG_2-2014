@@ -9,6 +9,7 @@
 const std::string GStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
 
 GStateOptions::GStateOptions() :
+
 	elapsedTime(0.0),
 	optionsImage(nullptr),
 	currentResolution(R_960_540),
@@ -23,30 +24,41 @@ GStateOptions::GStateOptions() :
 	resolution(nullptr),
 	volumeMusic(nullptr),
 	volumeSFX(nullptr)	
+
 {
+
 	this->resolution = new Text(830.0, 365.0, "res/fonts/maturasc.ttf", 45, possibleResolutions[currentResolution].c_str());
 	this->volumeMusic = new Text(830.0, 468.0, "res/fonts/maturasc.ttf", 45, Util::toString(this->musicVolume).c_str());
 	this->volumeSFX = new Text(830.0, 580.0, "res/fonts/maturasc.ttf", 45, Util::toString(this->sfxVolume).c_str());
+
 }
 
 GStateOptions::~GStateOptions(){
+
 	if(this->resolution != nullptr){
+
 		delete this->resolution;
 		this->resolution = nullptr;
+
 	}
 
 	if(this->volumeMusic != nullptr){
+
 		delete this->volumeMusic;
 		this->volumeMusic = nullptr;
+
 	}
 
 	if(this->volumeSFX != nullptr){
+
 		delete this->volumeSFX;
 		this->volumeSFX = nullptr;
+
 	}
 }
 
 void GStateOptions::update(const double dt_){
+
 	this->elapsedTime += dt_;
 
 	this->resolution->changeText(possibleResolutions[currentResolution].c_str());
@@ -56,106 +68,162 @@ void GStateOptions::update(const double dt_){
 	const std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	if(keyStates[GameKeys::ESCAPE] == true){
+
 		Game::instance().setState(Game::GStates::MENU);
+
 	}
 
 	const double selectorDelayTime = 0.2;
 
 	if(keyStates[GameKeys::DOWN] == true){
+
 		if(this->elapsedTime >= selectorDelayTime){
+
 			if(this->currentOption == (O_TOTAL - 1)){
+
 				this->currentOption = O_RESOLUTION;
+
 			}
 			else{
+
 				this->currentOption++;
+
 			}
+
 			this->elapsedTime = 0.0;
+
 		}
 	}
 
 	if(keyStates[GameKeys::UP] == true){
+
 		if(this->elapsedTime >= selectorDelayTime){
+
 			if(this->currentOption == O_RESOLUTION){
+
 				this->currentOption = (O_TOTAL - 1);
 			}
 			else{
+
 				this->currentOption--;
+
 			}
+
 			this->elapsedTime = 0.0;
+
 		}
 	}
 
 	if(keyStates[GameKeys::LEFT] == true){
+
 		if(this->elapsedTime >= selectorDelayTime){
+
 			// Option == Resolution
 			if(this->currentOption == O_RESOLUTION){
+
 				if(this->currentResolution == R_800_600){
+
 					this->currentResolution = (R_TOTAL - 1);
+
 				}
 				else{
+
 					this->currentResolution--;
+
 				}
 			}
+
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
+
 				if(this->musicVolume > 0)
+
 					this->musicVolume -= 5;
+
 			}
+
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
+
 				if(this->sfxVolume > 0)
+
 					this->sfxVolume -= 5;
+
 			}
 
 			this->elapsedTime = 0.0;
+
 		}
 	}
 
 	if(keyStates[GameKeys::RIGHT] == true){
+
 		if(this->elapsedTime >= selectorDelayTime){
+
 			// Option == Resolution
 			if(this->currentOption == O_RESOLUTION){
+
 				if(this->currentResolution == (R_TOTAL - 1)){
+
 					this->currentResolution = R_800_600;
+
 				}
 				else{
+
 					this->currentResolution++;
+
 				}
 			}
+
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
+
 				if(this->musicVolume < 100)
+
 					this->musicVolume += 5;
 			
 			}
+
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
+
 				if(this->sfxVolume < 100)
+
 					this->sfxVolume += 5;
+
 			}
 			else {
-
 			}
 
 			this->elapsedTime = 0.0;
+		
 		}
 	}
 
 	if(keyStates[GameKeys::SPACE] == true && this->currentOption == O_APPLY){
+	
 		applyOptions();
+	
 	}
 
 	if(keyStates[GameKeys::SPACE] == true && this->currentOption == O_RETURN){
+	
 		Game::instance().setState(Game::GStates::MENU);
+	
 	}
 }
 
 void GStateOptions::render(){
+	
 	if(this->optionsImage != nullptr){
+	
 		this->optionsImage->render(0, 0, nullptr, true);
+	
 	}
 	else{
+	
 		Log(WARN) << "No image set for the options screen!";
+	
 	}
 
 	this->resolution->render(0, 0);
@@ -163,19 +231,24 @@ void GStateOptions::render(){
 	this->volumeSFX->render(0, 0);
 
 	if(this->selector != nullptr){
+	
 		this->selector->render(selectorXPositionLeft[currentOption],
 			selectorYPositionLeft[currentOption], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
 
 		this->selector->render(selectorXPositionRight[currentOption],
 			selectorYPositionRight[currentOption], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+	
 	}
 	else{
+	
 		Log(WARN) << "No image set for the selector.";
+	
 	}
 
 }
 
 void GStateOptions::load(){
+	
 	Log(DEBUG) << "Loading options...";
 
 	LuaScript luaOptions("lua/Options.lua");
@@ -189,23 +262,35 @@ void GStateOptions::load(){
     this->selector = Game::instance().getResources().get(pathCursor);
 
     this->selector->setWidth(50);
+
 }
 
 void GStateOptions::unload(){
+
 	Log(DEBUG) << "\tUnloading options...";
 	cleanEntities();
+
 }
 
 void GStateOptions::applyOptions(){
+
 	// Apply resolution
 	if(this->currentResolution == R_800_600){
+
 		Game::instance().resizeWindow(800, 600);
+
 	}
+
 	else if(this->currentResolution == R_768_432){
+
 		Game::instance().resizeWindow(768, 432);
+
 	}
+
 	else if(this->currentResolution == R_960_540){
+
 		Game::instance().resizeWindow(960, 540);
+
 	}
 
 	// Apply volume music
