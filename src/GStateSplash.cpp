@@ -5,21 +5,25 @@
 #include <string>
 
 GStateSplash::GStateSplash() :
+
 	currentSplash(0),
 	passedTime(0.0),
 	lifeTime(0.0),
 	ix(-300.0)
+
 {
+
 	for(unsigned int i = 0; i < SplashImages::TOTAL_SPLASH_IMAGES; i++){
 		this->images[i] = nullptr;
+
 	}
 }
 
 GStateSplash::~GStateSplash(){
-
 }
 
 void GStateSplash::load(){
+
 	Log(DEBUG) << "Loading splash screens...";
 
 	LuaScript luaSplash("lua/Splash.lua");
@@ -35,50 +39,69 @@ void GStateSplash::load(){
 	this->images[SplashImages::ESRB] = Game::instance().getResources().get(pathEsrb);
 
 	this->lifeTime = luaLifeTime;
+
 }
 
 void GStateSplash::unload(){
+
 	Log(DEBUG) << "\tUnloading splash screens...";
 	this->currentSplash = 0;
 	cleanEntities();
+
 }
 
 void GStateSplash::update(const double dt_){
+
 	this->passedTime += dt_;
 
 	Game::instance().getFade().fadeOut(0, 0.002);
 
 	// Increment current image x position.
 	if(this->ix < 0.0){
+
 		this->ix += 5.0;
+
 	}
 
 	if(this->passedTime >= this->lifeTime){
+
 		if(this->currentSplash >= SplashImages::TOTAL_SPLASH_IMAGES - 1){
+
 			Game::instance().setState(Game::GStates::MENU);
+
 		}
 		else{
+
 			Game::instance().getFade().fadeIn(100, 0.002);
 			this->passedTime = 0.0;
 			this->ix = -300;
 			this->currentSplash++;
+
 		}
 	}
 
 	// Check if SPACE was pressed, to skip the splash images.
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
 	if(keyStates[GameKeys::SPACE] == true){
+
 		Game::instance().setState(Game::GStates::MENU);
 		return;
+
 	}
 
 }
 
 void GStateSplash::render(){
+
 	if(this->images[this->currentSplash] != nullptr){
+
 		this->images[this->currentSplash]->render(this->ix, 0, nullptr, true);
+
 	}
 	else{
+
 		Log(WARN) << "No image set for the splash screen!";
+
 	}
 }
