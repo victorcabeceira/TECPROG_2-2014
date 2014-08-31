@@ -3,6 +3,7 @@
 
 // Parse a int to a string.
 std::string Util::toString(const int number_){
+	
 	std::string result;
 	std::ostringstream oss;
 	oss.str("");
@@ -10,4 +11,5 @@ std::string Util::toString(const int number_){
 	oss << number_;
 	result = oss.str();
 	return result;
+
 }

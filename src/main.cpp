@@ -18,13 +18,17 @@ int main(int argc, char** argv){
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
+	
 		// Start the game.
 		Game::instance().runGame();
 		// Deallocate the instance of the game.
 		delete &Game::instance();
+	
 	}
 	else{
+		
 		Log(ERROR) << "System were not initialized.";
+	
 	}
 
 	// Closes SDL used libraries.
