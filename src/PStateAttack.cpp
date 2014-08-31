@@ -3,6 +3,7 @@
 #include "Game.h"
 
 void PStateAttack::enter(){
+	
 	this->box.x = 58;
 	this->box.y = 75;
 	this->box.w = 140;
@@ -20,15 +21,20 @@ void PStateAttack::exit(){
 }
 
 void PStateAttack::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+	
 	((void)keyStates_); // Unused.
 
 	if(this->player->getAnimation()->getCurrentFrame() == 14){
+		
 		this->player->changeState(Player::PStates::IDLE);
+	
 	}
 }
 
 PStateAttack::PStateAttack(Player* const player_) :
+	
 	StatePlayer(player_)
+
 {
 
 }
