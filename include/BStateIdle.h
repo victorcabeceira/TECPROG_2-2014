@@ -6,6 +6,7 @@
 class BStateIdle : public StateBoss {
 
 	public:
+	
 		/**
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
@@ -18,17 +19,17 @@ class BStateIdle : public StateBoss {
 		virtual ~BStateIdle(){}
 
 		/**
-		* @see StateBoss::enter
+		* @see StateBoss::enter.
 		*/
 		virtual void enter();
 
 		/**
-		* @see StateBoss::exit
+		* @see StateBoss::exit.
 		*/
 		virtual void exit();
 
 		/**
-		* @see StateBoss::update
+		* @see StateBoss::update.
 		*/
 		virtual void update(const double dt_);
 

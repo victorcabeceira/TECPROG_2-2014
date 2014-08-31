@@ -11,6 +11,7 @@
 class Camera {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.
@@ -48,6 +49,7 @@ class Camera {
 		void setLevelWH(const unsigned int width_, const unsigned int height_);
 
 	private:
+	
 		/**
 		* Updates the cameras position.
 		* Based on the players position, change cameras position.

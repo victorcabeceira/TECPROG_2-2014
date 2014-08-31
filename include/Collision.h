@@ -10,8 +10,9 @@
 class Collision {
 
 	public:
+	
 		/**
-		* Possible sides a rectangle can collide.
+		* Enumeration of possible sides a rectangle can collide.
 		*/
 		enum RectangleSide : uint8_t {
 			TOP = 0,
