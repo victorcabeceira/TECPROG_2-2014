@@ -11,6 +11,8 @@ class StateEnemy;
 class Enemy : public DynamicEntity {
 
 	public:
+	
+		// Enumerates the enemy states.
 		enum EStates : uint8_t {
 			IDLE = 0,
 			AERIAL,
@@ -49,11 +51,34 @@ class Enemy : public DynamicEntity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 		
+		/**
+		* Initializes the states.
+		*/
 		void initializeStates();
+		
+		/**
+		* Destroy the states.
+		*/
 		void destroyStates();
+		
+		/**
+		* Changes the states.
+		*/
 		void changeState(const EStates state_);
+		
+		/**
+		* Gets the animations.
+		*/
 		Animation* getAnimation();
+		
+		/**
+		* Checks if the enemy is dead.
+		*/
 		bool isDead();
+		
+		/**
+		* Sets the enemy dead.
+		*/
 		void setDead(bool isDead_);
 
 		static double px;
@@ -69,8 +94,20 @@ class Enemy : public DynamicEntity {
 		unsigned int life;
 	
 	private:
+	
+		/**
+		* Updates the bounding box.
+		*/
 		virtual void updateBoundingBox();
+		
+		/**
+		* Handles collision.
+		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+		
+		/**
+		* Forces a maximum speed to the enemy.
+		*/
 		void forceMaxSpeed();
 		StateEnemy* currentState;
 		Animation* animation;

@@ -10,45 +10,46 @@
 #include <array>
 
 namespace controllerMap{
-
 	/**
 	* Button Enumeration for the Joystick
 	*/
-
+	
 	enum buttons{		
- 		FACE_DOWN, //X on PS4 controller - 0
- 		FACE_RIGHT, //O on PS4 controller - 1
- 		FACE_LEFT, //[] on PS4 controller - 2
- 		FACE_UP, ///\ on PS4 controller - 3
+ 		FACE_DOWN, // X on PS4 controller - 0.
+ 		FACE_RIGHT, // O on PS4 controller - 1.
+ 		FACE_LEFT, // [] on PS4 controller - 2.
+ 		FACE_UP, // /\ on PS4 controller - 3.
  		
- 		SELECT, //SHARE on PS4 controller - 4
- 		HOME, // PS Button on PS4 controller - 5
- 		START, //OPTIONS on PS4 controller - 6
+ 		SELECT, // SHARE on PS4 controller - 4.
+ 		HOME, // PS Button on PS4 controller - 5.
+ 		START, // OPTIONS on PS4 controller - 6.
  		
- 		L3, //Left analogue button - 7
- 		R3, //Right analogue button  - 8
+ 		L3, // Left analogue button - 7.
+ 		R3, // Right analogue button  - 8.
  		
- 		LDTRIGGER, //Left Digital Trigger - 9
- 		RDTRIGGER, //Right Digital Trigger  - 10
+ 		LDTRIGGER, // Left Digital Trigger - 9.
+ 		RDTRIGGER, // Right Digital Trigger  - 10.
  		 
- 		DUP, //D-Pad up - 11
- 		DDOWN, //D-Pad down - 12
- 		DLEFT, //D-Pad left - 13
- 		DRIGHT, //D-Pad rigth - 14
+ 		DUP, // D-Pad up - 11.
+ 		DDOWN, // D-Pad down - 12.
+ 		DLEFT, // D-Pad left - 13.
+ 		DRIGHT, // D-Pad rigth - 14.
 
  		PRESSED,
  		RELEASED
 	};
-
+	
+	// Enumeration of analogues.
+	
 	enum axes{
-		LHORIZONTAL, //Left Analogue Stick X - 0
-		LVERTICAL, //Left Analogue Stick Y - 1
+		LHORIZONTAL, //Left Analogue Stick X - 0.
+		LVERTICAL, //Left Analogue Stick Y - 1.
 		
-		RHORIZONTAL, //Left Analogue Stick X - 2
-		RVERTICAL, //Left Analogue Stick Y - 3
+		RHORIZONTAL, //Left Analogue Stick X - 2.
+		RVERTICAL, //Left Analogue Stick Y - 3.
 
-		LATRIGGER, //Left Analogue Trigger - 4
-		RATRIGGER //Left Analogue Trigger Y - 5
+		LATRIGGER, //Left Analogue Trigger - 4.
+		RATRIGGER //Left Analogue Trigger Y - 5.
 	};
 }
 
@@ -58,6 +59,7 @@ namespace controllerMap{
 class ControllerHandler {
 	
 	public:
+	
 		/**
 		* The constructor.
 		* Verifies if there is a joystick present.

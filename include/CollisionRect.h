@@ -3,6 +3,7 @@
 
 #include "SDLWrapper.h"
 
+// Enumeration of types of collision.
 enum TypeCollision : uint8_t {
 	COLLISION = 0,
 	JUMP_THROUGH,
@@ -20,13 +21,23 @@ enum TypeCollision : uint8_t {
 class CollisionRect {
 
 	public:
+	
+		/** 
+		* Makes the collision between rectangles.
+		*/
 		CollisionRect(const int x_, const int y_, const int w_, const int h_,
 			const TypeCollision type_);
 		
 		CollisionRect(const SDL_Rect rect_, const TypeCollision type_);
 		
+		/** 
+		* The destructor method.
+		*/
 		virtual ~CollisionRect();
 
+		/** 
+		* Transforms a string to a type of collision.
+		*/
 		static TypeCollision stringToType(const std::string& strType_);
 
 		TypeCollision type;

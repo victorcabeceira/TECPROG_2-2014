@@ -5,6 +5,7 @@
 #include "Crosshair.h"
 #include <array>
 
+// Enumerates the collision sides.
 enum CollisionSide : uint8_t {
 	SOLID_TOP = 0,
 	SOLID_BOTTOM,
@@ -20,6 +21,7 @@ enum CollisionSide : uint8_t {
 class DynamicEntity : public Entity {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all attributes.
@@ -34,13 +36,44 @@ class DynamicEntity : public Entity {
 		*/
 		virtual ~DynamicEntity();
 
+		/**
+		* Make the entity jump.
+		*/
 		virtual void jump();
+		
+		/** 
+		* Applies gravity to entity.
+		*/
 		virtual void applyGravity();
+		
+		/**
+		* Moves the entity.
+		*/
 		virtual void move(const bool movingLeft_, const bool movingRight_);
+		
+		/**
+		* Moves the entity vertically.
+		*/
 		virtual void moveVertical(const bool movingUp_, const bool movingDown_);
+		
+		/**
+		* Slows the entity on x axis.
+		*/
 		virtual void slowVx();
+		
+		/**
+		* Slows the entity on y axis.
+		*/
 		virtual void slowVy();
+		
+		/**
+		* Make the entity roll.
+		*/
 		virtual void roll();
+		
+		/**
+		* Aim the potions.
+		*/
 		virtual void aim(Crosshair* const crosshair, double direction);
 
 		/**
@@ -66,6 +99,7 @@ class DynamicEntity : public Entity {
 	    bool isClimbing;
 
 	protected:
+	
 		/**
 		* Updates the position of the dynamic entity
 		* Update is based on what input was recieved, and the players velocity.
