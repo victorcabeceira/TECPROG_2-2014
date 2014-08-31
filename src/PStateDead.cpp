@@ -3,6 +3,7 @@
 #include "Game.h"
 
 void PStateDead::enter(){
+	
 	Log(DEBUG) << "STATE DEAD";
 	
 	this->box.x = 58;
@@ -12,6 +13,7 @@ void PStateDead::enter(){
 
 	this->player->getAnimation()->changeAnimation(8, 4, 1, false, 0);
 	this->player->isGrounded = false;
+
 }
 
 void PStateDead::exit(){
@@ -19,12 +21,16 @@ void PStateDead::exit(){
 }
 
 void PStateDead::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+	
 	((void) keyStates_); // Unused.
 	this->player->applyGravity();
+
 }
 
 PStateDead::PStateDead(Player* const player_) :
+	
 	StatePlayer(player_)
+
 {
 
 }

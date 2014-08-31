@@ -29,29 +29,37 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
 	if(!this->player->isGrounded){
+		
 		this->player->changeState(Player::PStates::AERIAL);
 		return;
+	
 	}
 
 	this->player->slowVx();
 
 	// Jump
 	if(keyStates_[GameKeys::SPACE]){
+		
 		this->player->jump();
 		this->player->isGrounded = false;
 		return;
+	
 	}
 
 	// Attack
 	if(keyStates_[GameKeys::LATTACK]){
+		
 		this->player->changeState(Player::PStates::ATTACK);
 		return;
+	
 	}
 
     if(keyStates_[GameKeys::ACTION]){
+    	
     	// Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/FX_AAAAAHH.wav");
         this->player->usePotion(THROW_STRENGTH, THROW_DISTANCE);
         return;
+    
     }
 
 	// // Crouch
@@ -62,26 +70,33 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Move
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
+		
 		this->player->changeState(Player::PStates::MOVING);
 		return;
+	
 	}
 
 	// Roll
 	if(keyStates_[GameKeys::ROLL]){
+		
 		this->player->changeState(Player::PStates::ROLLING);
 		return;
 	}
 
 	// Aim
 	if(keyStates_[GameKeys::AIM]){
+		
 		this->player->changeState(Player::PStates::AIMING);
 		return;
+	
 	}
 
 }
 
 PStateIdle::PStateIdle(Player* const player_) :
+
 	StatePlayer(player_)
+
 {
 
 }
