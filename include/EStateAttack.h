@@ -6,6 +6,7 @@
 class EStateAttack : public StateEnemy {
 
 	public:
+	
 		/**
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.

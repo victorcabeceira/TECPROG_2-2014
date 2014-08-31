@@ -13,6 +13,7 @@
 class Entity {
 
 	public:
+	
 		/**
 		* The destructor.
 		*/
@@ -59,6 +60,7 @@ class Entity {
 		bool isRight; /**< The direction in the x axis. */ 
 
 	protected:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.
