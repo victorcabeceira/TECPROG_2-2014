@@ -11,6 +11,7 @@
 class GStateGameOver : public StateGame {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.

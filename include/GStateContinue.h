@@ -11,6 +11,7 @@
 class GStateContinue : public StateGame {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.
@@ -46,10 +47,15 @@ class GStateContinue : public StateGame {
 		* @see Sprite::render
 		*/
 		virtual void render();
-
+		
+		/**
+		* Handles the selector menu.
+		*/
 		void handleSelectorMenu();
 
 	private:
+	
+		//Enumeration of slot selection.
 		enum Selection : uint8_t {
 			SLOT_1 = 0,
 			SLOT_2,

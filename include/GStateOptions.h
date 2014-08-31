@@ -12,6 +12,7 @@
 class GStateOptions : public StateGame {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.
@@ -49,10 +50,15 @@ class GStateOptions : public StateGame {
 		virtual void render();
 
 	private:
+	
+		/**
+		* Apllies the changes in the options.
+		*/
 		void applyOptions();
-
+		
 		double elapsedTime;
-
+		
+		//Enumeration of options.
 		enum Option : uint8_t {
 			O_RESOLUTION = 0,
 			O_VOLUME_MUSIC,
@@ -61,7 +67,8 @@ class GStateOptions : public StateGame {
 			O_RETURN,
 			O_TOTAL
 		};
-
+		
+		//Enumeration of resolutions.
 		enum Resolution : uint8_t {
 			R_800_600 = 0,
 			R_768_432,

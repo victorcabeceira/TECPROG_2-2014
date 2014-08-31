@@ -11,6 +11,7 @@
 class GStateCredits : public StateGame {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.

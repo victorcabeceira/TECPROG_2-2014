@@ -12,6 +12,7 @@
 class GStateMenu : public StateGame {
 
 	public:
+	
 		/**
 		* The constructor.
 		* Initializes all the attributes.
@@ -47,9 +48,12 @@ class GStateMenu : public StateGame {
 		* @see Sprite::render
 		*/
 		virtual void render();
-
+		
+		/**
+		* Handles the Selector Menu.
+		*/
 		void handleSelectorMenu();
-
+		
 		bool shouldIgnore;
 
 	private:
