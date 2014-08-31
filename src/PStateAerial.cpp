@@ -3,6 +3,7 @@
 #include "Game.h"
 
 void PStateAerial::enter(){
+    
     this->box.x = 58;
     this->box.y = 72;
     this->box.w = 130;
@@ -12,23 +13,30 @@ void PStateAerial::enter(){
 	this->player->isGrounded = false;
 
     Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/FALL_NADINE_01.wav");
+
 }
 
 void PStateAerial::exit(){
+    
     this->player->isClimbing = false;
+
 }
 
 void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Idle
     if(this->player->isGrounded){
-    	this->player->changeState(Player::PStates::IDLE);
+    	
+        this->player->changeState(Player::PStates::IDLE);
     	return;
+    
     }
 
     if(keyStates_[GameKeys::LATTACK]){
+      
         this->player->changeState(Player::PStates::ATTACKJUMPING);
         return;
+    
     }
 
 	// Gravity
@@ -39,7 +47,8 @@ void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 }
 
 PStateAerial::PStateAerial(Player* const player_) :
-	StatePlayer(player_)
-{
+	
+    StatePlayer(player_)
 
+{    
 }

@@ -5,9 +5,11 @@ Logger::Logger(){
 }
 
 Logger::~Logger(){
+	
 	this->os << std::endl;
 	fprintf(stderr, "%s", this->os.str().c_str());
 	fflush(stderr);
+
 }
 
 std::ostringstream& Logger::log(const LogLevel level_){
