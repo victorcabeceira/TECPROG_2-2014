@@ -2,6 +2,7 @@
 #include "Logger.h"
 
 bool SDLWrapper::initialize(){
+	
 	bool successSDL = false;
 	bool successIMG = false;
 	bool successMixer = false;
@@ -14,13 +15,17 @@ bool SDLWrapper::initialize(){
 	// Initializing SDL_TTF.
 	const int ttfInit = TTF_Init();
 	if(ttfInit == 0){
+		
 		successTTF = true;
 
 		SDL_TTF_VERSION(&compiled);
 		SDLWrapper::logSDLVersion("SDL_TTF", compiled);
+	
 	}
 	else{
+		
 		Log(ERROR) << "Could not initialize TTF." << TTF_GetError();
+	
 	}
 
 	// Initializing SDL with initFlags.
@@ -28,6 +33,7 @@ bool SDLWrapper::initialize(){
 	const int sdlInit = SDL_Init(initFlags);
 
 	if(sdlInit == 0){
+		
 		successSDL = true;
 
 		SDL_version linked;
@@ -35,21 +41,28 @@ bool SDLWrapper::initialize(){
 		SDL_GetVersion(&linked);
 
 		SDLWrapper::logSDLVersion("SDL", compiled, SDL_GetRevision());
+	
 	}
 	else{
+		
 		Log(ERROR) << "Could not initialize SDL." << SDL_GetError();
+	
 	}
 
 	// Initializing SDL_image with imgFlags.
 	const Uint32 imgFlags = IMG_INIT_PNG;
 	if((IMG_Init(imgFlags) & imgFlags)){
+		
 		successIMG = true;
 
 		SDL_IMAGE_VERSION(&compiled);
 		SDLWrapper::logSDLVersion("SDL_image", compiled);
+	
 	}
 	else{
+		
 		Log(ERROR) << "Could not initialize SDL_Image." << IMG_GetError();
+	
 	}
 
 	// Initializing SDL_mixer.
@@ -58,13 +71,17 @@ bool SDLWrapper::initialize(){
 	const int chunksize = 4096;
 	const int initialized = Mix_OpenAudio(frequency, MIX_DEFAULT_FORMAT, channels, chunksize);
 	if(initialized == 0){
+		
 		successMixer = true;
 
 		SDL_MIXER_VERSION(&compiled);
 		SDLWrapper::logSDLVersion("SDL_mixer", compiled);
+	
 	}
 	else{
+		
 		Log(ERROR) << "Could not initialize SDL_Mixer" << Mix_GetError();
+	
 	}
 
 	// If even one system fails to initialize, returns false.
@@ -72,6 +89,7 @@ bool SDLWrapper::initialize(){
 }
 
 void SDLWrapper::close(){
+	
 	Log(DEBUG) << "Closing SDL.";
 
 	// Quits SDL_mixer.
@@ -86,9 +104,11 @@ void SDLWrapper::close(){
 
 	// Quits SDL_TTF.
 	TTF_Quit();
+
 }
 
 void SDLWrapper::logSDLVersion(const std::string& what_, const SDL_version& compiled_,
+	
 	std::string revision_){
 
 	Log(DEBUG) << what_ << " Version (Compiled): " << (int)compiled_.major << "." <<
