@@ -5,6 +5,7 @@
 #include "Configuration.h"
 #include <cassert>
 
+// Constructor of tilemap class, loads a tilemap from Tiled.
 TileMap::TileMap(const std::string& mapPath_) :
 	map(nullptr),
 	layers(0),
@@ -16,6 +17,7 @@ TileMap::TileMap(const std::string& mapPath_) :
 	load(mapPath_);
 }
 
+// Destructor method, runs when the class is deallocated.
 TileMap::~TileMap(){
 	if(this->map != nullptr){
 		delete this->map;
@@ -23,6 +25,7 @@ TileMap::~TileMap(){
 	}
 }
 
+// Loads the tilemap in the level.
 void TileMap::load(const std::string& mapPath_){
 	this->map = new Tmx::Map();
 	this->map->ParseFile(mapPath_);
@@ -132,6 +135,7 @@ void TileMap::load(const std::string& mapPath_){
 	}
 }
 
+// Render the tiles int the camera.
 void TileMap::render(const double cameraX_, const double cameraY_){
 	assert((this->tilesetSprites.size() > 0) && "No tilesets detected for the TileMap!");
 
@@ -158,7 +162,7 @@ void TileMap::render(const double cameraX_, const double cameraY_){
 	}
 }
 
-
+// Render the layer, handle if the tiles are or not on the screen
 void TileMap::renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_){
 	const int tilesInX = this->tileMatrix.size();
 	const int tilesInY = this->tileMatrix[0].size();
@@ -227,6 +231,7 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
 	}
 }
 
+// Add a new tilemap to the tiles structure.
 void TileMap::addTileSet(const std::string& path_){
 	Sprite* newTileSet = Game::instance().getResources().get(path_);
 	this->tilesetSprites.push_back(newTileSet);

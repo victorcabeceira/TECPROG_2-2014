@@ -35,7 +35,9 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 	animation(nullptr),
 	statesMap(),
 	dead(false)
+
 {
+
 	initializeStates();
 
 	this->speed = 3.0;
@@ -47,27 +49,38 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
 
 	if(this->patrol){
+
 		this->currentState = this->statesMap.at(PATROLLING);
+
 	}
 	else{
+
 		this->currentState = this->statesMap.at(IDLE);
+
 	}
 	
 	this->currentState->enter();
+
 }
 
 Enemy::~Enemy(){
+
 	if(this->currentState != nullptr){
+
 		this->currentState->exit();
 		this->currentState = nullptr;
+
 	}
 
 	if(this->animation != nullptr){
+
         delete this->animation;
         this->animation = nullptr;
+
     }
 
 	destroyStates();
+
 }
 
 void Enemy::update(const double dt_){
@@ -106,16 +119,22 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 	// ///////////////////////////////////////////////////////////////////////////////////////////
 
 	if(this->sprite != nullptr){
+
 		SDL_RendererFlip flip = getFlip();
 
 		if(flip == SDL_FLIP_HORIZONTAL)
+
 			this->sprite->render(dx - 120, dy, &this->animationClip, false, 0.0, nullptr, flip);
+
 		else
+
 			this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
+
 	}
 }
 
 void Enemy::initializeStates(){
+
 	// Initialize all the states in Enemy here.
 	ADD_STATE_INSERT(IDLE,         EStateIdle);
 	ADD_STATE_INSERT(CURIOUS,      EStateCurious);
@@ -124,77 +143,116 @@ void Enemy::initializeStates(){
 	ADD_STATE_INSERT(AERIAL,       EStateAerial);
 	ADD_STATE_INSERT(ATTACK,       EStateAttack);
 	ADD_STATE_INSERT(DEAD,         EStateDead);
+
 }
 
 void Enemy::destroyStates(){
+
 	// Delete all the states in Enemy here.
 	std::map<EStates, StateEnemy*>::const_iterator it;
 	for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+
 		delete it->second;
+
 	}
 }
 
 void Enemy::changeState(const EStates state_){
+
 	this->currentState->exit();
 	this->currentState = this->statesMap.at(state_);
 	this->currentState->enter();
+
 }
 
 void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+
 	if(detections_.at(CollisionSide::SOLID_TOP)){ 
+
 		this->vy = 0.0;
+
 	}
+
 	if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+
 		if(this->currentState == this->statesMap.at(EStates::AERIAL) || this->currentState == this->statesMap.at(EStates::DEAD)){
+
 			this->nextY -= fmod(this->nextY, 64.0) - 16.0;
 			this->vy = 0.0;
+
 			if(this->isDead()){
+
 				this->changeState(EStates::DEAD);
+
 			}
+
 			if(this->patrol){
+
 				this->changeState(EStates::PATROLLING);
+
 			}
 			else{
+
 				this->changeState(EStates::IDLE);
 				return;
+
 			}
 		}
 	}
 	else{
+
 		if(this->currentState != this->statesMap.at(EStates::AERIAL)){
+
 			changeState(EStates::AERIAL);
+
 		}
 	}
+
 	if(detections_.at(CollisionSide::SOLID_LEFT)){
+
 		this->nextX = this->x;
 		this->vx = 0.0;
+
 	}
+
 	if(detections_.at(CollisionSide::SOLID_RIGHT)){
+
 		this->nextX = this->x;
 		this->vx = -0.001;
+
 	}
 }
 
 void Enemy::forceMaxSpeed(){
+
 	this->vx = (this->vx >= this->maxSpeed) ? this->maxSpeed : this->vx ;
 	this->vy = (this->vy >= this->maxSpeed) ? this->maxSpeed : this->vy ;
+
 }
 
 Animation *Enemy::getAnimation(){
+
 	return (this->animation);
+
 }
 
 void Enemy::setDead(bool isDead_){
+
 	this->dead = isDead_;
+
 }
 
 bool Enemy::isDead(){
+
 	return this->dead;
+
 }
 
 void Enemy::updateBoundingBox(){
+
 	this->boundingBox.x = (int) this->nextX + 40;
 	this->boundingBox.y = (int) this->nextY + 40;
 	this->boundingBox.w = 150;
 	this->boundingBox.h = 200;
+
 }

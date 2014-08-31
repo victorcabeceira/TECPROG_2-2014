@@ -6,7 +6,11 @@
 class BStateIcePrision : public StateBoss {
 
 	public:
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
 		/**
 		* The constructor.
 		* @param boss_ : Reference to the Boss.

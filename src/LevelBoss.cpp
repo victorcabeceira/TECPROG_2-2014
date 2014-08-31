@@ -8,7 +8,9 @@
 #include "Collision.h"
 
 LevelBoss::LevelBoss() :
+	
 	Level()
+
 {
 
 }
@@ -18,6 +20,7 @@ LevelBoss::~LevelBoss(){
 }
 
 void LevelBoss::load(){
+	
 	Log(DEBUG) << "Loading level boss...";
 
 	Game::instance().getAudioHandler().changeMusic("res/audio/Tema_Boss_02.wav");
@@ -66,11 +69,12 @@ void LevelBoss::load(){
 }
 
 void LevelBoss::unload(){
+	
 	Log(DEBUG) << "\tUnloading level boss...";
-
 	cleanEntities();
 	clearEnemies();
 	clearDocuments();
+
 }
 
 void LevelBoss::update(const double dt_){
@@ -80,28 +84,36 @@ void LevelBoss::update(const double dt_){
 
 	// Updating the entities, using the QuadTree.
 	std::vector<CollisionRect> returnObjects;
-	for (auto entity : this->entities) {
+	for(auto entity : this->entities){
+		
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
 		entity->update(dt_);
+	
 	}
 
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
+		
 		Game::instance().setState(Game::GStates::GAMEOVER);
 		return;
+	
 	}
 
 	// Updating the potions.
 	for(auto potion : this->player->potions){
+		
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, potion->getBoundingBox());
 		potion->setCollisionRects(returnObjects);
+	
 	}
 
 	if(this->boss->x < this->player->x + 10 && this->boss->x > this->player->x - 10){
+		
 		this->boss->sawPlayer = true;
+	
 	}
 
 	// Updating the HUD.
@@ -114,36 +126,52 @@ void LevelBoss::update(const double dt_){
 	this->camera->update();
 
 	if(this->boss->life <= 0){
+		
 		this->player->reachedLevelEnd = true;
+	
 	}
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
+		
 		Game::instance().setState(Game::GStates::VICTORY);
 		return;
+	
 	}
 
 	// Updating the potion/boss collision.
 	for(auto potion : this->player->potions){
+		
 		if(Collision::rectsCollided(potion->getBoundingBox(), this->boss->getBoundingBox())){
+			
 			if(potion->activated){
+				
 				this->boss->life--;
 				potion->activated = false;
+			
 			}
 		}
 	}
 
 	// Updating the player attack/boss collision.
 	if(Collision::rectsCollided(this->player->getBoundingBox(), this->boss->getBoundingBox())){
+		
 		if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)
+			
 			|| this->player->isCurrentState(Player::PStates::ATTACKJUMPING)){
+			
 			if(this->boss->hasShield && this->player->canAttack){
+				
 				this->boss->hasShield = false;
 				this->player->canAttack = false;
+			
 			}
+			
 			else if(this->player->canAttack){
+				
 				this->boss->life -= 1;
 				this->player->canAttack = false;
+			
 			}
 		}
 	}
@@ -152,10 +180,14 @@ void LevelBoss::update(const double dt_){
 
 	// Documents check
 	for(auto document : this->documents){
+		
 		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			
 			document->shouldRender = true;
+		
 		}
-		else {
+		
+		else{
 			document->shouldRender = false;
 		}
 	}
@@ -176,15 +208,20 @@ void LevelBoss::render(){
 
 	// Render all the entities in the list.
 	for(auto entity : this->entities){
+        
         entity->render(cameraX, cameraY);
+	
 	}
 
 	// Document text image
 	for(auto document : this->documents){
+		
 		document->render(cameraX, cameraY);
+		
 		if(document->shouldRender){
+			
 			document->renderDocumentText();
+		
 		}
 	}
 }
-

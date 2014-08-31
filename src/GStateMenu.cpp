@@ -5,6 +5,7 @@
 #include <string>
 
 GStateMenu::GStateMenu() :
+	
 	shouldIgnore(false),
 	menuImage(nullptr),
 	menuSelector(nullptr),
@@ -23,18 +24,22 @@ GStateMenu::GStateMenu() :
 	shwingIsActivated(true),
 	shwing(nullptr),
 	shwingClip {0,0,0,0}
-{
 
+{
 }
 
 GStateMenu::~GStateMenu(){
+
 	if(this->shwingAnimation != nullptr){
+
 		delete this->shwingAnimation;
 		this->shwingAnimation = nullptr;
+
 	}
 }
 
 void GStateMenu::load(){
+
 	Log(DEBUG) << "Loading menu...";
 
 	// Changing the music.
@@ -56,15 +61,19 @@ void GStateMenu::load(){
     this->shwingAnimation->ANIMATION_LIMIT = 2;
 
     Game::instance().getFade().fadeOut(0, 0.002);
+
 }
 
 void GStateMenu::unload(){
+
 	Log(DEBUG) << "\tUnloading menu...";
 	this->attractClip.y = 0;
 	cleanEntities();
+
 }
 
 void GStateMenu::update(const double dt_){
+
 	this->passedTime += dt_;
 
 	handleSelectorMenu();
@@ -72,13 +81,18 @@ void GStateMenu::update(const double dt_){
 	this->shwingAnimation->update(this->shwingClip, dt_);	
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
 	if(keyStates[GameKeys::ESCAPE] == true){
+
 		Game::instance().stop();
+
 	}
 
 	if(this->shwingIsActivated){
+
 		 this->shwingAnimation->changeAnimation(0,0,12,false,2);
 		 this->shwingIsActivated = false;
+
 	}
 
 }
@@ -86,22 +100,31 @@ void GStateMenu::update(const double dt_){
 void GStateMenu::render(){
 
 	if(this->passedTime>10){
+	
 		this->attractModeBg->render(0, 0, nullptr, true);
 		this->attractMode->render(0, 0, &this->attractClip, true);
 		shouldIgnore = true;
+	
 		if(this->attractClip.y < (int)this->attractMode->getHeight() - this->attractHeightSize){
+	
 			this->attractClip.y += this->attractChangeSpeed;
+	
 		}
 		else{
 			//shwing->render(340,50,&this->shwingClip);
 		}
+		
 		if(this->passedTime>75){
+		
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
+		
 		}
 	}
 	else{
+		
 		if(this->menuImage != nullptr){
+		
 			this->menuImage->render(0, 0, nullptr, true);
 
 			this->menuSelector->setWidth(50);
@@ -114,13 +137,16 @@ void GStateMenu::render(){
 
 		}
 		else{
+		
 			Log(WARN) << "No image set to display on the menu!";
+		
 		}
 	}
 
 }
 
 void GStateMenu::handleSelectorMenu(){
+	
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
@@ -128,75 +154,106 @@ void GStateMenu::handleSelectorMenu(){
 	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
 
 		if(shouldIgnore){
+		
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+		
 		}
 
 		if(this->passedTime >= selectorDelayTime){
+		
 			if(currentSelection < (Selection::TOTAL - 1)){
+		
 				currentSelection++;
+		
 			}
 			else{
+		
 				currentSelection = Selection::NEWGAME;
+		
 			}
 			
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
+		
 		}
 	}
+
 	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
+		
 		if(shouldIgnore){
+		
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+		
 		}
 
 		if(this->passedTime >= selectorDelayTime){
+		
 			if(currentSelection > Selection::NEWGAME){
+		
 				currentSelection--;
+		
 			}
 			else{
+		
 				currentSelection = (Selection::TOTAL - 1);
+		
 			}
+		
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
+		
 		}
 	}
+
 	else if(currentSelection == Selection::NEWGAME && keyStates[GameKeys::SPACE] == true){
+		
 		if(shouldIgnore){
+		
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+		
 		}
 
 		Game::instance().setState(Game::GStates::NEW_GAME);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
+	
 	}
 
 	else if(currentSelection == Selection::CONTINUE && keyStates[GameKeys::SPACE] == true){
+	
 		if(shouldIgnore){
+	
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+	
 		}
 
 		Game::instance().setState(Game::GStates::CONTINUE);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
+	
 	}
 
 	else if(currentSelection == Selection::OPTIONS && keyStates[GameKeys::SPACE] == true){
+	
 		if(shouldIgnore){
+	
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+	
 		}
 
 		Game::instance().setState(Game::GStates::OPTIONS);
@@ -205,15 +262,19 @@ void GStateMenu::handleSelectorMenu(){
 	}
 
 	else if(currentSelection == Selection::CREDITS && keyStates[GameKeys::SPACE] == true){
+	
 		if(shouldIgnore){
+	
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 			shouldIgnore = false;
 			return;
+	
 		}
 
 		Game::instance().setState(Game::GStates::CREDITS);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
+	
 	}
 }

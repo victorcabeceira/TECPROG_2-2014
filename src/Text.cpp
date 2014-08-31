@@ -1,6 +1,7 @@
 #include "Text.h"
 #include "Logger.h"
  
+// Contructor of Text class, initializes the font and set the surface.
 Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	const char* text_, const SDL_Color color_) :
 	Entity(x_, y_),
@@ -28,7 +29,7 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	}
 	
 }
-
+// Contructor of Text class, initializes the font and set the surface.
 Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	const char* text_) :
 	Entity(x_, y_),
@@ -47,7 +48,6 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	if(surface != nullptr){
 		this->sprite = new Sprite(surface);
 
-		// Idk.
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
 	}
@@ -57,6 +57,7 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	
 }
 
+// Destructor method, runs when the class is deallocated.
 Text::~Text(){
 	if(this->sprite != nullptr){
 		delete this->sprite;
@@ -66,6 +67,7 @@ Text::~Text(){
 	TTF_CloseFont(this->font);
 }
 
+// Set the text and the color to render.
 void Text::changeText(const char* text_, const SDL_Color color_){
 
 	if(this->sprite != nullptr){
@@ -80,7 +82,6 @@ void Text::changeText(const char* text_, const SDL_Color color_){
 	if(surface != nullptr){
 		this->sprite = new Sprite(surface);
 
-		// Idk.
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
 	}
@@ -90,6 +91,7 @@ void Text::changeText(const char* text_, const SDL_Color color_){
 
 }
 
+// Set the text woth a defalt white color
 void Text::changeText(const char* text_){
 
 	if(this->sprite != nullptr){
@@ -114,10 +116,12 @@ void Text::changeText(const char* text_){
 
 }
 
+// Update.
 void Text::update(const double dt_){
 	(void(dt_)); //unused
 }
 
+// Render the text on the screen.
 void Text::render(const double cameraX_, const double cameraY_){
 	const int dx = this->x - cameraX_;
 	const int dy = this->y - cameraY_;

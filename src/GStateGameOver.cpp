@@ -5,18 +5,19 @@
 #include <string>
 
 GStateGameOver::GStateGameOver() :
+
 	gameOverImage(nullptr),
 	passedTime(0.0),
 	lifeTime(0.0)
-{
 
+{
 }
 
 GStateGameOver::~GStateGameOver(){
-
 }
 
 void GStateGameOver::load(){
+
 	Log(DEBUG) << "Loading Game Over...";
 
 	LuaScript luaGameOver("lua/GameOver.lua");
@@ -28,9 +29,11 @@ void GStateGameOver::load(){
 
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic("res/audio/Game_Over.mid");
+
 }
 
 void GStateGameOver::unload(){
+
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
 
@@ -38,29 +41,40 @@ void GStateGameOver::unload(){
 	this->lifeTime = 0.0;
 
 	Game::instance().getAudioHandler().stopMusic();
+
 }
 
 void GStateGameOver::update(const double dt_){
+
 	this->passedTime += dt_;
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	if(keyStates[GameKeys::SPACE] || keyStates[GameKeys::LATTACK]){
+
 		Game::instance().setState(Game::GStates::MENU);
 		return;
+
 	}
 
 	if(this->passedTime >= this->lifeTime){
+
 		Game::instance().setState(Game::GStates::MENU);
 		return;
+
 	}
 }
 
 void GStateGameOver::render(){
+
 	if(this->gameOverImage != nullptr){
+
 		this->gameOverImage->render(0, 0, nullptr, true);
+
 	}
 	else{
+
 		Log(WARN) << "No image set for the game over screen!";
+
 	}
 }
