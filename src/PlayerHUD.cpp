@@ -8,37 +8,55 @@ PlayerHUD::PlayerHUD(Player* const player_):
 	potionsLeft(new Text(200.0, 25.0, "res/fonts/maturasc.ttf", 50, "Potions: x"))
 {
 	for(unsigned int i = 0; i < TOTAL_HUD; i++){
+	
 		this->playerHudSprites[i] = nullptr;
+		
 	}
 
 	initializeSprites();
 
 	for(int i = 0; i < TOTAL_HUD; i++){
+	
 		this->canRenderHud[i] = true;
+		
 	}
 
 }
 
 PlayerHUD::~PlayerHUD(){
 	if(this->potionsLeft != nullptr){
+	
 		delete this->potionsLeft;
 		this->potionsLeft = nullptr;
+		
 	}
 }
 
 void PlayerHUD::update(){
 	if(this->player != nullptr){
+	
 		switch(this->player->life){
+		
 			case 2:
+			
 				this->canRenderHud[3] = false;
+				
 				break;
+				
 			case 1:
+			
 				this->canRenderHud[2] = false;
+				
 				break;
+				
 			case 0:
+			
 				this->canRenderHud[1] = false;
+				
 				break;
+				
 			default :
+			
 				break;
 		}
 
@@ -49,16 +67,23 @@ void PlayerHUD::update(){
 
 void PlayerHUD::render(){
 	for(int i = 0; i < TOTAL_HUD; i++){
+	
 		if(this->canRenderHud[i]){
+		
 			this->playerHudSprites[i]->render(0, 0);
+			
 		}
 	}
 
 	if(this->potionsLeft != nullptr){
+	
 		this->potionsLeft->render(0, 0);
+		
 	}
 	else {
+	
 		Log(WARN) << "Potions left HUD text is null";
+		
 	}
 }
 

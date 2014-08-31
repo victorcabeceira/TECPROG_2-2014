@@ -10,7 +10,9 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	this->font = TTF_OpenFont(path_, size_);
 
 	if(this->font == nullptr){
+	
 		Log(ERROR) << "Failed to open font." << TTF_GetError();
+		
 	}
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, color_);
@@ -18,14 +20,18 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	const int surfaceH = surface->h;
 
 	if(surface != nullptr){
+	
 		this->sprite = new Sprite(surface);
 
 		// Idk.
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
+		
 	}
 	else{
+	
 		Log(ERROR) << "Could not load font surface.";
+		
 	}
 	
 }
@@ -38,7 +44,9 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	this->font = TTF_OpenFont(path_, size_);
 
 	if(this->font == nullptr){
+	
 		Log(ERROR) << "Failed to open font." << TTF_GetError();
+		
 	}
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, {0xCE, 0xCE, 0xCE, 255});
@@ -46,22 +54,28 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	const int surfaceH = surface->h;
 
 	if(surface != nullptr){
+	
 		this->sprite = new Sprite(surface);
 
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
+		
 	}
 	else{
+	
 		Log(ERROR) << "Could not load font surface.";
+		
 	}
 	
 }
 
 // Destructor method, runs when the class is deallocated.
 Text::~Text(){
+
 	if(this->sprite != nullptr){
 		delete this->sprite;
 		this->sprite = nullptr;
+		
 	}
 
 	TTF_CloseFont(this->font);
@@ -71,8 +85,10 @@ Text::~Text(){
 void Text::changeText(const char* text_, const SDL_Color color_){
 
 	if(this->sprite != nullptr){
+	
 		delete this->sprite;
 		this->sprite = nullptr;
+		
 	}
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, color_);
@@ -80,13 +96,17 @@ void Text::changeText(const char* text_, const SDL_Color color_){
 	const int surfaceH = surface->h;
 
 	if(surface != nullptr){
+	
 		this->sprite = new Sprite(surface);
 
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
+		
 	}
 	else{
+	
 		Log(ERROR) << "Could not load font surface.";
+		
 	}
 
 }
@@ -95,8 +115,10 @@ void Text::changeText(const char* text_, const SDL_Color color_){
 void Text::changeText(const char* text_){
 
 	if(this->sprite != nullptr){
+	
 		delete this->sprite;
 		this->sprite = nullptr;
+		
 	}
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, {0xCE, 0xCE, 0xCE, 255});
@@ -104,14 +126,18 @@ void Text::changeText(const char* text_){
 	const int surfaceH = surface->h;
 
 	if(surface != nullptr){
+	
 		this->sprite = new Sprite(surface);
 
 		// Idk.
 		this->sprite->setWidth(surfaceW);
 		this->sprite->setHeight(surfaceH);
+		
 	}
 	else{
+	
 		Log(ERROR) << "Could not load font surface.";
+		
 	}
 
 }
@@ -127,9 +153,13 @@ void Text::render(const double cameraX_, const double cameraY_){
 	const int dy = this->y - cameraY_;
 
 	if(this->sprite != nullptr){
+	
 		this->sprite->render(dx, dy);
+		
 	}
 	else{
+	
 		Log(WARN) << "Null sprite for text";
+		
 	}
 }

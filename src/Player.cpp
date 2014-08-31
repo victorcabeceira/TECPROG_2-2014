@@ -51,26 +51,34 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     this->animation = new Animation(0, 3, this->width, this->height, 11, false);
 
     if(this->sprite != nullptr){
+	
         this->currentState = this->statesMap.at(IDLE);
         this->currentState->enter();
+		
     }
     else{
+	
         Log(WARN) << "No sprite set for the player! Null sprite.";
+		
     }
 
 }
 
 Player::~Player(){
     if(this->currentState != nullptr){
+	
         this->currentState->exit();
         this->currentState = nullptr;
+		
     }
 
     if(this->animation != nullptr){
+	
         delete this->animation;
         this->animation = nullptr;
+		
     }
-
+	
     destroyStates();
 }
 
@@ -78,7 +86,9 @@ void Player::update(const double dt_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     if(this->canMove){
+	
         this->currentState->handleInput(keyStates);
+		
     }
 
     Game::instance().clearKeyFromInput(GameKeys::ACTION);
@@ -95,59 +105,78 @@ void Player::update(const double dt_){
     this->animation->update(this->animationClip, dt_);
 
     for(auto potion : this->potions){
+	
         if(!potion->activated){
             // Delete potion.
+			
         }
         potion->update(dt_);
     }
 
     if(!this->isVulnerable){
+	
         this->invulnerableTime += dt_;
         if(this->invulnerableTime >= 1){
+		
             this->invulnerableTime = 0;
             this->isVulnerable = true;
             this->canAttack = true;
+			
         }
     }
 
     if(this->isClimbing && !isCurrentState(PStates::CLIMBING)){
+	
         changeState(PStates::CLIMBING);
+		
     }
 
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
+	
         Log(DEBUG) << "COLLIDED_TOP";
         this->vy = 0.0;
+		
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+	
         if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING) 
             || isCurrentState(PStates::HITED)  || isCurrentState(PStates::CLIMBING) ||  
             isCurrentState(PStates::DEAD)){
+			
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 
             this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
             if(!isCurrentState(PStates::DEAD)){
+			
                 changeState(PStates::IDLE);
+				
             }
         }
     }
     else{
         if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)
             && !isCurrentState(PStates::CLIMBING) && !isCurrentState(PStates::DEAD)){
+			
             changeState(PStates::AERIAL);
+			
         }
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
+	
         this->nextX = this->x;
         this->vx = 0.0;
+		
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
+	
         this->nextX = this->x;
         this->vx = -0.001;
+		
     }
 
 }
@@ -170,39 +199,56 @@ void Player::render(const double cameraX_, const double cameraY_){
     /////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){
+	
         SDL_RendererFlip flip = getFlip();
 
-        if(flip == SDL_FLIP_HORIZONTAL)
+        if(flip == SDL_FLIP_HORIZONTAL){
+		
             this->sprite->render(dx - 100, dy, &this->animationClip, false, 0.0, nullptr, flip);
-        else
+			
+			}
+        else{
+		
             this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
+			
+			}
     }
 
     if(this->crosshair != nullptr){
+	
         this->crosshair->render(cameraX_, cameraY_);
+		
     }
 
     for (auto potion : this->potions) {
+	
         potion->render(cameraX_, cameraY_);
+		
     }
 
 }
 
 void Player::usePotion(const int strength_, const int distance_){
     if(this->potionsLeft > 0){
+	
         this->potionsLeft--;
         const double potionX = ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x);
         Potion* potion = new Potion(potionX , this->y, "res/images/explosion_with_potion.png", strength_, this->vx, distance_, this->isRight);
         this->potions.push_back(potion);
+		
     }
 }
 
 void Player::addPotions(const unsigned int quantity_){
     if(this->potionsLeft + quantity_ > this->maxPotions){
+	
         this->potionsLeft = this->maxPotions;
+		
     }
     else{
+	
         this->potionsLeft += quantity_;
+		
     }
 }
 
@@ -227,7 +273,9 @@ void Player::destroyStates(){
     // Delete all the states in Player here.
     std::map<PStates, StatePlayer*>::const_iterator it;
     for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+	
         delete it->second;
+		
     }
 }
 
