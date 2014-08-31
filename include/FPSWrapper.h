@@ -10,6 +10,7 @@
 class FPSWrapper {
 	
 	public:
+	
 		/**
 		* Initializes FPS managing.
 		* Initializes the FPS manager and sets it to the desired framerate

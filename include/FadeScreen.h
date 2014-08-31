@@ -8,13 +8,40 @@
 class FadeScreen{
 
 	public:
+		
+		/**
+		* Fades the screen.
+		*/
 		FadeScreen();
+		
+		/**
+		* Destructor method.
+		*/
 		virtual ~FadeScreen();
-
+		
+		/**
+		* Updates the screen.
+		*/
 		void update(const double dt_);
+		
+		/**
+		* Renders the image.
+		*/
 		void render();
+		
+		/**
+		* Check if the screen if faded.
+		*/
 		bool isFaded();
+		
+		/**
+		* Fades out.
+		*/
 		void fadeOut(const double percentage_, const double time_);
+		
+		/**
+		* Fades in.
+		*/
 		void fadeIn(const double percentage_, const double time_);
 
 	private:
