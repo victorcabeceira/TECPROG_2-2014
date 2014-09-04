@@ -1,0 +1,33 @@
+Classe: 
+	Métodos:
+		Atributos:
+Animation.h
+	Animation: // The constructor. Initializes all atributes.
+		x_: // The x position on the spritesheet.
+		y_: // The y position on the spritesheet.
+		SpriteWidth_ : // The width of the sprite to animate.
+		SpriteHeight_ : // The height of the sprite to animate.
+		numberOfImages_ : // The number of images to animate inside the spritesheet.
+		loop_: // Whether to loop the animation or not.
+	~Animation: // The Destructor.
+	update: // Updates the animation clip.
+		clip_ : // Reference to the clip of whatever object the animation is a part of.
+		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	getCurrentFrame: // Gets the current frame of the animation.
+	changeWidthHeight: // Changes the width and the height of the animation.
+		width_ : // Width that needs to be changed.
+		height_: // Height that needs to be changed.
+	changeAnimation: // Changes the animation to another.
+		x_: // The x position on the spritesheet.
+		y_: // The y position on the spritesheet.
+		SpriteWidth_ : // The width of the sprite to animate.
+		SpriteHeight_ : // The height of the sprite to animate.
+		numberOfImages_ : // The number of images to animate inside the spritesheet.
+		loop_: // Whether to loop the animation or not.
+		totalTime_ : // How much time each frame should have. Affects the speed on which the animation changes.
+	updateClip: // Updates the clip to a new position.
+		clip_ : // Clip to be updated.
+		x_ : // New x position.
+		y_ : // New y position.
+
+
