@@ -30,7 +30,7 @@ EStateDead.h: // Class in control of the enemy when dead.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStateIdle: // The constructor. Reference to the enemy.
+EStateIdle.h: // The constructor. Reference to the enemy.
 		enemy_: // The actual enemy.
 	~EStateIdle: // The destructor.
 	enter: // The enemy enter on idle state.
@@ -38,7 +38,7 @@ EStateIdle: // The constructor. Reference to the enemy.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStatePatrolling: // The constructor. Reference to the enemy.
+EStatePatrolling.h: // The constructor. Reference to the enemy.
 		enemy_: // The actual enemy.
 	~EStateIdle: // The destructor.
 	enter: // The enemy enter on patrolling state.
@@ -47,3 +47,25 @@ EStatePatrolling: // The constructor. Reference to the enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
 		direction: // The movement direction of the enemy.
+
+FadeHandler.h: // Fade of the screen.
+		sprite_:// Handles the fade.
+	~FadeHandler: // The destructor.
+	fadeIn: // Fades in.
+		percentage_: // Percentage of fade.
+		time_: // Time of fade.
+	fadeOut: // Fades out.
+		percentage_: // Percentage of fade.
+		time_: // Time of fade.
+	update: // Updates the sprite.
+		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	getCurrentPercentage: // Gets the current percentage of fading.
+
+		shouldFadeIn: // Boolean for when to fade in
+		shouldFadeOut: // Boolean for when to fade out
+		percentageOfStop: // The amount of percentage of fade to stop.
+		sprite: // The sprite to use on the animation.
+		time: // The time of fade.
+		currentPercentage: // The percentage of fade.
+		rate: // The rate of fade.
+		
