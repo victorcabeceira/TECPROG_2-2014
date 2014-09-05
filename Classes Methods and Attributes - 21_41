@@ -48,7 +48,7 @@ EStatePatrolling.h: // The constructor. Reference to the enemy.
 
 		direction: // The movement direction of the enemy.
 
-FadeHandler.h: // Fade of the screen.
+FadeHandler.h: // Controller of the fade of the screen.
 		sprite_:// Handles the fade.
 	~FadeHandler: // The destructor.
 	fadeIn: // Fades in.
@@ -68,4 +68,19 @@ FadeHandler.h: // Fade of the screen.
 		time: // The time of fade.
 		currentPercentage: // The percentage of fade.
 		rate: // The rate of fade.
+
+FadeScreen.h: // Fades the screen.
+	~FadeScreen: // The destructor.
+	update: // Updates the screen.
+		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	render: // Renders the image.
+	isFaded: // Check if the screen is faded.
+	fadeOut: // Fades out.
+		percentage_: // Percentage of fade.
+		time_: // Time of fade.
+	fadeIn: // Fades in.
+		percentage_: // Percentage of fade.
+		time_: // Time of fade.
 		
+		fadeImage: // Image to be faded.
+		fadeHandler: // Handler of the fade.
