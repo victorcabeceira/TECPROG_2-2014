@@ -1,13 +1,23 @@
 Class: 
 	Methods:
 		Attributes:
-EStateAttack.h: // Class in control of the enemy when attacking
-	EstateAttack: // The constructor. Reference the enemy.
-		enemy: // The actual enemy
-	~EstateAttack: // The destructor
-	enter: // The enemy enter on state attack.
-	exit: // The enemy exit of state attack.
-	update: // Update the estate of the Enemy.
+EStateAttack.h: // Class in control of the enemy when attacking.
+	EstateAttack: // The constructor. Reference to the enemy.
+		enemy_: // The actual enemy.
+	~EstateAttack: // The destructor.
+	enter: // The enemy enter on attack state.
+	exit: // The enemy exit of attack state.
+	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
+EstateCurious.h: // Class in control of the enemy when curious.
+	EstateCurious: //The constructor. Reference to the enemy.
+		enemy_: // The actual enemy.
+	~EstateCurious: // The destructor.
+	enter: // The enemy enter on curious state.
+	exit: // The enemy exit of curious state.
+	update: // Update the state of the Enemy.
+		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+
+		timeElapsed: // The amount of time that the enemy spent on the state.
 	
