@@ -37,3 +37,13 @@ EStateIdle: // The constructor. Reference to the enemy.
 	exit: // The enemy exit of idle state.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+
+EStatePatrolling: // The constructor. Reference to the enemy.
+		enemy_: // The actual enemy.
+	~EStateIdle: // The destructor.
+	enter: // The enemy enter on patrolling state.
+	exit: // The enemy exit of patrolling state.
+	update: // Update the state of the Enemy.
+		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+
+		direction: // The movement direction of the enemy.
