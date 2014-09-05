@@ -1,0 +1,13 @@
+Class: 
+	Methods:
+		Attributes:
+EStateAttack.h: // Class in control of the enemy when attacking
+	EstateAttack: // The constructor. Reference the enemy.
+		enemy: // The actual enemy
+	~EstateAttack: // The destructor
+	enter: // The enemy enter on state attack.
+	exit: // The enemy exit of state attack.
+	update: // Update the estate of the Enemy.
+		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+
+	
