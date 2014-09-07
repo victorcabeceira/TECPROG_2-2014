@@ -1,0 +1,70 @@
+Classe: 
+	Métodos:
+		Atributos:
+Animation.h: // Class in control of animating a sprite.
+	Animation: // The constructor. Initializes all atributes.
+		x_: // The x position on the spritesheet.
+		y_: // The y position on the spritesheet.
+		SpriteWidth_ : // The width of the sprite to animate.
+		SpriteHeight_ : // The height of the sprite to animate.
+		numberOfImages_ : // The number of images to animate inside the spritesheet.
+		loop_: // Whether to loop the animation or not.
+	~Animation: // The Destructor.
+	update: // Updates the animation clip.
+		clip_ : // Reference to the clip of whatever object the animation is a part of.
+		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	getCurrentFrame: // Gets the current frame of the animation.
+	changeWidthHeight: // Changes the width and the height of the animation.
+		width_ : // Width that needs to be changed.
+		height_: // Height that needs to be changed.
+	changeAnimation: // Changes the animation to another.
+		x_: // The x position on the spritesheet.
+		y_: // The y position on the spritesheet.
+		SpriteWidth_ : // The width of the sprite to animate.
+		SpriteHeight_ : // The height of the sprite to animate.
+		numberOfImages_ : // The number of images to animate inside the spritesheet.
+		loop_: // Whether to loop the animation or not.
+		totalTime_ : // How much time each frame should have. Affects the speed on which the animation changes.
+	updateClip: // Updates the clip to a new position.
+		clip_ : // Clip to be updated.
+		x_ : // New x position.
+		y_ : // New y position.
+
+AudioHandler.h: // Class that handles all the audio in the game. Is a singleton, so should be called in each state.
+	AudioHandler : // The constructor.
+	~AudioHandler : // The destructor.
+	playMusic : // Plays the current music.
+		times_ : // Times to loop the song. MIX_LOOP (or -1) for infinite looping.
+	playEffect : // Plays the current effect.
+		times_ : // Times to loop the song. MIX_LOOP (or -1) for infinite looping.
+	stopMusic : // Stops the current Music
+	setMusicVolume : // Sets the volume for the music.
+		percent_ : // The volume percentage (0-100).
+	setEffectVolume : // Sets the volume for the effect.
+		percent_ : // The volume percentage (0-100).
+	changeMusic : // Changes current music.
+		path_ : // Path to the desired music.
+	setCurrentMusic : // Sets the current music.
+		path_ : // Path to the desired music.
+	setCurrentEffect : // Sets the current effect.
+		path_ : // Path to the desired effect.
+	clearChannel : // Clear the current channel.
+		channel_ : // The channel to be cleared.
+	channelDone : // Notifies AudioHandler instance when channel is done playing.
+		channel_ : // The channel to be checked.
+
+BStateAttack.h // Boss's State of Attack
+	BStateAttack : // The constructor.
+		boss_ : // Reference to the boss.
+	~BStateAttack : // The destructor.
+	enter : // @see StateBoss::enter.
+	exit : // @see StateBoss::exit.
+	update : // @see StateBoss::update.
+
+BStateIcePrision.h // Boss's State of the attack Ice Prision
+	BStateIcePrision : // The constructor.
+		boss_ : // Reference to the boss.
+	~BStateIcePrision : // The destructor.
+	enter : // @see StateBoss::enter.
+	exit : // @see StateBoss::exit.
+	update : // @see StateBoss::update.
