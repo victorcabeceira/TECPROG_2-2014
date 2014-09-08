@@ -50,10 +50,11 @@ AudioHandler.h: // Class that handles all the audio in the game. Is a singleton,
 		path_ : // Path to the desired effect.
 	clearChannel : // Clear the current channel.
 		channel_ : // The channel to be cleared.
-	channelDone : // Notifies AudioHandler instance when channel is done playing.
+	channelDone : // Notifies AudioHandler instance when channel is done playing. 
+	-> Suggested Name: notifiesChannelDone
 		channel_ : // The channel to be checked.
 
-BStateAttack.h // Boss's State of Attack
+BStateAttack.h // Boss's State of Attack -> Suggested Name: BossStateAttack
 	BStateAttack : // The constructor.
 		boss_ : // Reference to the boss.
 	~BStateAttack : // The destructor.
@@ -61,7 +62,7 @@ BStateAttack.h // Boss's State of Attack
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateIcePrision.h // Boss's State of the attack Ice Prision
+BStateIcePrision.h // Boss's State of the attack Ice Prision -> Suggested Name: BossStateIcePrision
 	BStateIcePrision : // The constructor.
 		boss_ : // Reference to the boss.
 	~BStateIcePrision : // The destructor.
