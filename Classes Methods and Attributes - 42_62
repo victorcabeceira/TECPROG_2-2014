@@ -1,0 +1,22 @@
+Classe: 
+	Métodos:
+		Atributos:
+ImputKeys.h // Class in control of game keys and quatity of this.
+		GameKeys: // A type defined.
+			UP: // UP KEY
+			LEFT: // DOWN KEY
+			RIGHT: // RIGHT KEY
+			DOWN: //DOWN KEY
+			ROLL: //ROLL KEY
+			SPACE: // SPACE/JUMP KEY
+			CROUCH: // CROUCH KEY
+			AIM: // AIM WITH MOUSE		
+			ACTION: // ACTION KEY	
+			LATTACK: // LETHAL ATTACK KEY		
+			NLATTACK: // NO LETHAL ATTACK KEY
+			ITEMS: // USE ITEM KEY
+			ESCAPE: // ESCAPE KEY
+			MAX: // MAX LIFE STOCK
+
+
+
