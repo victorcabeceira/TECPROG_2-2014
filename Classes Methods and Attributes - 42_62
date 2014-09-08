@@ -18,5 +18,18 @@ ImputKeys.h // Class in control of game keys and quatity of this.
 			ESCAPE: // ESCAPE KEY
 			MAX: // MAX LIFE STOCK
 
-
-
+Level.h //  Contais background, player and camera level control.
+	Level: // Abstract class for levels.
+	~Level: // The destructor. Deletes all the allocated attributes.
+	getWidth: // Return The Level width.
+	getHeight: // Return The Level height.
+	Level: // The constructor.
+	setPlayer: // Sets the player for the level.
+		player: // reference to the player.
+	setCamera: // Sets the camera for the level.
+		camera: // reference to the camera.
+	setBoss: // Set the boss for the level.
+		boss: // reference to the boss.
+	clearEnemies: // Clear enemies on the level.
+	clearDocuments: // Clear documents of level.
+	
