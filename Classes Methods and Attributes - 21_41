@@ -159,3 +159,32 @@ Game: // Main structure class for the game.
 		selectorYPositionLeft[PSelection::TOTAL]: // The Y position of the left selector.
 		selectorXPositionRight[PSelection::TOTAL]: // The X position of the left selector.
 		selectorYPositionRight[PSelection::TOTAL]: // The Y position of the left selector.
+
+GameSave: // Saves the progress on the game.
+	GameSave: // Save the progress.
+	SetSlot: // Sets the save slot.
+	createSave: // Creates the save.
+	saveLevel: // Saves the level.
+		level_: // The actual level to be saved.
+		player: // The actual player.
+		enemies: // The state of the enemies at the save moment.
+		slot_: // The slot that the save will be set.
+	getSavedLevel: // Gets the saved level.
+		continueSelection_: // Continue on the Selection.
+	getPlayerPosition: // Gets the player position.
+		playerX_: // Gets the position on X axis.
+		playerY_: // Gets the position on Y axis.
+		slot_: // Gets the slot of the save.
+	isEnemyDead: // Check if the enemy is dead.
+		numEnemy_: // Gets the number of the enemy.
+		slot_: // Gets the slot of the save.
+	isSaved: // Check if the game is saved.
+		saveSlot_: // Gets the save's slot.
+		filePath: // The path of the save file.
+		saveSelection: // The selection of the save.
+		currentLevel: // The current level.
+	Selection: // Select the save file to be loaded.
+		SLOT_1: // The first save file to select.
+		SLOT_2: // The second save file to select.
+		SLOT_3: // The third save file to select.
+		TOTAL: // The total acount of save files.
