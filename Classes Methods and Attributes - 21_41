@@ -1,19 +1,20 @@
 Class: 
 	Methods:
 		Attributes:
-EStateAttack.h: // Class in control of the enemy when attacking.
-	EStateAttack: // The constructor. Reference to the enemy.
+		--> SuggestedName
+EStateAttack.h: // Class in control of the enemy when attacking. --> EnemyStateAttack.h
+	EStateAttack: // The constructor. Reference to the enemy. --> EnemyStateAttack
 		enemy_: // The actual enemy.
-	~EStateAttack: // The destructor.
+	~EStateAttack: // The destructor.--> ~EnemyStateAttack
 	enter: // The enemy enter on attack state.
 	exit: // The enemy exit of attack state.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStateCurious.h: // Class in control of the enemy when curious.
-	EStateCurious: //The constructor. Reference to the enemy.
+EStateCurious.h: // Class in control of the enemy when curious. --> EnemyStateCurious.h
+	EStateCurious: //The constructor. Reference to the enemy. --> EnemyStateCurious
 		enemy_: // The actual enemy.
-	~EStateCurious: // The destructor.
+	~EStateCurious: // The destructor. --> ~EnemyStateCurious
 	enter: // The enemy enter on curious state.
 	exit: // The enemy exit of curious state.
 	update: // Update the state of the Enemy.
@@ -21,26 +22,26 @@ EStateCurious.h: // Class in control of the enemy when curious.
 
 		timeElapsed: // The amount of time that the enemy spent on the state.
 
-EStateDead.h: // Class in control of the enemy when dead.
-	EStateDead: // The constructor. Reference to the enemy.
+EStateDead.h: // Class in control of the enemy when dead. --> EnemyStateDead.h
+	EStateDead: // The constructor. Reference to the enemy. --> EnemyStateDead
 		enemy_: // The actual enemy.
-	~EStateDead: // The destructor.
+	~EStateDead: // The destructor. --> ~EnemyStateDead
 	enter: // The enemy enter on dead state.
 	exit: // The enemy exit of dead state.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStateIdle.h: // The constructor. Reference to the enemy.
+EStateIdle.h: // The constructor. Reference to the enemy. --> EnemyStateIdle.h
 		enemy_: // The actual enemy.
-	~EStateIdle: // The destructor.
+	~EStateIdle: // The destructor. --> ~EnemyStateIdle
 	enter: // The enemy enter on idle state.
 	exit: // The enemy exit of idle state.
 	update: // Update the state of the Enemy.
 		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStatePatrolling.h: // The constructor. Reference to the enemy.
+EStatePatrolling.h: // The constructor. Reference to the enemy. --> EnemyStatePatrolling.h
 		enemy_: // The actual enemy.
-	~EStateIdle: // The destructor.
+	~EStatePatrolling: // The destructor. --> ~EnemyStatePatrolling
 	enter: // The enemy enter on patrolling state.
 	exit: // The enemy exit of patrolling state.
 	update: // Update the state of the Enemy.
@@ -84,3 +85,5 @@ FadeScreen.h: // Fades the screen.
 		
 		fadeImage: // Image to be faded.
 		fadeHandler: // Handler of the fade.
+
+FPSWrapper.h
