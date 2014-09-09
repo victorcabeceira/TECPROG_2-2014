@@ -41,7 +41,7 @@ EStateIdle.h: // The constructor. Reference to the enemy. --> EnemyStateIdle.h
 
 EStatePatrolling.h: // The constructor. Reference to the enemy. --> EnemyStatePatrolling.h
 		enemy_: // The actual enemy.
-	~EStatePatrolling: // The destructor. --> ~EnemyStatePatrolling
+	~EnemyStatePatrolling: // The destructor. --> ~EnemyStatePatrolling
 	enter: // The enemy enter on patrolling state.
 	exit: // The enemy exit of patrolling state.
 	update: // Update the state of the Enemy.
@@ -86,4 +86,8 @@ FadeScreen.h: // Fades the screen.
 		fadeImage: // Image to be faded.
 		fadeHandler: // Handler of the fade.
 
-FPSWrapper.h
+FPSWrapper.h: // Wraps FPS handling in a class. Uses SDL2_GFX. --> FramesPerSecondWrapper.h
+	initialize: // Initializes FPS managing.
+		fpsManager_: // The FPS manager to handle.
+	delay: // Delays execution and calculate FPS.
+		fpsManager_: // The FPS manager to handle.
