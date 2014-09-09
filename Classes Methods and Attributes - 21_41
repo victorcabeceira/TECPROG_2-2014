@@ -91,3 +91,71 @@ FPSWrapper.h: // Wraps FPS handling in a class. Uses SDL2_GFX. --> FramesPerSeco
 		fpsManager_: // The FPS manager to handle.
 	delay: // Delays execution and calculate FPS.
 		fpsManager_: // The FPS manager to handle.
+
+Game: // Main structure class for the game.
+		SPLASH: // Game State.
+		MENU: // Game State.
+		NEW_GAME: // Game State.
+		LEVEL_ONE: // Game State.
+		LEVEL_TWO: // Game State.
+		LEVEL_THREE: // Game State.
+		LEVEL_FOUR: // Game State.
+		LEVEL_FIVE: // Game State.
+		LEVEL_BOSS: // Game State.
+		CONTINUE: // Game State.
+		OPTIONS: // Game State.
+		CREDITS: // Game State.
+		GAMEOVER: // Game State.
+		TRANSITION: // Game State.
+		VICTORY: // Game State.
+	instance: // Singleton implementation for Game. @return the instance for a Game.
+	~Game: // The Destructor of the Game. --> ~GameDestructor
+	runGame: // The main Game loop.
+	setState: // Sets the current state of the Game.
+		state_: // The state you want to be changed into.
+	getAudioHandler: // Return the Game audioHandler.
+	getInput: // Return the boolean array received from the InputHandler.
+	getResources: // The Resource manager.
+	getFade: // The Fade manager.
+	getSaves: // The Save manager.
+	stop: // Stop the execution of the Game. --> stopGame
+	clearKeyFromInput: // Clear the Key received from input.
+		key_: // The key that will be cleared.
+	resizeWindow: // Function to resize the Window.
+		width_: // The width to resize.
+		height_: // The height to resize.
+		isCutscene: // Check if the state is at a Cutscene.
+		isPaused: // Check if the state is at Pause.
+		currentSlot: // The current Slot.
+		numLines: // Number of Lines. 
+		currentLine: // Current Number of Lines.
+		dialog[numLines]: // Gets the Sprite with the dialog containing the certain amount of lines.
+		transitionTo: // Make the transition to the right state.
+	Game: // The constructor. Tells if it is okay to start the game. --> GameStart
+	initializeStates: // Loads all states.
+	destroyStates: // Delete all uploaded states.
+	renderPause: // Renders screen when paused.
+	isPauseable: // Check if the game is able to be paused.
+	renderDialog: // Renders the dialogs.
+	handleDialog: // Handles the dialogs.
+	updateDialog: // Updates the dialogs.
+		window: // The game Window.
+		isRunning: // Whether the game is currently running/looping or not. 
+		pauseImage: // Pauses the Image.
+		pauseSelector: // Pauses' selector.
+		audioHandler: // The Game AudioHandler.
+		inputHandler: // The Game InputHandler. 
+		resourceManager: // The Game ResourceManager.
+		gameSave: // The Game's save fil.
+		fadeScreen: // The Fade Screen.
+		currentState: // The current state, which the game is in.
+		statesMap: // Map containing all possible states. 
+		fpsManager: // The FPSManager from SDL2_GFX. Handles the framerate capping.
+	handleSelectorMenu: // Handles the Selector of the Menu.
+	updatePause: // Updates the Pauses state.
+		passedTime: // The time already elapsed since the beggining of the menu.
+		currentSelection: // The actual position.
+		selectorXPositionLeft[PSelection::TOTAL]: // The X position of the left selector.
+		selectorYPositionLeft[PSelection::TOTAL]: // The Y position of the left selector.
+		selectorXPositionRight[PSelection::TOTAL]: // The X position of the left selector.
+		selectorYPositionRight[PSelection::TOTAL]: // The Y position of the left selector.
