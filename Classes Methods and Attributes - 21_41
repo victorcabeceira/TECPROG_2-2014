@@ -92,7 +92,7 @@ FPSWrapper.h: // Wraps FPS handling in a class. Uses SDL2_GFX. --> FramesPerSeco
 	delay: // Delays execution and calculate FPS.
 		fpsManager_: // The FPS manager to handle.
 
-Game: // Main structure class for the game.
+Game.h: // Main structure class for the game.
 		SPLASH: // Game State.
 		MENU: // Game State.
 		NEW_GAME: // Game State.
@@ -160,7 +160,7 @@ Game: // Main structure class for the game.
 		selectorXPositionRight[PSelection::TOTAL]: // The X position of the left selector.
 		selectorYPositionRight[PSelection::TOTAL]: // The Y position of the left selector.
 
-GameSave: // Saves the progress on the game.
+GameSave.h: // Saves the progress on the game.
 	GameSave: // Save the progress.
 	SetSlot: // Sets the save slot.
 	createSave: // Creates the save.
