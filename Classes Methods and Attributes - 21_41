@@ -188,3 +188,28 @@ GameSave.h: // Saves the progress on the game.
 		SLOT_2: // The second save file to select.
 		SLOT_3: // The third save file to select.
 		TOTAL: // The total acount of save files.
+
+GStateContinue.h: // The state for the continue menu screen. --> GameStateContinue.h
+	GStateContinue: // The constructor, initializes all the attributes. --> GameStateContinue
+	~GStateContinue: // The destructor. --> ~GameStateContinueDestructor
+	load: // Loads the level.
+	update: // Updates the objects within the StateGame.
+		dt_: // Delta time. Time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+	handleSelectorMenu: // Handles the menu's selector.
+	Selection: // Select the save file to be loaded.
+		SLOT_1: // The first save file to select.
+		SLOT_2: // The second save file to select.
+		SLOT_3: // The third save file to select.
+		TOTAL: // The total acount of save files.
+		background: // Background image.
+		selector: // Image for the slot selector.
+		passedTime: // The time already elapsed since the beggining of the menu.
+		currentSelection: // The actual position.
+		selectorXPosition: // The X position of the slot selector.
+		selectorYPosition[Selection::TOTAL]: // The Y position of the slot selector.
+		Text* slot1: // Text of slot 1.
+		Text* slot2: // Text of slot 2.
+		Text* slot3: // Text of slot 3.
+
