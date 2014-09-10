@@ -77,3 +77,11 @@ BStateIdle.h // Boss's State of being Idle -> Suggested Name: BossStateIdle
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
+
+BStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Suggested Name: BossStateMagicProjectile
+	BStateMagicProjectile : // The constructor.
+		boss_ : // Reference to the boss.
+	~BStateMagicProjectile : // The destructor.
+	enter : // @see StateBoss::enter.
+	exit : // @see StateBoss::exit.
+	update : // @see StateBoss::update.
