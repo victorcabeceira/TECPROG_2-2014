@@ -271,5 +271,24 @@ GStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
 		shwingIsActivated: // Check if the Animation of shwing is activated.
 		shwing: // The actual shwing selected.
 		shwingClip: // The Clip shown on shwing.
-		
 
+GStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.h
+	GStateNewGame: // The constructor. --> GameStateNewGame
+	~GStateNewGame: // The destructor. --> ~GameStateNewGame
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+	handleSelectorMenu: // Handles the selector menu.
+	Selection: // Select the save file to be loaded.
+		SLOT_1: // The first save file to select.
+		SLOT_2: // The second save file to select.
+		SLOT_3: // The third save file to select.
+		TOTAL: // The total acount of save files.
+		background: // Background image.
+		selector: // Image for the slot selector.
+		passedTime: // The time already elapsed since the beggining of the menu. 
+		currentSelection: // The Current Selection.
+		selectorXPosition: // The X position of the slot selector.
+		selectorYPosition[Selection::TOTAL]: // The Y position of the slot selector.
