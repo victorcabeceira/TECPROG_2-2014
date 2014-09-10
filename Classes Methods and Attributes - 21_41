@@ -237,3 +237,39 @@ GStateGameOver.h: // The state for the initial menu screen. --> GameStateGameOve
 		gameOverImage: // The image shown when the player dies.
 		passedTime: // The time already elapsed since the beggining of the menu.
 		lifeTime: // The amount of time the menu will be shown.
+
+GStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
+	GStateMenu: // The constructor. --> GameStateMenu
+	~GStateMenu: // The destructor. --> ~GameStateMenu
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+	handleSelectorMenu: // Handles the selector menu.
+	shouldIgnore: // Check if needs to ignore the State or not.
+	Selection: // Select between options.
+		NEWGAME: // Starts a new game.
+		CONTINUE: // Continues a game.
+		OPTIONS: // Select the options.
+		CREDITS: // Shows the credits.
+		TOTAL: // Total account of States.
+		menuImage: // The image shown on the menu. 
+		menuSelector: // The selector shown on the menu.
+		attractModeBg: // The image shown on the menu. 
+		attractMode: // The selector shown on the menu. 
+		passedTime: // The time already elapsed since the beggining of the menu.
+		currentSelection: // The Current Selection.
+		selectorXPositionLeft[Selection::TOTAL]: // The X position of the left selector.
+		selectorYPositionLeft[Selection::TOTAL]: // The Y position of the left selector.
+		selectorXPositionRight[Selection::TOTAL]: // The X position of the left selector.
+		selectorYPositionRight[Selection::TOTAL]: // The Y position of the left selector.
+		attractHeightSize: // The Height Size of attraction .
+		attractChangeSpeed: // The Speed to change the attraction.
+		attractClip: // The clip shown on the credits.
+		shwingAnimation: // The Animation os shwing.
+		shwingIsActivated: // Check if the Animation of shwing is activated.
+		shwing: // The actual shwing selected.
+		shwingClip: // The Clip shown on shwing.
+		
+
