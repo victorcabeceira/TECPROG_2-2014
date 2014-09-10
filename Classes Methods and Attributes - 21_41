@@ -213,3 +213,15 @@ GStateContinue.h: // The state for the continue menu screen. --> GameStateContin
 		Text* slot2: // Text of slot 2.
 		Text* slot3: // Text of slot 3.
 
+GStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.h
+	GStateCredits: // The constructor. --> GameStateCredits
+	~GStateCredits: // The destructor. --> ~GameStateCredits
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+		creditsImage: // The image shown on the credits.
+		creditsHeightSize: // Height size of the image shown on the credits.
+		creditsChangeSpeed: // Change the speed of the image shown on the credits.
+		creditsClip: // The clip shown on the credits.
