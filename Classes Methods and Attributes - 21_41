@@ -225,3 +225,15 @@ GStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.
 		creditsHeightSize: // Height size of the image shown on the credits.
 		creditsChangeSpeed: // Change the speed of the image shown on the credits.
 		creditsClip: // The clip shown on the credits.
+
+GStateGameOver.h: // The state for the initial menu screen. --> GameStateGameOver.h
+	GStateGameOver: // The constructor. --> GameStateGameOver
+	~GStateGameOver: // The destructor. --> ~GameStateGameOver
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+		gameOverImage: // The image shown when the player dies.
+		passedTime: // The time already elapsed since the beggining of the menu.
+		lifeTime: // The amount of time the menu will be shown.
