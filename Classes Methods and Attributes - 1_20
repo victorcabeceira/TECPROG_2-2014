@@ -85,3 +85,11 @@ BStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Sugges
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
+
+BStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
+	BStateShield : // The constructor.
+		boss_ : // Reference to the boss.
+	~BStateShield : // The destructor.
+	enter : // @see StateBoss::enter.
+	exit : // @see StateBoss::exit.
+	update : // @see StateBoss::update.
