@@ -93,3 +93,11 @@ BStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
+
+BStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossStateTeleport
+	BStateTeleport : // The constructor.
+		boss_ : // Reference to the boss.
+	~BStateTeleport : // The destructor.
+	enter : // @see StateBoss::enter.
+	exit : // @see StateBoss::exit.
+	update : // @see StateBoss::update.
