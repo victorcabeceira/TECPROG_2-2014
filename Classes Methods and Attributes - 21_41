@@ -330,3 +330,23 @@ GStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.
 		volumeMusic: // Actual music volume.
 		volumeSFX: // Actual SFX volume.
 
+GStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
+	GStateSplash: // The constructor. --> GameStateSplash
+	~GStateSplash: // The destructor. --> ~GameStateSplash
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+	SplashImages: // The splash images to be shown.
+		ALKE_LOGO: // Logo Image.
+		TECHS: // Tech Image.
+		LICENSES: // Licenses Images.
+		ESRB: // ESRB imagem.
+		TOTAL_SPLASH_IMAGES: // Total Splash Images.
+		currentSplash: // Determines which is the current splash image. 
+		passedTime: // The time already elapsed since the beggining of the splash.
+		lifeTime: // The amount of time the splash will be shown.
+		images[SplashImages::TOTAL_SPLASH_IMAGES]: // Contains all the splash images. 
+		ix: // Current image x position. --> imageIterator
+
