@@ -350,3 +350,15 @@ GStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
 		images[SplashImages::TOTAL_SPLASH_IMAGES]: // Contains all the splash images. 
 		ix: // Current image x position. --> imageIterator
 
+GStateTransition.h: // The state for the initial menu screen. --> GameStateTransition.h
+	GStateTransition: // The constructor. --> GameStateTransition
+	~GStateTransition: // The destructor. --> ~GameStateTransition
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+		passedTime: // The time already elapsed since the beggining of the splash. 
+		lifeTime: // The amount of time the splash will be shown.
+		loading: // The loading image that will be shown.
+		point: // The points shown on loading image.
