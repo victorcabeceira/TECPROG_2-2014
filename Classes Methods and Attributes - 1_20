@@ -104,9 +104,9 @@ BStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossS
 
 Boss.h // The Boss of the game.
 	Boss : // The constructor.
-		x_ : // 
-		y_ : // 
-		path_ : // 
+		x_ : // Boss's x position.
+		y_ : // Boss's y position.
+		path_ : // Path to sprite image of the Boss.
 		player_ : // The player.
 	~Boss : // The destructor.
 	update : // Updates the player.
