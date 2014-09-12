@@ -101,3 +101,33 @@ BStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossS
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
+
+Boss.h // The Boss of the game.
+	Boss : // The constructor.
+		x_ : // 
+		y_ : // 
+		path_ : // 
+		player_ : // The player.
+	~Boss : // The destructor.
+	update : // Updates the player.
+		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	initializeStates : // Initializes Boss's States.
+	destroyStates : // Destroy Boss's States.
+	changeStates : // Changes the Boss's States. 
+		state_ : // State that will replace former state.
+	render : // Renders the player.
+		cameraX_ : // The x position of the camera.
+		cameraY_ : // The y position of the camera.	
+	usePotion : // Uses a potion.
+	getAnimation: // Gets the Boss's animation.
+	isDead: // Checks if the Boss is dead.
+	setDead: // Sets the Boss Dead.
+	randomSkill : // Uses a randomSkill.
+	teleport : // Uses the teleport skill.
+	magicProjectile : // Uses the magic projectile skill.
+	invokeWind : // Uses the invoke wind skill.
+	icePrision : // Uses the icePrision skill.
+	finalSplendor : // Uses the final splendor skill.
+	updateBoundingBox : // Updates the boss's bounding box.
+	handleCollision : // Handles collision with the boss.
+		
