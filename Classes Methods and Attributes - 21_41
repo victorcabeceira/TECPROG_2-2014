@@ -292,3 +292,41 @@ GStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.
 		currentSelection: // The Current Selection.
 		selectorXPosition: // The X position of the slot selector.
 		selectorYPosition[Selection::TOTAL]: // The Y position of the slot selector.
+
+GStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.h
+	GStateOptions: // The constructor. --> GameStateOptions
+	~GStateOptions: // The destructor. --> ~GameStateOptions
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.
+	applyOptions: // Applies the changes in the options.
+	elapsedTime: // Time elapsed.
+	Option: // Choose between options.
+		O_RESOLUTION: // Choose the resolution.
+		O_VOLUME_MUSIC: // Choose the music volume.
+		O_VOLUME_SFX: // Choose the sfx volume.
+		O_APPLY: // Applies changes.
+		O_RETURN: // Go back to the menu.
+		O_TOTAL: // Total options.
+		Resolution: // Set the resolution.
+		R_800_600: // Resolution to 800x600.
+		R_768_432: // Resolution to 768x432.
+		R_960_540: // Resolution to 960x540.
+		R_TOTAL: // Resolution total.
+		optionsImage: // The image shown on the menu.
+		currentResolution: // The current resolution.
+		currentOption: // The current option.
+		selector: // The selector shown on the menu.
+		selectorYPositionLeft[Option::O_TOTAL]: // The Y position of the left selector.
+		selectorXPositionLeft[Option::O_TOTAL]: // The X position of the left selector.
+		selectorXPositionRight[Option::O_TOTAL]: // The X position of the left selector.
+		selectorYPositionRight[Option::O_TOTAL]: // The Y position of the left selector.
+		possibleResolutions[3]: // Possible resolutions to be set.
+		musicVolume: // Music volume set.
+		sfxVolume: // Music volumet set.
+		resolution: // Actual resolution.
+		volumeMusic: // Actual music volume.
+		volumeSFX: // Actual SFX volume.
+
