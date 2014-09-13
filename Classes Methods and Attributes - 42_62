@@ -40,4 +40,14 @@ Level.h //  Contais background, player and camera level control.
 		height: // Height that defines the vertical limits.
 		checkpointsVisited: // Define if the checkpoint was visited.
 
-		
+LevelBoss.h // Last level of the game.
+	LevelBoss: // The constructor.
+	~LevelBoss: // The destructor.
+	load: // Loads the level.
+	update: // Updates teh objects within the level.
+		dt_: // Time elapsed between one frame and the other. --> deltaTime
+	unload: // Unloads everything that was loaded.
+	render: // Render the level.
+
+				
+
