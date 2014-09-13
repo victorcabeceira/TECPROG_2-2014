@@ -130,4 +130,17 @@ Boss.h // The Boss of the game.
 	finalSplendor : // Uses the final splendor skill.
 	updateBoundingBox : // Updates the boss's bounding box.
 	handleCollision : // Handles collision with the boss.
-		
+
+Camera.h // The camere of the game. Contains all relevant implementation relative to the camera.
+	Camera : // The constructor.
+		entity_ : // The entity to centralize the camera on.
+	~Camera : // The destructor.
+	update : // Updates the camera centralizing the player on the screen.
+	centralizeOn : // Changes the entity to centralize upon.
+		entity_ : // The entity to centralize the camera on.
+	getClip : // Gets the camera clip.
+	setLevelWH : // Sets the level Width and Height. -> Suggested Name : setLevelWidthHeight
+		width_ : // Tells the camera what the width of the level is.
+		height_ : // Tells the camera what the height of the level is.
+	updatePosition : // Updates the camera's position based on player's position.
+	
