@@ -71,6 +71,17 @@ LevelFour.h // Fourfh level of the game.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
 		caughtItems[NUMBER_ITEMS]: // If the item was caught.
 
+LevelOne.h // First level of the game.
+	LevelOne: // The constructor.
+	~LevelOne: // The destructor.
+	load: // Loads the level.
+	update: // Updates teh objects within the level.
+		dt_: // Time elapsed between one frame and the other. --> deltaTime
+	unload: // Unloads everything that was loaded.
+	render: // Render the level.
+		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
+		caughtItems[NUMBER_ITEMS]: // If the item was caught.		
+
 
 
 
