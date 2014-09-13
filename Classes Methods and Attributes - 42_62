@@ -32,4 +32,12 @@ Level.h //  Contais background, player and camera level control.
 		boss: // reference to the boss.
 	clearEnemies: // Clear enemies on the level.
 	clearDocuments: // Clear documents of level.
-	
+	changeCheckpoints: // Change the current checkpoint to new checkpoint.
+		NUMBER_OF_CHECKPOINTS_: // Total number of checkpoints.
+		checkpointsX_: // All checkpoints in x axis.
+		checkpointsY_: // All checkpoints in y axis.
+		width: // Width that defines the horizontal limits.
+		height: // Height that defines the vertical limits.
+		checkpointsVisited: // Define if the checkpoint was visited.
+
+		
