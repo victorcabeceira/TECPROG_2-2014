@@ -31,7 +31,7 @@ class CollisionRect {
 		CollisionRect(const SDL_Rect rect_, const TypeCollision type_);
 		
 		/** 
-		* The destructor method.
+		* The destructor.
 		*/
 		virtual ~CollisionRect();
 

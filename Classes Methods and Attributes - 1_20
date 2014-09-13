@@ -131,7 +131,7 @@ Boss.h // The Boss of the game.
 	updateBoundingBox : // Updates the boss's bounding box.
 	handleCollision : // Handles collision with the boss.
 
-Camera.h // The camere of the game. Contains all relevant implementation relative to the camera.
+Camera.h : // The camere of the game. Contains all relevant implementation relative to the camera.
 	Camera : // The constructor.
 		entity_ : // The entity to centralize the camera on.
 	~Camera : // The destructor.
@@ -143,4 +143,49 @@ Camera.h // The camere of the game. Contains all relevant implementation relativ
 		width_ : // Tells the camera what the width of the level is.
 		height_ : // Tells the camera what the height of the level is.
 	updatePosition : // Updates the camera's position based on player's position.
-	
+
+Collision.h : // Simple Collision detection.
+	rectsCollided : // Whether two SDL_Rects collided.
+		a_ : // Rectangle to check.
+		b_ : // Rectangle to check.
+	rectsCollidedSide : // The side which two SDL_Rects collided on
+		a_ : // Rectangle to check.
+		b_ : // Rectangle to check.
+
+CollisionRect.h : // 
+
+Configuration.h : // Game configuration class.
+		initialize : // Initializes all the attributes.
+		getResolutionWidth : // Gets the Resolution Width.
+		getResolutionHeight : // Gets the Resolution Height.
+		getMaxFramerate : // Gets the Maximum Framerate.
+		getWindowTitle : // Gets the Window Title.
+		getLogicalRenderSize : // Gets the logical render size.
+		getCameraDistanceWidth : // Gets the camera distance width.
+		getCameraDistanceHeight : // Gets the camera distance height.
+		getScreenWidth : // Gets the Screen Width.
+		getScreenHeight : // Gets the Screen Height. 
+
+ControllerHandler.h
+
+Crosshair.h
+
+Document.h
+
+DynamicEntity.h
+
+EStateAerial.h : // Enemy State Aerial.
+	EStateAerial : // The constructor.
+		enemy_ : // Reference to the enemy.
+	~EStateAerial : // The destructor.
+	enter : // @see StateEnemy::enter.
+	exit : // @see StateEnemy::exit.
+	update : // @see StateEnemy::update.
+
+EStateAlert.h : // Enemy State of being Alert.
+	EStateAlert : // The constructor.
+		enemy_ : // Reference to the enemy.
+	~EStateAlert : // The destructor.
+	enter : // @see StateEnemy::enter.
+	exit : // @see StateEnemy::exit.
+	update : // @see StateEnemy::update.
