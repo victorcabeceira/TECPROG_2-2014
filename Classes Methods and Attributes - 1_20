@@ -177,9 +177,50 @@ Crosshair.h : // Target of the potion.
 		y_ : // y position of the target.
 		path_ : // Path to the sprite image of the target
 
-Document.h : // 
+Document.h : // 	
+	Document : // The constructor.
+		x_ : // X position of the document.
+		y_ : // Y position of the document.
+		path_ : // Path to the sprite image of the document.
+		pathDocumentText_ : // Path to the document text.
+	~Document : // The destructor.
+	update : // Updates the document.
+		dt_ : // Delta time.
+	render : // Renders the animation of the document.
+		cameraX_ : // camera in the x position.
+		cameraY_ : // camera in the y position.
+	renderDocumentText : // Renders the document text.
 
-DynamicEntity.h : //
+DynamicEntity.h : // Subclass of entity. The objects of this class are entities, but have physics applied to them
+	DynamicEntity : // The constructor.
+		x_ : // X position of the entity.
+		y_ : // Y position of the entity.
+		path_ : // Path of the Entity's sprite.
+	~DynamicEntity : // The destructor.
+	jump : // Make the entity jump.
+	applyGravity : // Applies gravity to entity.
+	move : // Moves the entity.
+		movingLeft_ : // If the entity if moving left.
+		movingRight_ : // If the entity if moving right.
+	move Vertical : // Moves the entity vertically.
+		movingUp_ : // If the entity if moving up.
+		movingDown_ : // If the entity if moving down.
+	slowVx : // Slows the entity on x axis.
+	slowVy : // Slows the entity on y axis.
+	roll : // Make the entity roll.
+	aim : // Aim the potions.
+		crosshair : // The crosshair of the aim.
+		direction : // The direction of the aim.
+	setLevelWH : // Sets the level width and height.
+		width_ : // Tells the player what the width of the level is.
+		height_ : // Tells the player what the height of the level is.
+	updatePosition : // Updates the position of the dynamic entity.
+		dt_ : // Time elapsed between one frame and the other, independent of processing speed.
+	scoutPosition : // Scouts the position of the dynamic entity.
+		dt_ : // Time elapsed between one frame and the other, independent of processing speed.	
+	detectCollision : // Detects the collision.
+	getFlip : // 
+	updateBoundingBox : // Updates the bounding box of the entity.
 
 EStateAerial.h : // Enemy State Aerial.
 	EStateAerial : // The constructor.

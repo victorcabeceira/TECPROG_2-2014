@@ -77,6 +77,7 @@ class DynamicEntity : public Entity {
 		virtual void aim(Crosshair* const crosshair, double direction);
 
 		/**
+		* Sets the level width and height
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
