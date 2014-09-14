@@ -16,7 +16,7 @@ class Crosshair : public Entity {
 		Crosshair(const double x_, const double y_, const std::string& path_);
 		
 		/** 
-		* The Destructor method.
+		* The Destructor.
 		*/
 		virtual ~Crosshair();
 		

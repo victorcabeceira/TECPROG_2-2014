@@ -166,13 +166,20 @@ Configuration.h : // Game configuration class.
 		getScreenWidth : // Gets the Screen Width.
 		getScreenHeight : // Gets the Screen Height. 
 
-ControllerHandler.h
+ControllerHandler.h : // The input handler for joysticks
+	ControllerHandler : // The constructor.
+	handleInput : // Handles the controller input.
+		sdlEvent_ : // The SDL internal event structure.
 
-Crosshair.h
+Crosshair.h : // Target of the potion.
+	Crosshair : // Targets the potion.
+		x_ : // x position of the target.
+		y_ : // y position of the target.
+		path_ : // Path to the sprite image of the target
 
-Document.h
+Document.h : // 
 
-DynamicEntity.h
+DynamicEntity.h : //
 
 EStateAerial.h : // Enemy State Aerial.
 	EStateAerial : // The constructor.
