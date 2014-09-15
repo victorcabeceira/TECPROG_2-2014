@@ -362,3 +362,15 @@ GStateTransition.h: // The state for the initial menu screen. --> GameStateTrans
 		lifeTime: // The amount of time the splash will be shown.
 		loading: // The loading image that will be shown.
 		point: // The points shown on loading image.
+
+GStateVictory.h: // The state for the initial menu screen. --> GameStateVictory.h
+	GStateVictory: // The constructor. --> GameStateVictory
+	~GStateVictory: // The destructor. --> ~GameStateVictory
+	load: // Loads the level.
+	update: // Updates the object within the StateGame.
+		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+	unload: // Unloads everything that was loaded.
+	render: // Renders the state.		
+		victoryImage: // The image shown on the menu.
+		double passedTime: // The time already elapsed since the beggining of the menu.
+		double lifeTime: // The amount of time the menu will be shown.
