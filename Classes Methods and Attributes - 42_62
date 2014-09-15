@@ -123,4 +123,14 @@ LuaScript.h // Parses lua scripts into C++
 		name_: // The name of the table. --> tableName_
 		level: // Current level.
 	unlua_clean: // Clean the state.
-									
+	unlua_getToStack: // Validates existance of the variable.
+		variableName_: // The varaible you want to get a value from.
+	unlua_getValue: // 	Gets a T type value from lua script.
+		variableName_: // The varaible you want to get a value from.
+	unlua_getDefault: // Gets a default value.
+
+Math.h // Change the signal of number.
+	sign: // change int number negative to positive.
+		number_: // int number.
+	sign: // change double number negative to positive.
+		number_: // double number.									
