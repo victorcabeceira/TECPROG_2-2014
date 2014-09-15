@@ -374,3 +374,17 @@ GStateVictory.h: // The state for the initial menu screen. --> GameStateVictory.
 		victoryImage: // The image shown on the menu.
 		double passedTime: // The time already elapsed since the beggining of the menu.
 		double lifeTime: // The amount of time the menu will be shown.
+
+InputHandler.h: // Handles player input. Using SDL event handling, receives the player input accordingly.
+	InputHandler: // The constructor.
+	~InputHandler: // The destructor.
+	handleInput: // Handles the Input.
+	getKeyStates: // Get the key's state.
+	isQuitFlag: // Check if it is the flag to quit the game.
+	clearKey: // Method to clear the actual key.
+		key_: // The key that will be cleared.
+		signalExit: // Sets the quitFlag to true.
+		controllerHandler: // Handles input if joystick is present.
+		keyStates: // Boolean array that controls which keys are pressed or not.
+		sdlEvent: // SDL internal event structure.
+		quitFlag: // If the quit signal was recieved or not. 
