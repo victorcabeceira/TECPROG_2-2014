@@ -104,4 +104,10 @@ LevelTwo.h // Second level of the game.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
 		caughtItems[NUMBER_ITEMS]: // If the item was caught.
 
-
+Logger.h // Log of level.
+	Logger: // The constructor.
+	~Logger: // The destructor.
+		LogLevel: // References log level.
+		level_: // References level.
+	levelToString: // Change level int to string.
+		
