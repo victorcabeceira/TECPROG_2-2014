@@ -110,4 +110,17 @@ Logger.h // Log of level.
 		LogLevel: // References log level.
 		level_: // References level.
 	levelToString: // Change level int to string.
-		
+	
+LuaScript.h // Parses lua scripts into C++
+	LuaScript: // Constructor.
+		filename_: // Path to the desired script, i.e. "lua/level1/Player.lua .
+	~LuaScript: // Destructor.
+	unlua_get: // Gets value of desired variable.
+		variableName_: // The varaible you want to get a value from.
+	unlua_getIntVector: // Gets an int vector.
+		name_: // The name of the table. --> tableName_
+	unlua_getTableKeys: // Gets the keys from a table.
+		name_: // The name of the table. --> tableName_
+		level: // Current level.
+	unlua_clean: // Clean the state.
+									
