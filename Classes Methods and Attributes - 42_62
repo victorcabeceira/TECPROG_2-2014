@@ -133,4 +133,13 @@ Math.h // Change the signal of number.
 	sign: // change int number negative to positive.
 		number_: // int number.
 	sign: // change double number negative to positive.
-		number_: // double number.									
+		number_: // double number.
+
+PStateAerial.h // The state for when the player is not grounded.
+	PStateAerial: // Constructor.
+		player_: // reference to player.
+	~PStateAerial: // Destructor.
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.
+	
