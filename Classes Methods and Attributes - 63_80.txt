@@ -45,3 +45,11 @@ QuadTree.h // Class that optmize the collisions by limiting them to close tiles.
 		returnObjects_ // Stores the array with the possible collision tiles.
 	setObjects // Set the objects to collide.
 
+ResourceManager.h // Class that retrieves all the image resource of the game.
+	ResourceManager // The Constructor. 
+	~ResourceManager // The Destructor. 
+	get // Returns a pointer from the type Sprite of the path.
+	registerResource // Include a resource into the resources array.
+	unregisterResource // Exclude a resource from the resources array.
+	load // Loads a new Sprite from a path.
+
