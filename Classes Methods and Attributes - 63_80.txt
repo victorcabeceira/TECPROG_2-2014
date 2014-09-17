@@ -35,3 +35,13 @@ PStateROlling.h // Class that control the player if he is rolling.
 	handleInput // Is called 60 times per second, do the logic of the state.
 	PStateHit // The Constructor, sets the player to the state.
 		player_: // reference to player.
+
+QuadTree.h // Class that optmize the collisions by limiting them to close tiles.
+	QuadTree // The Constructor, sets level and the bounds of the tile.
+	split // indentifies the 4 tiles that the reference tile can be touching and add them to nodes.
+	getIndex // returns the position of the possible touching tile.
+	insert // recursivaly fill the collision tiles array til the max size.
+	retrieve // Return the possible tiles to collide.
+		returnObjects_ // Stores the array with the possible collision tiles.
+	setObjects // Set the objects to collide.
+
