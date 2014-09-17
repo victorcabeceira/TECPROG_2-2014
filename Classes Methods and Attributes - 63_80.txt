@@ -53,3 +53,12 @@ ResourceManager.h // Class that retrieves all the image resource of the game.
 	unregisterResource // Exclude a resource from the resources array.
 	load // Loads a new Sprite from a path.
 
+SDLWrapper.h // Class that initializes everything about SDL.
+	initialize // Initializes SDL libraries.
+		successSDL // boolean that stores if SDL 2.0 was initialized correctly.
+		successIMG // boolean that stores if SDL image was initialized correctly.
+		successMixer // boolean that stores if SDL mixer was initialized correctly.
+		successTTF // boolean that stores if SDL ttf was initialized correctly.
+	close // Closes everything that was initialized.
+	logSDLVersion // A print with all used SDL versions.
+
