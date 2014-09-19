@@ -7,7 +7,7 @@
 * Wraps FPS handling in a class.
 * Uses SDL2_GFX, by ferzkopp.
 */
-class FPSWrapper {
+class FramesPerSecondWrapper {
 	
 	public:
 	
