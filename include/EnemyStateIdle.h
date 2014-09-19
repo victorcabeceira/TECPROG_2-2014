@@ -3,7 +3,7 @@
 
 #include "StateEnemy.h"
 
-class EStateIdle : public StateEnemy {
+class EnemyStateIdle : public StateEnemy {
 
 	public:
 	
@@ -11,12 +11,12 @@ class EStateIdle : public StateEnemy {
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateIdle(Enemy* const enemy_);
+		EnemyStateIdle(Enemy* const enemy_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateIdle(){}
+		virtual ~EnemyStateIdle(){}
 
 		/**
 		* @see StateEnemy::enter
