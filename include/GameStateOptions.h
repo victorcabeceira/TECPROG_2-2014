@@ -9,7 +9,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateOptions : public StateGame {
+class GameStateOptions : public StateGame {
 
 	public:
 	
@@ -17,12 +17,12 @@ class GStateOptions : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateOptions();
+		GameStateOptions();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateOptions();
+		virtual ~GameStateOptions();
 
 		/**
 		* Loads the level.
@@ -38,7 +38,7 @@ class GStateOptions : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GStateOptions::load
+		* @see GameStateOptions::load
 		*/
 		virtual void unload();
 
