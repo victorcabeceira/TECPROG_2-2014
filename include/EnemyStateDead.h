@@ -1,9 +1,9 @@
-#ifndef INCLUDE_ESTATECURIOUS_H
-#define INCLUDE_ESTATECURIOUS_H
+#ifndef INCLUDE_ESTATEDEAD_H
+#define INCLUDE_ESTATEDEAD_H
 
 #include "StateEnemy.h"
 
-class EStateCurious : public StateEnemy {
+class EnemyStateDead : public StateEnemy {
 
 	public:
 	
@@ -11,12 +11,12 @@ class EStateCurious : public StateEnemy {
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateCurious(Enemy* const enemy_);
+		EnemyStateDead(Enemy* const enemy_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateCurious(){}
+		virtual ~EnemyStateDead(){}
 
 		/**
 		* @see StateEnemy::enter
@@ -33,9 +33,6 @@ class EStateCurious : public StateEnemy {
 		*/
 		virtual void update(const double dt_);
 
-	private:
-		double timeElapsed;
-
 };
 
-#endif // INCLUDE_ESTATECURIOUS_H
+#endif // INCLUDE_ESTATEDEAD_H
