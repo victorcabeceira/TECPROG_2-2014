@@ -8,7 +8,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateGameOver : public StateGame {
+class GameStateGameOver : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GStateGameOver : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateGameOver();
+		GameStateGameOver();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateGameOver();
+		virtual ~GameStateGameOver();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GStateGameOver : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GStateGameOver::load
+		* @see GameStateGameOver::load
 		*/
 		virtual void unload();
 
