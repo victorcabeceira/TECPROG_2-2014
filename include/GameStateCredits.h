@@ -8,7 +8,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateCredits : public StateGame {
+class GameStateCredits : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GStateCredits : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateCredits();
+		GameStateCredits();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateCredits();
+		virtual ~GameStateCredits();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GStateCredits : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GStateCredits::load
+		* @see GameStateCredits::load
 		*/
 		virtual void unload();
 
