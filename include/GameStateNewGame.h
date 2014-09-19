@@ -8,7 +8,7 @@
 /**
 * The state for the Continue menu screen.
 */
-class GStateNewGame : public StateGame {
+class GameStateNewGame : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GStateNewGame : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateNewGame();
+		GameStateNewGame();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateNewGame();
+		virtual ~GameStateNewGame();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GStateNewGame : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GStateNewGame::load
+		* @see GameStateNewGame::load
 		*/
 		virtual void unload();
 
