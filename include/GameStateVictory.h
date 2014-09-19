@@ -8,19 +8,19 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateVictory : public StateGame {
+class GameStateVictory : public StateGame {
 
 	public:
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateVictory();
+		GameStateVictory();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateVictory();
+		virtual ~GameStateVictory();
 
 		/**
 		* Loads the level.
@@ -36,7 +36,7 @@ class GStateVictory : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GStateVictory::load
+		* @see GameStateVictory::load
 		*/
 		virtual void unload();
 
