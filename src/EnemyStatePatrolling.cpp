@@ -1,8 +1,8 @@
-#include "EStatePatrolling.h"
+#include "EnemyStatePatrolling.h"
 #include <cfloat>
 #include "Logger.h"
 
-void EStatePatrolling::enter(){
+void EnemyStatePatrolling::enter(){
 
 	this->enemy->isGrounded = true;
 	this->enemy->x = this->enemy->originalX;
@@ -16,10 +16,10 @@ void EStatePatrolling::enter(){
 	}
 }
 
-void EStatePatrolling::exit(){
+void EnemyStatePatrolling::exit(){
 }
 
-void EStatePatrolling::update(const double dt_){
+void EnemyStatePatrolling::update(const double dt_){
 
 	((void)dt_); // Unused.
 	
@@ -61,7 +61,7 @@ void EStatePatrolling::update(const double dt_){
 	}
 }
 
-EStatePatrolling::EStatePatrolling(Enemy* const enemy_) :
+EnemyStatePatrolling::EnemyStatePatrolling(Enemy* const enemy_) :
 
 	StateEnemy(enemy_),
 	direction(0.0)
