@@ -101,7 +101,7 @@ class AudioHandler {
 		* Notifies AudioHandler instance when channel is done playing.
 		* @param channel_ : The channel to be checked.
 		*/
-		static void channelDone(int channel_);
+		static void notifyChannelDone(int channel_);
 
 		Mix_Music* currentMusic; /**< The current music that is playing. */
 		std::vector<SoundEffect> currentEffects; /**< The current effect that is playing. */

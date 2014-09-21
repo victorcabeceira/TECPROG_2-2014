@@ -1,9 +1,9 @@
-#ifndef INCLUDE_BSTATEICEPRISION_H
-#define INCLUDE_BSTATEICEPRISION_H
+#ifndef INCLUDE_BOSSSTATEICEPRISION_H
+#define INCLUDE_BOSSSTATEICEPRISION_H
 
 #include "StateBoss.h"
 
-class BStateIcePrision : public StateBoss {
+class BossStateIcePrision : public StateBoss {
 
 	public:
 		
@@ -11,12 +11,12 @@ class BStateIcePrision : public StateBoss {
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateIcePrision(Boss* const boss_);
+		BossStateIcePrision(Boss* const boss_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateIcePrision(){}
+		virtual ~BossStateIcePrision(){}
 
 		/**
 		* @see StateBoss::enter.
@@ -35,4 +35,4 @@ class BStateIcePrision : public StateBoss {
 
 };
 
-#endif // INCLUDE_BSTATEICEPRISION_H
+#endif // INCLUDE_BOSSSTATEICEPRISION_H
