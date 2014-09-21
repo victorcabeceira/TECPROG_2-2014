@@ -62,3 +62,16 @@ SDLWrapper.h // Class that initializes everything about SDL.
 	close // Closes everything that was initialized.
 	logSDLVersion // A print with all used SDL versions.
 
+Sprite.h // Class that loads and stores the images of the game.
+	Sprite // The constructor, receive a path to load the image, overloaded with a surface to show the image.
+		path_ // Path to load the image.
+		surface_ // Place where the image will be rendered.
+	~Sprite // The Destructor.
+	loadFrom // Loads a image into a surface.
+		loadedSurface // check if the surface was loaded.
+		sdlTexture // texture to render a image.
+	render // Draw a image in a given position.
+		renderQuad // Square to be rendered. --> squareToRender
+	surfaceToTexture // Transform a surface to a texture.
+	
+
