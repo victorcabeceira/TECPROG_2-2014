@@ -82,5 +82,8 @@ StateEnemy.h// Father Class of enemy's states.
 	StateEnemy// The Constructor, sets the enemy.
 	~StateEnemy // The Destructor.
 
-
+StateGame.h// Father Class of game states.
+	StateGame // The Constructor.
+	addEntity // Add a element in the entities structure.
+	cleanEntities // Remove all the elements from the entities structure.
 
