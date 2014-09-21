@@ -1,10 +1,10 @@
-#include "GStateContinue.h"
+#include "GameStateContinue.h"
 #include "LuaScript.h"
 #include "Game.h"
 #include "Util.h"
 #include <string>
 
-GStateContinue::GStateContinue() :
+GameStateContinue::GameStateContinue() :
 
 	background(nullptr),
 	selector(nullptr),
@@ -21,7 +21,7 @@ GStateContinue::GStateContinue() :
 
 }
 
-GStateContinue::~GStateContinue(){
+GameStateContinue::~GameStateContinue(){
 
 	if(this->slot1 != nullptr){
 
@@ -45,7 +45,7 @@ GStateContinue::~GStateContinue(){
 	}
 }
 
-void GStateContinue::load(){
+void GameStateContinue::load(){
 	
 	Log(DEBUG) << "Loading Continue Screen...";
 	
@@ -131,14 +131,14 @@ void GStateContinue::load(){
 
 }
 
-void GStateContinue::unload(){
+void GameStateContinue::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
 
-void GStateContinue::update(const double dt_){
+void GameStateContinue::update(const double dt_){
 
 	this->passedTime += dt_;
 
@@ -154,7 +154,7 @@ void GStateContinue::update(const double dt_){
 
 }
 
-void GStateContinue::render(){
+void GameStateContinue::render(){
 
 	if(this->background != nullptr){
 
@@ -172,7 +172,7 @@ void GStateContinue::render(){
 	}
 }
 
-void GStateContinue::handleSelectorMenu(){
+void GameStateContinue::handleSelectorMenu(){
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
