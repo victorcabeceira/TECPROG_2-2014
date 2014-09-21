@@ -87,3 +87,6 @@ StateGame.h// Father Class of game states.
 	addEntity // Add a element in the entities structure.
 	cleanEntities // Remove all the elements from the entities structure.
 
+StatePlayer.h// Father Class of player's states.
+	StatePlayer // The Constructor, sets the player.
+	~StatePlayer // The Destructor.
