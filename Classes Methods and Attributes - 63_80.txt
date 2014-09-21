@@ -78,4 +78,9 @@ StateBoss.h // Father Class of boss's states.
 	StateBoss // The Constructor, sets the boss.
 	~StateBoss // The Destructor.
 
+StateEnemy.h// Father Class of enemy's states.
+	StateEnemy// The Constructor, sets the enemy.
+	~StateEnemy // The Destructor.
+
+
 
