@@ -1,8 +1,8 @@
-#include "FPSWrapper.h"
+#include "FramesPerSecondWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
 
-void FPSWrapper::initialize(FPSmanager& fpsManager_){
+void FramesPerSecondWrapper::initialize(FPSmanager& fpsManager_){
 
 	SDL_initFramerate(&fpsManager_);
 
@@ -20,7 +20,7 @@ void FPSWrapper::initialize(FPSmanager& fpsManager_){
 	}
 }
 
-double FPSWrapper::delay(FPSmanager& fpsManager_){
+double FramesPerSecondWrapper::delay(FPSmanager& fpsManager_){
 
 	return (double)(SDL_framerateDelay(&fpsManager_)/1000.0);
 
