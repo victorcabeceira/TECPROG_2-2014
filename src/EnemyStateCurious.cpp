@@ -1,9 +1,9 @@
-#include "EStateCurious.h"
+#include "EnemyStateCurious.h"
 #include "Logger.h"
 
 #define MAX_CURIOUS_TIME 4.666
 
-void EStateCurious::enter(){
+void EnemyStateCurious::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 1.2);
 	this->enemy->speed = 5.0;
@@ -16,10 +16,10 @@ void EStateCurious::enter(){
 	}
 }
 
-void EStateCurious::exit(){
+void EnemyStateCurious::exit(){
 }
 
-void EStateCurious::update(const double dt_){
+void EnemyStateCurious::update(const double dt_){
 
 	this->timeElapsed += dt_;
 
@@ -58,7 +58,7 @@ void EStateCurious::update(const double dt_){
 	}
 }
 
-EStateCurious::EStateCurious(Enemy* const enemy_) :
+EnemyStateCurious::EnemyStateCurious(Enemy* const enemy_) :
 	
 	StateEnemy(enemy_),
 	timeElapsed(0.0)
