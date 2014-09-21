@@ -1,9 +1,9 @@
-#include "EStateDead.h"
+#include "EnemyStateDead.h"
 #include "Logger.h"
 
 double deadTime;
 
-void EStateDead::enter(){
+void EnemyStateDead::enter(){
 
 	this->enemy->life = 0;
 	this->enemy->setDead(true);
@@ -11,10 +11,10 @@ void EStateDead::enter(){
 
 }
 
-void EStateDead::exit(){
+void EnemyStateDead::exit(){
 }
 
-void EStateDead::update(const double dt_){
+void EnemyStateDead::update(const double dt_){
 	
 	deadTime += dt_;
 	
@@ -28,7 +28,7 @@ void EStateDead::update(const double dt_){
 
 }
 
-EStateDead::EStateDead(Enemy* const enemy_) :
+EnemyStateDead::EnemyStateDead(Enemy* const enemy_) :
 
 	StateEnemy(enemy_)
 {
