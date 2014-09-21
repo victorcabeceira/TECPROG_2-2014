@@ -73,5 +73,9 @@ Sprite.h // Class that loads and stores the images of the game.
 	render // Draw a image in a given position.
 		renderQuad // Square to be rendered. --> squareToRender
 	surfaceToTexture // Transform a surface to a texture.
-	
+
+StateBoss.h // Father Class of boss's states.
+	StateBoss // The Constructor, sets the boss.
+	~StateBoss // The Destructor.
+
 
