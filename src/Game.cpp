@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "FPSWrapper.h"
+#include "FramesPerSecondWrapper.h"
 #include "Configuration.h"
 #include <cassert>
 #include "Util.h"
@@ -11,14 +11,14 @@
 #include "LevelFour.h"
 #include "LevelFive.h"
 #include "LevelBoss.h"
-#include "GStateMenu.h"
-#include "GStateNewGame.h"
-#include "GStateContinue.h"
-#include "GStateOptions.h"
-#include "GStateCredits.h"
-#include "GStateGameOver.h"
-#include "GStateTransition.h"
-#include "GStateVictory.h"
+#include "GameStateMenu.h"
+#include "GameStateNewGame.h"
+#include "GameStateContinue.h"
+#include "GameStateOptions.h"
+#include "GameStateCredits.h"
+#include "GameStateGameOver.h"
+#include "GameStateTransition.h"
+#include "GameStateVictory.h"
 #include "Sprite.h"
 
 #include "Logger.h"
@@ -86,7 +86,7 @@ Game::Game() :
 	this->pauseSelector->setWidth(50);
 
 	this->isRunning = true;
-	FPSWrapper::initialize(this->fpsManager);
+	FramesPerSecondWrapper::initialize(this->fpsManager);
 
 }
 
@@ -147,7 +147,7 @@ void Game::runGame(){
 	// This is the main game loop.
 	while(this->isRunning){
 
-		const double frameTime = FPSWrapper::delay(this->fpsManager);
+		const double frameTime = FramesPerSecondWrapper::delay(this->fpsManager);
 		accumulatedTime += frameTime;
 
 		// Update.
@@ -242,20 +242,20 @@ void Game::initializeStates(){
 
 	// Emplace the states pointers onto the map.
 	ADD_STATE_INSERT(SPLASH, GStateSplash);
-	ADD_STATE_INSERT(MENU, GStateMenu);
-	ADD_STATE_INSERT(NEW_GAME, GStateNewGame);
+	ADD_STATE_INSERT(MENU, GameStateMenu);
+	ADD_STATE_INSERT(NEW_GAME, GameStateNewGame);
 	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
 	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
 	ADD_STATE_INSERT(LEVEL_THREE, LevelThree);
 	ADD_STATE_INSERT(LEVEL_FOUR, LevelFour);
 	ADD_STATE_INSERT(LEVEL_FIVE, LevelFive);
 	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
-	ADD_STATE_INSERT(CONTINUE, GStateContinue);
-	ADD_STATE_INSERT(OPTIONS, GStateOptions);
-	ADD_STATE_INSERT(CREDITS, GStateCredits);
-	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
-	ADD_STATE_INSERT(TRANSITION, GStateTransition);
-	ADD_STATE_INSERT(VICTORY, GStateVictory);
+	ADD_STATE_INSERT(CONTINUE, GameStateContinue);
+	ADD_STATE_INSERT(OPTIONS, GameStateOptions);
+	ADD_STATE_INSERT(CREDITS, GameStateCredits);
+	ADD_STATE_INSERT(GAMEOVER, GameStateGameOver);
+	ADD_STATE_INSERT(TRANSITION, GameStateTransition);
+	ADD_STATE_INSERT(VICTORY, GameStateVictory);
 
 }
 
