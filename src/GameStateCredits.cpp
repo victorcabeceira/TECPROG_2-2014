@@ -1,11 +1,11 @@
-#include "GStateCredits.h"
+#include "GameStateCredits.h"
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Game.h"
 
 #include <string>
 
-GStateCredits::GStateCredits() :
+GameStateCredits::GameStateCredits() :
 
 	creditsImage(nullptr),
 	creditsHeightSize(600),
@@ -15,10 +15,10 @@ GStateCredits::GStateCredits() :
 {
 }
 
-GStateCredits::~GStateCredits(){
+GameStateCredits::~GameStateCredits(){
 }
 
-void GStateCredits::update(const double dt_){
+void GameStateCredits::update(const double dt_){
 
 	(void(dt_)); //unused
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
@@ -30,7 +30,7 @@ void GStateCredits::update(const double dt_){
 	}
 }
 
-void GStateCredits::load(){
+void GameStateCredits::load(){
 
 	Log(DEBUG) << "Loading credits...";
 
@@ -42,7 +42,7 @@ void GStateCredits::load(){
 
 }
 
-void GStateCredits::unload(){
+void GameStateCredits::unload(){
 
 	Log(DEBUG) << "\tUnloading credits...";
 	this->creditsClip.y = 0;
@@ -50,7 +50,7 @@ void GStateCredits::unload(){
 
 }
 
-void GStateCredits::render(){
+void GameStateCredits::render(){
 
 	if(this->creditsImage != nullptr){
 
