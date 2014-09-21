@@ -1,9 +1,9 @@
-#include "EStateAttack.h"
+#include "EnemyStateAttack.h"
 #include "Logger.h"
 
 double attackTime; // NO
 
-void EStateAttack::enter(){
+void EnemyStateAttack::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(2, 1, 6, false, 0.6);
 	this->enemy->speed = 7.0;
@@ -17,10 +17,10 @@ void EStateAttack::enter(){
 	}
 }
 
-void EStateAttack::exit(){
+void EnemyStateAttack::exit(){
 }
 
-void EStateAttack::update(const double dt_){
+void EnemyStateAttack::update(const double dt_){
 
 	attackTime += dt_;
 	const double attackTotalTime = 0.6;
@@ -51,7 +51,7 @@ void EStateAttack::update(const double dt_){
 	}
 }
 
-EStateAttack::EStateAttack(Enemy* const enemy_) :
+EnemyStateAttack::EnemyStateAttack(Enemy* const enemy_) :
 	
 	StateEnemy(enemy_)
 {
