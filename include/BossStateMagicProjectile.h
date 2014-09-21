@@ -1,22 +1,22 @@
-#ifndef INCLUDE_BSTATEIDLE_H
-#define INCLUDE_BSTATEIDLE_H
+#ifndef INCLUDE_BOSSSTATEMAGICPROJECTILE_H
+#define INCLUDE_BOSSSTATEMAGICPROJECTILE_H
 
 #include "StateBoss.h"
 
-class BStateIdle : public StateBoss {
+class BossStateMagicProjectile : public StateBoss {
 
 	public:
-		
+	
 		/**
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateIdle(Boss* const boss_);
+		BossStateMagicProjectile(Boss* const boss_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateIdle(){}
+		virtual ~BossStateMagicProjectile(){}
 
 		/**
 		* @see StateBoss::enter.
@@ -35,4 +35,4 @@ class BStateIdle : public StateBoss {
 
 };
 
-#endif // INCLUDE_BSTATEIDLE_H
+#endif // INCLUDE_BOSSSTATEMAGICPROJECTILE_H

@@ -1,22 +1,22 @@
-#ifndef INCLUDE_BSTATESHIELD_H
-#define INCLUDE_BSTATESHIELD_H
+#ifndef INCLUDE_BOSSSTATEIDLE_H
+#define INCLUDE_BOSSSTATEIDLE_H
 
 #include "StateBoss.h"
 
-class BStateShield : public StateBoss {
+class BossStateIdle : public StateBoss {
 
 	public:
-	
+		
 		/**
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateShield(Boss* const boss_);
+		BossStateIdle(Boss* const boss_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateShield(){}
+		virtual ~BossStateIdle(){}
 
 		/**
 		* @see StateBoss::enter.
@@ -35,4 +35,4 @@ class BStateShield : public StateBoss {
 
 };
 
-#endif // INCLUDE_BSTATESHIELD_H
+#endif // INCLUDE_BOSSSTATEIDLE_H

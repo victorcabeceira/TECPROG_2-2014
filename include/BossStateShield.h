@@ -1,9 +1,9 @@
-#ifndef INCLUDE_BSTATETELEPORT_H
-#define INCLUDE_BSTATETELEPORT_H
+#ifndef INCLUDE_BOSSSTATESHIELD_H
+#define INCLUDE_BOSSSTATESHIELD_H
 
 #include "StateBoss.h"
 
-class BStateTeleport : public StateBoss {
+class BossStateShield : public StateBoss {
 
 	public:
 	
@@ -11,12 +11,12 @@ class BStateTeleport : public StateBoss {
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateTeleport(Boss* const boss_);
+		BossStateShield(Boss* const boss_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateTeleport(){}
+		virtual ~BossStateShield(){}
 
 		/**
 		* @see StateBoss::enter.
@@ -35,4 +35,4 @@ class BStateTeleport : public StateBoss {
 
 };
 
-#endif // INCLUDE_BSTATETELEPORT_H
+#endif // INCLUDE_BOSSSTATESHIELD_H

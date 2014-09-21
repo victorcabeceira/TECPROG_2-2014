@@ -1,9 +1,9 @@
-#ifndef INCLUDE_BSTATEMAGICPROJECTILE_H
-#define INCLUDE_BSTATEMAGICPROJECTILE_H
+#ifndef INCLUDE_BOSSSTATETELEPORT_H
+#define INCLUDE_BOSSSTATETELEPORT_H
 
 #include "StateBoss.h"
 
-class BStateMagicProjectile : public StateBoss {
+class BossStateTeleport : public StateBoss {
 
 	public:
 	
@@ -11,12 +11,12 @@ class BStateMagicProjectile : public StateBoss {
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateMagicProjectile(Boss* const boss_);
+		BossStateTeleport(Boss* const boss_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateMagicProjectile(){}
+		virtual ~BossStateTeleport(){}
 
 		/**
 		* @see StateBoss::enter.
@@ -35,4 +35,4 @@ class BStateMagicProjectile : public StateBoss {
 
 };
 
-#endif // INCLUDE_BSTATEMAGICPROJECTILE_H
+#endif // INCLUDE_BOSSSTATETELEPORT_H
