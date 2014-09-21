@@ -1,4 +1,4 @@
-#include "GStateNewGame.h"
+#include "GameStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,7 +6,7 @@
 
 #include <string>
 
-GStateNewGame::GStateNewGame() :
+GameStateNewGame::GameStateNewGame() :
 
 	background(nullptr),
 	selector(nullptr),
@@ -23,7 +23,7 @@ GStateNewGame::GStateNewGame() :
 
 }
 
-GStateNewGame::~GStateNewGame(){
+GameStateNewGame::~GameStateNewGame(){
 
 	if(this->slot1 != nullptr){
 		
@@ -47,7 +47,7 @@ GStateNewGame::~GStateNewGame(){
 	}
 }
 
-void GStateNewGame::load(){
+void GameStateNewGame::load(){
 	
 	Log(DEBUG) << "Loading Choose Slot Screen...";
 
@@ -134,14 +134,14 @@ void GStateNewGame::load(){
 
 }
 
-void GStateNewGame::unload(){
+void GameStateNewGame::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
 
-void GStateNewGame::update(const double dt_){
+void GameStateNewGame::update(const double dt_){
 
 	this->passedTime += dt_;
 
@@ -155,7 +155,7 @@ void GStateNewGame::update(const double dt_){
 	}
 }
 
-void GStateNewGame::render(){
+void GameStateNewGame::render(){
 
 	if(this->background != nullptr){
 	
@@ -175,7 +175,7 @@ void GStateNewGame::render(){
 	}
 }
 
-void GStateNewGame::handleSelectorMenu(){
+void GameStateNewGame::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;

@@ -1,4 +1,4 @@
-#include "GStateOptions.h"
+#include "GameStateOptions.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,9 +6,9 @@
 
 #include <string>
 
-const std::string GStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
+const std::string GameStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
 
-GStateOptions::GStateOptions() :
+GameStateOptions::GameStateOptions() :
 
 	elapsedTime(0.0),
 	optionsImage(nullptr),
@@ -33,7 +33,7 @@ GStateOptions::GStateOptions() :
 
 }
 
-GStateOptions::~GStateOptions(){
+GameStateOptions::~GameStateOptions(){
 
 	if(this->resolution != nullptr){
 
@@ -57,7 +57,7 @@ GStateOptions::~GStateOptions(){
 	}
 }
 
-void GStateOptions::update(const double dt_){
+void GameStateOptions::update(const double dt_){
 
 	this->elapsedTime += dt_;
 
@@ -213,7 +213,7 @@ void GStateOptions::update(const double dt_){
 	}
 }
 
-void GStateOptions::render(){
+void GameStateOptions::render(){
 	
 	if(this->optionsImage != nullptr){
 	
@@ -247,7 +247,7 @@ void GStateOptions::render(){
 
 }
 
-void GStateOptions::load(){
+void GameStateOptions::load(){
 	
 	Log(DEBUG) << "Loading options...";
 
@@ -265,14 +265,14 @@ void GStateOptions::load(){
 
 }
 
-void GStateOptions::unload(){
+void GameStateOptions::unload(){
 
 	Log(DEBUG) << "\tUnloading options...";
 	cleanEntities();
 
 }
 
-void GStateOptions::applyOptions(){
+void GameStateOptions::applyOptions(){
 
 	// Apply resolution
 	if(this->currentResolution == R_800_600){
