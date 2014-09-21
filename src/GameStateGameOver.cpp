@@ -1,10 +1,10 @@
-#include "GStateGameOver.h"
+#include "GameStateGameOver.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GStateGameOver::GStateGameOver() :
+GameStateGameOver::GameStateGameOver() :
 
 	gameOverImage(nullptr),
 	passedTime(0.0),
@@ -13,10 +13,10 @@ GStateGameOver::GStateGameOver() :
 {
 }
 
-GStateGameOver::~GStateGameOver(){
+GameStateGameOver::~GameStateGameOver(){
 }
 
-void GStateGameOver::load(){
+void GameStateGameOver::load(){
 
 	Log(DEBUG) << "Loading Game Over...";
 
@@ -32,7 +32,7 @@ void GStateGameOver::load(){
 
 }
 
-void GStateGameOver::unload(){
+void GameStateGameOver::unload(){
 
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
@@ -44,7 +44,7 @@ void GStateGameOver::unload(){
 
 }
 
-void GStateGameOver::update(const double dt_){
+void GameStateGameOver::update(const double dt_){
 
 	this->passedTime += dt_;
 
@@ -65,7 +65,7 @@ void GStateGameOver::update(const double dt_){
 	}
 }
 
-void GStateGameOver::render(){
+void GameStateGameOver::render(){
 
 	if(this->gameOverImage != nullptr){
 
