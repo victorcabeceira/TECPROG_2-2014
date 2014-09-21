@@ -1,8 +1,8 @@
-#include "GStateTransition.h"
+#include "GameStateTransition.h"
 #include "Game.h"
 #include "Logger.h"
 
-GStateTransition::GStateTransition() :
+GameStateTransition::GameStateTransition() :
 
 	passedTime(0.0),
 	lifeTime(0.0),
@@ -12,10 +12,10 @@ GStateTransition::GStateTransition() :
 {
 }
 
-GStateTransition::~GStateTransition(){
+GameStateTransition::~GameStateTransition(){
 }
 
-void GStateTransition::load(){
+void GameStateTransition::load(){
 
 	Log(DEBUG) << "Loading transition...";
 
@@ -38,7 +38,7 @@ void GStateTransition::load(){
 
 }
 
-void GStateTransition::unload(){
+void GameStateTransition::unload(){
 
 	Log(DEBUG) << "\tUnloading transition...";
 
@@ -49,7 +49,7 @@ void GStateTransition::unload(){
 
 }
 
-void GStateTransition::update(const double dt_){
+void GameStateTransition::update(const double dt_){
 
 	this->passedTime += dt_;
 
@@ -61,7 +61,7 @@ void GStateTransition::update(const double dt_){
 
 }
 
-void GStateTransition::render(){
+void GameStateTransition::render(){
 
 	this->loading->render(0, 0, nullptr, true);
 
