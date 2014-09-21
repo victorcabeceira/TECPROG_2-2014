@@ -1,9 +1,9 @@
-#include "EStateIdle.h"
+#include "EnemyStateIdle.h"
 #include <cmath>
 #include "SDLWrapper.h"
 #include "Logger.h"
 
-void EStateIdle::enter(){
+void EnemyStateIdle::enter(){
 
 	this->enemy->isGrounded = true;
 
@@ -15,10 +15,10 @@ void EStateIdle::enter(){
 	}
 }
 
-void EStateIdle::exit(){
+void EnemyStateIdle::exit(){
 }
 
-void EStateIdle::update(const double dt_){
+void EnemyStateIdle::update(const double dt_){
 
 	((void)dt_); // Unused.
 	
@@ -46,7 +46,7 @@ void EStateIdle::update(const double dt_){
 
 }
 
-EStateIdle::EStateIdle(Enemy* const enemy_) :
+EnemyStateIdle::EnemyStateIdle(Enemy* const enemy_) :
 	
 	StateEnemy(enemy_)
 {
