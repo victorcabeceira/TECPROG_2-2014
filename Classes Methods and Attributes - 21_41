@@ -388,3 +388,21 @@ InputHandler.h: // Handles player input. Using SDL event handling, receives the 
 		keyStates: // Boolean array that controls which keys are pressed or not.
 		sdlEvent: // SDL internal event structure.
 		quitFlag: // If the quit signal was recieved or not. 
+
+
+Classes Renamed (.h on /include and .cpp on /src):
+EStateAttack
+EStateCurious
+EStateDead
+EStateIdle
+EStatePatrolling
+FPSWrapper
+GStateContinue
+GStateCredits
+GStateGameOver
+GStateMenu
+GStateNewGame
+GStateOptions
+GStateSplash
+GStateTransition
+GStateVictory
