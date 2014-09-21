@@ -81,7 +81,7 @@ class DynamicEntity : public Entity {
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
-		virtual void setLevelWH(const unsigned int width_, const unsigned int height_);
+		virtual void setLevelWidthHeight(const unsigned int width_, const unsigned int height_);
 
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
@@ -104,12 +104,12 @@ class DynamicEntity : public Entity {
 		/**
 		* Updates the position of the dynamic entity
 		* Update is based on what input was recieved, and the players velocity.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void updatePosition(const double dt_);
+		virtual void updatePosition(const double deltaTime_);
 
-		virtual void scoutPosition(const double dt_); 
+		virtual void scoutPosition(const double deltaTime_); 
 
 		/**
 		* @return A bool array with the sides the DynamicEntity collided.

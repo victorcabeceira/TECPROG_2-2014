@@ -1,9 +1,9 @@
-#ifndef INCLUDE_ESTATEALERT_H
-#define INCLUDE_ESTATEALERT_H
+#ifndef INCLUDE_ENEMYSTATEAERIAL_H
+#define INCLUDE_ENEMYSTATEAERIAL_H
 
 #include "StateEnemy.h"
 
-class EStateAlert : public StateEnemy {
+class EnemyStateAerial : public StateEnemy {
 
 	public:
 	
@@ -11,12 +11,12 @@ class EStateAlert : public StateEnemy {
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateAlert(Enemy* const enemy_);
+		EnemyStateAerial(Enemy* const enemy_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateAlert(){}
+		virtual ~EnemyStateAerial(){}
 
 		/**
 		* @see StateEnemy::enter
@@ -35,4 +35,4 @@ class EStateAlert : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATEALERT_H
+#endif // INCLUDE_ENEMYSTATEAERIAL_H
