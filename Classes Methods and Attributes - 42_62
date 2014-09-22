@@ -159,10 +159,18 @@ PStateAttack.h: // Player status when he attacks.
 	exit: // see StatePlayer::exit.
 	handleInput: // see StatePlayer::handleInput.	
 
-PStateAttackJumping.h: // Player status when he AttackJumpings.
+PStateAttackJumping.h: // Player status when he attacks and jumps on the same time.
 	PStateAttackJumping: // Constructor.
 		player_: // reference to player.
 	~PStateAttackJumping: // Destructor.
 	enter: // see StatePlayer::enter.
 	exit: // see StatePlayer::exit.
-	handleInput: // see StatePlayer::handleInput.			
+	handleInput: // see StatePlayer::handleInput.
+
+PStateAttackMoving.h: // Player status when he Attack and moves on the same time.
+	PStateAttackMoving: // Constructor.
+		player_: // reference to player.
+	~PStateAttackMoving: // Destructor.
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.	
