@@ -182,3 +182,11 @@ PStateClimbing.h: // Player status when he climbs.
 	enter: // see StatePlayer::enter.
 	exit: // see StatePlayer::exit.
 	handleInput: // see StatePlayer::handleInput.
+
+PStateCrouching.h: // Player status when he crouchs.
+	PStateCrouching: // Constructor.
+		player_: // reference to player.
+	~PStateCrouching: // Destructor.
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.	
