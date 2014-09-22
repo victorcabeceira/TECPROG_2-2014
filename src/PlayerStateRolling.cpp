@@ -1,8 +1,8 @@
-#include "PStateRolling.h"
+#include "PlayerStateRolling.h"
 #include "Logger.h"
 #include "Game.h"
 
-void PStateRolling::enter(){
+void PlayerStateRolling::enter(){
 	
 	this->box.x = 58;
 	this->box.y = 72;
@@ -16,11 +16,11 @@ void PStateRolling::enter(){
 
 }
 
-void PStateRolling::exit(){
+void PlayerStateRolling::exit(){
 
 }
 
-void PStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
 	if(!this->player->isGrounded){
@@ -50,7 +50,7 @@ void PStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_
     }
 }
 
-PStateRolling::PStateRolling(Player* const player_) :
+PlayerStateRolling::PlayerStateRolling(Player* const player_) :
     
     StatePlayer(player_)
 {

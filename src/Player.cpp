@@ -8,11 +8,11 @@
 
 #include "PlayerStateIdle.h"
 #include "PStateAerial.h"
-#include "PStateMoving.h"
-#include "PStateRolling.h"
+#include "PlayerStateMoving.h"
+#include "PlayerStateRolling.h"
 #include "PStateCrouching.h"
 #include "PStateAiming.h"
-#include "PStateMovingCrouch.h"
+#include "PlayerStateMovingCrouch.h"
 #include "PStateAttack.h"
 #include "PStateAttackMoving.h"
 #include "PStateAttackJumping.h"
@@ -255,12 +255,12 @@ void Player::addPotions(const unsigned int quantity_){
 void Player::initializeStates(){
     // Initialize all the states in Player here.
     ADD_STATE_INSERT(IDLE,         PlayerStateIdle);
-    ADD_STATE_INSERT(MOVING,       PStateMoving);
+    ADD_STATE_INSERT(MOVING,       PlayerStateMoving);
     ADD_STATE_INSERT(AERIAL,       PStateAerial);
-    ADD_STATE_INSERT(ROLLING,      PStateRolling);
+    ADD_STATE_INSERT(ROLLING,      PlayerStateRolling);
     ADD_STATE_INSERT(CROUCHING,    PStateCrouching);
     ADD_STATE_INSERT(AIMING,       PStateAiming);
-    ADD_STATE_INSERT(MOVINGCROUCH, PStateMovingCrouch);
+    ADD_STATE_INSERT(MOVINGCROUCH, PlayerStateMovingCrouch);
     ADD_STATE_INSERT(ATTACK,       PStateAttack);
     ADD_STATE_INSERT(ATTACKMOVING, PStateAttackMoving);
     ADD_STATE_INSERT(ATTACKJUMPING,PStateAttackJumping);

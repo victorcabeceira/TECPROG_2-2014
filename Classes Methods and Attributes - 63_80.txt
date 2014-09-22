@@ -15,21 +15,21 @@ PlayerStateIdle.h // Class that control the player if he is idle.
 	PlayerStateHit // The Constructor, sets the player to the state.
 		player_: // reference to player.
 
-PStateMoving.h // Class that control the player if he is moving.
+PlayerStateMoving.h // Class that control the player if he is moving.
 	enter: // Run in the beggining of the player state, should do initialization.
 	exit: // Run in the end of the execution of the player state, should deallocate everything.
 	handleInput // Is called 60 times per second, do the logic of the state.
 	PlayerStateHit // The Constructor, sets the player to the state.
 		player_: // reference to player.
 
-PStateMovingCrouch.h // Class that control the player if he is moving while he is crouch.
+PlayerStateMovingCrouch.h // Class that control the player if he is moving while he is crouch.
 	enter: // Run in the beggining of the player state, should do initialization.
 	exit: // Run in the end of the execution of the player state, should deallocate everything.
 	handleInput // Is called 60 times per second, do the logic of the state.
 	PlayerStateHit // The Constructor, sets the player to the state.
 		player_: // reference to player.
 
-PStateROlling.h // Class that control the player if he is rolling.
+PlayerStateRolling.h // Class that control the player if he is rolling.
 	enter: // Run in the beggining of the player state, should do initialization.
 	exit: // Run in the end of the execution of the player state, should deallocate everything.
 	handleInput // Is called 60 times per second, do the logic of the state.

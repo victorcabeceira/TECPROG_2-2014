@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATEROLLING_H
-#define INCLUDE_PSTATEROLLING_H
+#ifndef INCLUDE_PlayerStateRolling_H
+#define INCLUDE_PlayerStateRolling_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is rolling.
 *
 */
-class PStateRolling : public StatePlayer {
+class PlayerStateRolling : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateRolling(Player* const player_);
+		PlayerStateRolling(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateRolling(){}
+		virtual ~PlayerStateRolling(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateRolling : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEROLLING_H
+#endif // INCLUDE_PlayerStateRolling_H

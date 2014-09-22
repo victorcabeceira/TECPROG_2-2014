@@ -1,7 +1,7 @@
-#include "PStateMovingCrouch.h"
+#include "PlayerStateMovingCrouch.h"
 #include "Logger.h"
 
-void PStateMovingCrouch::enter(){
+void PlayerStateMovingCrouch::enter(){
 	
 	this->box.x = (int)this->player->getWidth() / 4 - 33;
     this->box.w = (int)this->player->getWidth() / 1.7;
@@ -15,14 +15,14 @@ void PStateMovingCrouch::enter(){
 
 }
 
-void PStateMovingCrouch::exit(){
+void PlayerStateMovingCrouch::exit(){
 	
 	this->player->maxSpeed *= 2;
 	this->player->speed = 20;
 
 }
 
-void PStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Not crouching, goes to Idle.
 	if(!keyStates_[GameKeys::CROUCH]){
@@ -62,7 +62,7 @@ void PStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> keySt
 
 }
 
-PStateMovingCrouch::PStateMovingCrouch(Player* const player_) :
+PlayerStateMovingCrouch::PlayerStateMovingCrouch(Player* const player_) :
 
 	StatePlayer(player_)
 

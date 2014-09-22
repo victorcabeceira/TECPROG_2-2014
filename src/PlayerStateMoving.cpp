@@ -1,11 +1,11 @@
-#include "PStateMoving.h"
+#include "PlayerStateMoving.h"
 #include "Logger.h"
 #include "Game.h"
 
 #define THROW_STRENGTH 30
 #define THROW_DISTANCE 400
 
-void PStateMoving::enter(){
+void PlayerStateMoving::enter(){
     
     this->box.x = 58;
     this->box.y = 72;
@@ -18,11 +18,11 @@ void PStateMoving::enter(){
 
 }
 
-void PStateMoving::exit(){
+void PlayerStateMoving::exit(){
 
 }
 
-void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
     
     // Aerial
     if(!this->player->isGrounded){
@@ -88,7 +88,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 }
 
-PStateMoving::PStateMoving(Player* const player_) :
+PlayerStateMoving::PlayerStateMoving(Player* const player_) :
     
     StatePlayer(player_)
 {
