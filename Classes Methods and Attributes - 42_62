@@ -151,10 +151,18 @@ PStateAiming.h // State of player when he is aiming.
 	handleInput: // see StatePlayer::handleInput.
 		absoluteCrosshairPlayerDistance: // Distance between player and crosshair fixed in pixels.
 
-PStateAttack: // Player status when he attacks.
+PStateAttack.h: // Player status when he attacks.
 	PStateAttack: // Constructor.
 		player_: // reference to player.
 	~PStateAttack: // Destructor.
 	enter: // see StatePlayer::enter.
 	exit: // see StatePlayer::exit.
-	handleInput: // see StatePlayer::handleInput.		
+	handleInput: // see StatePlayer::handleInput.	
+
+PStateAttackJumping.h: // Player status when he AttackJumpings.
+	PStateAttackJumping: // Constructor.
+		player_: // reference to player.
+	~PStateAttackJumping: // Destructor.
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.			
