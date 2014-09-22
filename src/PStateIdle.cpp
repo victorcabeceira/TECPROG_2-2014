@@ -1,11 +1,11 @@
-#include "PStateIdle.h"
+#include "PlayerStateIdle.h"
 #include "Logger.h"
 #include "Game.h"
 
 #define THROW_STRENGTH 30
 #define THROW_DISTANCE 400
 
-void PStateIdle::enter(){
+void PlayerStateIdle::enter(){
 	
 	this->box.x = 58;
 	this->box.y = 72;
@@ -21,11 +21,11 @@ void PStateIdle::enter(){
 	this->player->isGrounded = true;
 }
 
-void PStateIdle::exit(){
+void PlayerStateIdle::exit(){
 
 }
 
-void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
 	if(!this->player->isGrounded){
@@ -93,7 +93,7 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 }
 
-PStateIdle::PStateIdle(Player* const player_) :
+PlayerStateIdle::PlayerStateIdle(Player* const player_) :
 
 	StatePlayer(player_)
 

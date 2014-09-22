@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATEIDLE_H
-#define INCLUDE_PSTATEIDLE_H
+#ifndef INCLUDE_PlayerStateIdle_H
+#define INCLUDE_PlayerStateIdle_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateIdle : public StatePlayer {
+class PlayerStateIdle : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateIdle(Player* const player_);
+		PlayerStateIdle(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateIdle(){}
+		virtual ~PlayerStateIdle(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateIdle : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEIDLE_H
+#endif // INCLUDE_PlayerStateIdle_H

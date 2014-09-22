@@ -12,14 +12,14 @@ void PStateHit::enter(){
 
 	this->player->getAnimation()->changeAnimation(4, 8, 1, false, 0);
 
-	int direction = 1;
+	int hitDirection = 1;
 	if(this->player->isRight){
 		
-		direction = -1;
+		hitDirection = -1;
 	}
 	
 	this->player->vy = -130;
-	this->player->vx = 5000 * direction;
+	this->player->vx = 5000 * hitDirection;
 }
 
 void PStateHit::exit(){
