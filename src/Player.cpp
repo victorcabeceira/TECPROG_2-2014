@@ -16,7 +16,7 @@
 #include "PStateAttack.h"
 #include "PStateAttackMoving.h"
 #include "PStateAttackJumping.h"
-#include "PStateHit.h"
+#include "PlayerStateHit.h"
 #include "PStateClimbing.h"
 #include "PStateDead.h"
 
@@ -264,7 +264,7 @@ void Player::initializeStates(){
     ADD_STATE_INSERT(ATTACK,       PStateAttack);
     ADD_STATE_INSERT(ATTACKMOVING, PStateAttackMoving);
     ADD_STATE_INSERT(ATTACKJUMPING,PStateAttackJumping);
-    ADD_STATE_INSERT(HITED,        PStateHit);
+    ADD_STATE_INSERT(HITED,        PlayerStateHit);
     ADD_STATE_INSERT(CLIMBING,     PStateClimbing);
     ADD_STATE_INSERT(DEAD,         PStateDead);
 }

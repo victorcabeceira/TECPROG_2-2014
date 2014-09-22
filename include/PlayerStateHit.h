@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATEHIT_H
-#define INCLUDE_PSTATEHIT_H
+#ifndef INCLUDE_PlayerStateHit_H
+#define INCLUDE_PlayerStateHit_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateHit : public StatePlayer {
+class PlayerStateHit : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateHit(Player* const player_);
+		PlayerStateHit(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateHit(){}
+		virtual ~PlayerStateHit(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateHit : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEHIT_H
+#endif // INCLUDE_PlayerStateHit_H

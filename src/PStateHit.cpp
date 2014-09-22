@@ -1,7 +1,7 @@
-#include "PStateHit.h"
+#include "PlayerStateHit.h"
 #include "Logger.h"
 
-void PStateHit::enter(){
+void PlayerStateHit::enter(){
 	
 	Log(DEBUG) << "STATE ATTACK JUMPING";
 	
@@ -22,7 +22,7 @@ void PStateHit::enter(){
 	this->player->vx = 5000 * direction;
 }
 
-void PStateHit::exit(){
+void PlayerStateHit::exit(){
 
 	if(this->player->isRight){
 		
@@ -34,13 +34,13 @@ void PStateHit::exit(){
 	}	
 }
 
-void PStateHit::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateHit::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	((void) keyStates_); // Unused.
 
 }
 
-PStateHit::PStateHit(Player* const player_) :
+PlayerStateHit::PlayerStateHit(Player* const player_) :
 	
 	StatePlayer(player_)
 
