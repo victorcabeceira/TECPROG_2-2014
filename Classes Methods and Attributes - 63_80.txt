@@ -8,7 +8,7 @@ PStateHit.h // Class that control the player if he is hit.
 	PStateHit // The Constructor, sets the player to the state.
 		player_: // reference to player.
 
-PlayerStateIdle.h // Class that control the player if he is idle.
+PStateIdle.h // Class that control the player if he is idle.
 	enter: // Run in the beggining of the player state, should do initialization.
 	exit: // Run in the end of the execution of the player state, should deallocate everything.
 	handleInput // Is called 60 times per second, do the logic of the state.

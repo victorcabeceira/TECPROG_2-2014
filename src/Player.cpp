@@ -6,7 +6,7 @@
 #include <cmath>
 #include <cfloat>
 
-#include "PlayerStateIdle.h"
+#include "PStateIdle.h"
 #include "PStateAerial.h"
 #include "PStateMoving.h"
 #include "PStateRolling.h"
@@ -254,7 +254,7 @@ void Player::addPotions(const unsigned int quantity_){
 
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    ADD_STATE_INSERT(IDLE,         PlayerStateIdle);
+    ADD_STATE_INSERT(IDLE,         PStateIdle);
     ADD_STATE_INSERT(MOVING,       PStateMoving);
     ADD_STATE_INSERT(AERIAL,       PStateAerial);
     ADD_STATE_INSERT(ROLLING,      PStateRolling);
