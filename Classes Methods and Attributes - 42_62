@@ -143,3 +143,11 @@ PStateAerial.h // The state for when the player is not grounded.
 	exit: // see StatePlayer::exit.
 	handleInput: // see StatePlayer::handleInput.
 	
+PStateAiming.h // State of player when he is aiming.
+	PStateAiming: // Constructor
+	~PStateAiming: // Destructor
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.
+		absoluteCrosshairPlayerDistance: // Distance between player and crosshair fixed in pixels.
+		
