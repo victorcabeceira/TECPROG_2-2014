@@ -17,9 +17,9 @@ void EStateAlert::enter(){
 void EStateAlert::exit(){
 }
 
-void EStateAlert::update(const double dt_){
+void EStateAlert::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 	
 	// Aerial
 	if(!this->enemy->isGrounded){

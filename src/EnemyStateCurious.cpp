@@ -19,9 +19,9 @@ void EnemyStateCurious::enter(){
 void EnemyStateCurious::exit(){
 }
 
-void EnemyStateCurious::update(const double dt_){
+void EnemyStateCurious::update(const double deltaTime_){
 
-	this->timeElapsed += dt_;
+	this->timeElapsed += deltaTime_;
 
 	// Aerial
 	if(!this->enemy->isGrounded){

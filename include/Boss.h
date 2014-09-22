@@ -38,7 +38,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Updates the player.
 		* @see Player::updateInput, Player::updatePosition
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
 		virtual void update(const double deltaTime_);

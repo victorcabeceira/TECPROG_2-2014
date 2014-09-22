@@ -24,9 +24,9 @@ class StateGame {
 		/**
 		* Update all entities.
 		* Pure virtual function. Purpose is to update all the entities in the vector.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other.
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_) = 0;
+		virtual void update(const double deltaTime_) = 0;
 
 		/**
 		* Unloads necessary objects.

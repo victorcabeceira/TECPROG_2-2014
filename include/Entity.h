@@ -23,9 +23,9 @@ class Entity {
 		* Updates the entity.
 		* Pure virtual function. Purpose is to update whatever is necessary, relative to the
 		* 	entity.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other.
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_) = 0;
+		virtual void update(const double deltaTime_) = 0;
 
 		/**
 		* Renders the entity.

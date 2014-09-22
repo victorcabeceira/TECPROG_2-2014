@@ -18,9 +18,9 @@ void EnemyStateIdle::enter(){
 void EnemyStateIdle::exit(){
 }
 
-void EnemyStateIdle::update(const double dt_){
+void EnemyStateIdle::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 	
 	// Aerial
 	if(!this->enemy->isGrounded){

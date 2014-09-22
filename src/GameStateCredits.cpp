@@ -18,9 +18,9 @@ GameStateCredits::GameStateCredits() :
 GameStateCredits::~GameStateCredits(){
 }
 
-void GameStateCredits::update(const double dt_){
+void GameStateCredits::update(const double deltaTime_){
 
-	(void(dt_)); //unused
+	(void(deltaTime_)); //unused
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	if(keyStates[GameKeys::LATTACK] == true){

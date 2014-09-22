@@ -77,7 +77,7 @@ void LevelBoss::unload(){
 
 }
 
-void LevelBoss::update(const double dt_){
+void LevelBoss::update(const double deltaTime_){
 
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
@@ -89,7 +89,7 @@ void LevelBoss::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
-		entity->update(dt_);
+		entity->update(deltaTime_);
 	
 	}
 
@@ -120,7 +120,7 @@ void LevelBoss::update(const double dt_){
 	this->playerHud->update();
 
 	// Updating the boss.
-	this->boss->update(dt_);
+	this->boss->update(deltaTime_);
 
 	// Updating the camera.
 	this->camera->update();

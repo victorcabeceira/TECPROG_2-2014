@@ -22,7 +22,7 @@ class FadeScreen{
 		/**
 		* Updates the screen.
 		*/
-		void update(const double dt_);
+		void update(const double deltaTime_);
 		
 		/**
 		* Renders the image.

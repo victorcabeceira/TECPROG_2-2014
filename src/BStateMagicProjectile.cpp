@@ -41,9 +41,9 @@ void BStateMagicProjectile::exit(){
 
 }
 
-void BStateMagicProjectile::update(const double dt_){
+void BStateMagicProjectile::update(const double deltaTime_){
 
-	projectileTime += dt_;
+	projectileTime += deltaTime_;
 	this->boss->powerX += mpX * 15;
 	this->boss->powerY += mpY * 15;
 	this->boss->powerIsActivated = true;

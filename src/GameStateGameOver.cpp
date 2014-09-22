@@ -44,9 +44,9 @@ void GameStateGameOver::unload(){
 
 }
 
-void GameStateGameOver::update(const double dt_){
+void GameStateGameOver::update(const double deltaTime_){
 
-	this->passedTime += dt_;
+	this->passedTime += deltaTime_;
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

@@ -23,7 +23,7 @@ class Crosshair : public Entity {
 		/** 
 		* Updates the target.
 		*/
-		virtual void update(const double dt_);
+		virtual void update(const double deltaTime_);
 		
 		/**
 		* Renders the image.

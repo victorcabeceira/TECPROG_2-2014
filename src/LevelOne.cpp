@@ -130,7 +130,7 @@ void LevelOne::unload(){
 	}
 }
 
-void LevelOne::update(const double dt_){
+void LevelOne::update(const double deltaTime_){
 	
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
@@ -142,7 +142,7 @@ void LevelOne::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
-		entity->update(dt_);
+		entity->update(deltaTime_);
 	
 	}
 
@@ -152,7 +152,7 @@ void LevelOne::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
 		enemy->setCollisionRects(returnObjects);
-		enemy->update(dt_);
+		enemy->update(deltaTime_);
 	
 	}
 
@@ -160,7 +160,7 @@ void LevelOne::update(const double dt_){
 	if(this->player->isDead()){
 		
 		this->player->changeState(Player::PStates::DEAD);
-		ok+= dt_;
+		ok+= deltaTime_;
 		
 		if(ok>3){
 			

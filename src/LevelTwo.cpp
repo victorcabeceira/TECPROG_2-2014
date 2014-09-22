@@ -120,7 +120,7 @@ void LevelTwo::unload(){
 	//this->checkpointVisited = false;	
 }
 
-void LevelTwo::update(const double dt_){
+void LevelTwo::update(const double deltaTime_){
 	
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
@@ -132,7 +132,7 @@ void LevelTwo::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
-		entity->update(dt_);
+		entity->update(deltaTime_);
 	
 	}
 
@@ -142,7 +142,7 @@ void LevelTwo::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
 		enemy->setCollisionRects(returnObjects);
-		enemy->update(dt_);
+		enemy->update(deltaTime_);
 	
 	}
 

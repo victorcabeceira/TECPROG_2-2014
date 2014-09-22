@@ -83,21 +83,21 @@ Enemy::~Enemy(){
 
 }
 
-void Enemy::update(const double dt_){
+void Enemy::update(const double deltaTime_){
 	
-	this->currentState->update(dt_);
+	this->currentState->update(deltaTime_);
 	forceMaxSpeed();
 
-	scoutPosition(dt_);
+	scoutPosition(deltaTime_);
 
-	this->animation->update(this->animationClip, dt_);
+	this->animation->update(this->animationClip, deltaTime_);
 
 	updateBoundingBox();
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision(detections);
 
-	updatePosition(dt_);
+	updatePosition(deltaTime_);
 
 }
 

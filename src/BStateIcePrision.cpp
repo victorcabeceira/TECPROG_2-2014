@@ -31,9 +31,9 @@ void BStateIcePrision::exit(){
 
 }
 
-void BStateIcePrision::update(const double dt_){
+void BStateIcePrision::update(const double deltaTime_){
 
-	prisionTime += dt_;
+	prisionTime += deltaTime_;
 	if(prisionTime > 1){
 
 		this->boss->powerAnimation->changeAnimation(2, 0, 1, false, 0);

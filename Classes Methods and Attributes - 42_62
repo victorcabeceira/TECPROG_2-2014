@@ -45,7 +45,7 @@ LevelBoss.h // Last level of the game.
 	~LevelBoss: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 
@@ -54,7 +54,7 @@ LevelFive.h // Fivefh level of the game.
 	~LevelFive: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
@@ -65,7 +65,7 @@ LevelFour.h // Fourfh level of the game.
 	~LevelFour: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
@@ -76,7 +76,7 @@ LevelOne.h // First level of the game.
 	~LevelOne: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
@@ -87,7 +87,7 @@ LevelThree.h // Third level of the game.
 	~LevelThree: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.
@@ -98,7 +98,7 @@ LevelTwo.h // Second level of the game.
 	~LevelTwo: // The destructor.
 	load: // Loads the level.
 	update: // Updates teh objects within the level.
-		dt_: // Time elapsed between one frame and the other. --> deltaTime
+		deltaTime_: // Time elapsed between one frame and the other. --> deltaTime
 	unload: // Unloads everything that was loaded.
 	render: // Render the level.
 		items[2][NUMBER_ITEMS]: // Save the position in x and y of dropped potions.

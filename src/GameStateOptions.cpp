@@ -57,9 +57,9 @@ GameStateOptions::~GameStateOptions(){
 	}
 }
 
-void GameStateOptions::update(const double dt_){
+void GameStateOptions::update(const double deltaTime_){
 
-	this->elapsedTime += dt_;
+	this->elapsedTime += deltaTime_;
 
 	this->resolution->changeText(possibleResolutions[currentResolution].c_str());
 	this->volumeMusic->changeText(Util::toString(this->musicVolume).c_str());

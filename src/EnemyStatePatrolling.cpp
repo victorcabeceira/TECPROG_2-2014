@@ -19,9 +19,9 @@ void EnemyStatePatrolling::enter(){
 void EnemyStatePatrolling::exit(){
 }
 
-void EnemyStatePatrolling::update(const double dt_){
+void EnemyStatePatrolling::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 	
 	// Patrol.
 	if(abs(this->enemy->x - this->enemy->originalX) > this->enemy->patrolLength){

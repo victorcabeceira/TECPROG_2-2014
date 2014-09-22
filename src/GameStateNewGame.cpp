@@ -141,9 +141,9 @@ void GameStateNewGame::unload(){
 
 }
 
-void GameStateNewGame::update(const double dt_){
+void GameStateNewGame::update(const double deltaTime_){
 
-	this->passedTime += dt_;
+	this->passedTime += deltaTime_;
 
 	handleSelectorMenu();
 

@@ -23,9 +23,9 @@ void BStateAttack::exit(){
 }
 
 //Update eh state of boss skills
-void BStateAttack::update(const double dt_){
+void BStateAttack::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 
 	if(attackIndex == 3){
 

@@ -35,9 +35,9 @@ void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int hei
 
 }
 
-void DynamicEntity::updatePosition(const double dt_){
+void DynamicEntity::updatePosition(const double deltaTime_){
 
-	((void)dt_); // Unused?
+	((void)deltaTime_); // Unused?
 
 	this->x = this->nextX;
 	this->y = this->nextY;
@@ -45,10 +45,10 @@ void DynamicEntity::updatePosition(const double dt_){
 
 }
 
-void DynamicEntity::scoutPosition(const double dt_){
+void DynamicEntity::scoutPosition(const double deltaTime_){
 
-	this->nextX += this->vx * dt_;
-	this->nextY += this->vy * dt_;
+	this->nextX += this->vx * deltaTime_;
+	this->nextY += this->vy * deltaTime_;
 
 }
 

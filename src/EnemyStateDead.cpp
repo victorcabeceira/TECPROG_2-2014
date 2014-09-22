@@ -14,9 +14,9 @@ void EnemyStateDead::enter(){
 void EnemyStateDead::exit(){
 }
 
-void EnemyStateDead::update(const double dt_){
+void EnemyStateDead::update(const double deltaTime_){
 	
-	deadTime += dt_;
+	deadTime += deltaTime_;
 	
 	if(deadTime >= 2){
 	

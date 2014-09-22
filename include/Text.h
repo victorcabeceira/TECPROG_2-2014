@@ -20,9 +20,9 @@ class Text : public Entity {
 
 		/**
 		* Updates the text.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other.
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_);
+		virtual void update(const double deltaTime_);
 
 		/**
 		* Renders the text.

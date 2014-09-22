@@ -103,26 +103,26 @@ Boss::~Boss(){
 
 }
 
-void Boss::update(const double dt_){
+void Boss::update(const double deltaTime_){
 	
 	//Updates the position and animation of the Boss
 	
-	timePasssed += dt_;
+	timePasssed += deltaTime_;
 
-	scoutPosition(dt_);
+	scoutPosition(deltaTime_);
 
-	this->animation->update(this->animationClip, dt_);
-	this->powerAnimation->update(this->powerClip, dt_);
-	this->shieldAnimation->update(this->shieldClip, dt_);
+	this->animation->update(this->animationClip, deltaTime_);
+	this->powerAnimation->update(this->powerClip, deltaTime_);
+	this->shieldAnimation->update(this->shieldClip, deltaTime_);
 
 	updateBoundingBox();
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision(detections);
 
-	updatePosition(dt_);
+	updatePosition(deltaTime_);
 
-	this->currentState->update(dt_);
+	this->currentState->update(deltaTime_);
 
     for(auto potion : this->potions){
 
@@ -131,7 +131,7 @@ void Boss::update(const double dt_){
 
         }
 
-        potion->update(dt_);
+        potion->update(deltaTime_);
 
     }
 }

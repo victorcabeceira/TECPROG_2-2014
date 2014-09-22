@@ -30,12 +30,12 @@ class Animation{
 		/**
 		* Updates the animation clip.
 		* @param clip_ : Reference to the clip of whatever object the animation is a part of.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		* @param totalTime_ : How much time each frame should have. Affects the speed on which
 		* 	the animation changes.
 		*/
-		void update(SDL_Rect& clip_, const double dt_);
+		void update(SDL_Rect& clip_, const double deltaTime_);
 
 		int getCurrentFrame();
 

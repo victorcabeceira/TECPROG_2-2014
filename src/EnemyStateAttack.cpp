@@ -20,9 +20,9 @@ void EnemyStateAttack::enter(){
 void EnemyStateAttack::exit(){
 }
 
-void EnemyStateAttack::update(const double dt_){
+void EnemyStateAttack::update(const double deltaTime_){
 
-	attackTime += dt_;
+	attackTime += deltaTime_;
 	const double attackTotalTime = 0.6;
 
 	/// @todo Refactor the way the enemy hurts the player.

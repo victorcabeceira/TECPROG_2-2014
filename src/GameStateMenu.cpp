@@ -72,13 +72,13 @@ void GameStateMenu::unload(){
 
 }
 
-void GameStateMenu::update(const double dt_){
+void GameStateMenu::update(const double deltaTime_){
 
-	this->passedTime += dt_;
+	this->passedTime += deltaTime_;
 
 	handleSelectorMenu();
 
-	this->shwingAnimation->update(this->shwingClip, dt_);	
+	this->shwingAnimation->update(this->shwingClip, deltaTime_);	
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

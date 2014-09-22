@@ -31,7 +31,7 @@ class PlayerHUD {
 		/**
 		* Updates the HUD.
 		* @see Player::updateInput, Player::updatePosition
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
 		void update();

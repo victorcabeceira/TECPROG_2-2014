@@ -20,9 +20,9 @@ Document::Document(const double x_, const double y_, const std::string& path_, c
 Document::~Document(){
 }
 
-void Document::update(const double dt_){
+void Document::update(const double deltaTime_){
 
-	((void)dt_); // Unused;
+	((void)deltaTime_); // Unused;
 
 }
 

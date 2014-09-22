@@ -33,9 +33,9 @@ void BStateTeleport::exit(){
 
 }
 
-void BStateTeleport::update(const double dt_){
+void BStateTeleport::update(const double deltaTime_){
 
-	tptime += dt_;
+	tptime += deltaTime_;
 	
 	if(tptime < 3){
 

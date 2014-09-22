@@ -82,7 +82,7 @@ Player::~Player(){
     destroyStates();
 }
 
-void Player::update(const double dt_){
+void Player::update(const double deltaTime_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     if(this->canMove){
@@ -93,16 +93,16 @@ void Player::update(const double dt_){
 
     Game::instance().clearKeyFromInput(GameKeys::ACTION);
 
-    scoutPosition(dt_);
+    scoutPosition(deltaTime_);
 
     updateBoundingBox();
 
     const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
 
-    updatePosition(dt_);
+    updatePosition(deltaTime_);
 
-    this->animation->update(this->animationClip, dt_);
+    this->animation->update(this->animationClip, deltaTime_);
 
     for(auto potion : this->potions){
 	
@@ -110,12 +110,12 @@ void Player::update(const double dt_){
             // Delete potion.
 			
         }
-        potion->update(dt_);
+        potion->update(deltaTime_);
     }
 
     if(!this->isVulnerable){
 	
-        this->invulnerableTime += dt_;
+        this->invulnerableTime += deltaTime_;
         if(this->invulnerableTime >= 1){
 		
             this->invulnerableTime = 0;

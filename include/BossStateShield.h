@@ -31,7 +31,7 @@ class BossStateShield : public StateBoss {
 		/**
 		* @see StateBoss::update.
 		*/
-		virtual void update(const double dt_);
+		virtual void update(const double deltaTime_);
 
 };
 

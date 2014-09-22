@@ -134,7 +134,7 @@ void LevelFour::unload(){
 	//this->checkpointVisited = false;	
 }
 
-void LevelFour::update(const double dt_){
+void LevelFour::update(const double deltaTime_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -145,7 +145,7 @@ void LevelFour::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
-		entity->update(dt_);
+		entity->update(deltaTime_);
 
 	}
 
@@ -155,7 +155,7 @@ void LevelFour::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
 		enemy->setCollisionRects(returnObjects);
-		enemy->update(dt_);
+		enemy->update(deltaTime_);
 	
 	}
 

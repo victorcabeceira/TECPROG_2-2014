@@ -10,9 +10,9 @@ void EStateAerial::enter(){
 void EStateAerial::exit(){
 }
 
-void EStateAerial::update(const double dt_){
+void EStateAerial::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 
 	// Idle
 	if(this->enemy->isGrounded){

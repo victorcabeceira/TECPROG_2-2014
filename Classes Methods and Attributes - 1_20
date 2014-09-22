@@ -12,7 +12,7 @@ Animation.h: // Class in control of animating a sprite.
 	~Animation: // The Destructor.
 	update: // Updates the animation clip.
 		clip_ : // Reference to the clip of whatever object the animation is a part of.
-		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 	getCurrentFrame: // Gets the current frame of the animation.
 	changeWidthHeight: // Changes the width and the height of the animation.
 		width_ : // Width that needs to be changed.
@@ -110,7 +110,7 @@ Boss.h // The Boss of the game.
 		player_ : // The player.
 	~Boss : // The destructor.
 	update : // Updates the player.
-		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 	initializeStates : // Initializes Boss's States.
 	destroyStates : // Destroy Boss's States.
 	changeStates : // Changes the Boss's States. 
@@ -185,7 +185,7 @@ Document.h : //
 		pathDocumentText_ : // Path to the document text.
 	~Document : // The destructor.
 	update : // Updates the document.
-		dt_ : // Delta time.
+		deltaTime_ : // Delta time.
 	render : // Renders the animation of the document.
 		cameraX_ : // camera in the x position.
 		cameraY_ : // camera in the y position.
@@ -215,9 +215,9 @@ DynamicEntity.h : // Subclass of entity. The objects of this class are entities,
 		width_ : // Tells the player what the width of the level is.
 		height_ : // Tells the player what the height of the level is.
 	updatePosition : // Updates the position of the dynamic entity.
-		dt_ : // Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_ : // Time elapsed between one frame and the other, independent of processing speed.
 	scoutPosition : // Scouts the position of the dynamic entity.
-		dt_ : // Time elapsed between one frame and the other, independent of processing speed.	
+		deltaTime_ : // Time elapsed between one frame and the other, independent of processing speed.	
 	detectCollision : // Detects the collision.
 	getFlip : // 
 	updateBoundingBox : // Updates the bounding box of the entity.

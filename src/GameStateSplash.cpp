@@ -50,9 +50,9 @@ void GameStateSplash::unload(){
 
 }
 
-void GameStateSplash::update(const double dt_){
+void GameStateSplash::update(const double deltaTime_){
 
-	this->passedTime += dt_;
+	this->passedTime += deltaTime_;
 
 	Game::instance().getFade().fadeOut(0, 0.002);
 

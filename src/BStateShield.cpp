@@ -12,9 +12,9 @@ void BStateShield::enter(){
 void BStateShield::exit(){
 }
 
-void BStateShield::update(const double dt_){
+void BStateShield::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 
 	this->boss->changeState(Boss::BStates::IDLE);
 

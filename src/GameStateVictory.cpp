@@ -37,9 +37,9 @@ void GameStateVictory::unload(){
 
 }
 
-void GameStateVictory::update(const double dt_){
+void GameStateVictory::update(const double deltaTime_){
 
-	this->passedTime += dt_;
+	this->passedTime += deltaTime_;
 
 	if(this->passedTime >= this->lifeTime){
 
