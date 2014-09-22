@@ -174,3 +174,11 @@ PStateAttackMoving.h: // Player status when he Attack and moves on the same time
 	enter: // see StatePlayer::enter.
 	exit: // see StatePlayer::exit.
 	handleInput: // see StatePlayer::handleInput.	
+
+PStateClimbing.h: // Player status when he climbs.
+	PStateClimbing: // Constructor.
+		player_: // reference to player.
+	~PStateClimbing: // Destructor.
+	enter: // see StatePlayer::enter.
+	exit: // see StatePlayer::exit.
+	handleInput: // see StatePlayer::handleInput.
