@@ -1,25 +1,25 @@
-#ifndef INCLUDE_PSTATEAERIAL_H
-#define INCLUDE_PSTATEAERIAL_H
+#ifndef INCLUDE_PSTATEDEAD_H
+#define INCLUDE_PSTATEDEAD_H
 
 #include "StatePlayer.h"
 
 /**
-* The state for when the player is not grounded.
-* 
+* The state when the player is idle.
+*
 */
-class PStateAerial : public StatePlayer {
+class PlayerStateDead : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateAerial(Player* const player_);
-
+		PlayerStateDead(Player* const player_);
+		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateAerial(){}
+		virtual ~PlayerStateDead(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateAerial : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEAERIAL_H
+#endif // INCLUDE_PSTATEDEAD_H

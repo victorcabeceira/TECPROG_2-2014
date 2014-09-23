@@ -24,7 +24,7 @@ class Player : public DynamicEntity {
 		/**
 		* All possible player states.
 		*/
-		enum PStates : uint8_t {
+		enum PlayerStates : uint8_t {
 			IDLE = 0,
 			MOVING,
 			AERIAL,
@@ -94,12 +94,12 @@ class Player : public DynamicEntity {
 		* @see StatePlayer::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		void changEnemyState(const PStates state_);
+		void changEnemyState(const PlayerStates state_);
 
 		/**
-		* @return Whether the player is currently in PStates::state_ or not.
+		* @return Whether the player is currently in PlayerStates::state_ or not.
 		*/
-		bool isCurrentState(const PStates state_);
+		bool isCurrentState(const PlayerStates state_);
 
 		/**
 		* @return The players current animation setting.
@@ -135,7 +135,7 @@ class Player : public DynamicEntity {
 
 		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
-		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
+		std::map<PlayerStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 
 };
 

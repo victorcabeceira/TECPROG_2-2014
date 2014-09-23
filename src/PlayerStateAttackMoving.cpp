@@ -1,7 +1,7 @@
-#include "PStateAttackMoving.h"
+#include "PlayerStateAttackMoving.h"
 #include "Logger.h"
 
-void PStateAttackMoving::enter(){
+void PlayerStateAttackMoving::enter(){
 	
 	this->box.x = 58;
 	this->box.y = 72;
@@ -12,24 +12,24 @@ void PStateAttackMoving::enter(){
 
 }
 
-void PStateAttackMoving::exit(){
+void PlayerStateAttackMoving::exit(){
 	
 	this->player->canAttack = true;
 
 }
 
-void PStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 	
 	if(this->player->getAnimation()->getCurrentFrame() == 9){
 		
-		this->player->changEnemyState(Player::PStates::MOVING);
+		this->player->changEnemyState(Player::PlayerStates::MOVING);
 	
 	}
 }
 
-PStateAttackMoving::PStateAttackMoving(Player* const player_) :
+PlayerStateAttackMoving::PlayerStateAttackMoving(Player* const player_) :
 	
 	StatePlayer(player_)
 {

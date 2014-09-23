@@ -189,7 +189,7 @@ void LevelThree::update(const double deltaTime_){
 			
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changEnemyState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PlayerStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -248,7 +248,7 @@ void LevelThree::update(const double deltaTime_){
 			
 			if(this->player->isRight != enemy->isRight)
 				
-				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
+				if(this->player->isCurrentState(Player::PlayerStates::ATTACK) || this->player->isCurrentState(Player::PlayerStates::ATTACKMOVING)){
 					
 					if(enemy->life > 0 && this->player->canAttack){
 						

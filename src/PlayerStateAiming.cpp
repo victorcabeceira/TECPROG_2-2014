@@ -1,4 +1,4 @@
-#include "PStateAiming.h"
+#include "PlayerStateAiming.h"
 #include "Logger.h"
 #include "Game.h"
 #define RIGHTD 1
@@ -10,7 +10,7 @@
 #define MAX_DISTANCE 300
 #define MIN_DISTANCE 50
 
-void PStateAiming::enter(){
+void PlayerStateAiming::enter(){
 
 	this->box.x = 58;
 	this->box.y = 72;
@@ -34,19 +34,19 @@ void PStateAiming::enter(){
 
 }
 
-void PStateAiming::exit(){
+void PlayerStateAiming::exit(){
 
 	this->player->crosshair->activated = false;
 
 }
 
-void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	this->player->crosshair->render(0.0, 0.0);
 
 	if(!keyStates_[GameKeys::AIM]){
 
-		this->player->changEnemyState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PlayerStates::IDLE);
 		return;
 
 	}
@@ -109,14 +109,14 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	}
 }
 
-PStateAiming::PStateAiming(Player* const player_) :
+PlayerStateAiming::PlayerStateAiming(Player* const player_) :
 
 	StatePlayer(player_)
 {
 
 }
 
-int PStateAiming::absoluteCrosshairPlayerDistance(){
+int PlayerStateAiming::absoluteCrosshairPlayerDistance(){
 
 	int distance = 0;
 

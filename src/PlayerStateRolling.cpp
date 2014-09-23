@@ -25,7 +25,7 @@ void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keySt
 	// Aerial
 	if(!this->player->isGrounded){
 		
-		this->player->changEnemyState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PlayerStates::AERIAL);
 		return;
 	
 	}
@@ -36,7 +36,7 @@ void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keySt
 	if(keyStates_[GameKeys::SPACE] && this->player->isGrounded){
 		
 		this->player->jump();
-		this->player->changEnemyState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PlayerStates::AERIAL);
 		return;
 	
 	}
@@ -44,7 +44,7 @@ void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keySt
 	// Idle
     if(this->player->vx < 1.0 && this->player->vx > (-1.0)){
     
-        this->player->changEnemyState(Player::PStates::IDLE);
+        this->player->changEnemyState(Player::PlayerStates::IDLE);
         return;
     
     }

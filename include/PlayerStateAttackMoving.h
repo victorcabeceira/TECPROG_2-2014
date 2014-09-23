@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATEAIMING_H
-#define INCLUDE_PSTATEAIMING_H
+#ifndef INCLUDE_PSTATEATTACKMOVING_H
+#define INCLUDE_PSTATEATTACKMOVING_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateAiming : public StatePlayer {
+class PlayerStateAttackMoving : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateAiming(Player* const player_);
+		PlayerStateAttackMoving(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateAiming(){}
+		virtual ~PlayerStateAttackMoving(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -36,11 +36,6 @@ class PStateAiming : public StatePlayer {
 		*/
 		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_);
 
-	private:
-		/**
-		*/
-		int absoluteCrosshairPlayerDistance();
-
 };
 
-#endif // INCLUDE_PSTATEAIMINGs_H
+#endif // INCLUDE_PSTATEATTACKMOVING_H

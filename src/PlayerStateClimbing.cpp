@@ -1,9 +1,9 @@
-#include "PStateClimbing.h"
+#include "PlayerStateClimbing.h"
 #include "Logger.h"
 
 bool isMoving = false;
 
-void PStateClimbing::enter(){
+void PlayerStateClimbing::enter(){
 	
 	Log(DEBUG) << "STATE CLIMBING";
 
@@ -29,14 +29,14 @@ void PStateClimbing::enter(){
 
 }
 
-void PStateClimbing::exit(){
+void PlayerStateClimbing::exit(){
 	
 	this->player->isClimbing = false;
 	isMoving = false;
 
 }
 
-void PStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	this->player->moveVertical(keyStates_[GameKeys::UP], keyStates_[GameKeys::DOWN]);
 
@@ -74,21 +74,21 @@ void PStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates
 		
 		}
 
-		this->player->changEnemyState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PlayerStates::AERIAL);
 		return;
 	}
 
 	if(!this->player->isClimbing){
 		
 		this->player->vy = -1000;
-		this->player->changEnemyState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PlayerStates::AERIAL);
 		return;
 	
 	}
 
 }
 
-PStateClimbing::PStateClimbing(Player* const player_) :
+PlayerStateClimbing::PlayerStateClimbing(Player* const player_) :
 	
 	StatePlayer(player_)
 {

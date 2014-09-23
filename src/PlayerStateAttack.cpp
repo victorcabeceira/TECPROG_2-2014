@@ -1,8 +1,8 @@
-#include "PStateAttack.h"
+#include "PlayerStateAttack.h"
 #include "Logger.h"
 #include "Game.h"
 
-void PStateAttack::enter(){
+void PlayerStateAttack::enter(){
 	
 	this->box.x = 58;
 	this->box.y = 75;
@@ -14,24 +14,24 @@ void PStateAttack::enter(){
 	Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/WOOSH_NADINE_02.wav");
 }
 
-void PStateAttack::exit(){
+void PlayerStateAttack::exit(){
 
 	this->player->canAttack = true;
 
 }
 
-void PStateAttack::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateAttack::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	((void)keyStates_); // Unused.
 
 	if(this->player->getAnimation()->getCurrentFrame() == 14){
 		
-		this->player->changEnemyState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PlayerStates::IDLE);
 	
 	}
 }
 
-PStateAttack::PStateAttack(Player* const player_) :
+PlayerStateAttack::PlayerStateAttack(Player* const player_) :
 	
 	StatePlayer(player_)
 

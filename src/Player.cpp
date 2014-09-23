@@ -7,23 +7,23 @@
 #include <cfloat>
 
 #include "PlayerStateIdle.h"
-#include "PStateAerial.h"
+#include "PlayerStateAerial.h"
 #include "PlayerStateMoving.h"
 #include "PlayerStateRolling.h"
-#include "PStateCrouching.h"
-#include "PStateAiming.h"
+#include "PlayerStateCrouching.h"
+#include "PlayerStateAiming.h"
 #include "PlayerStateMovingCrouch.h"
-#include "PStateAttack.h"
-#include "PStateAttackMoving.h"
-#include "PStateAttackJumping.h"
+#include "PlayerStateAttack.h"
+#include "PlayerStateAttackMoving.h"
+#include "PlayerStateAttackJumping.h"
 #include "PlayerStateHit.h"
-#include "PStateClimbing.h"
-#include "PStateDead.h"
+#include "PlayerStateClimbing.h"
+#include "PlayerStateDead.h"
 
 #include "Window.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
-#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<PStates, StatePlayer*>(stateEnum, new stateClass(this)));
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<PlayerStates, StatePlayer*>(stateEnum, new stateClass(this)));
 
 Player::Player(const double x_, const double y_, const std::string& path_) :
     DynamicEntity(x_, y_, path_),
@@ -125,9 +125,9 @@ void Player::update(const double deltaTime_){
         }
     }
 
-    if(this->isClimbing && !isCurrentState(PStates::CLIMBING)){
+    if(this->isClimbing && !isCurrentState(PlayerStates::CLIMBING)){
 	
-        changEnemyState(PStates::CLIMBING);
+        changEnemyState(PlayerStates::CLIMBING);
 		
     }
 
@@ -142,27 +142,27 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
 	
-        if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING) 
-            || isCurrentState(PStates::HITED)  || isCurrentState(PStates::CLIMBING) ||  
-            isCurrentState(PStates::DEAD)){
+        if(isCurrentState(PlayerStates::AERIAL) || isCurrentState(PlayerStates::ATTACKJUMPING) 
+            || isCurrentState(PlayerStates::HITED)  || isCurrentState(PlayerStates::CLIMBING) ||  
+            isCurrentState(PlayerStates::DEAD)){
 			
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 
             this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
-            if(!isCurrentState(PStates::DEAD)){
+            if(!isCurrentState(PlayerStates::DEAD)){
 			
-                changEnemyState(PStates::IDLE);
+                changEnemyState(PlayerStates::IDLE);
 				
             }
         }
     }
     else{
-        if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)
-            && !isCurrentState(PStates::CLIMBING) && !isCurrentState(PStates::DEAD)){
+        if(!isCurrentState(PlayerStates::AERIAL) && !isCurrentState(PlayerStates::ATTACKJUMPING)
+            && !isCurrentState(PlayerStates::CLIMBING) && !isCurrentState(PlayerStates::DEAD)){
 			
-            changEnemyState(PStates::AERIAL);
+            changEnemyState(PlayerStates::AERIAL);
 			
         }
     }
@@ -256,22 +256,22 @@ void Player::initializEnemyStates(){
     // Initialize all the states in Player here.
     ADD_STATE_INSERT(IDLE,         PlayerStateIdle);
     ADD_STATE_INSERT(MOVING,       PlayerStateMoving);
-    ADD_STATE_INSERT(AERIAL,       PStateAerial);
+    ADD_STATE_INSERT(AERIAL,       PlayerStateAerial);
     ADD_STATE_INSERT(ROLLING,      PlayerStateRolling);
-    ADD_STATE_INSERT(CROUCHING,    PStateCrouching);
-    ADD_STATE_INSERT(AIMING,       PStateAiming);
+    ADD_STATE_INSERT(CROUCHING,    PlayerStateCrouching);
+    ADD_STATE_INSERT(AIMING,       PlayerStateAiming);
     ADD_STATE_INSERT(MOVINGCROUCH, PlayerStateMovingCrouch);
-    ADD_STATE_INSERT(ATTACK,       PStateAttack);
-    ADD_STATE_INSERT(ATTACKMOVING, PStateAttackMoving);
-    ADD_STATE_INSERT(ATTACKJUMPING,PStateAttackJumping);
+    ADD_STATE_INSERT(ATTACK,       PlayerStateAttack);
+    ADD_STATE_INSERT(ATTACKMOVING, PlayerStateAttackMoving);
+    ADD_STATE_INSERT(ATTACKJUMPING,PlayerStateAttackJumping);
     ADD_STATE_INSERT(HITED,        PlayerStateHit);
-    ADD_STATE_INSERT(CLIMBING,     PStateClimbing);
-    ADD_STATE_INSERT(DEAD,         PStateDead);
+    ADD_STATE_INSERT(CLIMBING,     PlayerStateClimbing);
+    ADD_STATE_INSERT(DEAD,         PlayerStateDead);
 }
 
 void Player::destroyStates(){
     // Delete all the states in Player here.
-    std::map<PStates, StatePlayer*>::const_iterator it;
+    std::map<PlayerStates, StatePlayer*>::const_iterator it;
     for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
 	
         delete it->second;
@@ -279,7 +279,7 @@ void Player::destroyStates(){
     }
 }
 
-void Player::changEnemyState(const PStates state_){
+void Player::changEnemyState(const PlayerStates state_){
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();
@@ -289,7 +289,7 @@ Animation* Player::getAnimation(){
     return (this->animation);
 }
 
-bool Player::isCurrentState(const PStates state_){
+bool Player::isCurrentState(const PlayerStates state_){
     return (this->currentState == this->statesMap.at(state_));
 }
 

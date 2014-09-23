@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateMovingCrouch : public StatePlayer {
+class PlayerStateMovingCrouch : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateMovingCrouch(Player* const player_);
+		PlayerStateMovingCrouch(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateMovingCrouch(){}
+		virtual ~PlayerStateMovingCrouch(){}
 
 		/**
 		* @see StatePlayer::enter

@@ -1,7 +1,7 @@
-#include "PStateCrouching.h"
+#include "PlayerStateCrouching.h"
 #include "Logger.h"
 
-void PStateCrouching::enter(){
+void PlayerStateCrouching::enter(){
 
 	this->box.x = (int)this->player->getWidth() / 4 - 33;
     this->box.w = (int)this->player->getWidth() / 1.7;
@@ -12,19 +12,19 @@ void PStateCrouching::enter(){
 	this->player->isGrounded = true;
 }
 
-void PStateCrouching::exit(){
+void PlayerStateCrouching::exit(){
 	
 	this->player->getAnimation()->changeAnimation(1,14,2,false,0.3);
 
 }
 
-void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	this->player->getAnimation()->changeAnimation(8,9,1,false,0);
 
 	if(!keyStates_[GameKeys::CROUCH]){
 		
-		this->player->changEnemyState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PlayerStates::IDLE);
 		return;
 	
 	}
@@ -42,21 +42,21 @@ void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyState
 
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
 		
-		this->player->changEnemyState(Player::PStates::MOVINGCROUCH);
+		this->player->changEnemyState(Player::PlayerStates::MOVINGCROUCH);
 		return;
 	
 	}
 
 	if(keyStates_[GameKeys::ROLL]){
 	
-		this->player->changEnemyState(Player::PStates::ROLLING);
+		this->player->changEnemyState(Player::PlayerStates::ROLLING);
 		return;
 	
 	}
 
 }
 
-PStateCrouching::PStateCrouching(Player* const player_) :
+PlayerStateCrouching::PlayerStateCrouching(Player* const player_) :
 	
 	StatePlayer(player_)
 {

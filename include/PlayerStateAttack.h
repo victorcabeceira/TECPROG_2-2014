@@ -7,19 +7,19 @@
 * The state when the player is grounded and moving.
 *
 */
-class PStateAttack : public StatePlayer {
+class PlayerStateAttack : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateAttack(Player* const player_);
+		PlayerStateAttack(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateAttack(){}
+		virtual ~PlayerStateAttack(){}
 
 		/**
 		* @see StatePlayer::enter

@@ -27,7 +27,7 @@ void PlayerStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> 
 	// Not crouching, goes to Idle.
 	if(!keyStates_[GameKeys::CROUCH]){
 		
-		this->player->changEnemyState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PlayerStates::IDLE);
 		return;
 	
 	}
@@ -37,7 +37,7 @@ void PlayerStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> 
 	// Stops moving, goes to Crouch.
     if(!keyStates_[GameKeys::LEFT] && !keyStates_[GameKeys::RIGHT]){
      
-        this->player->changEnemyState(Player::PStates::CROUCHING);
+        this->player->changEnemyState(Player::PlayerStates::CROUCHING);
         return;
     
     }
@@ -55,7 +55,7 @@ void PlayerStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> 
 
 	if(keyStates_[GameKeys::ROLL]){
 		
-		this->player->changEnemyState(Player::PStates::ROLLING);
+		this->player->changEnemyState(Player::PlayerStates::ROLLING);
 		return;
 
 	}

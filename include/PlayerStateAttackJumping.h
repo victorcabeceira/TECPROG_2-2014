@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATEDEAD_H
-#define INCLUDE_PSTATEDEAD_H
+#ifndef INCLUDE_PSTATEATTACKJUMPING_H
+#define INCLUDE_PSTATEATTACKJUMPING_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateDead : public StatePlayer {
+class PlayerStateAttackJumping : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateDead(Player* const player_);
+		PlayerStateAttackJumping(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateDead(){}
+		virtual ~PlayerStateAttackJumping(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateDead : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEDEAD_H
+#endif // INCLUDE_PSTATEATTACKJUMPING_H

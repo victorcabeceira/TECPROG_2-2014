@@ -1,25 +1,25 @@
-#ifndef INCLUDE_PSTATEATTACKMOVING_H
-#define INCLUDE_PSTATEATTACKMOVING_H
+#ifndef INCLUDE_PSTATECLIMBING_H
+#define INCLUDE_PSTATECLIMBING_H
 
 #include "StatePlayer.h"
 
 /**
-* The state when the player is idle.
-*
+* The state for when the player is not grounded.
+* 
 */
-class PStateAttackMoving : public StatePlayer {
+class PlayerStateClimbing : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateAttackMoving(Player* const player_);
-		
+		PlayerStateClimbing(Player* const player_);
+
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateAttackMoving(){}
+		virtual ~PlayerStateClimbing(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateAttackMoving : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEATTACKMOVING_H
+#endif // INCLUDE_PSTATECLIMBING_H

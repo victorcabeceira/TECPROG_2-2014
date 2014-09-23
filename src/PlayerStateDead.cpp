@@ -1,8 +1,8 @@
-#include "PStateDead.h"
+#include "PlayerStateDead.h"
 #include "Logger.h"
 #include "Game.h"
 
-void PStateDead::enter(){
+void PlayerStateDead::enter(){
 	
 	Log(DEBUG) << "STATE DEAD";
 	
@@ -16,18 +16,18 @@ void PStateDead::enter(){
 
 }
 
-void PStateDead::exit(){
+void PlayerStateDead::exit(){
 
 }
 
-void PStateDead::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateDead::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	((void) keyStates_); // Unused.
 	this->player->applyGravity();
 
 }
 
-PStateDead::PStateDead(Player* const player_) :
+PlayerStateDead::PlayerStateDead(Player* const player_) :
 	
 	StatePlayer(player_)
 

@@ -1,8 +1,8 @@
-#include "PStateAerial.h"
+#include "PlayerStateAerial.h"
 #include "Logger.h"
 #include "Game.h"
 
-void PStateAerial::enter(){
+void PlayerStateAerial::enter(){
     
     this->box.x = 58;
     this->box.y = 72;
@@ -16,25 +16,25 @@ void PStateAerial::enter(){
 
 }
 
-void PStateAerial::exit(){
+void PlayerStateAerial::exit(){
     
     this->player->isClimbing = false;
 
 }
 
-void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PlayerStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Idle
     if(this->player->isGrounded){
     	
-        this->player->changEnemyState(Player::PStates::IDLE);
+        this->player->changEnemyState(Player::PlayerStates::IDLE);
     	return;
     
     }
 
     if(keyStates_[GameKeys::LATTACK]){
       
-        this->player->changEnemyState(Player::PStates::ATTACKJUMPING);
+        this->player->changEnemyState(Player::PlayerStates::ATTACKJUMPING);
         return;
     
     }
@@ -46,7 +46,7 @@ void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 }
 
-PStateAerial::PStateAerial(Player* const player_) :
+PlayerStateAerial::PlayerStateAerial(Player* const player_) :
 	
     StatePlayer(player_)
 

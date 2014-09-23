@@ -159,7 +159,7 @@ void LevelOne::update(const double deltaTime_){
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		
-		this->player->changEnemyState(Player::PStates::DEAD);
+		this->player->changEnemyState(Player::PlayerStates::DEAD);
 		ok+= deltaTime_;
 		
 		if(ok>3){
@@ -201,7 +201,7 @@ void LevelOne::update(const double deltaTime_){
 			
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changEnemyState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PlayerStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -259,7 +259,7 @@ void LevelOne::update(const double deltaTime_){
 			
 			if(this->player->isRight != enemy->isRight)
 				
-				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
+				if(this->player->isCurrentState(Player::PlayerStates::ATTACK) || this->player->isCurrentState(Player::PlayerStates::ATTACKMOVING)){
 					
 					if(enemy->life > 0 && this->player->canAttack){
 						
