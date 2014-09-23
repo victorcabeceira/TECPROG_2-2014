@@ -1,4 +1,4 @@
-#include "GamEnemyStateNewGame.h"
+#include "GameStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,7 +6,7 @@
 
 #include <string>
 
-GamEnemyStateNewGame::GamEnemyStateNewGame() :
+GameStateNewGame::GameStateNewGame() :
 
 	background(nullptr),
 	selector(nullptr),
@@ -23,7 +23,7 @@ GamEnemyStateNewGame::GamEnemyStateNewGame() :
 
 }
 
-GamEnemyStateNewGame::~GamEnemyStateNewGame(){
+GameStateNewGame::~GameStateNewGame(){
 
 	if(this->slot1 != nullptr){
 		
@@ -47,7 +47,7 @@ GamEnemyStateNewGame::~GamEnemyStateNewGame(){
 	}
 }
 
-void GamEnemyStateNewGame::load(){
+void GameStateNewGame::load(){
 	
 	Log(DEBUG) << "Loading Choose Slot Screen...";
 
@@ -134,14 +134,14 @@ void GamEnemyStateNewGame::load(){
 
 }
 
-void GamEnemyStateNewGame::unload(){
+void GameStateNewGame::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
 
-void GamEnemyStateNewGame::update(const double deltaTime_){
+void GameStateNewGame::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -150,12 +150,12 @@ void GamEnemyStateNewGame::update(const double deltaTime_){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 	if(keyStates[GameKeys::ESCAPE] == true){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 
 	}
 }
 
-void GamEnemyStateNewGame::render(){
+void GameStateNewGame::render(){
 
 	if(this->background != nullptr){
 	
@@ -175,7 +175,7 @@ void GamEnemyStateNewGame::render(){
 	}
 }
 
-void GamEnemyStateNewGame::handleSelectorMenu(){
+void GameStateNewGame::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
@@ -184,7 +184,7 @@ void GamEnemyStateNewGame::handleSelectorMenu(){
 	
 		if(this->passedTime >= selectorDelayTime){
 	
-			Game::instance().setState(Game::GStates::MENU);
+			Game::instance().setState(Game::GameStates::MENU);
 	
 		}
 	}
@@ -233,8 +233,8 @@ void GamEnemyStateNewGame::handleSelectorMenu(){
 		Game::instance().currentSlot = Selection::SLOT_1;
 		Game::instance().getSaves().setSlot(Selection::SLOT_1);
 		Game::instance().getSaves().createSave();
-		Game::instance().transitionTo = Game::GStates::LEVEL_ONE;
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_ONE;
+		Game::instance().setState(Game::GameStates::TRANSITION);
 
 	}
 
@@ -243,8 +243,8 @@ void GamEnemyStateNewGame::handleSelectorMenu(){
 		Game::instance().currentSlot = Selection::SLOT_2;
 		Game::instance().getSaves().setSlot(Selection::SLOT_2);
 		Game::instance().getSaves().createSave();
-		Game::instance().transitionTo = Game::GStates::LEVEL_ONE; //should be level one, two is here for testing purposes
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_ONE; //should be level one, two is here for testing purposes
+		Game::instance().setState(Game::GameStates::TRANSITION);
 
 	}
 
@@ -253,8 +253,8 @@ void GamEnemyStateNewGame::handleSelectorMenu(){
 		Game::instance().currentSlot = Selection::SLOT_3;
 		Game::instance().getSaves().setSlot(Selection::SLOT_3);
 		Game::instance().getSaves().createSave();
-		Game::instance().transitionTo = Game::GStates::LEVEL_BOSS; //should be level one, boss is here for testing purposes
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_BOSS; //should be level one, boss is here for testing purposes
+		Game::instance().setState(Game::GameStates::TRANSITION);
 
 	}
 }

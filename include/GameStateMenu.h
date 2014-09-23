@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GSTATEMENU_H
-#define INCLUDE_GSTATEMENU_H
+#ifndef INCLUDE_GameStateMENU_H
+#define INCLUDE_GameStateMENU_H
 
 #include "StateGame.h"
 #include "Sprite.h"
@@ -9,7 +9,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the main menu.
 */
-class GamEnemyStateMenu : public StateGame {
+class GameStateMenu : public StateGame {
 
 	public:
 	
@@ -17,12 +17,12 @@ class GamEnemyStateMenu : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateMenu();
+		GameStateMenu();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateMenu();
+		virtual ~GameStateMenu();
 
 		/**
 		* Loads the level.
@@ -38,7 +38,7 @@ class GamEnemyStateMenu : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateMenu::load
+		* @see GameStateMenu::load
 		*/
 		virtual void unload();
 
@@ -87,4 +87,4 @@ class GamEnemyStateMenu : public StateGame {
 		SDL_Rect shwingClip;
 };
 
-#endif // INCLUDE_GSTATEMENU_H
+#endif // INCLUDE_GameStateMENU_H

@@ -1,4 +1,4 @@
-#include "GamEnemyStateOptions.h"
+#include "GameStateOptions.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,9 +6,9 @@
 
 #include <string>
 
-const std::string GamEnemyStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
+const std::string GameStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
 
-GamEnemyStateOptions::GamEnemyStateOptions() :
+GameStateOptions::GameStateOptions() :
 
 	elapsedTime(0.0),
 	optionsImage(nullptr),
@@ -33,7 +33,7 @@ GamEnemyStateOptions::GamEnemyStateOptions() :
 
 }
 
-GamEnemyStateOptions::~GamEnemyStateOptions(){
+GameStateOptions::~GameStateOptions(){
 
 	if(this->resolution != nullptr){
 
@@ -57,7 +57,7 @@ GamEnemyStateOptions::~GamEnemyStateOptions(){
 	}
 }
 
-void GamEnemyStateOptions::update(const double deltaTime_){
+void GameStateOptions::update(const double deltaTime_){
 
 	this->elapsedTime += deltaTime_;
 
@@ -69,7 +69,7 @@ void GamEnemyStateOptions::update(const double deltaTime_){
 
 	if(keyStates[GameKeys::ESCAPE] == true){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 
 	}
 
@@ -208,12 +208,12 @@ void GamEnemyStateOptions::update(const double deltaTime_){
 
 	if(keyStates[GameKeys::SPACE] == true && this->currentOption == O_RETURN){
 	
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 	
 	}
 }
 
-void GamEnemyStateOptions::render(){
+void GameStateOptions::render(){
 	
 	if(this->optionsImage != nullptr){
 	
@@ -247,7 +247,7 @@ void GamEnemyStateOptions::render(){
 
 }
 
-void GamEnemyStateOptions::load(){
+void GameStateOptions::load(){
 	
 	Log(DEBUG) << "Loading options...";
 
@@ -265,14 +265,14 @@ void GamEnemyStateOptions::load(){
 
 }
 
-void GamEnemyStateOptions::unload(){
+void GameStateOptions::unload(){
 
 	Log(DEBUG) << "\tUnloading options...";
 	cleanEntities();
 
 }
 
-void GamEnemyStateOptions::applyOptions(){
+void GameStateOptions::applyOptions(){
 
 	// Apply resolution
 	if(this->currentResolution == R_800_600){

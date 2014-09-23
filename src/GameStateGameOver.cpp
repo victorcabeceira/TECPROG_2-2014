@@ -1,10 +1,10 @@
-#include "GamEnemyStateGameOver.h"
+#include "GameStateGameOver.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GamEnemyStateGameOver::GamEnemyStateGameOver() :
+GameStateGameOver::GameStateGameOver() :
 
 	gameOverImage(nullptr),
 	passedTime(0.0),
@@ -13,10 +13,10 @@ GamEnemyStateGameOver::GamEnemyStateGameOver() :
 {
 }
 
-GamEnemyStateGameOver::~GamEnemyStateGameOver(){
+GameStateGameOver::~GameStateGameOver(){
 }
 
-void GamEnemyStateGameOver::load(){
+void GameStateGameOver::load(){
 
 	Log(DEBUG) << "Loading Game Over...";
 
@@ -32,7 +32,7 @@ void GamEnemyStateGameOver::load(){
 
 }
 
-void GamEnemyStateGameOver::unload(){
+void GameStateGameOver::unload(){
 
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
@@ -44,7 +44,7 @@ void GamEnemyStateGameOver::unload(){
 
 }
 
-void GamEnemyStateGameOver::update(const double deltaTime_){
+void GameStateGameOver::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -52,20 +52,20 @@ void GamEnemyStateGameOver::update(const double deltaTime_){
 
 	if(keyStates[GameKeys::SPACE] || keyStates[GameKeys::LATTACK]){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 		return;
 
 	}
 
 	if(this->passedTime >= this->lifeTime){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 		return;
 
 	}
 }
 
-void GamEnemyStateGameOver::render(){
+void GameStateGameOver::render(){
 
 	if(this->gameOverImage != nullptr){
 

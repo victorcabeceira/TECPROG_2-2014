@@ -96,7 +96,7 @@ void LevelBoss::update(const double deltaTime_){
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		
-		Game::instance().setState(Game::GStates::GAMEOVER);
+		Game::instance().setState(Game::GameStates::GAMEOVER);
 		return;
 	
 	}
@@ -134,7 +134,7 @@ void LevelBoss::update(const double deltaTime_){
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		
-		Game::instance().setState(Game::GStates::VICTORY);
+		Game::instance().setState(Game::GameStates::VICTORY);
 		return;
 	
 	}

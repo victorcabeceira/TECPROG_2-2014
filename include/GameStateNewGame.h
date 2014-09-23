@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GSTATENEWGAME_H
-#define INCLUDE_GSTATENEWGAME_H
+#ifndef INCLUDE_GameStateNEWGAME_H
+#define INCLUDE_GameStateNEWGAME_H
 
 #include "StateGame.h"
 #include "Sprite.h"
@@ -8,7 +8,7 @@
 /**
 * The state for the Continue menu screen.
 */
-class GamEnemyStateNewGame : public StateGame {
+class GameStateNewGame : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GamEnemyStateNewGame : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateNewGame();
+		GameStateNewGame();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateNewGame();
+		virtual ~GameStateNewGame();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GamEnemyStateNewGame : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateNewGame::load
+		* @see GameStateNewGame::load
 		*/
 		virtual void unload();
 
@@ -74,4 +74,4 @@ class GamEnemyStateNewGame : public StateGame {
 		Text* slot3;
 };
 
-#endif // INCLUDE_GSTATEMENU_H
+#endif // INCLUDE_GameStateMENU_H

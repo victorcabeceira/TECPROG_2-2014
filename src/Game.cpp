@@ -4,27 +4,27 @@
 #include <cassert>
 #include "Util.h"
 
-#include "GStateSplash.h"
+#include "GameStateSplash.h"
 #include "LevelOne.h"
 #include "LevelTwo.h"
 #include "LevelThree.h"
 #include "LevelFour.h"
 #include "LevelFive.h"
 #include "LevelBoss.h"
-#include "GamEnemyStateMenu.h"
-#include "GamEnemyStateNewGame.h"
-#include "GamEnemyStateContinue.h"
-#include "GamEnemyStateOptions.h"
-#include "GamEnemyStateCredits.h"
-#include "GamEnemyStateGameOver.h"
-#include "GamEnemyStateTransition.h"
-#include "GamEnemyStateVictory.h"
+#include "GameStateMenu.h"
+#include "GameStateNewGame.h"
+#include "GameStateContinue.h"
+#include "GameStateOptions.h"
+#include "GameStateCredits.h"
+#include "GameStateGameOver.h"
+#include "GameStateTransition.h"
+#include "GameStateVictory.h"
 #include "Sprite.h"
 
 #include "Logger.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
-#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GStates, StateGame*>(stateEnum, new stateClass()))
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GameStates, StateGame*>(stateEnum, new stateClass()))
 
 Game& Game::instance(){
 
@@ -136,7 +136,7 @@ void Game::runGame(){
 
 	this->fadeScreen = new FadeScreen();
 
-	this->currentState = this->statesMap.at(GStates::SPLASH);
+	this->currentState = this->statesMap.at(GameStates::SPLASH);
 	this->currentState->load();
 
 	// Get the first game time.
@@ -227,7 +227,7 @@ void Game::runGame(){
 	}
 }
 
-void Game::setState(const GStates state_){
+void Game::setState(const GameStates state_){
 
 	/// @todo Implement the transition between states.
 	this->currentState->unload();
@@ -241,21 +241,21 @@ void Game::initializEnemyStates(){
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
-	ADD_STATE_INSERT(SPLASH, GStateSplash);
-	ADD_STATE_INSERT(MENU, GamEnemyStateMenu);
-	ADD_STATE_INSERT(NEW_GAME, GamEnemyStateNewGame);
+	ADD_STATE_INSERT(SPLASH, GameStateSplash);
+	ADD_STATE_INSERT(MENU, GameStateMenu);
+	ADD_STATE_INSERT(NEW_GAME, GameStateNewGame);
 	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
 	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
 	ADD_STATE_INSERT(LEVEL_THREE, LevelThree);
 	ADD_STATE_INSERT(LEVEL_FOUR, LevelFour);
 	ADD_STATE_INSERT(LEVEL_FIVE, LevelFive);
 	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
-	ADD_STATE_INSERT(CONTINUE, GamEnemyStateContinue);
-	ADD_STATE_INSERT(OPTIONS, GamEnemyStateOptions);
-	ADD_STATE_INSERT(CREDITS, GamEnemyStateCredits);
-	ADD_STATE_INSERT(GAMEOVER, GamEnemyStateGameOver);
-	ADD_STATE_INSERT(TRANSITION, GamEnemyStateTransition);
-	ADD_STATE_INSERT(VICTORY, GamEnemyStateVictory);
+	ADD_STATE_INSERT(CONTINUE, GameStateContinue);
+	ADD_STATE_INSERT(OPTIONS, GameStateOptions);
+	ADD_STATE_INSERT(CREDITS, GameStateCredits);
+	ADD_STATE_INSERT(GAMEOVER, GameStateGameOver);
+	ADD_STATE_INSERT(TRANSITION, GameStateTransition);
+	ADD_STATE_INSERT(VICTORY, GameStateVictory);
 
 }
 
@@ -373,7 +373,7 @@ void Game::handleSelectorMenu(){
 
 	else if(currentSelection == PSelection::EXIT && keyStates[GameKeys::SPACE] == true){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 		this->isPaused = false;
 
 	}
@@ -381,7 +381,7 @@ void Game::handleSelectorMenu(){
 
 void Game::destroyStates(){
 
-	std::map<GStates, StateGame*>::const_iterator it;
+	std::map<GameStates, StateGame*>::const_iterator it;
 
     for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
 
@@ -440,27 +440,27 @@ void Game::resizeWindow(const unsigned int width_, const unsigned int height_){
 
 bool Game::isPauseable(){
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_ONE))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_ONE))
 
 		return true;
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_TWO))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_TWO))
 
 		return true;
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_THREE))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_THREE))
 
 		return true;
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FOUR))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_FOUR))
 
 		return true;
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FIVE))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_FIVE))
 
 		return true;
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_BOSS))
+	if(this->currentState == this->statesMap.at(Game::GameStates::LEVEL_BOSS))
 
 		return true;
 

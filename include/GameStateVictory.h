@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GSTATEVICTORY_H
-#define INCLUDE_GSTATEVICTORY_H
+#ifndef INCLUDE_GameStateVICTORY_H
+#define INCLUDE_GameStateVICTORY_H
 
 #include "StateGame.h"
 #include "Sprite.h"
@@ -8,19 +8,19 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GamEnemyStateVictory : public StateGame {
+class GameStateVictory : public StateGame {
 
 	public:
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateVictory();
+		GameStateVictory();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateVictory();
+		virtual ~GameStateVictory();
 
 		/**
 		* Loads the level.
@@ -36,7 +36,7 @@ class GamEnemyStateVictory : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateVictory::load
+		* @see GameStateVictory::load
 		*/
 		virtual void unload();
 
@@ -54,4 +54,4 @@ class GamEnemyStateVictory : public StateGame {
 
 };
 
-#endif // INCLUDE_GSTATEVICTORY_H
+#endif // INCLUDE_GameStateVICTORY_H

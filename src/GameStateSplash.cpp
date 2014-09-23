@@ -1,10 +1,10 @@
-#include "GamEnemyStateSplash.h"
+#include "GameStateSplash.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GamEnemyStateSplash::GamEnemyStateSplash() :
+GameStateSplash::GameStateSplash() :
 
 	currentSplash(0),
 	passedTime(0.0),
@@ -19,10 +19,10 @@ GamEnemyStateSplash::GamEnemyStateSplash() :
 	}
 }
 
-GamEnemyStateSplash::~GamEnemyStateSplash(){
+GameStateSplash::~GameStateSplash(){
 }
 
-void GamEnemyStateSplash::load(){
+void GameStateSplash::load(){
 
 	Log(DEBUG) << "Loading splash screens...";
 
@@ -42,7 +42,7 @@ void GamEnemyStateSplash::load(){
 
 }
 
-void GamEnemyStateSplash::unload(){
+void GameStateSplash::unload(){
 
 	Log(DEBUG) << "\tUnloading splash screens...";
 	this->currentSplash = 0;
@@ -50,7 +50,7 @@ void GamEnemyStateSplash::unload(){
 
 }
 
-void GamEnemyStateSplash::update(const double deltaTime_){
+void GameStateSplash::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -67,7 +67,7 @@ void GamEnemyStateSplash::update(const double deltaTime_){
 
 		if(this->currentSplash >= SplashImages::TOTAL_SPLASH_IMAGES - 1){
 
-			Game::instance().setState(Game::GStates::MENU);
+			Game::instance().setState(Game::GameStates::MENU);
 
 		}
 		else{
@@ -85,14 +85,14 @@ void GamEnemyStateSplash::update(const double deltaTime_){
 
 	if(keyStates[GameKeys::SPACE] == true){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 		return;
 
 	}
 
 }
 
-void GamEnemyStateSplash::render(){
+void GameStateSplash::render(){
 
 	if(this->images[this->currentSplash] != nullptr){
 

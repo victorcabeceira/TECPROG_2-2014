@@ -189,9 +189,9 @@ GameSave.h: // Saves the progress on the game.
 		SLOT_3: // The third save file to select.
 		TOTAL: // The total acount of save files.
 
-GStateContinue.h: // The state for the continue menu screen. --> GamEnemyStateContinue.h
-	GStateContinue: // The constructor, initializes all the attributes. --> GamEnemyStateContinue
-	~GStateContinue: // The destructor. --> ~GamEnemyStateContinueDestructor
+GameStateContinue.h: // The state for the continue menu screen. --> GameStateContinue.h
+	GameStateContinue: // The constructor, initializes all the attributes. --> GameStateContinue
+	~GameStateContinue: // The destructor. --> ~GameStateContinueDestructor
 	load: // Loads the level.
 	update: // Updates the objects within the StateGame.
 		deltaTime_: // Delta time. Time elapsed between one frame and the other. --> deltaTime_
@@ -213,9 +213,9 @@ GStateContinue.h: // The state for the continue menu screen. --> GamEnemyStateCo
 		Text* slot2: // Text of slot 2.
 		Text* slot3: // Text of slot 3.
 
-GStateCredits.h: // The state for the initial menu screen. --> GamEnemyStateCredits.h
-	GStateCredits: // The constructor. --> GamEnemyStateCredits
-	~GStateCredits: // The destructor. --> ~GamEnemyStateCredits
+GameStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.h
+	GameStateCredits: // The constructor. --> GameStateCredits
+	~GameStateCredits: // The destructor. --> ~GameStateCredits
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -226,9 +226,9 @@ GStateCredits.h: // The state for the initial menu screen. --> GamEnemyStateCred
 		creditsChangeSpeed: // Change the speed of the image shown on the credits.
 		creditsClip: // The clip shown on the credits.
 
-GStateGameOver.h: // The state for the initial menu screen. --> GamEnemyStateGameOver.h
-	GStateGameOver: // The constructor. --> GamEnemyStateGameOver
-	~GStateGameOver: // The destructor. --> ~GamEnemyStateGameOver
+GameStateGameOver.h: // The state for the initial menu screen. --> GameStateGameOver.h
+	GameStateGameOver: // The constructor. --> GameStateGameOver
+	~GameStateGameOver: // The destructor. --> ~GameStateGameOver
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -238,9 +238,9 @@ GStateGameOver.h: // The state for the initial menu screen. --> GamEnemyStateGam
 		passedTime: // The time already elapsed since the beggining of the menu.
 		lifeTime: // The amount of time the menu will be shown.
 
-GStateMenu.h: // The state for the initial menu screen. --> GamEnemyStateMenu.h
-	GStateMenu: // The constructor. --> GamEnemyStateMenu
-	~GStateMenu: // The destructor. --> ~GamEnemyStateMenu
+GameStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
+	GameStateMenu: // The constructor. --> GameStateMenu
+	~GameStateMenu: // The destructor. --> ~GameStateMenu
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -272,9 +272,9 @@ GStateMenu.h: // The state for the initial menu screen. --> GamEnemyStateMenu.h
 		shwing: // The actual shwing selected.
 		shwingClip: // The Clip shown on shwing.
 
-GStateNewGame.h: // The state for the initial menu screen. --> GamEnemyStateNewGame.h
-	GStateNewGame: // The constructor. --> GamEnemyStateNewGame
-	~GStateNewGame: // The destructor. --> ~GamEnemyStateNewGame
+GameStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.h
+	GameStateNewGame: // The constructor. --> GameStateNewGame
+	~GameStateNewGame: // The destructor. --> ~GameStateNewGame
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -293,9 +293,9 @@ GStateNewGame.h: // The state for the initial menu screen. --> GamEnemyStateNewG
 		selectorXPosition: // The X position of the slot selector.
 		selectorYPosition[Selection::TOTAL]: // The Y position of the slot selector.
 
-GStateOptions.h: // The state for the initial menu screen. --> GamEnemyStateOptions.h
-	GStateOptions: // The constructor. --> GamEnemyStateOptions
-	~GStateOptions: // The destructor. --> ~GamEnemyStateOptions
+GameStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.h
+	GameStateOptions: // The constructor. --> GameStateOptions
+	~GameStateOptions: // The destructor. --> ~GameStateOptions
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -330,9 +330,9 @@ GStateOptions.h: // The state for the initial menu screen. --> GamEnemyStateOpti
 		volumeMusic: // Actual music volume.
 		volumeSFX: // Actual SFX volume.
 
-GStateSplash.h: // The state for the initial menu screen. --> GamEnemyStateSplash.h
-	GStateSplash: // The constructor. --> GamEnemyStateSplash
-	~GStateSplash: // The destructor. --> ~GamEnemyStateSplash
+GameStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
+	GameStateSplash: // The constructor. --> GameStateSplash
+	~GameStateSplash: // The destructor. --> ~GameStateSplash
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -350,9 +350,9 @@ GStateSplash.h: // The state for the initial menu screen. --> GamEnemyStateSplas
 		images[SplashImages::TOTAL_SPLASH_IMAGES]: // Contains all the splash images. 
 		ix: // Current image x position. --> imageIterator
 
-GStateTransition.h: // The state for the initial menu screen. --> GamEnemyStateTransition.h
-	GStateTransition: // The constructor. --> GamEnemyStateTransition
-	~GStateTransition: // The destructor. --> ~GamEnemyStateTransition
+GameStateTransition.h: // The state for the initial menu screen. --> GameStateTransition.h
+	GameStateTransition: // The constructor. --> GameStateTransition
+	~GameStateTransition: // The destructor. --> ~GameStateTransition
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -363,9 +363,9 @@ GStateTransition.h: // The state for the initial menu screen. --> GamEnemyStateT
 		loading: // The loading image that will be shown.
 		point: // The points shown on loading image.
 
-GStateVictory.h: // The state for the initial menu screen. --> GamEnemyStateVictory.h
-	GStateVictory: // The constructor. --> GamEnemyStateVictory
-	~GStateVictory: // The destructor. --> ~GamEnemyStateVictory
+GameStateVictory.h: // The state for the initial menu screen. --> GameStateVictory.h
+	GameStateVictory: // The constructor. --> GameStateVictory
+	~GameStateVictory: // The destructor. --> ~GameStateVictory
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
 		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
@@ -397,12 +397,12 @@ EnemyStateDead
 EnemyStateIdle
 EnemyStatePatrolling
 FPSWrapper
-GStateContinue
-GStateCredits
-GStateGameOver
-GStateMenu
-GStateNewGame
-GStateOptions
-GStateSplash
-GStateTransition
-GStateVictory
+GameStateContinue
+GameStateCredits
+GameStateGameOver
+GameStateMenu
+GameStateNewGame
+GameStateOptions
+GameStateSplash
+GameStateTransition
+GameStateVictory

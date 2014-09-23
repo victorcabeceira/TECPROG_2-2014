@@ -1,10 +1,10 @@
-#include "GamEnemyStateMenu.h"
+#include "GameStateMenu.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GamEnemyStateMenu::GamEnemyStateMenu() :
+GameStateMenu::GameStateMenu() :
 	
 	shouldIgnore(false),
 	menuImage(nullptr),
@@ -28,7 +28,7 @@ GamEnemyStateMenu::GamEnemyStateMenu() :
 {
 }
 
-GamEnemyStateMenu::~GamEnemyStateMenu(){
+GameStateMenu::~GameStateMenu(){
 
 	if(this->shwingAnimation != nullptr){
 
@@ -38,7 +38,7 @@ GamEnemyStateMenu::~GamEnemyStateMenu(){
 	}
 }
 
-void GamEnemyStateMenu::load(){
+void GameStateMenu::load(){
 
 	Log(DEBUG) << "Loading menu...";
 
@@ -64,7 +64,7 @@ void GamEnemyStateMenu::load(){
 
 }
 
-void GamEnemyStateMenu::unload(){
+void GameStateMenu::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	this->attractClip.y = 0;
@@ -72,7 +72,7 @@ void GamEnemyStateMenu::unload(){
 
 }
 
-void GamEnemyStateMenu::update(const double deltaTime_){
+void GameStateMenu::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -97,7 +97,7 @@ void GamEnemyStateMenu::update(const double deltaTime_){
 
 }
 
-void GamEnemyStateMenu::render(){
+void GameStateMenu::render(){
 
 	if(this->passedTime>10){
 	
@@ -145,7 +145,7 @@ void GamEnemyStateMenu::render(){
 
 }
 
-void GamEnemyStateMenu::handleSelectorMenu(){
+void GameStateMenu::handleSelectorMenu(){
 	
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
@@ -222,7 +222,7 @@ void GamEnemyStateMenu::handleSelectorMenu(){
 		
 		}
 
-		Game::instance().setState(Game::GStates::NEW_GAME);
+		Game::instance().setState(Game::GameStates::NEW_GAME);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
 	
@@ -239,7 +239,7 @@ void GamEnemyStateMenu::handleSelectorMenu(){
 	
 		}
 
-		Game::instance().setState(Game::GStates::CONTINUE);
+		Game::instance().setState(Game::GameStates::CONTINUE);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
 	
@@ -256,7 +256,7 @@ void GamEnemyStateMenu::handleSelectorMenu(){
 	
 		}
 
-		Game::instance().setState(Game::GStates::OPTIONS);
+		Game::instance().setState(Game::GameStates::OPTIONS);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
 	}
@@ -272,7 +272,7 @@ void GamEnemyStateMenu::handleSelectorMenu(){
 	
 		}
 
-		Game::instance().setState(Game::GStates::CREDITS);
+		Game::instance().setState(Game::GameStates::CREDITS);
 		this->passedTime = 0.0;
 		this->attractClip.y = 0;
 	

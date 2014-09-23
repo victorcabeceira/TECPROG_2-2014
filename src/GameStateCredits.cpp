@@ -1,11 +1,11 @@
-#include "GamEnemyStateCredits.h"
+#include "GameStateCredits.h"
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Game.h"
 
 #include <string>
 
-GamEnemyStateCredits::GamEnemyStateCredits() :
+GameStateCredits::GameStateCredits() :
 
 	creditsImage(nullptr),
 	creditsHeightSize(600),
@@ -15,22 +15,22 @@ GamEnemyStateCredits::GamEnemyStateCredits() :
 {
 }
 
-GamEnemyStateCredits::~GamEnemyStateCredits(){
+GameStateCredits::~GameStateCredits(){
 }
 
-void GamEnemyStateCredits::update(const double deltaTime_){
+void GameStateCredits::update(const double deltaTime_){
 
 	(void(deltaTime_)); //unused
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	if(keyStates[GameKeys::LATTACK] == true){
 
-		Game::instance().setState(Game::GStates::MENU);
+		Game::instance().setState(Game::GameStates::MENU);
 
 	}
 }
 
-void GamEnemyStateCredits::load(){
+void GameStateCredits::load(){
 
 	Log(DEBUG) << "Loading credits...";
 
@@ -42,7 +42,7 @@ void GamEnemyStateCredits::load(){
 
 }
 
-void GamEnemyStateCredits::unload(){
+void GameStateCredits::unload(){
 
 	Log(DEBUG) << "\tUnloading credits...";
 	this->creditsClip.y = 0;
@@ -50,7 +50,7 @@ void GamEnemyStateCredits::unload(){
 
 }
 
-void GamEnemyStateCredits::render(){
+void GameStateCredits::render(){
 
 	if(this->creditsImage != nullptr){
 

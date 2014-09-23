@@ -149,7 +149,7 @@ void LevelTwo::update(const double deltaTime_){
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		
-		Game::instance().setState(Game::GStates::GAMEOVER);
+		Game::instance().setState(Game::GameStates::GAMEOVER);
 		return;
 	
 	}
@@ -202,8 +202,8 @@ void LevelTwo::update(const double deltaTime_){
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		
-		Game::instance().transitionTo = Game::GStates::LEVEL_THREE;
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_THREE;
+		Game::instance().setState(Game::GameStates::TRANSITION);
 		return;
 	
 	}

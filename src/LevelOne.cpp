@@ -164,7 +164,7 @@ void LevelOne::update(const double deltaTime_){
 		
 		if(ok>3){
 			
-			Game::instance().setState(Game::GStates::GAMEOVER);
+			Game::instance().setState(Game::GameStates::GAMEOVER);
 		
 		}
 		return;
@@ -220,8 +220,8 @@ void LevelOne::update(const double deltaTime_){
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		
-		Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_TWO;
+		Game::instance().setState(Game::GameStates::TRANSITION);
 		return;
 	
 	}

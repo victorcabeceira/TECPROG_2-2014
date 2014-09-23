@@ -8,19 +8,19 @@
 * The state for the initial splash screen.
 * Game state that will contain the initial splash images, before the main menu state is called.
 */
-class GamEnemyStateTransition : public StateGame {
+class GameStateTransition : public StateGame {
 
 	public:
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateTransition();
+		GameStateTransition();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateTransition();
+		virtual ~GameStateTransition();
 
 		/**
 		* Loads the level.
@@ -36,7 +36,7 @@ class GamEnemyStateTransition : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateTransition::load
+		* @see GameStateTransition::load
 		*/
 		virtual void unload();
 

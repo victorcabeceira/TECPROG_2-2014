@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GSTATEOPTIONS_H
-#define INCLUDE_GSTATEOPTIONS_H
+#ifndef INCLUDE_GameStateOPTIONS_H
+#define INCLUDE_GameStateOPTIONS_H
 
 #include "StateGame.h"
 #include "Sprite.h"
@@ -9,7 +9,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GamEnemyStateOptions : public StateGame {
+class GameStateOptions : public StateGame {
 
 	public:
 	
@@ -17,12 +17,12 @@ class GamEnemyStateOptions : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateOptions();
+		GameStateOptions();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateOptions();
+		virtual ~GameStateOptions();
 
 		/**
 		* Loads the level.
@@ -38,7 +38,7 @@ class GamEnemyStateOptions : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateOptions::load
+		* @see GameStateOptions::load
 		*/
 		virtual void unload();
 
@@ -97,4 +97,4 @@ class GamEnemyStateOptions : public StateGame {
 		Text* volumeSFX;
 };
 
-#endif // INCLUDE_GSTATEOPTIONS_H
+#endif // INCLUDE_GameStateOPTIONS_H

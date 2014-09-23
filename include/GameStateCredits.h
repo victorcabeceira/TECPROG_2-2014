@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GSTATECREDITS_H
-#define INCLUDE_GSTATECREDITS_H
+#ifndef INCLUDE_GameStateCREDITS_H
+#define INCLUDE_GameStateCREDITS_H
 
 #include "StateGame.h"
 #include "Sprite.h"
@@ -8,7 +8,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GamEnemyStateCredits : public StateGame {
+class GameStateCredits : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GamEnemyStateCredits : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GamEnemyStateCredits();
+		GameStateCredits();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GamEnemyStateCredits();
+		virtual ~GameStateCredits();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GamEnemyStateCredits : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GamEnemyStateCredits::load
+		* @see GameStateCredits::load
 		*/
 		virtual void unload();
 
@@ -56,4 +56,4 @@ class GamEnemyStateCredits : public StateGame {
 		
 };
 
-#endif // INCLUDE_GSTATECREDITS_H
+#endif // INCLUDE_GameStateCREDITS_H

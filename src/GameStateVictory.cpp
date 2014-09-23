@@ -1,8 +1,8 @@
-#include "GamEnemyStateVictory.h"
+#include "GameStateVictory.h"
 #include "Game.h"
 #include "Logger.h"
 
-GamEnemyStateVictory::GamEnemyStateVictory() :
+GameStateVictory::GameStateVictory() :
 
 	victoryImage(nullptr),
 	passedTime(0.0),
@@ -11,10 +11,10 @@ GamEnemyStateVictory::GamEnemyStateVictory() :
 {
 }
 
-GamEnemyStateVictory::~GamEnemyStateVictory(){
+GameStateVictory::~GameStateVictory(){
 }
 
-void GamEnemyStateVictory::load(){
+void GameStateVictory::load(){
 
 	Log(DEBUG) << "Loading victory...";
 
@@ -27,7 +27,7 @@ void GamEnemyStateVictory::load(){
 
 }
 
-void GamEnemyStateVictory::unload(){
+void GameStateVictory::unload(){
 
 	Log(DEBUG) << "\tUnloading victory...";
 	cleanEntities();
@@ -37,19 +37,19 @@ void GamEnemyStateVictory::unload(){
 
 }
 
-void GamEnemyStateVictory::update(const double deltaTime_){
+void GameStateVictory::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
 	if(this->passedTime >= this->lifeTime){
 
-		Game::instance().setState(Game::GStates::CREDITS);
+		Game::instance().setState(Game::GameStates::CREDITS);
 		return;
 
 	}
 }
 
-void GamEnemyStateVictory::render(){
+void GameStateVictory::render(){
 
 	if(this->victoryImage != nullptr){
 
