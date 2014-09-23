@@ -1,8 +1,8 @@
-#include "GameStateVictory.h"
+#include "GamEnemyStateVictory.h"
 #include "Game.h"
 #include "Logger.h"
 
-GameStateVictory::GameStateVictory() :
+GamEnemyStateVictory::GamEnemyStateVictory() :
 
 	victoryImage(nullptr),
 	passedTime(0.0),
@@ -11,10 +11,10 @@ GameStateVictory::GameStateVictory() :
 {
 }
 
-GameStateVictory::~GameStateVictory(){
+GamEnemyStateVictory::~GamEnemyStateVictory(){
 }
 
-void GameStateVictory::load(){
+void GamEnemyStateVictory::load(){
 
 	Log(DEBUG) << "Loading victory...";
 
@@ -27,7 +27,7 @@ void GameStateVictory::load(){
 
 }
 
-void GameStateVictory::unload(){
+void GamEnemyStateVictory::unload(){
 
 	Log(DEBUG) << "\tUnloading victory...";
 	cleanEntities();
@@ -37,7 +37,7 @@ void GameStateVictory::unload(){
 
 }
 
-void GameStateVictory::update(const double deltaTime_){
+void GamEnemyStateVictory::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -49,7 +49,7 @@ void GameStateVictory::update(const double deltaTime_){
 	}
 }
 
-void GameStateVictory::render(){
+void GamEnemyStateVictory::render(){
 
 	if(this->victoryImage != nullptr){
 

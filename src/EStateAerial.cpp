@@ -1,16 +1,16 @@
-#include "EStateAerial.h"
+#include "EnemyStateAerial.h"
 #include "Logger.h"
 
-void EStateAerial::enter(){
+void EnemyStateAerial::enter(){
 
 	this->enemy->isGrounded = false;
 
 }
 
-void EStateAerial::exit(){
+void EnemyStateAerial::exit(){
 }
 
-void EStateAerial::update(const double deltaTime_){
+void EnemyStateAerial::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 
@@ -19,13 +19,13 @@ void EStateAerial::update(const double deltaTime_){
 
 		if(this->enemy->patrol){
 
-			this->enemy->changeState(Enemy::EStates::PATROLLING);
+			this->enemy->changEnemyState(Enemy::EnemyStates::PATROLLING);
 			return;
 
 		}
 		else{
 
-			this->enemy->changeState(Enemy::EStates::IDLE);
+			this->enemy->changEnemyState(Enemy::EnemyStates::IDLE);
 			return;
 
 		}
@@ -36,7 +36,7 @@ void EStateAerial::update(const double deltaTime_){
 
 }
 
-EStateAerial::EStateAerial(Enemy* const enemy_) :
+EnemyStateAerial::EnemyStateAerial(Enemy* const enemy_) :
 
 	StateEnemy(enemy_)
 

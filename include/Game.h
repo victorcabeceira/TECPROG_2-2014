@@ -120,7 +120,7 @@ class Game {
 		* Loads all the states.
 		* Every new state implemented should be initialized here.
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 
 		/**
 		* Deletes all the loaded states.

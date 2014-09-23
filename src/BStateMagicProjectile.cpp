@@ -52,13 +52,13 @@ void BossStateMagicProjectile::update(const double deltaTime_){
 							   (int)this->boss->powerY, 50, 50})){
 
 			this->boss->player->life--;
-			this->boss->changeState(Boss::BossStates::IDLE);
+			this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 
 	if(projectileTime>3){
 
-		this->boss->changeState(Boss::BossStates::IDLE);
+		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 }

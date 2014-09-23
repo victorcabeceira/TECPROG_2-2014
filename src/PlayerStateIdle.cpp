@@ -30,7 +30,7 @@ void PlayerStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyState
 	// Aerial
 	if(!this->player->isGrounded){
 		
-		this->player->changeState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PStates::AERIAL);
 		return;
 	
 	}
@@ -49,7 +49,7 @@ void PlayerStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyState
 	// Attack
 	if(keyStates_[GameKeys::LATTACK]){
 		
-		this->player->changeState(Player::PStates::ATTACK);
+		this->player->changEnemyState(Player::PStates::ATTACK);
 		return;
 	
 	}
@@ -64,14 +64,14 @@ void PlayerStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyState
 
 	// // Crouch
 	// if(keyStates_[GameKeys::CROUCH]){
-	// 	this->player->changeState(Player::PStates::CROUCHING);
+	// 	this->player->changEnemyState(Player::PStates::CROUCHING);
 	// 	return;
 	// }
 
 	// Move
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
 		
-		this->player->changeState(Player::PStates::MOVING);
+		this->player->changEnemyState(Player::PStates::MOVING);
 		return;
 	
 	}
@@ -79,14 +79,14 @@ void PlayerStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyState
 	// Roll
 	if(keyStates_[GameKeys::ROLL]){
 		
-		this->player->changeState(Player::PStates::ROLLING);
+		this->player->changEnemyState(Player::PStates::ROLLING);
 		return;
 	}
 
 	// Aim
 	if(keyStates_[GameKeys::AIM]){
 		
-		this->player->changeState(Player::PStates::AIMING);
+		this->player->changEnemyState(Player::PStates::AIMING);
 		return;
 	
 	}

@@ -111,9 +111,9 @@ Boss.h // The Boss of the game.
 	~Boss : // The destructor.
 	update : // Updates the player.
 		deltaTime_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
-	initializeStates : // Initializes Boss's States.
+	initializEnemyStates : // Initializes Boss's States.
 	destroyStates : // Destroy Boss's States.
-	changeStates : // Changes the Boss's States. 
+	changEnemyStates : // Changes the Boss's States. 
 		state_ : // State that will replace former state.
 	render : // Renders the player.
 		cameraX_ : // The x position of the camera.
@@ -139,7 +139,7 @@ Camera.h : // The camere of the game. Contains all relevant implementation relat
 	centralizeOn : // Changes the entity to centralize upon.
 		entity_ : // The entity to centralize the camera on.
 	getClip : // Gets the camera clip.
-	setLevelWH : // Sets the level Width and Height. -> Suggested Name : setLevelWidthHeight
+	setlevelWidthH : // Sets the level Width and Height. -> Suggested Name : setlevelWidthidthHeight
 		width_ : // Tells the camera what the width of the level is.
 		height_ : // Tells the camera what the height of the level is.
 	updatePosition : // Updates the camera's position based on player's position.
@@ -211,7 +211,7 @@ DynamicEntity.h : // Subclass of entity. The objects of this class are entities,
 	aim : // Aim the potions.
 		crosshair : // The crosshair of the aim.
 		direction : // The direction of the aim.
-	setLevelWH : // Sets the level width and height.
+	setlevelWidthH : // Sets the level width and height.
 		width_ : // Tells the player what the width of the level is.
 		height_ : // Tells the player what the height of the level is.
 	updatePosition : // Updates the position of the dynamic entity.
@@ -222,18 +222,18 @@ DynamicEntity.h : // Subclass of entity. The objects of this class are entities,
 	getFlip : // 
 	updateBoundingBox : // Updates the bounding box of the entity.
 
-EStateAerial.h : // Enemy State Aerial.
-	EStateAerial : // The constructor.
+EnemyStateAerial.h : // Enemy State Aerial.
+	EnemyStateAerial : // The constructor.
 		enemy_ : // Reference to the enemy.
-	~EStateAerial : // The destructor.
+	~EnemyStateAerial : // The destructor.
 	enter : // @see StateEnemy::enter.
 	exit : // @see StateEnemy::exit.
 	update : // @see StateEnemy::update.
 
-EStateAlert.h : // Enemy State of being Alert.
-	EStateAlert : // The constructor.
+EnemyStateAlert.h : // Enemy State of being Alert.
+	EnemyStateAlert : // The constructor.
 		enemy_ : // Reference to the enemy.
-	~EStateAlert : // The destructor.
+	~EnemyStateAlert : // The destructor.
 	enter : // @see StateEnemy::enter.
 	exit : // @see StateEnemy::exit.
 	update : // @see StateEnemy::update.

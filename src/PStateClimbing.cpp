@@ -74,14 +74,14 @@ void PStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates
 		
 		}
 
-		this->player->changeState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PStates::AERIAL);
 		return;
 	}
 
 	if(!this->player->isClimbing){
 		
 		this->player->vy = -1000;
-		this->player->changeState(Player::PStates::AERIAL);
+		this->player->changEnemyState(Player::PStates::AERIAL);
 		return;
 	
 	}

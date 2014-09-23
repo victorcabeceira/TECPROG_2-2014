@@ -16,7 +16,7 @@ void BossStateShield::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 
-	this->boss->changeState(Boss::BossStates::IDLE);
+	this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 }
 

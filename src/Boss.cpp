@@ -45,7 +45,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 {
 
 	//Creates the Boss
-	initializeStates();
+	initializEnemyStates();
 
 	this->isRight = true;
 	this->speed = 400.0;
@@ -200,7 +200,7 @@ void Boss::render(const double cameraX_, const double cameraY_){
     }
 }
 
-void Boss::initializeStates(){
+void Boss::initializEnemyStates(){
 
 	// Initialize all the states in Boss here.
 	ADD_STATE_INSERT(IDLE,				BossStateIdle);
@@ -224,7 +224,7 @@ void Boss::destroyStates(){
 	}
 }
 
-void Boss::changeState(const BossStates state_){
+void Boss::changEnemyState(const BossStates state_){
 
 	//Changes the States of the Boss
 

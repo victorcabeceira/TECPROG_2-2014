@@ -4,8 +4,8 @@
 Camera::Camera(Entity* const entity_):
 
     entity(entity_),
-    levelW(0),
-    levelH(0),
+    levelWidth(0),
+    levelHeight(0),
     clip{0, 0, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()}
 
 {
@@ -41,9 +41,9 @@ void Camera::updatePosition(){
     }
 
     // Right wall.
-    else if(this->clip.x > (int)this->levelW - this->clip.w){
+    else if(this->clip.x > (int)this->levelWidth - this->clip.w){
 
-        this->clip.x = (int)this->levelW - this->clip.w;
+        this->clip.x = (int)this->levelWidth - this->clip.w;
 
     }
 
@@ -55,9 +55,9 @@ void Camera::updatePosition(){
     }
 
     // Bottom wall.
-    else if(this->clip.y > (int)this->levelH - this->clip.h){
+    else if(this->clip.y > (int)this->levelHeight - this->clip.h){
 
-        this->clip.y = (int)this->levelH - this->clip.h;
+        this->clip.y = (int)this->levelHeight - this->clip.h;
 
     }
 }
@@ -68,9 +68,9 @@ void Camera::centralizeOn(Entity* const entity_){
 
 }
 //This function set the width and the height of the level. 
-void Camera::setLevelWH(const unsigned int width_, const unsigned int height_){
+void Camera::setlevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
-    this->levelW = width_;
-    this->levelH = height_;
+    this->levelWidth = width_;
+    this->levelHeight = height_;
 
 }

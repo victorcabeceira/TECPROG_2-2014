@@ -81,7 +81,7 @@ class DynamicEntity : public Entity {
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
-		virtual void setLevelWidthHeight(const unsigned int width_, const unsigned int height_);
+		virtual void setlevelWidthHeight(const unsigned int width_, const unsigned int height_);
 
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
@@ -125,8 +125,8 @@ class DynamicEntity : public Entity {
 
 		virtual void updateBoundingBox() = 0;
 
-		unsigned int levelW; /**< The width of the level. */
-		unsigned int levelH; /**< The height of the level. */
+		unsigned int levelWidth; /**< The width of the level. */
+		unsigned int levelHeight; /**< The height of the level. */
 
 };
 

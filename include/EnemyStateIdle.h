@@ -1,5 +1,5 @@
-#ifndef INCLUDE_ESTATEIDLE_H
-#define INCLUDE_ESTATEIDLE_H
+#ifndef INCLUDE_EnemyStateIDLE_H
+#define INCLUDE_EnemyStateIDLE_H
 
 #include "StateEnemy.h"
 
@@ -35,4 +35,4 @@ class EnemyStateIdle : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATEIDLE_H
+#endif // INCLUDE_EnemyStateIDLE_H

@@ -29,22 +29,22 @@ void BossStateAttack::update(const double deltaTime_){
 
 	if(attackIndex == 3){
 
-		this->boss->changeState(Boss::BossStates::SHIELD);
+		this->boss->changEnemyState(Boss::BossStates::SHIELD);
 
 	}
 	else if(attackIndex == 0){
 
-		this->boss->changeState(Boss::BossStates::TELEPORT);
+		this->boss->changEnemyState(Boss::BossStates::TELEPORT);
 
 	}
 	else if(attackIndex == 2){
 
-		this->boss->changeState(Boss::BossStates::ICEPRISION);
+		this->boss->changEnemyState(Boss::BossStates::ICEPRISION);
 
 	}
 	else if(attackIndex == 1){
 
-		this->boss->changeState(Boss::BossStates::MAGICPROJECTILE);
+		this->boss->changEnemyState(Boss::BossStates::MAGICPROJECTILE);
 
 	}
 	else{

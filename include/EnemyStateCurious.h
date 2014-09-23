@@ -1,5 +1,5 @@
-#ifndef INCLUDE_ESTATECURIOUS_H
-#define INCLUDE_ESTATECURIOUS_H
+#ifndef INCLUDE_EnemyStateCURIOUS_H
+#define INCLUDE_EnemyStateCURIOUS_H
 
 #include "StateEnemy.h"
 
@@ -38,4 +38,4 @@ class EnemyStateCurious : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATECURIOUS_H
+#endif // INCLUDE_EnemyStateCURIOUS_H

@@ -1,10 +1,10 @@
-#include "GameStateMenu.h"
+#include "GamEnemyStateMenu.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GameStateMenu::GameStateMenu() :
+GamEnemyStateMenu::GamEnemyStateMenu() :
 	
 	shouldIgnore(false),
 	menuImage(nullptr),
@@ -28,7 +28,7 @@ GameStateMenu::GameStateMenu() :
 {
 }
 
-GameStateMenu::~GameStateMenu(){
+GamEnemyStateMenu::~GamEnemyStateMenu(){
 
 	if(this->shwingAnimation != nullptr){
 
@@ -38,7 +38,7 @@ GameStateMenu::~GameStateMenu(){
 	}
 }
 
-void GameStateMenu::load(){
+void GamEnemyStateMenu::load(){
 
 	Log(DEBUG) << "Loading menu...";
 
@@ -64,7 +64,7 @@ void GameStateMenu::load(){
 
 }
 
-void GameStateMenu::unload(){
+void GamEnemyStateMenu::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	this->attractClip.y = 0;
@@ -72,7 +72,7 @@ void GameStateMenu::unload(){
 
 }
 
-void GameStateMenu::update(const double deltaTime_){
+void GamEnemyStateMenu::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -97,7 +97,7 @@ void GameStateMenu::update(const double deltaTime_){
 
 }
 
-void GameStateMenu::render(){
+void GamEnemyStateMenu::render(){
 
 	if(this->passedTime>10){
 	
@@ -145,7 +145,7 @@ void GameStateMenu::render(){
 
 }
 
-void GameStateMenu::handleSelectorMenu(){
+void GamEnemyStateMenu::handleSelectorMenu(){
 	
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

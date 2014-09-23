@@ -1,10 +1,10 @@
-#include "GameStateGameOver.h"
+#include "GamEnemyStateGameOver.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GameStateGameOver::GameStateGameOver() :
+GamEnemyStateGameOver::GamEnemyStateGameOver() :
 
 	gameOverImage(nullptr),
 	passedTime(0.0),
@@ -13,10 +13,10 @@ GameStateGameOver::GameStateGameOver() :
 {
 }
 
-GameStateGameOver::~GameStateGameOver(){
+GamEnemyStateGameOver::~GamEnemyStateGameOver(){
 }
 
-void GameStateGameOver::load(){
+void GamEnemyStateGameOver::load(){
 
 	Log(DEBUG) << "Loading Game Over...";
 
@@ -32,7 +32,7 @@ void GameStateGameOver::load(){
 
 }
 
-void GameStateGameOver::unload(){
+void GamEnemyStateGameOver::unload(){
 
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
@@ -44,7 +44,7 @@ void GameStateGameOver::unload(){
 
 }
 
-void GameStateGameOver::update(const double deltaTime_){
+void GamEnemyStateGameOver::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -65,7 +65,7 @@ void GameStateGameOver::update(const double deltaTime_){
 	}
 }
 
-void GameStateGameOver::render(){
+void GamEnemyStateGameOver::render(){
 
 	if(this->gameOverImage != nullptr){
 

@@ -1,4 +1,4 @@
-#include "GameStateOptions.h"
+#include "GamEnemyStateOptions.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,9 +6,9 @@
 
 #include <string>
 
-const std::string GameStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
+const std::string GamEnemyStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
 
-GameStateOptions::GameStateOptions() :
+GamEnemyStateOptions::GamEnemyStateOptions() :
 
 	elapsedTime(0.0),
 	optionsImage(nullptr),
@@ -33,7 +33,7 @@ GameStateOptions::GameStateOptions() :
 
 }
 
-GameStateOptions::~GameStateOptions(){
+GamEnemyStateOptions::~GamEnemyStateOptions(){
 
 	if(this->resolution != nullptr){
 
@@ -57,7 +57,7 @@ GameStateOptions::~GameStateOptions(){
 	}
 }
 
-void GameStateOptions::update(const double deltaTime_){
+void GamEnemyStateOptions::update(const double deltaTime_){
 
 	this->elapsedTime += deltaTime_;
 
@@ -213,7 +213,7 @@ void GameStateOptions::update(const double deltaTime_){
 	}
 }
 
-void GameStateOptions::render(){
+void GamEnemyStateOptions::render(){
 	
 	if(this->optionsImage != nullptr){
 	
@@ -247,7 +247,7 @@ void GameStateOptions::render(){
 
 }
 
-void GameStateOptions::load(){
+void GamEnemyStateOptions::load(){
 	
 	Log(DEBUG) << "Loading options...";
 
@@ -265,14 +265,14 @@ void GameStateOptions::load(){
 
 }
 
-void GameStateOptions::unload(){
+void GamEnemyStateOptions::unload(){
 
 	Log(DEBUG) << "\tUnloading options...";
 	cleanEntities();
 
 }
 
-void GameStateOptions::applyOptions(){
+void GamEnemyStateOptions::applyOptions(){
 
 	// Apply resolution
 	if(this->currentResolution == R_800_600){

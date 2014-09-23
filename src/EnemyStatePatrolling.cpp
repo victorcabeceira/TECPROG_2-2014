@@ -11,7 +11,7 @@ void EnemyStatePatrolling::enter(){
 	if(enemy->life <= 0){
 
 		enemy->vy = 0;
-		enemy->changeState(Enemy::EStates::DEAD);
+		enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 
 	}
 }
@@ -48,14 +48,14 @@ void EnemyStatePatrolling::update(const double deltaTime_){
 	/// @todo Make the range be only in the direciton the enemy is facing.
 	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
 	
-		this->enemy->changeState(Enemy::EStates::ALERT);
+		this->enemy->changEnemyState(Enemy::EnemyStates::ALERT);
 		return;
 	
 	}
 	
 	else if(abs(this->enemy->x - Enemy::px) < Enemy::curiousRange && abs(this->enemy->y - Enemy::py) < Enemy::curiousRange){
 	
-		this->enemy->changeState(Enemy::EStates::CURIOUS);
+		this->enemy->changEnemyState(Enemy::EnemyStates::CURIOUS);
 		return;
 	
 	}

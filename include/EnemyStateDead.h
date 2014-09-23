@@ -1,5 +1,5 @@
-#ifndef INCLUDE_ESTATEDEAD_H
-#define INCLUDE_ESTATEDEAD_H
+#ifndef INCLUDE_EnemyStateDEAD_H
+#define INCLUDE_EnemyStateDEAD_H
 
 #include "StateEnemy.h"
 
@@ -35,4 +35,4 @@ class EnemyStateDead : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATEDEAD_H
+#endif // INCLUDE_EnemyStateDEAD_H

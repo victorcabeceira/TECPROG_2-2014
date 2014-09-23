@@ -11,7 +11,7 @@ void EnemyStateCurious::enter(){
 	if(enemy->life <= 0){
 
 		enemy->vy = 0;
-		enemy->changeState(Enemy::EStates::DEAD);
+		enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 
 	}
 }
@@ -26,7 +26,7 @@ void EnemyStateCurious::update(const double deltaTime_){
 	// Aerial
 	if(!this->enemy->isGrounded){
 	
-		this->enemy->changeState(Enemy::EStates::AERIAL);
+		this->enemy->changEnemyState(Enemy::EnemyStates::AERIAL);
 		return;
 	
 	}
@@ -45,14 +45,14 @@ void EnemyStateCurious::update(const double deltaTime_){
 	// 
 	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
 	
-		this->enemy->changeState(Enemy::EStates::ALERT);
+		this->enemy->changEnemyState(Enemy::EnemyStates::ALERT);
 		return;
 	
 	}
 
 	if(timeElapsed >= MAX_CURIOUS_TIME){
 	
-		this->enemy->changeState(Enemy::EStates::PATROLLING);
+		this->enemy->changEnemyState(Enemy::EnemyStates::PATROLLING);
 		return;
 	
 	}

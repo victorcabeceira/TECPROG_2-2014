@@ -24,7 +24,7 @@ void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyState
 
 	if(!keyStates_[GameKeys::CROUCH]){
 		
-		this->player->changeState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PStates::IDLE);
 		return;
 	
 	}
@@ -42,14 +42,14 @@ void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyState
 
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
 		
-		this->player->changeState(Player::PStates::MOVINGCROUCH);
+		this->player->changEnemyState(Player::PStates::MOVINGCROUCH);
 		return;
 	
 	}
 
 	if(keyStates_[GameKeys::ROLL]){
 	
-		this->player->changeState(Player::PStates::ROLLING);
+		this->player->changEnemyState(Player::PStates::ROLLING);
 		return;
 	
 	}

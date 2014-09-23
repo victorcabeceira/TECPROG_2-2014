@@ -80,7 +80,7 @@ class Player : public DynamicEntity {
 		* Loads all the states.
 		* Every new state implemented should be initialized here.
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 
 		/**
 		* Deletes all the loaded states.
@@ -94,7 +94,7 @@ class Player : public DynamicEntity {
 		* @see StatePlayer::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		void changeState(const PStates state_);
+		void changEnemyState(const PStates state_);
 
 		/**
 		* @return Whether the player is currently in PStates::state_ or not.

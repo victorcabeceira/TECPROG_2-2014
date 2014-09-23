@@ -8,7 +8,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GameStateGameOver : public StateGame {
+class GamEnemyStateGameOver : public StateGame {
 
 	public:
 	
@@ -16,12 +16,12 @@ class GameStateGameOver : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GameStateGameOver();
+		GamEnemyStateGameOver();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GameStateGameOver();
+		virtual ~GamEnemyStateGameOver();
 
 		/**
 		* Loads the level.
@@ -37,7 +37,7 @@ class GameStateGameOver : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GameStateGameOver::load
+		* @see GamEnemyStateGameOver::load
 		*/
 		virtual void unload();
 

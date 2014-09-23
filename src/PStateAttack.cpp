@@ -26,7 +26,7 @@ void PStateAttack::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
 	if(this->player->getAnimation()->getCurrentFrame() == 14){
 		
-		this->player->changeState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PStates::IDLE);
 	
 	}
 }

@@ -55,7 +55,7 @@ void BossStateIcePrision::update(const double deltaTime_){
 
 	if(prisionTime > 4){
 
-		this->boss->changeState(Boss::BossStates::IDLE);
+		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 }

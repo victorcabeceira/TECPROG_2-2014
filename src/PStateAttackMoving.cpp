@@ -24,7 +24,7 @@ void PStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keySt
 	
 	if(this->player->getAnimation()->getCurrentFrame() == 9){
 		
-		this->player->changeState(Player::PStates::MOVING);
+		this->player->changEnemyState(Player::PStates::MOVING);
 	
 	}
 }

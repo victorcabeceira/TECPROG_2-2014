@@ -12,7 +12,7 @@ void EnemyStateAttack::enter(){
 	if(enemy->life <= 0){
 
 		enemy->vy = 0;
-		enemy->changeState(Enemy::EStates::DEAD);
+		enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 
 	}
 }
@@ -46,7 +46,7 @@ void EnemyStateAttack::update(const double deltaTime_){
 	
 		}
 	
-		this->enemy->changeState(Enemy::EStates::ALERT);
+		this->enemy->changEnemyState(Enemy::EnemyStates::ALERT);
 	
 	}
 }

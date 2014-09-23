@@ -1,8 +1,8 @@
-#include "GameStateTransition.h"
+#include "GamEnemyStateTransition.h"
 #include "Game.h"
 #include "Logger.h"
 
-GameStateTransition::GameStateTransition() :
+GamEnemyStateTransition::GamEnemyStateTransition() :
 
 	passedTime(0.0),
 	lifeTime(0.0),
@@ -12,10 +12,10 @@ GameStateTransition::GameStateTransition() :
 {
 }
 
-GameStateTransition::~GameStateTransition(){
+GamEnemyStateTransition::~GamEnemyStateTransition(){
 }
 
-void GameStateTransition::load(){
+void GamEnemyStateTransition::load(){
 
 	Log(DEBUG) << "Loading transition...";
 
@@ -38,7 +38,7 @@ void GameStateTransition::load(){
 
 }
 
-void GameStateTransition::unload(){
+void GamEnemyStateTransition::unload(){
 
 	Log(DEBUG) << "\tUnloading transition...";
 
@@ -49,7 +49,7 @@ void GameStateTransition::unload(){
 
 }
 
-void GameStateTransition::update(const double deltaTime_){
+void GamEnemyStateTransition::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -61,7 +61,7 @@ void GameStateTransition::update(const double deltaTime_){
 
 }
 
-void GameStateTransition::render(){
+void GamEnemyStateTransition::render(){
 
 	this->loading->render(0, 0, nullptr, true);
 

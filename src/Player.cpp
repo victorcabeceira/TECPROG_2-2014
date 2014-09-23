@@ -41,7 +41,7 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     animation(nullptr),
     currentState(nullptr)
 {
-    initializeStates();
+    initializEnemyStates();
 
     LuaScript luaPlayer("lua/Player.lua");
     this->width = luaPlayer.unlua_get<int>("player.dimensions.width");
@@ -127,7 +127,7 @@ void Player::update(const double deltaTime_){
 
     if(this->isClimbing && !isCurrentState(PStates::CLIMBING)){
 	
-        changeState(PStates::CLIMBING);
+        changEnemyState(PStates::CLIMBING);
 		
     }
 
@@ -153,7 +153,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
             this->vy = 0.0;
             if(!isCurrentState(PStates::DEAD)){
 			
-                changeState(PStates::IDLE);
+                changEnemyState(PStates::IDLE);
 				
             }
         }
@@ -162,7 +162,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)
             && !isCurrentState(PStates::CLIMBING) && !isCurrentState(PStates::DEAD)){
 			
-            changeState(PStates::AERIAL);
+            changEnemyState(PStates::AERIAL);
 			
         }
     }
@@ -252,7 +252,7 @@ void Player::addPotions(const unsigned int quantity_){
     }
 }
 
-void Player::initializeStates(){
+void Player::initializEnemyStates(){
     // Initialize all the states in Player here.
     ADD_STATE_INSERT(IDLE,         PlayerStateIdle);
     ADD_STATE_INSERT(MOVING,       PlayerStateMoving);
@@ -279,7 +279,7 @@ void Player::destroyStates(){
     }
 }
 
-void Player::changeState(const PStates state_){
+void Player::changEnemyState(const PStates state_){
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();

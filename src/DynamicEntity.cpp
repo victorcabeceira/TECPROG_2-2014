@@ -19,8 +19,8 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
     distance(0),
     flightTime(0.0),
     isClimbing(false),
-    levelW(0),
-	levelH(0)
+    levelWidth(0),
+	levelHeight(0)
 
 {
 }
@@ -28,10 +28,10 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
 DynamicEntity::~DynamicEntity(){
 }
 
-void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int height_){
+void DynamicEntity::setlevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
-	this->levelW = width_;
-	this->levelH = height_;
+	this->levelWidth = width_;
+	this->levelHeight = height_;
 
 }
 

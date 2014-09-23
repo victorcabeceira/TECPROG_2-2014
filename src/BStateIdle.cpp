@@ -39,7 +39,7 @@ void BossStateIdle::update(const double deltaTime_){
 
 	if(this->boss->sawPlayer){
 
-		this->boss->changeState(Boss::BossStates::ATTACK);
+		this->boss->changEnemyState(Boss::BossStates::ATTACK);
 
 	}
 

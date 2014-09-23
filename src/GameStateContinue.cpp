@@ -1,10 +1,10 @@
-#include "GameStateContinue.h"
+#include "GamEnemyStateContinue.h"
 #include "LuaScript.h"
 #include "Game.h"
 #include "Util.h"
 #include <string>
 
-GameStateContinue::GameStateContinue() :
+GamEnemyStateContinue::GamEnemyStateContinue() :
 
 	background(nullptr),
 	selector(nullptr),
@@ -21,7 +21,7 @@ GameStateContinue::GameStateContinue() :
 
 }
 
-GameStateContinue::~GameStateContinue(){
+GamEnemyStateContinue::~GamEnemyStateContinue(){
 
 	if(this->slot1 != nullptr){
 
@@ -45,7 +45,7 @@ GameStateContinue::~GameStateContinue(){
 	}
 }
 
-void GameStateContinue::load(){
+void GamEnemyStateContinue::load(){
 	
 	Log(DEBUG) << "Loading Continue Screen...";
 	
@@ -131,14 +131,14 @@ void GameStateContinue::load(){
 
 }
 
-void GameStateContinue::unload(){
+void GamEnemyStateContinue::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
 
-void GameStateContinue::update(const double deltaTime_){
+void GamEnemyStateContinue::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -154,7 +154,7 @@ void GameStateContinue::update(const double deltaTime_){
 
 }
 
-void GameStateContinue::render(){
+void GamEnemyStateContinue::render(){
 
 	if(this->background != nullptr){
 
@@ -172,7 +172,7 @@ void GameStateContinue::render(){
 	}
 }
 
-void GameStateContinue::handleSelectorMenu(){
+void GamEnemyStateContinue::handleSelectorMenu(){
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

@@ -9,7 +9,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the main menu.
 */
-class GameStateMenu : public StateGame {
+class GamEnemyStateMenu : public StateGame {
 
 	public:
 	
@@ -17,12 +17,12 @@ class GameStateMenu : public StateGame {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GameStateMenu();
+		GamEnemyStateMenu();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GameStateMenu();
+		virtual ~GamEnemyStateMenu();
 
 		/**
 		* Loads the level.
@@ -38,7 +38,7 @@ class GameStateMenu : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see GameStateMenu::load
+		* @see GamEnemyStateMenu::load
 		*/
 		virtual void unload();
 

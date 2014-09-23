@@ -46,7 +46,7 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
 	if(!keyStates_[GameKeys::AIM]){
 
-		this->player->changeState(Player::PStates::IDLE);
+		this->player->changEnemyState(Player::PStates::IDLE);
 		return;
 
 	}

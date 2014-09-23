@@ -102,7 +102,7 @@ void LevelOne::load(){
 			
 			}
 		}
-		enemy->setLevelWH(this->width, this->height);
+		enemy->setlevelWidthH(this->width, this->height);
 		this->enemies.push_back(enemy);
 	}
 
@@ -159,7 +159,7 @@ void LevelOne::update(const double deltaTime_){
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		
-		this->player->changeState(Player::PStates::DEAD);
+		this->player->changEnemyState(Player::PStates::DEAD);
 		ok+= deltaTime_;
 		
 		if(ok>3){
@@ -201,7 +201,7 @@ void LevelOne::update(const double deltaTime_){
 			
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -245,7 +245,7 @@ void LevelOne::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 			}
@@ -271,7 +271,7 @@ void LevelOne::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 		}

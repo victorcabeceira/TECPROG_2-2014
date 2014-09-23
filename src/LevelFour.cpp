@@ -95,7 +95,7 @@ void LevelFour::load(){
 			
 			}
 		}
-		enemy->setLevelWH(this->width, this->height);
+		enemy->setlevelWidthH(this->width, this->height);
 		this->enemies.push_back(enemy);
 	}
 
@@ -197,7 +197,7 @@ void LevelFour::update(const double deltaTime_){
 		if(this->player->isVulnerable){
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -241,7 +241,7 @@ void LevelFour::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				}
 			}
 		}
@@ -266,7 +266,7 @@ void LevelFour::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 		}

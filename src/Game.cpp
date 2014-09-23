@@ -11,14 +11,14 @@
 #include "LevelFour.h"
 #include "LevelFive.h"
 #include "LevelBoss.h"
-#include "GameStateMenu.h"
-#include "GameStateNewGame.h"
-#include "GameStateContinue.h"
-#include "GameStateOptions.h"
-#include "GameStateCredits.h"
-#include "GameStateGameOver.h"
-#include "GameStateTransition.h"
-#include "GameStateVictory.h"
+#include "GamEnemyStateMenu.h"
+#include "GamEnemyStateNewGame.h"
+#include "GamEnemyStateContinue.h"
+#include "GamEnemyStateOptions.h"
+#include "GamEnemyStateCredits.h"
+#include "GamEnemyStateGameOver.h"
+#include "GamEnemyStateTransition.h"
+#include "GamEnemyStateVictory.h"
 #include "Sprite.h"
 
 #include "Logger.h"
@@ -64,7 +64,7 @@ Game::Game() :
 
 	assert(this->window != nullptr && "The window should not be null!");
 
-	initializeStates();
+	initializEnemyStates();
 
 	std::string path = "res/images/Dialog/dialog";
 	std::string extension = ".png";	
@@ -236,26 +236,26 @@ void Game::setState(const GStates state_){
 
 }
 
-void Game::initializeStates(){
+void Game::initializEnemyStates(){
 
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
 	ADD_STATE_INSERT(SPLASH, GStateSplash);
-	ADD_STATE_INSERT(MENU, GameStateMenu);
-	ADD_STATE_INSERT(NEW_GAME, GameStateNewGame);
+	ADD_STATE_INSERT(MENU, GamEnemyStateMenu);
+	ADD_STATE_INSERT(NEW_GAME, GamEnemyStateNewGame);
 	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
 	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
 	ADD_STATE_INSERT(LEVEL_THREE, LevelThree);
 	ADD_STATE_INSERT(LEVEL_FOUR, LevelFour);
 	ADD_STATE_INSERT(LEVEL_FIVE, LevelFive);
 	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
-	ADD_STATE_INSERT(CONTINUE, GameStateContinue);
-	ADD_STATE_INSERT(OPTIONS, GameStateOptions);
-	ADD_STATE_INSERT(CREDITS, GameStateCredits);
-	ADD_STATE_INSERT(GAMEOVER, GameStateGameOver);
-	ADD_STATE_INSERT(TRANSITION, GameStateTransition);
-	ADD_STATE_INSERT(VICTORY, GameStateVictory);
+	ADD_STATE_INSERT(CONTINUE, GamEnemyStateContinue);
+	ADD_STATE_INSERT(OPTIONS, GamEnemyStateOptions);
+	ADD_STATE_INSERT(CREDITS, GamEnemyStateCredits);
+	ADD_STATE_INSERT(GAMEOVER, GamEnemyStateGameOver);
+	ADD_STATE_INSERT(TRANSITION, GamEnemyStateTransition);
+	ADD_STATE_INSERT(VICTORY, GamEnemyStateVictory);
 
 }
 

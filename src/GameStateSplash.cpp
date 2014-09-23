@@ -1,10 +1,10 @@
-#include "GameStateSplash.h"
+#include "GamEnemyStateSplash.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
-GameStateSplash::GameStateSplash() :
+GamEnemyStateSplash::GamEnemyStateSplash() :
 
 	currentSplash(0),
 	passedTime(0.0),
@@ -19,10 +19,10 @@ GameStateSplash::GameStateSplash() :
 	}
 }
 
-GameStateSplash::~GameStateSplash(){
+GamEnemyStateSplash::~GamEnemyStateSplash(){
 }
 
-void GameStateSplash::load(){
+void GamEnemyStateSplash::load(){
 
 	Log(DEBUG) << "Loading splash screens...";
 
@@ -42,7 +42,7 @@ void GameStateSplash::load(){
 
 }
 
-void GameStateSplash::unload(){
+void GamEnemyStateSplash::unload(){
 
 	Log(DEBUG) << "\tUnloading splash screens...";
 	this->currentSplash = 0;
@@ -50,7 +50,7 @@ void GameStateSplash::unload(){
 
 }
 
-void GameStateSplash::update(const double deltaTime_){
+void GamEnemyStateSplash::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -92,7 +92,7 @@ void GameStateSplash::update(const double deltaTime_){
 
 }
 
-void GameStateSplash::render(){
+void GamEnemyStateSplash::render(){
 
 	if(this->images[this->currentSplash] != nullptr){
 

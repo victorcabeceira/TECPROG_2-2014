@@ -46,7 +46,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Initializes the Boss's States
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 
 		/**
 		* Destroys the Boss's States
@@ -56,7 +56,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Changes the Boss's States
 		*/
-		void changeState(const BossStates state_);
+		void changEnemyState(const BossStates state_);
 
 		/**
 		* Renders the player.

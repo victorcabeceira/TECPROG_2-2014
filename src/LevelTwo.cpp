@@ -90,7 +90,7 @@ void LevelTwo::load(){
 				enemy->setDead(true);
 			}
 		}
-		enemy->setLevelWH(this->width, this->height);
+		enemy->setlevelWidthH(this->width, this->height);
 		this->enemies.push_back(enemy);
 	}
 
@@ -184,7 +184,7 @@ void LevelTwo::update(const double deltaTime_){
 			
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -227,7 +227,7 @@ void LevelTwo::update(const double deltaTime_){
 					// Log(DEBUG) << "Enemy Life = " << enemy->life;
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 			}
@@ -251,7 +251,7 @@ void LevelTwo::update(const double deltaTime_){
 					// Log(DEBUG) << "Enemy Life = " << enemy->life;
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 		}

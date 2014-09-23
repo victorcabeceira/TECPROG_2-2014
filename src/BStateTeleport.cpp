@@ -157,7 +157,7 @@ void BossStateTeleport::update(const double deltaTime_){
 
 	else if(tptime > 5){
 
-		this->boss->changeState(Boss::BossStates::IDLE);
+		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 }

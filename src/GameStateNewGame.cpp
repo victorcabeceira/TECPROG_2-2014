@@ -1,4 +1,4 @@
-#include "GameStateNewGame.h"
+#include "GamEnemyStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
 
@@ -6,7 +6,7 @@
 
 #include <string>
 
-GameStateNewGame::GameStateNewGame() :
+GamEnemyStateNewGame::GamEnemyStateNewGame() :
 
 	background(nullptr),
 	selector(nullptr),
@@ -23,7 +23,7 @@ GameStateNewGame::GameStateNewGame() :
 
 }
 
-GameStateNewGame::~GameStateNewGame(){
+GamEnemyStateNewGame::~GamEnemyStateNewGame(){
 
 	if(this->slot1 != nullptr){
 		
@@ -47,7 +47,7 @@ GameStateNewGame::~GameStateNewGame(){
 	}
 }
 
-void GameStateNewGame::load(){
+void GamEnemyStateNewGame::load(){
 	
 	Log(DEBUG) << "Loading Choose Slot Screen...";
 
@@ -134,14 +134,14 @@ void GameStateNewGame::load(){
 
 }
 
-void GameStateNewGame::unload(){
+void GamEnemyStateNewGame::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
 
-void GameStateNewGame::update(const double deltaTime_){
+void GamEnemyStateNewGame::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
 
@@ -155,7 +155,7 @@ void GameStateNewGame::update(const double deltaTime_){
 	}
 }
 
-void GameStateNewGame::render(){
+void GamEnemyStateNewGame::render(){
 
 	if(this->background != nullptr){
 	
@@ -175,7 +175,7 @@ void GameStateNewGame::render(){
 	}
 }
 
-void GameStateNewGame::handleSelectorMenu(){
+void GamEnemyStateNewGame::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;

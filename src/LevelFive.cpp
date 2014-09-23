@@ -97,7 +97,7 @@ void LevelFive::load(){
 			}
 		}
 		
-		enemy->setLevelWH(this->width, this->height);
+		enemy->setlevelWidthH(this->width, this->height);
 	}
 
 	// Documents
@@ -198,7 +198,7 @@ void LevelFive::update(const double deltaTime_){
 			
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -242,7 +242,7 @@ void LevelFive::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 			}
@@ -268,7 +268,7 @@ void LevelFive::update(const double deltaTime_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				}
 		}
 	}
