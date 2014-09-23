@@ -68,7 +68,7 @@ void Camera::centralizeOn(Entity* const entity_){
 
 }
 //This function set the width and the height of the level. 
-void Camera::setlevelWidthHeight(const unsigned int width_, const unsigned int height_){
+void Camera::setLevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
     this->levelWidth = width_;
     this->levelHeight = height_;

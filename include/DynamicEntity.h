@@ -81,7 +81,7 @@ class DynamicEntity : public Entity {
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
-		virtual void setlevelWidthHeight(const unsigned int width_, const unsigned int height_);
+		virtual void setLevelWidthHeight(const unsigned int width_, const unsigned int height_);
 
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */

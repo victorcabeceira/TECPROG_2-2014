@@ -28,7 +28,7 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
 DynamicEntity::~DynamicEntity(){
 }
 
-void DynamicEntity::setlevelWidthHeight(const unsigned int width_, const unsigned int height_){
+void DynamicEntity::setLevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
 	this->levelWidth = width_;
 	this->levelHeight = height_;

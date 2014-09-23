@@ -102,7 +102,7 @@ void LevelOne::load(){
 			
 			}
 		}
-		enemy->setlevelWidthH(this->width, this->height);
+		enemy->setLevelWidthHeight(this->width, this->height);
 		this->enemies.push_back(enemy);
 	}
 

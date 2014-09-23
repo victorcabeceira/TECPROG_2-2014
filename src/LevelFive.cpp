@@ -97,7 +97,7 @@ void LevelFive::load(){
 			}
 		}
 		
-		enemy->setlevelWidthH(this->width, this->height);
+		enemy->setLevelWidthHeight(this->width, this->height);
 	}
 
 	// Documents
