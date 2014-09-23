@@ -15,7 +15,7 @@ class Boss : public DynamicEntity {
 
 	public:
 
-		enum BStates : uint8_t {
+		enum BossStates : uint8_t {
 			IDLE = 0,
 			ATTACK,
 			SHIELD,
@@ -56,7 +56,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Changes the Boss's States
 		*/
-		void changeState(const BStates state_);
+		void changeState(const BossStates state_);
 
 		/**
 		* Renders the player.
@@ -163,7 +163,7 @@ class Boss : public DynamicEntity {
 		
 		StateBoss* currentState;
 		Animation* animation;
-		std::map<BStates, StateBoss*> statesMap;
+		std::map<BossStates, StateBoss*> statesMap;
 		bool dead;
 
 };

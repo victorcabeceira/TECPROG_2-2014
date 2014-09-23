@@ -102,7 +102,7 @@ void AudioHandler::playEffect(const int times_){
 
 	this->currentEffects.back().channel = playedChannel;
 
-	Mix_ChannelFinished(AudioHandler::channelDone);
+	Mix_ChannelFinished(AudioHandler::notifyChannelDone);
 
 }
 
@@ -142,7 +142,7 @@ void AudioHandler::clearChannel(const int channel_){
 	}
 }
 
-void AudioHandler::channelDone(int channel_){
+void AudioHandler::notifyChannelDone(int channel_){
 	// Log(DEBUG) << "Channel [" << channel_ << "] done. (CALLBACK)";
 
 	Game::instance().getAudioHandler().clearChannel(channel_);

@@ -1,4 +1,4 @@
-#include "BStateMagicProjectile.h"
+#include "BossStateMagicProjectile.h"
 #include "Logger.h"
 #include "Sprite.h"
 #include "Game.h"
@@ -10,7 +10,7 @@ double mpX = 0;
 double mpY = 0;
 double hypotenuse = 0;
 
-void BStateMagicProjectile::enter(){
+void BossStateMagicProjectile::enter(){
 
 	// Log(DEBUG) << "STATE MAGIC PROJECTILE BOSS";
 	this->boss->power = Game::instance().getResources().get("res/images/projectile.png");
@@ -30,7 +30,7 @@ void BStateMagicProjectile::enter(){
 
 }
 
-void BStateMagicProjectile::exit(){
+void BossStateMagicProjectile::exit(){
 
 	this->boss->powerIsActivated = false;
 	projectileTime = 0.0;
@@ -41,7 +41,7 @@ void BStateMagicProjectile::exit(){
 
 }
 
-void BStateMagicProjectile::update(const double deltaTime_){
+void BossStateMagicProjectile::update(const double deltaTime_){
 
 	projectileTime += deltaTime_;
 	this->boss->powerX += mpX * 15;
@@ -52,18 +52,18 @@ void BStateMagicProjectile::update(const double deltaTime_){
 							   (int)this->boss->powerY, 50, 50})){
 
 			this->boss->player->life--;
-			this->boss->changeState(Boss::BStates::IDLE);
+			this->boss->changeState(Boss::BossStates::IDLE);
 
 	}
 
 	if(projectileTime>3){
 
-		this->boss->changeState(Boss::BStates::IDLE);
+		this->boss->changeState(Boss::BossStates::IDLE);
 
 	}
 }
 
-BStateMagicProjectile::BStateMagicProjectile(Boss* const boss_) :
+BossStateMagicProjectile::BossStateMagicProjectile(Boss* const boss_) :
 
 	StateBoss(boss_)
 

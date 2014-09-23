@@ -54,50 +54,50 @@ AudioHandler.h: // Class that handles all the audio in the game. Is a singleton,
 	-> Suggested Name: notifiesChannelDone
 		channel_ : // The channel to be checked.
 
-BStateAttack.h // Boss's State of Attack -> Suggested Name: BossStateAttack
-	BStateAttack : // The constructor.
+BossStateAttack.h // Boss's State of Attack -> Suggested Name: BossStateAttack
+	BossStateAttack : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateAttack : // The destructor.
+	~BossStateAttack : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateIcePrision.h // Boss's State of the attack Ice Prision -> Suggested Name: BossStateIcePrision
-	BStateIcePrision : // The constructor.
+BossStateIcePrision.h // Boss's State of the attack Ice Prision -> Suggested Name: BossStateIcePrision
+	BossStateIcePrision : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateIcePrision : // The destructor.
+	~BossStateIcePrision : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateIdle.h // Boss's State of being Idle -> Suggested Name: BossStateIdle
-	BStateIdle : // The constructor.
+BossStateIdle.h // Boss's State of being Idle -> Suggested Name: BossStateIdle
+	BossStateIdle : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateIdle : // The destructor.
+	~BossStateIdle : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Suggested Name: BossStateMagicProjectile
-	BStateMagicProjectile : // The constructor.
+BossStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Suggested Name: BossStateMagicProjectile
+	BossStateMagicProjectile : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateMagicProjectile : // The destructor.
+	~BossStateMagicProjectile : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
-	BStateShield : // The constructor.
+BossStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
+	BossStateShield : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateShield : // The destructor.
+	~BossStateShield : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossStateTeleport
-	BStateTeleport : // The constructor.
+BossStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossStateTeleport
+	BossStateTeleport : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateTeleport : // The destructor.
+	~BossStateTeleport : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.

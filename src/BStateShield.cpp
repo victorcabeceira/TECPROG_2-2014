@@ -1,7 +1,7 @@
-#include "BStateShield.h"
+#include "BossStateShield.h"
 #include "Logger.h"
 
-void BStateShield::enter(){
+void BossStateShield::enter(){
 
 	Log(DEBUG) << "STATE SHIELD BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
@@ -9,18 +9,18 @@ void BStateShield::enter(){
 
 }
 
-void BStateShield::exit(){
+void BossStateShield::exit(){
 }
 
-void BStateShield::update(const double deltaTime_){
+void BossStateShield::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 
-	this->boss->changeState(Boss::BStates::IDLE);
+	this->boss->changeState(Boss::BossStates::IDLE);
 
 }
 
-BStateShield::BStateShield(Boss* const boss_) :
+BossStateShield::BossStateShield(Boss* const boss_) :
 
 	StateBoss(boss_)
 

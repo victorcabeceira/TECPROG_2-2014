@@ -1,4 +1,4 @@
-#include "BStateAttack.h"
+#include "BossStateAttack.h"
 #include "Logger.h"
 #include "Game.h"
 
@@ -7,7 +7,7 @@
 
 int attackIndex = 0;
 
-void BStateAttack::enter(){
+void BossStateAttack::enter(){
 
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
@@ -16,42 +16,42 @@ void BStateAttack::enter(){
 
 }
 
-void BStateAttack::exit(){
+void BossStateAttack::exit(){
 
 	this->boss->canWalk = false;
 
 }
 
 //Update eh state of boss skills
-void BStateAttack::update(const double deltaTime_){
+void BossStateAttack::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 
 	if(attackIndex == 3){
 
-		this->boss->changeState(Boss::BStates::SHIELD);
+		this->boss->changeState(Boss::BossStates::SHIELD);
 
 	}
 	else if(attackIndex == 0){
 
-		this->boss->changeState(Boss::BStates::TELEPORT);
+		this->boss->changeState(Boss::BossStates::TELEPORT);
 
 	}
 	else if(attackIndex == 2){
 
-		this->boss->changeState(Boss::BStates::ICEPRISION);
+		this->boss->changeState(Boss::BossStates::ICEPRISION);
 
 	}
 	else if(attackIndex == 1){
 
-		this->boss->changeState(Boss::BStates::MAGICPROJECTILE);
+		this->boss->changeState(Boss::BossStates::MAGICPROJECTILE);
 
 	}
 	else{
 	}
 }
 
-BStateAttack::BStateAttack(Boss* const boss_) :
+BossStateAttack::BossStateAttack(Boss* const boss_) :
 
 	StateBoss(boss_)
 
