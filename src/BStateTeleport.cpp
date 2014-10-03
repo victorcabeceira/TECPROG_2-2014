@@ -1,4 +1,4 @@
-#include "BStateTeleport.h"
+#include "BossStateTeleport.h"
 #include "Game.h"
 #include "Collision.h"
 #include "Logger.h"
@@ -12,7 +12,7 @@ int offset = 33;
 bool right;
 int direction = 0;
 
-void BStateTeleport::enter(){
+void BossStateTeleport::enter(){
 
 	// Log(DEBUG) << "STATE TELEPORT BOSS";
 	this->boss->power = Game::instance().getResources().get("res/images/laser_sheet.png");
@@ -22,7 +22,7 @@ void BStateTeleport::enter(){
 
 }
 
-void BStateTeleport::exit(){
+void BossStateTeleport::exit(){
 
 	this->boss->powerIsActivated = false;
 	this->boss->player->isVulnerable = true;
@@ -33,9 +33,9 @@ void BStateTeleport::exit(){
 
 }
 
-void BStateTeleport::update(const double dt_){
+void BossStateTeleport::update(const double deltaTime_){
 
-	tptime += dt_;
+	tptime += deltaTime_;
 	
 	if(tptime < 3){
 
@@ -157,12 +157,12 @@ void BStateTeleport::update(const double dt_){
 
 	else if(tptime > 5){
 
-		this->boss->changeState(Boss::BStates::IDLE);
+		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 }
 
-BStateTeleport::BStateTeleport(Boss* const boss_) :
+BossStateTeleport::BossStateTeleport(Boss* const boss_) :
 
 	StateBoss(boss_)
 

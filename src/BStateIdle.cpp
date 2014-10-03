@@ -1,19 +1,19 @@
-#include "BStateIdle.h"
+#include "BossStateIdle.h"
 #include "Logger.h"
 
-void BStateIdle::enter(){
+void BossStateIdle::enter(){
 
 	Log(DEBUG) << "STATE IDLE BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 
 }
 
-void BStateIdle::exit(){
+void BossStateIdle::exit(){
 }
 
-void BStateIdle::update(const double dt_){
+void BossStateIdle::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 
 	if(this->boss->isRight && this->boss->x > 1960){
 
@@ -39,13 +39,13 @@ void BStateIdle::update(const double dt_){
 
 	if(this->boss->sawPlayer){
 
-		this->boss->changeState(Boss::BStates::ATTACK);
+		this->boss->changEnemyState(Boss::BossStates::ATTACK);
 
 	}
 
 }
 
-BStateIdle::BStateIdle(Boss* const boss_) :
+BossStateIdle::BossStateIdle(Boss* const boss_) :
 
 	StateBoss(boss_)
 	

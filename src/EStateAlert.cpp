@@ -1,7 +1,7 @@
-#include "EStateAlert.h"
+#include "EnemyStateAlert.h"
 #include "Logger.h"
 
-void EStateAlert::enter(){
+void EnemyStateAlert::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 0.9);
 	this->enemy->speed = 6.5;
@@ -9,22 +9,22 @@ void EStateAlert::enter(){
 	if(enemy->life <= 0){
 
 		enemy->vy = 0;
-		enemy->changeState(Enemy::EStates::DEAD);
+		enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 
 	}
 }
 
-void EStateAlert::exit(){
+void EnemyStateAlert::exit(){
 }
 
-void EStateAlert::update(const double dt_){
+void EnemyStateAlert::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 	
 	// Aerial
 	if(!this->enemy->isGrounded){
 
-		this->enemy->changeState(Enemy::EStates::AERIAL);
+		this->enemy->changEnemyState(Enemy::EnemyStates::AERIAL);
 		return;
 
 	}
@@ -44,20 +44,20 @@ void EStateAlert::update(const double dt_){
 
 		if(abs(this->enemy->y - Enemy::py) < 200){
 
-			this->enemy->changeState(Enemy::EStates::ATTACK);
+			this->enemy->changEnemyState(Enemy::EnemyStates::ATTACK);
 
 		}
 	}
 
 	if(!(abs(this->enemy->x - Enemy::px) < Enemy::alertRange*2 && abs(this->enemy->y - Enemy::py) < Enemy::alertRange)){
 
-		this->enemy->changeState(Enemy::EStates::PATROLLING);
+		this->enemy->changEnemyState(Enemy::EnemyStates::PATROLLING);
 		return;
 	
 	}	
 }
 
-EStateAlert::EStateAlert(Enemy* const enemy_) :
+EnemyStateAlert::EnemyStateAlert(Enemy* const enemy_) :
 
 	StateEnemy(enemy_)
 {

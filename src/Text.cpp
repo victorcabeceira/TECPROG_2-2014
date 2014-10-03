@@ -143,8 +143,8 @@ void Text::changeText(const char* text_){
 }
 
 // Update.
-void Text::update(const double dt_){
-	(void(dt_)); //unused
+void Text::update(const double deltaTime_){
+	(void(deltaTime_)); //unused
 }
 
 // Render the text on the screen.

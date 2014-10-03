@@ -2,50 +2,50 @@ Class:
 	Methods:
 		Attributes:
 		--> SuggestedName
-EStateAttack.h: // Class in control of the enemy when attacking. --> EnemyStateAttack.h
-	EStateAttack: // The constructor. Reference to the enemy. --> EnemyStateAttack
+EnemyStateAttack.h: // Class in control of the enemy when attacking. --> EnemyStateAttack.h
+	EnemyStateAttack: // The constructor. Reference to the enemy. --> EnemyStateAttack
 		enemy_: // The actual enemy.
-	~EStateAttack: // The destructor.--> ~EnemyStateAttack
+	~EnemyStateAttack: // The destructor.--> ~EnemyStateAttack
 	enter: // The enemy enter on attack state.
 	exit: // The enemy exit of attack state.
 	update: // Update the state of the Enemy.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStateCurious.h: // Class in control of the enemy when curious. --> EnemyStateCurious.h
-	EStateCurious: //The constructor. Reference to the enemy. --> EnemyStateCurious
+EnemyStateCurious.h: // Class in control of the enemy when curious. --> EnemyStateCurious.h
+	EnemyStateCurious: //The constructor. Reference to the enemy. --> EnemyStateCurious
 		enemy_: // The actual enemy.
-	~EStateCurious: // The destructor. --> ~EnemyStateCurious
+	~EnemyStateCurious: // The destructor. --> ~EnemyStateCurious
 	enter: // The enemy enter on curious state.
 	exit: // The enemy exit of curious state.
 	update: // Update the state of the Enemy.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
 		timeElapsed: // The amount of time that the enemy spent on the state.
 
-EStateDead.h: // Class in control of the enemy when dead. --> EnemyStateDead.h
-	EStateDead: // The constructor. Reference to the enemy. --> EnemyStateDead
+EnemyStateDead.h: // Class in control of the enemy when dead. --> EnemyStateDead.h
+	EnemyStateDead: // The constructor. Reference to the enemy. --> EnemyStateDead
 		enemy_: // The actual enemy.
-	~EStateDead: // The destructor. --> ~EnemyStateDead
+	~EnemyStateDead: // The destructor. --> ~EnemyStateDead
 	enter: // The enemy enter on dead state.
 	exit: // The enemy exit of dead state.
 	update: // Update the state of the Enemy.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStateIdle.h: // The constructor. Reference to the enemy. --> EnemyStateIdle.h
+EnemyStateIdle.h: // The constructor. Reference to the enemy. --> EnemyStateIdle.h
 		enemy_: // The actual enemy.
-	~EStateIdle: // The destructor. --> ~EnemyStateIdle
+	~EnemyStateIdle: // The destructor. --> ~EnemyStateIdle
 	enter: // The enemy enter on idle state.
 	exit: // The enemy exit of idle state.
 	update: // Update the state of the Enemy.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
-EStatePatrolling.h: // The constructor. Reference to the enemy. --> EnemyStatePatrolling.h
+EnemyStatePatrolling.h: // The constructor. Reference to the enemy. --> EnemyStatePatrolling.h
 		enemy_: // The actual enemy.
 	~EnemyStatePatrolling: // The destructor. --> ~EnemyStatePatrolling
 	enter: // The enemy enter on patrolling state.
 	exit: // The enemy exit of patrolling state.
 	update: // Update the state of the Enemy.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 
 		direction: // The movement direction of the enemy.
 
@@ -59,7 +59,7 @@ FadeHandler.h: // Controller of the fade of the screen.
 		percentage_: // Percentage of fade.
 		time_: // Time of fade.
 	update: // Updates the sprite.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 	getCurrentPercentage: // Gets the current percentage of fading.
 
 		shouldFadeIn: // Boolean for when to fade in
@@ -73,7 +73,7 @@ FadeHandler.h: // Controller of the fade of the screen.
 FadeScreen.h: // Fades the screen.
 	~FadeScreen: // The destructor.
 	update: // Updates the screen.
-		dt_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_: // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 	render: // Renders the image.
 	isFaded: // Check if the screen is faded.
 	fadeOut: // Fades out.
@@ -132,7 +132,7 @@ Game.h: // Main structure class for the game.
 		dialog[numLines]: // Gets the Sprite with the dialog containing the certain amount of lines.
 		transitionTo: // Make the transition to the right state.
 	Game: // The constructor. Tells if it is okay to start the game. --> GameStart
-	initializeStates: // Loads all states.
+	initializEnemyStates: // Loads all states.
 	destroyStates: // Delete all uploaded states.
 	renderPause: // Renders screen when paused.
 	isPauseable: // Check if the game is able to be paused.
@@ -189,12 +189,12 @@ GameSave.h: // Saves the progress on the game.
 		SLOT_3: // The third save file to select.
 		TOTAL: // The total acount of save files.
 
-GStateContinue.h: // The state for the continue menu screen. --> GameStateContinue.h
-	GStateContinue: // The constructor, initializes all the attributes. --> GameStateContinue
-	~GStateContinue: // The destructor. --> ~GameStateContinueDestructor
+GameStateContinue.h: // The state for the continue menu screen. --> GameStateContinue.h
+	GameStateContinue: // The constructor, initializes all the attributes. --> GameStateContinue
+	~GameStateContinue: // The destructor. --> ~GameStateContinueDestructor
 	load: // Loads the level.
 	update: // Updates the objects within the StateGame.
-		dt_: // Delta time. Time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // Delta time. Time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 	handleSelectorMenu: // Handles the menu's selector.
@@ -213,12 +213,12 @@ GStateContinue.h: // The state for the continue menu screen. --> GameStateContin
 		Text* slot2: // Text of slot 2.
 		Text* slot3: // Text of slot 3.
 
-GStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.h
-	GStateCredits: // The constructor. --> GameStateCredits
-	~GStateCredits: // The destructor. --> ~GameStateCredits
+GameStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.h
+	GameStateCredits: // The constructor. --> GameStateCredits
+	~GameStateCredits: // The destructor. --> ~GameStateCredits
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 		creditsImage: // The image shown on the credits.
@@ -226,24 +226,24 @@ GStateCredits.h: // The state for the initial menu screen. --> GameStateCredits.
 		creditsChangeSpeed: // Change the speed of the image shown on the credits.
 		creditsClip: // The clip shown on the credits.
 
-GStateGameOver.h: // The state for the initial menu screen. --> GameStateGameOver.h
-	GStateGameOver: // The constructor. --> GameStateGameOver
-	~GStateGameOver: // The destructor. --> ~GameStateGameOver
+GameStateGameOver.h: // The state for the initial menu screen. --> GameStateGameOver.h
+	GameStateGameOver: // The constructor. --> GameStateGameOver
+	~GameStateGameOver: // The destructor. --> ~GameStateGameOver
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 		gameOverImage: // The image shown when the player dies.
 		passedTime: // The time already elapsed since the beggining of the menu.
 		lifeTime: // The amount of time the menu will be shown.
 
-GStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
-	GStateMenu: // The constructor. --> GameStateMenu
-	~GStateMenu: // The destructor. --> ~GameStateMenu
+GameStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
+	GameStateMenu: // The constructor. --> GameStateMenu
+	~GameStateMenu: // The destructor. --> ~GameStateMenu
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 	handleSelectorMenu: // Handles the selector menu.
@@ -272,12 +272,12 @@ GStateMenu.h: // The state for the initial menu screen. --> GameStateMenu.h
 		shwing: // The actual shwing selected.
 		shwingClip: // The Clip shown on shwing.
 
-GStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.h
-	GStateNewGame: // The constructor. --> GameStateNewGame
-	~GStateNewGame: // The destructor. --> ~GameStateNewGame
+GameStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.h
+	GameStateNewGame: // The constructor. --> GameStateNewGame
+	~GameStateNewGame: // The destructor. --> ~GameStateNewGame
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 	handleSelectorMenu: // Handles the selector menu.
@@ -293,12 +293,12 @@ GStateNewGame.h: // The state for the initial menu screen. --> GameStateNewGame.
 		selectorXPosition: // The X position of the slot selector.
 		selectorYPosition[Selection::TOTAL]: // The Y position of the slot selector.
 
-GStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.h
-	GStateOptions: // The constructor. --> GameStateOptions
-	~GStateOptions: // The destructor. --> ~GameStateOptions
+GameStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.h
+	GameStateOptions: // The constructor. --> GameStateOptions
+	~GameStateOptions: // The destructor. --> ~GameStateOptions
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 	applyOptions: // Applies the changes in the options.
@@ -330,12 +330,12 @@ GStateOptions.h: // The state for the initial menu screen. --> GameStateOptions.
 		volumeMusic: // Actual music volume.
 		volumeSFX: // Actual SFX volume.
 
-GStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
-	GStateSplash: // The constructor. --> GameStateSplash
-	~GStateSplash: // The destructor. --> ~GameStateSplash
+GameStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
+	GameStateSplash: // The constructor. --> GameStateSplash
+	~GameStateSplash: // The destructor. --> ~GameStateSplash
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 	SplashImages: // The splash images to be shown.
@@ -350,12 +350,12 @@ GStateSplash.h: // The state for the initial menu screen. --> GameStateSplash.h
 		images[SplashImages::TOTAL_SPLASH_IMAGES]: // Contains all the splash images. 
 		ix: // Current image x position. --> imageIterator
 
-GStateTransition.h: // The state for the initial menu screen. --> GameStateTransition.h
-	GStateTransition: // The constructor. --> GameStateTransition
-	~GStateTransition: // The destructor. --> ~GameStateTransition
+GameStateTransition.h: // The state for the initial menu screen. --> GameStateTransition.h
+	GameStateTransition: // The constructor. --> GameStateTransition
+	~GameStateTransition: // The destructor. --> ~GameStateTransition
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.
 		passedTime: // The time already elapsed since the beggining of the splash. 
@@ -363,12 +363,12 @@ GStateTransition.h: // The state for the initial menu screen. --> GameStateTrans
 		loading: // The loading image that will be shown.
 		point: // The points shown on loading image.
 
-GStateVictory.h: // The state for the initial menu screen. --> GameStateVictory.h
-	GStateVictory: // The constructor. --> GameStateVictory
-	~GStateVictory: // The destructor. --> ~GameStateVictory
+GameStateVictory.h: // The state for the initial menu screen. --> GameStateVictory.h
+	GameStateVictory: // The constructor. --> GameStateVictory
+	~GameStateVictory: // The destructor. --> ~GameStateVictory
 	load: // Loads the level.
 	update: // Updates the object within the StateGame.
-		dt_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
+		deltaTime_: // DeltaTime, the time elapsed between one frame and the other. --> deltaTime_
 	unload: // Unloads everything that was loaded.
 	render: // Renders the state.		
 		victoryImage: // The image shown on the menu.
@@ -388,3 +388,21 @@ InputHandler.h: // Handles player input. Using SDL event handling, receives the 
 		keyStates: // Boolean array that controls which keys are pressed or not.
 		sdlEvent: // SDL internal event structure.
 		quitFlag: // If the quit signal was recieved or not. 
+
+
+Classes Renamed (.h on /include and .cpp on /src):
+EnemyStateAttack
+EnemyStateCurious
+EnemyStateDead
+EnemyStateIdle
+EnemyStatePatrolling
+FPSWrapper
+GameStateContinue
+GameStateCredits
+GameStateGameOver
+GameStateMenu
+GameStateNewGame
+GameStateOptions
+GameStateSplash
+GameStateTransition
+GameStateVictory

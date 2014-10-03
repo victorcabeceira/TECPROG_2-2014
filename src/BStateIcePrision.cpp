@@ -1,4 +1,4 @@
-#include "BStateIcePrision.h"
+#include "BossStateIcePrision.h"
 #include "Logger.h"
 #include "Sprite.h"
 #include "Game.h"
@@ -6,7 +6,7 @@
 
 double prisionTime = 0.0;
 
-void BStateIcePrision::enter(){
+void BossStateIcePrision::enter(){
 
 	// Log(DEBUG) << "STATE ICE PRISION BOSS";
 	this->boss->power = Game::instance().getResources().get("res/images/ice_prision.png");
@@ -21,7 +21,7 @@ void BStateIcePrision::enter(){
 
 }
 
-void BStateIcePrision::exit(){
+void BossStateIcePrision::exit(){
 
 	this->boss->powerIsActivated = false;
 	this->boss->player->isVulnerable = true;
@@ -31,9 +31,9 @@ void BStateIcePrision::exit(){
 
 }
 
-void BStateIcePrision::update(const double dt_){
+void BossStateIcePrision::update(const double deltaTime_){
 
-	prisionTime += dt_;
+	prisionTime += deltaTime_;
 	if(prisionTime > 1){
 
 		this->boss->powerAnimation->changeAnimation(2, 0, 1, false, 0);
@@ -55,12 +55,12 @@ void BStateIcePrision::update(const double dt_){
 
 	if(prisionTime > 4){
 
-		this->boss->changeState(Boss::BStates::IDLE);
+		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
 	}
 }
 
-BStateIcePrision::BStateIcePrision(Boss* const boss_) :
+BossStateIcePrision::BossStateIcePrision(Boss* const boss_) :
 
 	StateBoss(boss_)
 	

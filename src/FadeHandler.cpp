@@ -43,7 +43,7 @@ void FadeHandler::fadeOut(const double percentage_, const double time_){
 
 }
 
-void FadeHandler::update(const double dt_){
+void FadeHandler::update(const double deltaTime_){
 
 	if(this->sprite == nullptr){
 
@@ -56,7 +56,7 @@ void FadeHandler::update(const double dt_){
 
 		if(this->currentPercentage < this->percentageOfStop){
 
-			this->currentPercentage += this->rate * dt_/1000.0;
+			this->currentPercentage += this->rate * deltaTime_/1000.0;
 			this->sprite->setAlpha(255.0 * this->currentPercentage);
 
 		}
@@ -73,7 +73,7 @@ void FadeHandler::update(const double dt_){
 
 		if(this->currentPercentage > this->percentageOfStop){
 
-			this->currentPercentage -= this->rate * dt_/1000.0;
+			this->currentPercentage -= this->rate * deltaTime_/1000.0;
 			this->sprite->setAlpha(255.0 * this->currentPercentage);
 
 		}

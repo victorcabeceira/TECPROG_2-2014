@@ -11,9 +11,9 @@ Crosshair::Crosshair(const double x_, const double y_, const std::string& path_)
 Crosshair::~Crosshair(){
 }
 
-void Crosshair::update(const double dt_){
+void Crosshair::update(const double deltaTime_){
 
-	((void)dt_); // Unused.
+	((void)deltaTime_); // Unused.
 
 }
 

@@ -43,13 +43,13 @@ Potion::~Potion(){
 
 }
 
-void Potion::update(const double dt_){
+void Potion::update(const double deltaTime_){
 
 	const int angle = 360 - 45;
 	const double gravity = 35;
 
 	updateBoundingBox();
-	this->animation->update(this->animationClip, dt_);
+	this->animation->update(this->animationClip, deltaTime_);
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision(detections);
@@ -58,7 +58,7 @@ void Potion::update(const double dt_){
 
         	this->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 
-		this->flightTime +=dt_;
+		this->flightTime +=deltaTime_;
 
 		const double speedXIdk = (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
 		const double speedYIdk = (this->vy + this->strength * sin(angle/57.29) * flightTime - 0.5*gravity*flightTime*flightTime);

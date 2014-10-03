@@ -19,8 +19,8 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
     distance(0),
     flightTime(0.0),
     isClimbing(false),
-    levelW(0),
-	levelH(0)
+    levelWidth(0),
+	levelHeight(0)
 
 {
 }
@@ -28,16 +28,16 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
 DynamicEntity::~DynamicEntity(){
 }
 
-void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int height_){
+void DynamicEntity::setLevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
-	this->levelW = width_;
-	this->levelH = height_;
+	this->levelWidth = width_;
+	this->levelHeight = height_;
 
 }
 
-void DynamicEntity::updatePosition(const double dt_){
+void DynamicEntity::updatePosition(const double deltaTime_){
 
-	((void)dt_); // Unused?
+	((void)deltaTime_); // Unused?
 
 	this->x = this->nextX;
 	this->y = this->nextY;
@@ -45,10 +45,10 @@ void DynamicEntity::updatePosition(const double dt_){
 
 }
 
-void DynamicEntity::scoutPosition(const double dt_){
+void DynamicEntity::scoutPosition(const double deltaTime_){
 
-	this->nextX += this->vx * dt_;
-	this->nextY += this->vy * dt_;
+	this->nextX += this->vx * deltaTime_;
+	this->nextY += this->vy * deltaTime_;
 
 }
 

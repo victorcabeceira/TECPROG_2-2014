@@ -815,16 +815,16 @@ int ZEXPORT deflate (strm, flush)
      */
     if (strm->avail_in != 0 || s->lookahead != 0 ||
         (flush != Z_NO_FLUSH && s->status != FINISH_STATE)) {
-        block_state bstate;
+        block_state BossState;
 
-        bstate = s->strategy == Z_HUFFMAN_ONLY ? deflate_huff(s, flush) :
+        BossState = s->strategy == Z_HUFFMAN_ONLY ? deflate_huff(s, flush) :
                     (s->strategy == Z_RLE ? deflate_rle(s, flush) :
                         (*(configuration_table[s->level].func))(s, flush));
 
-        if (bstate == finish_started || bstate == finish_done) {
+        if (BossState == finish_started || BossState == finish_done) {
             s->status = FINISH_STATE;
         }
-        if (bstate == need_more || bstate == finish_started) {
+        if (BossState == need_more || BossState == finish_started) {
             if (strm->avail_out == 0) {
                 s->last_flush = -1; /* avoid BUF_ERROR next call, see above */
             }
@@ -837,7 +837,7 @@ int ZEXPORT deflate (strm, flush)
              * one empty block.
              */
         }
-        if (bstate == block_done) {
+        if (BossState == block_done) {
             if (flush == Z_PARTIAL_FLUSH) {
                 _tr_align(s);
             } else if (flush != Z_BLOCK) { /* FULL_FLUSH or SYNC_FLUSH */

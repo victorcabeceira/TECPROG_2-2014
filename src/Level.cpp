@@ -84,7 +84,7 @@ void Level::setPlayer(Player* const player_){
 
 	if(this->player != nullptr){
 		
-		this->player->setLevelWH(this->width, this->height);
+		this->player->setLevelWidthHeight(this->width, this->height);
 		addEntity(this->player);
 	
 	}
@@ -104,7 +104,7 @@ void Level::setCamera(Camera* const camera_){
 		
 		if(this->player != nullptr){
 			
-			this->camera->setLevelWH(this->width, this->height);
+			this->camera->setLevelWidthHeight(this->width, this->height);
 		
 		}
 		else{
@@ -124,7 +124,7 @@ void Level::setBoss(Boss* const boss_){
 
 	if(this->boss != nullptr){
 		if(this->player != nullptr){
-			this->boss->setLevelWH(this->width, this->height);
+			this->boss->setLevelWidthHeight(this->width, this->height);
 		}
 		else{
 			Log(WARN) << "Shouldn't set the boss before the player, in Level!";

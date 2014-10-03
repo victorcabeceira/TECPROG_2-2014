@@ -95,7 +95,7 @@ void LevelFour::load(){
 			
 			}
 		}
-		enemy->setLevelWH(this->width, this->height);
+		enemy->setLevelWidthHeight(this->width, this->height);
 		this->enemies.push_back(enemy);
 	}
 
@@ -134,7 +134,7 @@ void LevelFour::unload(){
 	//this->checkpointVisited = false;	
 }
 
-void LevelFour::update(const double dt_){
+void LevelFour::update(const double deltaTime_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -145,7 +145,7 @@ void LevelFour::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
-		entity->update(dt_);
+		entity->update(deltaTime_);
 
 	}
 
@@ -155,14 +155,14 @@ void LevelFour::update(const double dt_){
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
 		enemy->setCollisionRects(returnObjects);
-		enemy->update(dt_);
+		enemy->update(deltaTime_);
 	
 	}
 
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		
-		Game::instance().setState(Game::GStates::GAMEOVER);
+		Game::instance().setState(Game::GameStates::GAMEOVER);
 		return;
 	
 	}
@@ -197,7 +197,7 @@ void LevelFour::update(const double dt_){
 		if(this->player->isVulnerable){
 			this->player->life--;
 			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
+			this->player->changEnemyState(Player::PlayerStates::HITED);
 			this->player->isVulnerable = false;
 		
 		}
@@ -216,8 +216,8 @@ void LevelFour::update(const double dt_){
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		
-		Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
-		Game::instance().setState(Game::GStates::TRANSITION);
+		Game::instance().transitionTo = Game::GameStates::LEVEL_FIVE;
+		Game::instance().setState(Game::GameStates::TRANSITION);
 		return;
 	
 	}
@@ -241,7 +241,7 @@ void LevelFour::update(const double dt_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				}
 			}
 		}
@@ -254,7 +254,7 @@ void LevelFour::update(const double dt_){
 			
 			if(this->player->isRight != enemy->isRight)
 				
-				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
+				if(this->player->isCurrentState(Player::PlayerStates::ATTACK) || this->player->isCurrentState(Player::PlayerStates::ATTACKMOVING)){
 					
 					if(enemy->life > 0 && this->player->canAttack){
 						
@@ -266,7 +266,7 @@ void LevelFour::update(const double dt_){
 
 					if(enemy->life <= 0)
 						
-						enemy->changeState(Enemy::EStates::DEAD);
+						enemy->changEnemyState(Enemy::EnemyStates::DEAD);
 				
 				}
 		}

@@ -20,9 +20,9 @@ FadeScreen::~FadeScreen() {
 	}
 }
 
-void FadeScreen::update(const double dt_){
+void FadeScreen::update(const double deltaTime_){
 
-	fadeHandler->update(dt_);
+	fadeHandler->update(deltaTime_);
 
 }
 

@@ -30,7 +30,7 @@ class FadeHandler {
 		/**
 		* Updates the sprite.
 		*/
-		void update(const double dt_);
+		void update(const double deltaTime_);
 		
 		/**
 		* Gets the current percentage of fading.

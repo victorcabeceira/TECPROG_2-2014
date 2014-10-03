@@ -46,7 +46,7 @@ class Camera {
 		* @param width_,height_ : Tells the camera what the width and height of the level is.
 		* @see Level::update()
 		*/
-		void setLevelWH(const unsigned int width_, const unsigned int height_);
+		void setLevelWidthHeight(const unsigned int width_, const unsigned int height_);
 
 	private:
 	
@@ -57,8 +57,8 @@ class Camera {
 		void updatePosition();
 
 		Entity* entity; /**< Reference to the entity. */
-		unsigned int levelW; /**< The width of the level. */
-		unsigned int levelH; /**< The height of the level. */
+		unsigned int levelWidth; /**< The width of the level. */
+		unsigned int levelHeight; /**< The height of the level. */
 		SDL_Rect clip; /**< Clip which will be used to clip the rendering only to the extent of
 			the camera. */
 

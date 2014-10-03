@@ -15,7 +15,7 @@ class Boss : public DynamicEntity {
 
 	public:
 
-		enum BStates : uint8_t {
+		enum BossStates : uint8_t {
 			IDLE = 0,
 			ATTACK,
 			SHIELD,
@@ -38,15 +38,15 @@ class Boss : public DynamicEntity {
 		/**
 		* Updates the player.
 		* @see Player::updateInput, Player::updatePosition
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update(const double dt_);
+		virtual void update(const double deltaTime_);
 
 		/**
 		* Initializes the Boss's States
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 
 		/**
 		* Destroys the Boss's States
@@ -56,7 +56,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Changes the Boss's States
 		*/
-		void changeState(const BStates state_);
+		void changEnemyState(const BossStates state_);
 
 		/**
 		* Renders the player.
@@ -163,7 +163,7 @@ class Boss : public DynamicEntity {
 		
 		StateBoss* currentState;
 		Animation* animation;
-		std::map<BStates, StateBoss*> statesMap;
+		std::map<BossStates, StateBoss*> statesMap;
 		bool dead;
 
 };

@@ -39,7 +39,7 @@ class StateBoss {
 		* Update method for the state.
 		* While the Boss is on the state, this method runs every update.
 		*/
-		virtual void update(const double dt_) = 0;
+		virtual void update(const double deltaTime_) = 0;
 
 		Boss* boss; /**< Reference to the boss. */
 

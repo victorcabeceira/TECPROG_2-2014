@@ -9,7 +9,7 @@ class Document : public Entity {
 		Document(const double x_, const double y_, const std::string& path_, const std::string& pathDocumentText_);
 		virtual ~Document();
 
-		virtual void update(const double dt_);
+		virtual void update(const double detaTime_);
 		virtual void render(const double cameraX_, const double cameraY_);
 
 		void renderDocumentText();

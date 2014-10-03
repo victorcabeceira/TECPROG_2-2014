@@ -28,7 +28,7 @@ Animation::~Animation(){
 
 }
 
-void Animation::update(SDL_Rect& clip, const double dt_){
+void Animation::update(SDL_Rect& clip, const double deltaTime_){
 
 	/* 
 	* Compare the position on the sprite with the number of positions to know if is the
@@ -39,7 +39,7 @@ void Animation::update(SDL_Rect& clip, const double dt_){
 	const double deltaT = (this->totalTime / this->numberOfImages);
 
 	// Check if the frame has changed.
-    this->totalElapsedTime += dt_;
+    this->totalElapsedTime += deltaTime_;
 
     if(this->totalElapsedTime >= deltaT) {
         

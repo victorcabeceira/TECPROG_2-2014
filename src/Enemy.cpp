@@ -3,18 +3,18 @@
 #include "LuaScript.h"
 #include <cmath>
 
-#include "EStateIdle.h"
-#include "EStatePatrolling.h"
-#include "EStateAerial.h"
-#include "EStateCurious.h"
-#include "EStateAlert.h"
-#include "EStateAttack.h"
-#include "EStateDead.h"
+#include "EnemyStateIdle.h"
+#include "EnemyStatePatrolling.h"
+#include "EnemyStateAerial.h"
+#include "EnemyStateCurious.h"
+#include "EnemyStateAlert.h"
+#include "EnemyStateAttack.h"
+#include "EnemyStateDead.h"
 
 #include "Window.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
-#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<EStates, StateEnemy*>(stateEnum, new stateClass(this)));
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<EnemyStates, StateEnemy*>(stateEnum, new stateClass(this)));
 
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
@@ -38,7 +38,7 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 
 {
 
-	initializeStates();
+	initializEnemyStates();
 
 	this->speed = 3.0;
 
@@ -83,21 +83,21 @@ Enemy::~Enemy(){
 
 }
 
-void Enemy::update(const double dt_){
+void Enemy::update(const double deltaTime_){
 	
-	this->currentState->update(dt_);
+	this->currentState->update(deltaTime_);
 	forceMaxSpeed();
 
-	scoutPosition(dt_);
+	scoutPosition(deltaTime_);
 
-	this->animation->update(this->animationClip, dt_);
+	this->animation->update(this->animationClip, deltaTime_);
 
 	updateBoundingBox();
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision(detections);
 
-	updatePosition(dt_);
+	updatePosition(deltaTime_);
 
 }
 
@@ -133,23 +133,23 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 	}
 }
 
-void Enemy::initializeStates(){
+void Enemy::initializEnemyStates(){
 
 	// Initialize all the states in Enemy here.
-	ADD_STATE_INSERT(IDLE,         EStateIdle);
-	ADD_STATE_INSERT(CURIOUS,      EStateCurious);
-	ADD_STATE_INSERT(PATROLLING,   EStatePatrolling);
-	ADD_STATE_INSERT(ALERT,        EStateAlert);
-	ADD_STATE_INSERT(AERIAL,       EStateAerial);
-	ADD_STATE_INSERT(ATTACK,       EStateAttack);
-	ADD_STATE_INSERT(DEAD,         EStateDead);
+	ADD_STATE_INSERT(IDLE,         EnemyStateIdle);
+	ADD_STATE_INSERT(CURIOUS,      EnemyStateCurious);
+	ADD_STATE_INSERT(PATROLLING,   EnemyStatePatrolling);
+	ADD_STATE_INSERT(ALERT,        EnemyStateAlert);
+	ADD_STATE_INSERT(AERIAL,       EnemyStateAerial);
+	ADD_STATE_INSERT(ATTACK,       EnemyStateAttack);
+	ADD_STATE_INSERT(DEAD,         EnemyStateDead);
 
 }
 
 void Enemy::destroyStates(){
 
 	// Delete all the states in Enemy here.
-	std::map<EStates, StateEnemy*>::const_iterator it;
+	std::map<EnemyStates, StateEnemy*>::const_iterator it;
 	for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
 
 		delete it->second;
@@ -157,7 +157,7 @@ void Enemy::destroyStates(){
 	}
 }
 
-void Enemy::changeState(const EStates state_){
+void Enemy::changEnemyState(const EnemyStates state_){
 
 	this->currentState->exit();
 	this->currentState = this->statesMap.at(state_);
@@ -175,25 +175,25 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 
 	if(detections_.at(CollisionSide::SOLID_BOTTOM)){
 
-		if(this->currentState == this->statesMap.at(EStates::AERIAL) || this->currentState == this->statesMap.at(EStates::DEAD)){
+		if(this->currentState == this->statesMap.at(EnemyStates::AERIAL) || this->currentState == this->statesMap.at(EnemyStates::DEAD)){
 
 			this->nextY -= fmod(this->nextY, 64.0) - 16.0;
 			this->vy = 0.0;
 
 			if(this->isDead()){
 
-				this->changeState(EStates::DEAD);
+				this->changEnemyState(EnemyStates::DEAD);
 
 			}
 
 			if(this->patrol){
 
-				this->changeState(EStates::PATROLLING);
+				this->changEnemyState(EnemyStates::PATROLLING);
 
 			}
 			else{
 
-				this->changeState(EStates::IDLE);
+				this->changEnemyState(EnemyStates::IDLE);
 				return;
 
 			}
@@ -201,9 +201,9 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 	}
 	else{
 
-		if(this->currentState != this->statesMap.at(EStates::AERIAL)){
+		if(this->currentState != this->statesMap.at(EnemyStates::AERIAL)){
 
-			changeState(EStates::AERIAL);
+			changEnemyState(EnemyStates::AERIAL);
 
 		}
 	}

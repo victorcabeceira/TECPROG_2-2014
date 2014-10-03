@@ -13,7 +13,7 @@ class Enemy : public DynamicEntity {
 	public:
 	
 		// Enumerates the enemy states.
-		enum EStates : uint8_t {
+		enum EnemyStates : uint8_t {
 			IDLE = 0,
 			AERIAL,
 			PATROLLING,
@@ -37,10 +37,10 @@ class Enemy : public DynamicEntity {
 		/**
 		* Updates the player.
 		* @see Player::updateInput, Player::updatePosition
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update(const double dt_);
+		virtual void update(const double deltaTime_);
 
 		/**
 		* Renders the player.
@@ -54,7 +54,7 @@ class Enemy : public DynamicEntity {
 		/**
 		* Initializes the states.
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 		
 		/**
 		* Destroy the states.
@@ -64,7 +64,7 @@ class Enemy : public DynamicEntity {
 		/**
 		* Changes the states.
 		*/
-		void changeState(const EStates state_);
+		void changEnemyState(const EnemyStates state_);
 		
 		/**
 		* Gets the animations.
@@ -111,7 +111,7 @@ class Enemy : public DynamicEntity {
 		void forceMaxSpeed();
 		StateEnemy* currentState;
 		Animation* animation;
-		std::map<EStates, StateEnemy*> statesMap;
+		std::map<EnemyStates, StateEnemy*> statesMap;
 		bool dead;
 
 };

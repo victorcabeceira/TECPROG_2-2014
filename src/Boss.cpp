@@ -3,17 +3,17 @@
 #include "Game.h"
 #include <cmath>
 
-#include "BStateIdle.h"
-#include "BStateAttack.h"
-#include "BStateShield.h"
-#include "BStateTeleport.h"
-#include "BStateIcePrision.h"
-#include "BStateMagicProjectile.h"
+#include "BossStateIdle.h"
+#include "BossStateAttack.h"
+#include "BossStateShield.h"
+#include "BossStateTeleport.h"
+#include "BossStateIcePrision.h"
+#include "BossStateMagicProjectile.h"
 
 #include "Window.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
-#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BStates, StateBoss*>(stateEnum, new stateClass(this)));
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BossStates, StateBoss*>(stateEnum, new stateClass(this)));
 
 double timePasssed = 0;
 
@@ -45,7 +45,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 {
 
 	//Creates the Boss
-	initializeStates();
+	initializEnemyStates();
 
 	this->isRight = true;
 	this->speed = 400.0;
@@ -103,26 +103,26 @@ Boss::~Boss(){
 
 }
 
-void Boss::update(const double dt_){
+void Boss::update(const double deltaTime_){
 	
 	//Updates the position and animation of the Boss
 	
-	timePasssed += dt_;
+	timePasssed += deltaTime_;
 
-	scoutPosition(dt_);
+	scoutPosition(deltaTime_);
 
-	this->animation->update(this->animationClip, dt_);
-	this->powerAnimation->update(this->powerClip, dt_);
-	this->shieldAnimation->update(this->shieldClip, dt_);
+	this->animation->update(this->animationClip, deltaTime_);
+	this->powerAnimation->update(this->powerClip, deltaTime_);
+	this->shieldAnimation->update(this->shieldClip, deltaTime_);
 
 	updateBoundingBox();
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision(detections);
 
-	updatePosition(dt_);
+	updatePosition(deltaTime_);
 
-	this->currentState->update(dt_);
+	this->currentState->update(deltaTime_);
 
     for(auto potion : this->potions){
 
@@ -131,7 +131,7 @@ void Boss::update(const double dt_){
 
         }
 
-        potion->update(dt_);
+        potion->update(deltaTime_);
 
     }
 }
@@ -200,22 +200,22 @@ void Boss::render(const double cameraX_, const double cameraY_){
     }
 }
 
-void Boss::initializeStates(){
+void Boss::initializEnemyStates(){
 
 	// Initialize all the states in Boss here.
-	ADD_STATE_INSERT(IDLE,				BStateIdle);
-	ADD_STATE_INSERT(ATTACK,			BStateAttack);
-	ADD_STATE_INSERT(SHIELD,			BStateShield);
-	ADD_STATE_INSERT(TELEPORT,			BStateTeleport);
-	ADD_STATE_INSERT(ICEPRISION,		BStateIcePrision);
-	ADD_STATE_INSERT(MAGICPROJECTILE,	BStateMagicProjectile);
+	ADD_STATE_INSERT(IDLE,				BossStateIdle);
+	ADD_STATE_INSERT(ATTACK,			BossStateAttack);
+	ADD_STATE_INSERT(SHIELD,			BossStateShield);
+	ADD_STATE_INSERT(TELEPORT,			BossStateTeleport);
+	ADD_STATE_INSERT(ICEPRISION,		BossStateIcePrision);
+	ADD_STATE_INSERT(MAGICPROJECTILE,	BossStateMagicProjectile);
 
 }
 
 void Boss::destroyStates(){
 
 	// Delete all the states in Boss here.
-	std::map<BStates, StateBoss*>::const_iterator it;
+	std::map<BossStates, StateBoss*>::const_iterator it;
 
 	for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
 
@@ -224,7 +224,7 @@ void Boss::destroyStates(){
 	}
 }
 
-void Boss::changeState(const BStates state_){
+void Boss::changEnemyState(const BossStates state_){
 
 	//Changes the States of the Boss
 

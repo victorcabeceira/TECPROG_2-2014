@@ -25,7 +25,7 @@ class Game {
 		/**
 		* All possible game states.
 		*/
-		enum GStates : uint8_t {
+		enum GameStates : uint8_t {
 			SPLASH = 0,
 			MENU,
 			NEW_GAME,
@@ -67,7 +67,7 @@ class Game {
 		* @see StateGame::unload()
 		* @param state_ : The state you want to be changed into.
 		*/
-		void setState(const GStates state_);
+		void setState(const GameStates state_);
 
 		/**
 		* @return The Game audioHandler.
@@ -105,7 +105,7 @@ class Game {
 		unsigned int currentLine;
 		Sprite* dialog[numLines];
 
-		GStates transitionTo;
+		GameStates transitionTo;
 
 	private:
 		/**
@@ -120,7 +120,7 @@ class Game {
 		* Loads all the states.
 		* Every new state implemented should be initialized here.
 		*/
-		void initializeStates();
+		void initializEnemyStates();
 
 		/**
 		* Deletes all the loaded states.
@@ -152,7 +152,7 @@ class Game {
 
 		StateGame* currentState; /**< The current state, which the game is in. */
 
-		std::map<GStates, StateGame*> statesMap; /**< Map containing all possible states. */
+		std::map<GameStates, StateGame*> statesMap; /**< Map containing all possible states. */
 
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */

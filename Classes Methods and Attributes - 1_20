@@ -12,7 +12,7 @@ Animation.h: // Class in control of animating a sprite.
 	~Animation: // The Destructor.
 	update: // Updates the animation clip.
 		clip_ : // Reference to the clip of whatever object the animation is a part of.
-		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
 	getCurrentFrame: // Gets the current frame of the animation.
 	changeWidthHeight: // Changes the width and the height of the animation.
 		width_ : // Width that needs to be changed.
@@ -54,50 +54,50 @@ AudioHandler.h: // Class that handles all the audio in the game. Is a singleton,
 	-> Suggested Name: notifiesChannelDone
 		channel_ : // The channel to be checked.
 
-BStateAttack.h // Boss's State of Attack -> Suggested Name: BossStateAttack
-	BStateAttack : // The constructor.
+BossStateAttack.h // Boss's State of Attack -> Suggested Name: BossStateAttack
+	BossStateAttack : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateAttack : // The destructor.
+	~BossStateAttack : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateIcePrision.h // Boss's State of the attack Ice Prision -> Suggested Name: BossStateIcePrision
-	BStateIcePrision : // The constructor.
+BossStateIcePrision.h // Boss's State of the attack Ice Prision -> Suggested Name: BossStateIcePrision
+	BossStateIcePrision : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateIcePrision : // The destructor.
+	~BossStateIcePrision : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateIdle.h // Boss's State of being Idle -> Suggested Name: BossStateIdle
-	BStateIdle : // The constructor.
+BossStateIdle.h // Boss's State of being Idle -> Suggested Name: BossStateIdle
+	BossStateIdle : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateIdle : // The destructor.
+	~BossStateIdle : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Suggested Name: BossStateMagicProjectile
-	BStateMagicProjectile : // The constructor.
+BossStateMagicProjectile.h // Boss's State of the attack Magic Projectile -> Suggested Name: BossStateMagicProjectile
+	BossStateMagicProjectile : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateMagicProjectile : // The destructor.
+	~BossStateMagicProjectile : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
-	BStateShield : // The constructor.
+BossStateShield.h // Boss's State of the Shield -> Suggested Name: BossStateShield
+	BossStateShield : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateShield : // The destructor.
+	~BossStateShield : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
 
-BStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossStateTeleport
-	BStateTeleport : // The constructor.
+BossStateTeleport.h // Boss's State of the attack Teleport -> Suggested Name: BossStateTeleport
+	BossStateTeleport : // The constructor.
 		boss_ : // Reference to the boss.
-	~BStateTeleport : // The destructor.
+	~BossStateTeleport : // The destructor.
 	enter : // @see StateBoss::enter.
 	exit : // @see StateBoss::exit.
 	update : // @see StateBoss::update.
@@ -110,10 +110,10 @@ Boss.h // The Boss of the game.
 		player_ : // The player.
 	~Boss : // The destructor.
 	update : // Updates the player.
-		dt_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
-	initializeStates : // Initializes Boss's States.
+		deltaTime_ : // Delta time. Time elapsed between one frame and the other, independent of processing speed.
+	initializEnemyStates : // Initializes Boss's States.
 	destroyStates : // Destroy Boss's States.
-	changeStates : // Changes the Boss's States. 
+	changEnemyStates : // Changes the Boss's States. 
 		state_ : // State that will replace former state.
 	render : // Renders the player.
 		cameraX_ : // The x position of the camera.
@@ -139,7 +139,7 @@ Camera.h : // The camere of the game. Contains all relevant implementation relat
 	centralizeOn : // Changes the entity to centralize upon.
 		entity_ : // The entity to centralize the camera on.
 	getClip : // Gets the camera clip.
-	setLevelWH : // Sets the level Width and Height. -> Suggested Name : setLevelWidthHeight
+	setlevelWidthH : // Sets the level Width and Height. -> Suggested Name : setlevelWidthidthHeight
 		width_ : // Tells the camera what the width of the level is.
 		height_ : // Tells the camera what the height of the level is.
 	updatePosition : // Updates the camera's position based on player's position.
@@ -185,7 +185,7 @@ Document.h : //
 		pathDocumentText_ : // Path to the document text.
 	~Document : // The destructor.
 	update : // Updates the document.
-		dt_ : // Delta time.
+		deltaTime_ : // Delta time.
 	render : // Renders the animation of the document.
 		cameraX_ : // camera in the x position.
 		cameraY_ : // camera in the y position.
@@ -211,29 +211,29 @@ DynamicEntity.h : // Subclass of entity. The objects of this class are entities,
 	aim : // Aim the potions.
 		crosshair : // The crosshair of the aim.
 		direction : // The direction of the aim.
-	setLevelWH : // Sets the level width and height.
+	setlevelWidthH : // Sets the level width and height.
 		width_ : // Tells the player what the width of the level is.
 		height_ : // Tells the player what the height of the level is.
 	updatePosition : // Updates the position of the dynamic entity.
-		dt_ : // Time elapsed between one frame and the other, independent of processing speed.
+		deltaTime_ : // Time elapsed between one frame and the other, independent of processing speed.
 	scoutPosition : // Scouts the position of the dynamic entity.
-		dt_ : // Time elapsed between one frame and the other, independent of processing speed.	
+		deltaTime_ : // Time elapsed between one frame and the other, independent of processing speed.	
 	detectCollision : // Detects the collision.
 	getFlip : // 
 	updateBoundingBox : // Updates the bounding box of the entity.
 
-EStateAerial.h : // Enemy State Aerial.
-	EStateAerial : // The constructor.
+EnemyStateAerial.h : // Enemy State Aerial.
+	EnemyStateAerial : // The constructor.
 		enemy_ : // Reference to the enemy.
-	~EStateAerial : // The destructor.
+	~EnemyStateAerial : // The destructor.
 	enter : // @see StateEnemy::enter.
 	exit : // @see StateEnemy::exit.
 	update : // @see StateEnemy::update.
 
-EStateAlert.h : // Enemy State of being Alert.
-	EStateAlert : // The constructor.
+EnemyStateAlert.h : // Enemy State of being Alert.
+	EnemyStateAlert : // The constructor.
 		enemy_ : // Reference to the enemy.
-	~EStateAlert : // The destructor.
+	~EnemyStateAlert : // The destructor.
 	enter : // @see StateEnemy::enter.
 	exit : // @see StateEnemy::exit.
 	update : // @see StateEnemy::update.
