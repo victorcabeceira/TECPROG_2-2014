@@ -5,14 +5,12 @@
 #include <cstdlib>
 #include <ctime>
 
-int attackIndex = 0;
-
 void BossStateAttack::enter(){
 
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 	this->boss->sawPlayer = false;
-	attackIndex = rand()%4;
+	this->attackIndex = rand()%4;
 
 }
 
@@ -27,22 +25,22 @@ void BossStateAttack::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 
-	if(attackIndex == 3){
+	if(this->attackIndex == 3){
 
 		this->boss->changEnemyState(Boss::BossStates::SHIELD);
 
 	}
-	else if(attackIndex == 0){
+	else if(this->attackIndex == 0){
 
 		this->boss->changEnemyState(Boss::BossStates::TELEPORT);
 
 	}
-	else if(attackIndex == 2){
+	else if(this->attackIndex == 2){
 
 		this->boss->changEnemyState(Boss::BossStates::ICEPRISION);
 
 	}
-	else if(attackIndex == 1){
+	else if(this->attackIndex == 1){
 
 		this->boss->changEnemyState(Boss::BossStates::MAGICPROJECTILE);
 

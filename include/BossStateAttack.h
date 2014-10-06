@@ -33,6 +33,9 @@ class BossStateAttack : public StateBoss {
 		*/
 		virtual void update(const double deltaTime_);
 
+		int attackIndex; /** The index of the attack that the boss will use*/
+
+
 };
 
 #endif // INCLUDE_BOSSSTATEATTACK_H
