@@ -5,10 +5,6 @@
 #include "Collision.h"
 #include <cmath>
 
-double projectileTime = 0.0;
-double mpX = 0;
-double mpY = 0;
-double hypotenuse = 0;
 
 void BossStateMagicProjectile::enter(){
 
@@ -21,31 +17,31 @@ void BossStateMagicProjectile::enter(){
 	this->boss->powerX = this->boss->x + 50;
 	this->boss->powerY = this->boss->y + 150;
 
-	mpX = this->boss->player->getBoundingBox().x + 50 - this->boss->getBoundingBox().x;
-	mpY = this->boss->player->getBoundingBox().y + 50 - this->boss->getBoundingBox().y;
-	hypotenuse = sqrt((mpX*mpX)+(mpY*mpY));
-	hypotenuse = (hypotenuse==0) ? 1 : hypotenuse;
-	mpX /= hypotenuse;
-	mpY /= hypotenuse;
+	this->magicProjectileX = this->boss->player->getBoundingBox().x + 50 - this->boss->getBoundingBox().x;
+	this->magicProjectileY = this->boss->player->getBoundingBox().y + 50 - this->boss->getBoundingBox().y;
+	this->distanceBossPlayer = sqrt((this->magicProjectileX*this->magicProjectileX)+(this->magicProjectileY*this->magicProjectileY));
+	this->distanceBossPlayer = (this->distanceBossPlayer==0) ? 1 : this->distanceBossPlayer;
+	this->magicProjectileX /= this->distanceBossPlayer;
+	this->magicProjectileY /= this->distanceBossPlayer;
 
 }
 
 void BossStateMagicProjectile::exit(){
 
 	this->boss->powerIsActivated = false;
-	projectileTime = 0.0;
-	mpX = 0;
-	mpY = 0;
-	hypotenuse = 0;
+	this->projectileTime = 0.0;
+	this->magicProjectileX = 0;
+	this->magicProjectileY = 0;
+	this->distanceBossPlayer = 0;
 	this->boss->powerAnimation->changeWidthHeight(50,50);
 
 }
 
 void BossStateMagicProjectile::update(const double deltaTime_){
 
-	projectileTime += deltaTime_;
-	this->boss->powerX += mpX * 15;
-	this->boss->powerY += mpY * 15;
+	this->projectileTime += deltaTime_;
+	this->boss->powerX += this->magicProjectileX * 15;
+	this->boss->powerY += this->magicProjectileY * 15;
 	this->boss->powerIsActivated = true;
 
 	if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX, 
@@ -56,7 +52,7 @@ void BossStateMagicProjectile::update(const double deltaTime_){
 
 	}
 
-	if(projectileTime>3){
+	if(this->projectileTime>3){
 
 		this->boss->changEnemyState(Boss::BossStates::IDLE);
 

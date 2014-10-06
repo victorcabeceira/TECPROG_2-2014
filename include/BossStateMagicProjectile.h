@@ -33,6 +33,11 @@ class BossStateMagicProjectile : public StateBoss {
 		*/
 		virtual void update(const double deltaTime_);
 
+		double projectileTime; /**Time that the projectile animation is on screen*/
+		double magicProjectileX; /**Position in X of the magic projectile*/
+		double magicProjectileY; /**Position in Y of the magic projectile*/
+		double distanceBossPlayer; /**Distance between boss and player*/
+
 };
 
 #endif // INCLUDE_BOSSSTATEMAGICPROJECTILE_H
