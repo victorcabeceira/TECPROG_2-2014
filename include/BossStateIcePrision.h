@@ -33,6 +33,8 @@ class BossStateIcePrision : public StateBoss {
 		*/
 		virtual void update(const double deltaTime_);
 
+		double prisionTime; /**Time that the player will be stuck in the Ice Prision*/
+
 };
 
 #endif // INCLUDE_BOSSSTATEICEPRISION_H
