@@ -12,7 +12,7 @@ void BossStateTeleport::enter(){
 	this->boss->powerAnimation->changeWidthHeight(700, 340);
 	this->boss->powerAnimation->changeAnimation(0, 0, 3, false, 0.5);
 	this->boss->player->isVulnerable = true;
-	this->offset = 33;
+	this->axisOffset = 33;
 	this->direction = 0;
 
 }
@@ -139,7 +139,7 @@ void BossStateTeleport::update(const double deltaTime_){
 		this->boss->powerIsActivated = true;
 
 		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX - this->direction * 665, 
-								   (int)this->boss->powerY + this->offset, this->direction * 665, 262})){
+								   (int)this->boss->powerY + this->axisOffset, this->direction * 665, 262})){
 
 			if(this->boss->player->isVulnerable){
 

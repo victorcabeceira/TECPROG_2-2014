@@ -38,8 +38,8 @@ class BossStateTeleport : public StateBoss {
 		double playerY; /** Player position in Y axis*/
 		double powerCollisionWidth; /** Width of the power's collision*/
 		double powerCollisionHeight; /** Height of the power's collision*/
-		int offset; /** Offsets the power's axis*/
-		bool right; /** If the boss is walking right*/
+		int axisOffset; /** Offsets the power's axis*/
+		bool right; /** If the boss's attack is to the right*/
 		int direction; /** The direction of the boss's attack*/
 
 
