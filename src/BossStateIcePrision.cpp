@@ -16,6 +16,7 @@ void BossStateIcePrision::enter(){
 	this->boss->powerX = this->boss->player->x - 30; 
 	this->boss->powerY = this->boss->player->y - 750;
 	this->boss->powerFlip = SDL_FLIP_NONE;
+	this->prisionTime = 0.0;
 
 }
 

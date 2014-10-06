@@ -14,7 +14,7 @@ void BossStateShield::exit(){
 
 void BossStateShield::update(const double deltaTime_){
 
-	((void)deltaTime_); // Unused.
+	((void)deltaTime_); // Unused. Variable necessary for the update state.
 
 	this->boss->changEnemyState(Boss::BossStates::IDLE);
 
