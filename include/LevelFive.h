@@ -25,7 +25,9 @@ class LevelFive : public Level {
 		virtual ~LevelFive();
 
 		void settingLevelBoundaries();
-		
+
+		void settingInstances();
+
 		/**
 		* Loads the level.
 		* From the Level1.lua script, loads all the necessary objects.
