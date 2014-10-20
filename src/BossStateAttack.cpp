@@ -10,8 +10,8 @@ void BossStateAttack::enter(){
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 	this->boss->sawPlayer = false;
-	this->attackIndex = rand()%4;
-
+	this->attackIndex = rand()%this->RANDOM_ATTACK;
+	
 }
 
 void BossStateAttack::exit(){

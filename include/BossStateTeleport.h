@@ -42,6 +42,11 @@ class BossStateTeleport : public StateBoss {
 		bool right; /** If the boss's attack is to the right*/
 		int direction; /** The direction of the boss's attack*/
 
+		const int START_TIME_TELEPORT = 3;
+		const float MID_TIME_TELEPORT = 3.05;
+		const int MID_END_TIME_TELEPORT = 4;
+		const int MAX_TIME_TELEPORT = 5;
+
 
 
 };
