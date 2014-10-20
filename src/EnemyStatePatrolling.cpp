@@ -29,13 +29,13 @@ void EnemyStatePatrolling::update(const double deltaTime_){
 		// right
 		if(this->enemy->x - this->enemy->originalX < 0.0){
 	
-			this->direction = 1.0;
+			this->direction = RIGHT_DIRECTION;
 	
 		}
 		// left
 		else{
 	
-			this->direction = -1.0;
+			this->direction = LEFT_DIRECTION;
 	
 		}	
 	}

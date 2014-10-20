@@ -35,7 +35,8 @@ class EnemyStatePatrolling : public StateEnemy {
 
 	private:
 		double direction;
-
+		const float RIGHT_DIRECTION = 1.0;
+		const float LEFT_DIRECTION = -1.0;
 };
 
 #endif // INCLUDE_EnemyStatePATROLLING_H
