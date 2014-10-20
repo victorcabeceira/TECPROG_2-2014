@@ -14,8 +14,8 @@ void BossStateMagicProjectile::enter(){
 	this->boss->powerAnimation->changeAnimation(0, 0, 4, false, 0.5);
 	this->boss->vx = 0;
 	this->boss->vy = 0;
-	this->boss->powerX = this->boss->x + 50;
-	this->boss->powerY = this->boss->y + 150;
+	this->boss->powerX = this->boss->x + this->CAST_START_X;
+	this->boss->powerY = this->boss->y + this->CAST_START_Y;
 
 	this->magicProjectileX = this->boss->player->getBoundingBox().x + 50 - this->boss->getBoundingBox().x;
 	this->magicProjectileY = this->boss->player->getBoundingBox().y + 50 - this->boss->getBoundingBox().y;
