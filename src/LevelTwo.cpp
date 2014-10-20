@@ -22,18 +22,26 @@ LevelTwo::~LevelTwo(){
 
 }
 
-void LevelTwo::load(){
-	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/lv1.wav");
+// Loading the tile/tilemap.
+void LevelTwo::loadTile(){
 
-	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/level2.tmx");
 
-	// Setting the level width/height.
+}
+
+
+// Setting the level width/height.
+void LevelTwo::settingBoundaries(){
+
 	this->width = this->tileMap->getMapWidth();
 	this->height = this->tileMap->getMapHeight();
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
+
+}
+
+// Setting the level Instances.
+void LevelTwo::settingInstances(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
 	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
@@ -42,6 +50,20 @@ void LevelTwo::load(){
 	
 	}
 	this->image = Game::instance().getResources().get("res/images/potion.png");
+
+}
+
+void LevelTwo::load(){
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv1.wav");
+
+	// Loading the tile/tilemap.
+	loadTile();
+	// Setting the level width/height.
+	settingBoundaries();
+
+	// Setting the level Instances.
+	settingInstances();
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");

@@ -23,6 +23,13 @@ class LevelTwo : public Level {
 		* The destructor.
 		*/
 		virtual ~LevelTwo();
+		
+		void loadTile();
+
+		void settingBoundaries();
+
+		void settingInstances();
+
 
 		/**
 		* Loads the level.
