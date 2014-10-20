@@ -33,12 +33,27 @@ void LevelOne::loadTile(){
 
 }
 
+// Sets the Boundaries' Level.
 void LevelOne::settingLevelBoundaries(){
 	
 	this->width = this->tileMap->getMapWidth();
 	this->height = this->tileMap->getMapHeight();
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
+
+}
+
+// Sets the Instance's Level.
+void LevelOne::settingLevelInstances(){
+
+	this->background = Game::instance().getResources().get("res/images/lv1_background_parallax.png");
+	this->backgroundTop = Game::instance().getResources().get("res/images/lv1_parallax_top.png");
+	
+	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
+		
+		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+	
+	}
 
 }
 
@@ -52,13 +67,8 @@ void LevelOne::load(){
 	// Setting the level width/height.
 	settingLevelBoundaries();
 
-	this->background = Game::instance().getResources().get("res/images/lv1_background_parallax.png");
-	this->backgroundTop = Game::instance().getResources().get("res/images/lv1_parallax_top.png");
-	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
-		
-		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
-	
-	}
+	// Setting the level instance.
+	settingLevelInstances();
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");

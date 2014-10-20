@@ -28,6 +28,8 @@ class LevelOne : public Level {
 
 		void settingLevelBoundaries();
 
+		void settingLevelInstances();
+
 		/**
 		* Loads the level.
 		* From the Level1.lua script, loads all the necessary objects.
