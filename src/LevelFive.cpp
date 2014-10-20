@@ -35,6 +35,7 @@ void LevelFive::settingLevelBoundaries(){
 
 }
 
+// Setting Instances for LevelFive
 void LevelFive::settingInstances(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");

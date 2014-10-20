@@ -27,18 +27,30 @@ LevelOne::~LevelOne(){
 
 }
 
+void LevelOne::loadTile(){
+
+	this->tileMap = new TileMap("res/maps/level1.tmx");
+
+}
+
+void LevelOne::settingLevelBoundaries(){
+	
+	this->width = this->tileMap->getMapWidth();
+	this->height = this->tileMap->getMapHeight();
+	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
+	this->quadTree = new QuadTree(0, bounds);
+
+}
+
 void LevelOne::load(){
 	
 	Log(DEBUG) << "Loading level 1...";
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level1.tmx");
+	loadTile();
 
 	// Setting the level width/height.
-	this->width = this->tileMap->getMapWidth();
-	this->height = this->tileMap->getMapHeight();
-	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
-	this->quadTree = new QuadTree(0, bounds);
+	settingLevelBoundaries();
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background_parallax.png");
 	this->backgroundTop = Game::instance().getResources().get("res/images/lv1_parallax_top.png");
