@@ -24,18 +24,25 @@ LevelFour::~LevelFour(){
 
 }
 
-void LevelFour::load(){
-	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
+// Loading the tile/tilemap.
+void LevelFour::loadTile(){
 
-	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/level4.tmx");
 
-	// Setting the level width/height.
+}
+
+// Setting the level width/height.
+void LevelFour::settingLevelBoundaries(){
+
 	this->width = this->tileMap->getMapWidth();
 	this->height = this->tileMap->getMapHeight();
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
+
+}
+
+// Setting the level instances.
+void LevelFour::settingLevelInstances(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
 	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
@@ -45,6 +52,21 @@ void LevelFour::load(){
 	}
 	
 	this->image = Game::instance().getResources().get("res/images/potion.png");
+
+}
+
+void LevelFour::load(){
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
+
+	// Loading the tile/tilemap.
+	loadTile();
+
+	// Setting the level width/height.
+	settingLevelBoundaries();
+
+	// Setting the level instances.
+	settingLevelInstances();
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");

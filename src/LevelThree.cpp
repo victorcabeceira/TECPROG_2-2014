@@ -22,19 +22,25 @@ LevelThree::~LevelThree(){
 
 }
 
-void LevelThree::load(){
-	
-	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/lv3.wav");
 
-	// Loading the tile/tilemap.
+// Loading the tile/tilemap.
+void LevelThree::loadTile(){
+	
 	this->tileMap = new TileMap("res/maps/level3.tmx");
 
-	// Setting the level width/height.
+}
+
+// Setting the level width/height.
+void LevelThree::settingLevelBoundaries(){
+
 	this->width = this->tileMap->getMapWidth();
 	this->height = this->tileMap->getMapHeight();
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
+
+}
+
+void LevelThree::settingLevelInstances(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
 	
@@ -45,6 +51,22 @@ void LevelThree::load(){
 	}
 	
 	this->image = Game::instance().getResources().get("res/images/potion.png");
+
+}
+
+void LevelThree::load(){
+	
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv3.wav");
+
+	// Loading the tile/tilemap.
+	loadTile();
+
+	// Setting the level width/height.
+	settingLevelBoundaries();	
+
+	// Setting Instances.
+	settingLevelInstances();
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
