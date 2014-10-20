@@ -33,8 +33,9 @@ class BossStateAttack : public StateBoss {
 		*/
 		virtual void update(const double deltaTime_);
 
-		int attackIndex; /** The index of the attack that the boss will use*/
+		int attackIndex; /** The index of the attack that the boss will use.*/
 
+		const int RANDOM_ATTACK = 4; /**Number of possibilities for the attack index*/
 
 };
 
