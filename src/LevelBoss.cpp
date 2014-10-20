@@ -19,6 +19,27 @@ LevelBoss::~LevelBoss(){
 
 }
 
+// Loading the tile/tilemap.
+void LevelBoss::loadTile(){
+
+}
+
+// Setting the level width/height.
+void LevelBoss::settingLevelBoundaries(){
+
+	this->width = this->tileMap->getMapWidth();
+	this->height = this->tileMap->getMapHeight();
+	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
+	this->quadTree = new QuadTree(0, bounds);
+
+}
+
+void LevelBoss::settingLevelInstances(){
+
+	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
+
+}
+
 void LevelBoss::load(){
 	
 	Log(DEBUG) << "Loading level boss...";
@@ -26,15 +47,13 @@ void LevelBoss::load(){
 	Game::instance().getAudioHandler().changeMusic("res/audio/Tema_Boss_02.wav");
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/levelBoss.tmx");
+	loadTile();
 
 	// Setting the level width/height.
-	this->width = this->tileMap->getMapWidth();
-	this->height = this->tileMap->getMapHeight();
-	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
-	this->quadTree = new QuadTree(0, bounds);
+	settingLevelBoundaries();
 
-	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
+	// Setting the level instance.
+	settingLevelInstances();
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
