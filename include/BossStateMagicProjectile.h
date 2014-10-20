@@ -38,6 +38,8 @@ class BossStateMagicProjectile : public StateBoss {
 		double magicProjectileY; /**Position in Y of the magic projectile*/
 		double distanceBossPlayer; /**Distance between boss and player*/
 
+		const int MAXIMUM_TIME = 3; /**Maximum time for magic projectile*/
+
 };
 
 #endif // INCLUDE_BOSSSTATEMAGICPROJECTILE_H

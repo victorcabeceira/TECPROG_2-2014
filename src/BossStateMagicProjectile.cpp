@@ -52,7 +52,7 @@ void BossStateMagicProjectile::update(const double deltaTime_){
 
 	}
 
-	if(this->projectileTime>3){
+	if(this->projectileTime>this->MAXIMUM_TIME){
 
 		this->boss->changEnemyState(Boss::BossStates::IDLE);
 

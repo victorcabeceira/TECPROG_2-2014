@@ -32,13 +32,13 @@ void BossStateTeleport::update(const double deltaTime_){
 
 	this->teleportTime += deltaTime_;
 	
-	if(this->teleportTime < 3){
+	if(this->teleportTime < this->START_TIME_TELEPORT){
 
 		this->boss->vx =0;
 		this->boss->vy =0;
 
 	}
-	else if(this->teleportTime >= 3 && this->teleportTime <= 3.05){
+	else if(this->teleportTime >= this->START_TIME_TELEPORT && this->teleportTime <= this->MID_TIME_TELEPORT){
 
 		this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 		this->boss->vx = 0;
@@ -74,7 +74,7 @@ void BossStateTeleport::update(const double deltaTime_){
 		}
 	}
 
-	else if(this->teleportTime > 3.05 && this->teleportTime < 4){
+	else if(this->teleportTime > this->MID_TIME_TELEPORT && this->teleportTime < this->MID_END_TIME_TELEPORT){
 
 		this->boss->x = this->playerX;
 		this->boss->y = this->playerY;
@@ -93,7 +93,7 @@ void BossStateTeleport::update(const double deltaTime_){
 		}
 	}
 
-	if(this->teleportTime >= 4 && this->teleportTime <= 5){
+	if(this->teleportTime >= MID_END_TIME_TELEPORT && this->teleportTime <= MAX_TIME_TELEPORT){
 
 		if(this->boss->powerAnimation->getCurrentFrame() == 1){
 
@@ -150,7 +150,7 @@ void BossStateTeleport::update(const double deltaTime_){
 		}
 	}
 
-	else if(this->teleportTime > 5){
+	else if(this->teleportTime > this->MAX_TIME_TELEPORT){
 
 		this->boss->changEnemyState(Boss::BossStates::IDLE);
 
