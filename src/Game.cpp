@@ -34,11 +34,10 @@ Game& Game::instance(){
 }
 
 Game::Game() :
-
-	isCutscene(false),
+	transitionTo(LEVEL_ONE),
+	itsCutscene(false),
 	isPaused(false),
 	currentLine(0),
-	transitionTo(LEVEL_ONE),
 	window(nullptr),
 	isRunning(false),
 	pauseImage(nullptr),
@@ -178,7 +177,7 @@ void Game::runGame(){
 		
 			}
 		
-			else if(!this->isCutscene){
+			else if(!this->itsCutscene){
 		
 				this->passedTime += deltaTime;
 				updatePause();
@@ -197,7 +196,11 @@ void Game::runGame(){
 			totalGameTime += deltaTime;
 		}
 
-		// Render.
+
+	}
+}
+void Game::renderWindow(){
+	// Render.
 		window->clear();
 		
 		this->currentState->render();				    
@@ -208,14 +211,14 @@ void Game::runGame(){
 		
 		}
 		
-		else if(this->isCutscene){
+		else if(this->itsCutscene){
 		
-			if(currentLine < numLines)
+			if(this->currentLine < numLines)
 				renderDialog();	
 			else{
 		
-				currentLine = 0;
-				isCutscene = false;
+				this->currentLine = 0;
+				this->itsCutscene = false;
 			
 			}
 		}
@@ -223,10 +226,8 @@ void Game::runGame(){
 		this->fadeScreen->render();
 
 		window->render();
-	
-	}
 }
-
+	
 void Game::setState(const GameStates state_){
 
 	/// @todo Implement the transition between states.
@@ -261,15 +262,15 @@ void Game::initializEnemyStates(){
 
 void Game::renderDialog(){
 
-	if(currentLine > numLines){
+	if(this->currentLine > numLines){
 
-		currentLine = 0;
+		this->currentLine = 0;
 		return;
 
 	}
 
-	if(this->dialog[currentLine])
-		this->dialog[currentLine]->render(0,0,nullptr,true);
+	if(this->dialog[this->currentLine])
+		this->dialog[this->currentLine]->render(0,0,nullptr,true);
 		
 }
 
@@ -283,7 +284,7 @@ void Game::handleDialog(){
 
 		if(this->passedTime >= selectorDelayTime){
 
-			currentLine++;
+			this->currentLine++;
 
 		}
 	}
