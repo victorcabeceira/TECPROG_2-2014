@@ -40,8 +40,8 @@ void BossStateMagicProjectile::exit(){
 void BossStateMagicProjectile::update(const double deltaTime_){
 
 	this->projectileTime += deltaTime_;
-	this->boss->powerX += this->magicProjectileX * 15;
-	this->boss->powerY += this->magicProjectileY * 15;
+	this->boss->powerX += this->magicProjectileX * this->SPEED_FACTOR;
+	this->boss->powerY += this->magicProjectileY * this->SPEED_FACTOR;
 	this->boss->powerIsActivated = true;
 
 	if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX, 
