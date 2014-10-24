@@ -57,6 +57,41 @@ void LevelOne::settingLevelInstances(){
 
 }
 
+// Load all the enemies from the tileMap.
+void LevelOne::loadEnemiesFromTileMap(){
+
+	LuaScript luaLevel1("lua/Level1.lua");
+
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+
+	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+		
+		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
+			this->tileMap->getEnemiesY().at(i), pathEnemy,
+			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) ){
+			
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
+				
+				enemy->setDead(true);
+			
+			}
+		}
+		enemy->setLevelWidthHeight(this->width, this->height);
+		this->enemies.push_back(enemy);
+	}
+}
+
+// Loading the refill of potion.
+void LevelOne::refillPotion(Player* lPlayer){
+
+	this->image = Game::instance().getResources().get("res/images/potion.png");
+	
+	this->playerHud = new PlayerHUD(lPlayer);
+
+}
+
 void LevelOne::load(){
 	
 	Log(DEBUG) << "Loading level 1...";
@@ -105,28 +140,10 @@ void LevelOne::load(){
 	Camera* lCamera = new Camera(lPlayer); 
 	
 	// Loading the refill of potion.
-	this->image = Game::instance().getResources().get("res/images/potion.png");
-	
-	this->playerHud = new PlayerHUD(lPlayer);
+	refillPotion(lPlayer);
 
 	// Load all the enemies from the tileMap.
-	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
-		
-		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
-			this->tileMap->getEnemiesY().at(i), pathEnemy,
-			this->tileMap->getEnemiesPatrol().at(i), 0.0);
-
-		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) ){
-			
-			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
-				
-				enemy->setDead(true);
-			
-			}
-		}
-		enemy->setLevelWidthHeight(this->width, this->height);
-		this->enemies.push_back(enemy);
-	}
+	loadEnemiesFromTileMap();
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
