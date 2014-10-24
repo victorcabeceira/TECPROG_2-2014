@@ -69,12 +69,12 @@ Game::Game() :
 	std::string path = "res/images/Dialog/dialog";
 	std::string extension = ".png";	
 
-	for(int i = 0; i < numLines; i++){
+	for(int dialogIterator = 0; dialogIterator < numLines; dialogIterator++){
 
-		this->dialog[i] = nullptr;
-		this->dialog[i] = getResources().get(path + Util::toString(i) + extension);
+		this->dialog[dialogIterator] = nullptr;
+		this->dialog[dialogIterator] = getResources().get(path + Util::toString(dialogIterator) + extension);
 	
-		if(this->dialog[i] == nullptr){
+		if(this->dialog[dialogIterator] == nullptr){
 
 			Log(ERROR) << "Invalid dialog image.";
 
