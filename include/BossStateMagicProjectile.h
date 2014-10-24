@@ -41,6 +41,7 @@ class BossStateMagicProjectile : public StateBoss {
 		const int MAXIMUM_TIME = 3; /** Maximum time for magic projectile.*/
 		const int CAST_START_X = 50; /** Distance between the start of the projectile in X and the boss in X*/
 		const int CAST_START_Y = 150; /** Distance between the start of the projectile in Y and the boss in Y*/
+		const int SPEED_FACTOR = 15; /** Multiplier factor for the speed of the projectile*/
 
 };
 
