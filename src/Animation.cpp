@@ -84,7 +84,6 @@ void Animation::update(SDL_Rect& clip, const double deltaTime_){
 void Animation::changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_,
 								const bool loop_, const double totalTime_){
 	
-
 	this->x = x_;
 	this->y = y_;
 	this->initialX = x_;
@@ -97,8 +96,6 @@ void Animation::changeAnimation(const int x_, const int y_, const unsigned int n
 }
 
 void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
-
-
 
 	clip.x = x_;
 	clip.y = y_;

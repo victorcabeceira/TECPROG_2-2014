@@ -160,6 +160,11 @@ class Boss : public DynamicEntity {
 		* Handle collision with the Boss.
 		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+
+		/**
+		* Render the shield of the Boss.
+		*/
+		void Boss::renderShield(int dx, int dy);
 		
 		StateBoss* currentState;
 		Animation* animation;
