@@ -18,8 +18,12 @@ Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 	totalTime(0.0)
 
 {
-
-	this->numberOfImages = (numberOfImages_ == 0) ? 1 : numberOfImages_;
+	if(numberOfImages_ == 0){
+		this->numberOfImages = 1;
+	}
+	else {
+		this->numberOfImages = numberOfImages_;
+	}
 
 }
 
