@@ -15,8 +15,6 @@
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BossStates, StateBoss*>(stateEnum, new stateClass(this)));
 
-double timePasssed = 0;
-
 Boss::Boss(const double x_, const double y_, const std::string& path_, Player* const player_) :
 
 	DynamicEntity(x_, y_, path_),	
@@ -103,11 +101,8 @@ Boss::~Boss(){
 
 }
 
+//Updates the position and animation of the Boss
 void Boss::update(const double deltaTime_){
-	
-	//Updates the position and animation of the Boss
-	
-	timePasssed += deltaTime_;
 
 	scoutPosition(deltaTime_);
 
@@ -159,22 +154,7 @@ void Boss::render(const double cameraX_, const double cameraY_){
 		}
 	}
 	
-		// Shield render.
-	if(this->hasShield){
-
-		SDL_RendererFlip flip = getFlip();
-
-		if(flip == SDL_FLIP_HORIZONTAL){
-
-			this->shield->render(dx, dy, &this->shieldClip);
-
-		}
-		else{
-
-			this->shield->render(dx -120, dy, &this->shieldClip);
-
-		}
-	}
+	renderShield(dx, dy);
 
 	const double pdx = this->powerX - cameraX_;
 	const double pdy = this->powerY - cameraY_;
@@ -198,6 +178,26 @@ void Boss::render(const double cameraX_, const double cameraY_){
         potion->render(cameraX_, cameraY_);
 
     }
+}
+
+// Shield render.
+void Boss::renderShield(int dx, int dy){
+
+	if(this->hasShield){
+
+		SDL_RendererFlip flip = getFlip();
+
+		if(flip == SDL_FLIP_HORIZONTAL){
+
+			this->shield->render(dx, dy, &this->shieldClip);
+
+		}
+		else{
+
+			this->shield->render(dx -120, dy, &this->shieldClip);
+
+		}
+	}
 }
 
 void Boss::initializEnemyStates(){
