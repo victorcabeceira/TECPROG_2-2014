@@ -57,6 +57,15 @@ void LevelOne::settingLevelInstances(){
 
 }
 
+// Loading the refill of potion.
+void LevelOne::refillPotion(Player* lPlayer){
+
+	this->image = Game::instance().getResources().get("res/images/potion.png");
+	
+	this->playerHud = new PlayerHUD(lPlayer);
+
+}
+
 // Load all the enemies from the tileMap.
 void LevelOne::loadEnemiesFromTileMap(){
 
@@ -83,14 +92,6 @@ void LevelOne::loadEnemiesFromTileMap(){
 	}
 }
 
-// Loading the refill of potion.
-void LevelOne::refillPotion(Player* lPlayer){
-
-	this->image = Game::instance().getResources().get("res/images/potion.png");
-	
-	this->playerHud = new PlayerHUD(lPlayer);
-
-}
 
 void LevelOne::load(){
 	

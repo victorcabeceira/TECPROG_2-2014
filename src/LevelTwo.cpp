@@ -53,6 +53,31 @@ void LevelTwo::settingInstances(){
 
 }
 
+// Load all the enemies from the tileMap.
+void LevelTwo::loadEnemiesFromTileMap(){
+
+	LuaScript luaLevel1("lua/Level1.lua");
+
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+
+	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+		
+		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
+			this->tileMap->getEnemiesY().at(i), pathEnemy,
+			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+			
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2){
+				
+				enemy->setDead(true);
+			}
+		}
+		enemy->setLevelWidthHeight(this->width, this->height);
+		this->enemies.push_back(enemy);
+	}
+}
+
 void LevelTwo::load(){
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic("res/audio/lv1.wav");
@@ -99,6 +124,7 @@ void LevelTwo::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 
 	// Load all the enemies from the tileMap.
+	loadEnemiesFromTileMap();/*
 	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
 		
 		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
@@ -114,9 +140,9 @@ void LevelTwo::load(){
 		}
 		enemy->setLevelWidthHeight(this->width, this->height);
 		this->enemies.push_back(enemy);
-	}
+	}*/
 
-	// Finally, setting the player and the camera.
+	// Finally, setting the playemake clean and the camera.
 	setPlayer(lPlayer);
 	Enemy::pLife = this->player->life;
 

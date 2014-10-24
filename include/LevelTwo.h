@@ -30,6 +30,7 @@ class LevelTwo : public Level {
 
 		void settingInstances();
 
+		void loadEnemiesFromTileMap();
 
 		/**
 		* Loads the level.
