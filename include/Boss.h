@@ -164,7 +164,7 @@ class Boss : public DynamicEntity {
 		/**
 		* Render the shield of the Boss.
 		*/
-		void Boss::renderShield(int dx, int dy);
+		void renderShield(int dx, int dy);
 		
 		StateBoss* currentState;
 		Animation* animation;
