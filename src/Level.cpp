@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Logger.h"
 #include "Game.h"
+#include "SafeDelete.h"
 
 Level::Level() :
 	
@@ -27,34 +28,11 @@ Level::Level() :
 Level::~Level(){
 	this->player = nullptr;
 
-	if(this->camera != nullptr){
-		
-		delete this->camera;
-		this->camera = nullptr;
+	SAFE_DELETE(this->camera);
+	SAFE_DELETE(this->playerHud);
+	SAFE_DELETE(this->tileMap);
+	SAFE_DELETE(this->quadTree);
 
-	}
-
-	if(this->playerHud != nullptr){
-		
-		delete this->playerHud;
-		this->playerHud = nullptr;
-	
-	}
-
-	if(this->tileMap != nullptr){
-		
-		delete this->tileMap;
-		this->tileMap = nullptr;
-	
-	}
-
-
-	if(this->quadTree != nullptr){
-		
-		delete this->quadTree;
-		this->quadTree = nullptr;
-	
-	}
 }
 
 void Level::changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,

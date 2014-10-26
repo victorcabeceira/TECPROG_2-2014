@@ -9,6 +9,7 @@
 #include "BossStateTeleport.h"
 #include "BossStateIcePrision.h"
 #include "BossStateMagicProjectile.h"
+#include "SafeDelete.h"
 
 #include "Window.h"
 
@@ -68,32 +69,17 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 Boss::~Boss(){
 
 	//Destructor method, runs when the class is deallocated
-	if(this->animation != nullptr){
-
-		delete this->animation;
-		this->animation = nullptr;
-
-	}
 	
-	if(this->powerAnimation != nullptr){
-
-		delete this->powerAnimation;
-		this->powerAnimation = nullptr;
-
-	}
-
-	if(this->shieldAnimation != nullptr){
-
-		delete this->shieldAnimation;
-		this->shieldAnimation = nullptr;
-
-	}
+	SAFE_DELETE(this->animation);
+	SAFE_DELETE(this->powerAnimation);
+	SAFE_DELETE(this->shieldAnimation);
 
 	if(this->currentState != nullptr){
 
 		this->currentState->exit();
 
 	}
+
 
 	this->player = nullptr;
 
