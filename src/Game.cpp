@@ -23,6 +23,10 @@
 
 #include "Logger.h"
 
+#define SAFE_DELETE(object); if(object != nullptr) {\
+	delete object;\
+	object = nullptr;\
+}
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GameStates, StateGame*>(stateEnum, new stateClass()))
 
@@ -99,36 +103,12 @@ Game::~Game(){
 
 	destroyStates();
 
-	if(this->audioHandler != nullptr){
-
-		delete this->audioHandler;
-
-	}
-
-	if(this->inputHandler != nullptr){
-
-		delete this->inputHandler;
-
-	}
-
-	if(this->resourceManager != nullptr){
-
-		delete this->resourceManager;
-
-	}
-
-	if(this->fadeScreen != nullptr){
-
-		delete this->fadeScreen;
-
-	}
-
-	if(this->window != nullptr){
-
-		delete this->window;
-		this->window = nullptr;
-
-	}
+	SAFE_DELETE(this->audioHandler);
+	SAFE_DELETE(this->inputHandler);
+	SAFE_DELETE(this->resourceHandler);
+	SAFE_DELETE(this->fadeScreen);
+	SAFE_DELETE(this->window);
+	
 }
 
 void Game::runGame(){
