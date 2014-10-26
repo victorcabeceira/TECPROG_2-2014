@@ -55,6 +55,39 @@ void LevelFour::settingLevelInstances(){
 
 }
 
+// Load all the enemies from the tileMap.
+void LevelFour::loadEnemiesFromTileMap(){
+	for(unsigned  int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+		
+		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
+			this->tileMap->getEnemiesY().at(i), pathEnemy,
+			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+			
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4){
+				
+				enemy->setDead(true);
+			
+			}
+		}
+		enemy->setLevelWidthHeight(this->width, this->height);
+		this->enemies.push_back(enemy);
+	}
+}
+
+// Documents;
+void LevelFour::documents(){
+	Document* document1 = new Document(28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
+	this->documents.push_back(document1);
+
+	Document* document2 = new Document(75*64, 34*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
+	this->documents.push_back(document2);
+
+	Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
+	this->documents.push_back(document3);
+}
+
 void LevelFour::load(){
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
@@ -103,33 +136,10 @@ void LevelFour::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 	// Load all the enemies from the tileMap.
-	for(unsigned  int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
-		
-		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
-			this->tileMap->getEnemiesY().at(i), pathEnemy,
-			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+	loadEnemiesFromTileMap();
 
-		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-			
-			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4){
-				
-				enemy->setDead(true);
-			
-			}
-		}
-		enemy->setLevelWidthHeight(this->width, this->height);
-		this->enemies.push_back(enemy);
-	}
-
-	// Documents;
-	Document* document1 = new Document(28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
-	this->documents.push_back(document1);
-
-	Document* document2 = new Document(75*64, 34*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
-	this->documents.push_back(document2);
-
-	Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
-	this->documents.push_back(document3);
+	// Documents.
+	documents();
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
