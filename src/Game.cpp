@@ -20,13 +20,11 @@
 #include "GameStateTransition.h"
 #include "GameStateVictory.h"
 #include "Sprite.h"
+#include "SafeDelete.h"
 
 #include "Logger.h"
 
-#define SAFE_DELETE(object); if(object != nullptr) {\
-	delete object;\
-	object = nullptr;\
-}
+
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GameStates, StateGame*>(stateEnum, new stateClass()))
 
