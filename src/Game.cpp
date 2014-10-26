@@ -105,10 +105,10 @@ Game::~Game(){
 
 	SAFE_DELETE(this->audioHandler);
 	SAFE_DELETE(this->inputHandler);
-	SAFE_DELETE(this->resourceHandler);
+	SAFE_DELETE(this->resourceManager);
 	SAFE_DELETE(this->fadeScreen);
 	SAFE_DELETE(this->window);
-	
+
 }
 
 void Game::runGame(){
