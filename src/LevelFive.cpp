@@ -49,6 +49,46 @@ void LevelFive::settingInstances(){
 
 }
 
+// Load all the enemies from the tileMap. 
+void LevelFive::loadEnemiesFromTileMap(){
+
+	LuaScript luaLevel1("lua/Level1.lua");
+
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+
+	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+		
+		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
+			this->tileMap->getEnemiesY().at(i), pathEnemy,
+			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5){
+			
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot)){
+				
+				enemy->setDead(true);
+			
+			}
+		}
+		
+		enemy->setLevelWidthHeight(this->width, this->height);
+	}
+}
+
+// Documents
+void LevelFive::documents(){
+
+	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
+	this->documents.push_back(document4);
+
+	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
+	this->documents.push_back(document5);
+
+	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
+	this->documents.push_back(document6);
+
+}
+
 void LevelFive::load(){
 
 	// Changing the music.
@@ -98,33 +138,10 @@ void LevelFive::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 	// Load all the enemies from the tileMap.
-	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
-		
-		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
-			this->tileMap->getEnemiesY().at(i), pathEnemy,
-			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+	loadEnemiesFromTileMap();
 
-		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5){
-			
-			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot)){
-				
-				enemy->setDead(true);
-			
-			}
-		}
-		
-		enemy->setLevelWidthHeight(this->width, this->height);
-	}
-
-	// Documents
-	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
-	this->documents.push_back(document4);
-
-	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
-	this->documents.push_back(document5);
-
-	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
-	this->documents.push_back(document6);
+	// Documents.
+	documents();
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

@@ -57,6 +57,11 @@ void LevelFour::settingLevelInstances(){
 
 // Load all the enemies from the tileMap.
 void LevelFour::loadEnemiesFromTileMap(){
+
+	LuaScript luaLevel1("lua/Level1.lua");
+
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+	
 	for(unsigned  int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
 		
 		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
