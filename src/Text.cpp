@@ -15,6 +15,12 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		
 	}
 
+	createSurface();
+	
+}
+
+void Text::createSurface(){
+
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, color_);
 	const int surfaceW = surface->w;
 	const int surfaceH = surface->h;
@@ -33,8 +39,8 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		Log(ERROR) << "Could not load font surface.";
 		
 	}
-	
 }
+
 // Contructor of Text class, initializes the font and set the surface.
 Text::Text(const double x_, const double y_, const char* path_, const int size_,
 	const char* text_) :
@@ -48,6 +54,13 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		Log(ERROR) << "Failed to open font." << TTF_GetError();
 		
 	}
+
+	createSurfaceWithColor();
+	
+}
+
+
+void Text::createSurfaceWithColor(){
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, {0xCE, 0xCE, 0xCE, 255});
 	const int surfaceW = surface->w;
@@ -66,7 +79,6 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		Log(ERROR) << "Could not load font surface.";
 		
 	}
-	
 }
 
 // Destructor method, runs when the class is deallocated.
