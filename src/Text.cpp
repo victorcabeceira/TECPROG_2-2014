@@ -15,11 +15,11 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		
 	}
 
-	createSurface();
+	createSurface(text_, color_);
 	
 }
 
-void Text::createSurface(){
+void Text::createSurface(const char* text_, const SDL_Color color_){
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, color_);
 	const int surfaceW = surface->w;
@@ -55,12 +55,12 @@ Text::Text(const double x_, const double y_, const char* path_, const int size_,
 		
 	}
 
-	createSurfaceWithColor();
+	createSurfaceWithColor(text_);
 	
 }
 
 
-void Text::createSurfaceWithColor(){
+void Text::createSurfaceWithColor(const char* text_){
 
 	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, {0xCE, 0xCE, 0xCE, 255});
 	const int surfaceW = surface->w;

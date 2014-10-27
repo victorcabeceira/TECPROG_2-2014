@@ -36,8 +36,8 @@ class Text : public Entity {
 
 	private:
 		TTF_Font* font;
-		void createSurface();
-		void createSurfaceWithColor();
+		void createSurface(const char* text_, const SDL_Color color_);
+		void createSurfaceWithColor(const char* text_);
 
 };
 #endif //INCLUDE_TEXT_H
