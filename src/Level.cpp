@@ -1,7 +1,7 @@
 #include "Level.h"
 #include "Logger.h"
 #include "Game.h"
-#include "SafeDelete.h"
+#include "SafeDeallocation.h"
 
 Level::Level() :
 	

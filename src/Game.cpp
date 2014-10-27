@@ -20,7 +20,7 @@
 #include "GameStateTransition.h"
 #include "GameStateVictory.h"
 #include "Sprite.h"
-#include "SafeDelete.h"
+#include "SafeDeallocation.h"
 
 #include "Logger.h"
 
@@ -93,11 +93,7 @@ Game::Game() :
 
 Game::~Game(){
 
-	if(this->currentState != nullptr){
-
-		this->currentState->unload();
-
-	}
+	SAFE_UNLOAD(this->currentState);
 
 	destroyStates();
 

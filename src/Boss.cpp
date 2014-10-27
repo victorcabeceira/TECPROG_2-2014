@@ -9,7 +9,7 @@
 #include "BossStateTeleport.h"
 #include "BossStateIcePrision.h"
 #include "BossStateMagicProjectile.h"
-#include "SafeDelete.h"
+#include "SafeDeallocation.h"
 
 #include "Window.h"
 
@@ -73,14 +73,8 @@ Boss::~Boss(){
 	SAFE_DELETE(this->animation);
 	SAFE_DELETE(this->powerAnimation);
 	SAFE_DELETE(this->shieldAnimation);
-
-	if(this->currentState != nullptr){
-
-		this->currentState->exit();
-
-	}
-
-
+	SAFE_EXIT(this->currentState);
+	
 	this->player = nullptr;
 
 	destroyStates();
