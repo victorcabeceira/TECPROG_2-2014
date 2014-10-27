@@ -30,6 +30,8 @@ class LevelThree : public Level {
 
 		void settingLevelInstances();
 
+		void loadEnemiesFromTileMap();
+
 		/**
 		* Loads the level.
 		* From the Level1.lua script, loads all the necessary objects.
