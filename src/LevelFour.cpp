@@ -81,17 +81,6 @@ void LevelFour::loadEnemiesFromTileMap(){
 	}
 }
 
-// Documents;
-void LevelFour::documents(){
-	Document* document1 = new Document(28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
-	this->documents.push_back(document1);
-
-	Document* document2 = new Document(75*64, 34*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
-	this->documents.push_back(document2);
-
-	Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
-	this->documents.push_back(document3);
-}
 
 void LevelFour::load(){
 	// Changing the music.
@@ -144,7 +133,14 @@ void LevelFour::load(){
 	loadEnemiesFromTileMap();
 
 	// Documents.
-	documents();
+	Document* document1 = new Document(28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
+	this->documents.push_back(document1);
+
+	Document* document2 = new Document(75*64, 34*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
+	this->documents.push_back(document2);
+
+	Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
+	this->documents.push_back(document3);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

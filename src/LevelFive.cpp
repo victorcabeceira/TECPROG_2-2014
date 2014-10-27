@@ -49,7 +49,7 @@ void LevelFive::settingInstances(){
 
 }
 
-// Load all the enemies from the tileMap. 
+// Load all the enemies from the tileMap.
 void LevelFive::loadEnemiesFromTileMap(){
 
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -71,21 +71,8 @@ void LevelFive::loadEnemiesFromTileMap(){
 			}
 		}
 		
-		enemy->setLevelWidthHeight(this->width, this->height);
+	enemy->setLevelWidthHeight(this->width, this->height);
 	}
-}
-
-// Documents
-void LevelFive::documents(){
-
-	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
-	this->documents.push_back(document4);
-
-	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
-	this->documents.push_back(document5);
-
-	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
-	this->documents.push_back(document6);
 
 }
 
@@ -140,8 +127,15 @@ void LevelFive::load(){
 	// Load all the enemies from the tileMap.
 	loadEnemiesFromTileMap();
 
-	// Documents.
-	documents();
+	// Documents
+	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
+	this->documents.push_back(document4);
+
+	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
+	this->documents.push_back(document5);
+
+	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
+	this->documents.push_back(document6);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
