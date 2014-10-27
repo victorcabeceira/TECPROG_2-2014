@@ -37,7 +37,7 @@ class Text : public Entity {
 	private:
 		TTF_Font* font;
 		void createSurface();
-		void createSurfaceWithColor(){
+		void createSurfaceWithColor();
 
 };
 #endif //INCLUDE_TEXT_H
