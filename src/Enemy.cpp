@@ -10,6 +10,8 @@
 #include "EnemyStateAlert.h"
 #include "EnemyStateAttack.h"
 #include "EnemyStateDead.h"
+#include "SafeDeallocation.h"
+
 
 #include "Window.h"
 
@@ -65,19 +67,8 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 
 Enemy::~Enemy(){
 
-	if(this->currentState != nullptr){
-
-		this->currentState->exit();
-		this->currentState = nullptr;
-
-	}
-
-	if(this->animation != nullptr){
-
-        delete this->animation;
-        this->animation = nullptr;
-
-    }
+	SAFE_EXIT(this->currentState);
+	SAFE_DELETE(this->animation);
 
 	destroyStates();
 

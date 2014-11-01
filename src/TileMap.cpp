@@ -4,6 +4,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 #include <cassert>
+#include "SafeDeallocation.h"
 
 // Constructor of tilemap class, loads a tilemap from Tiled.
 TileMap::TileMap(const std::string& mapPath_) :
@@ -23,12 +24,8 @@ TileMap::TileMap(const std::string& mapPath_) :
 // Destructor method, runs when the class is deallocated.
 TileMap::~TileMap(){
 
-	if(this->map != nullptr){
+	SAFE_DELETE(this->map);
 
-		delete this->map;
-		this->map = nullptr;
-
-	}
 }
 
 // Loads the tilemap in the level.

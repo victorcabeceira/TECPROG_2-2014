@@ -1,6 +1,7 @@
 #include "GameStateOptions.h"
 #include "LuaScript.h"
 #include "Game.h"
+#include "SafeDeallocation.h"
 
 #include "Util.h"
 
@@ -35,26 +36,10 @@ GameStateOptions::GameStateOptions() :
 
 GameStateOptions::~GameStateOptions(){
 
-	if(this->resolution != nullptr){
+	SAFE_DELETE(this->resolution);
+	SAFE_DELETE(this->volumeMusic);
+	SAFE_DELETE(this->volumeSFX);
 
-		delete this->resolution;
-		this->resolution = nullptr;
-
-	}
-
-	if(this->volumeMusic != nullptr){
-
-		delete this->volumeMusic;
-		this->volumeMusic = nullptr;
-
-	}
-
-	if(this->volumeSFX != nullptr){
-
-		delete this->volumeSFX;
-		this->volumeSFX = nullptr;
-
-	}
 }
 
 void GameStateOptions::update(const double deltaTime_){

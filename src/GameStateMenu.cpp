@@ -1,6 +1,7 @@
 #include "GameStateMenu.h"
 #include "LuaScript.h"
 #include "Game.h"
+#include "SafeDeallocation.h"
 
 #include <string>
 

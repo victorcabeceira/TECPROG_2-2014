@@ -19,6 +19,7 @@
 #include "PlayerStateHit.h"
 #include "PlayerStateClimbing.h"
 #include "PlayerStateDead.h"
+#include "SafeDeallocation.h"
 
 #include "Window.h"
 
@@ -65,19 +66,9 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
 }
 
 Player::~Player(){
-    if(this->currentState != nullptr){
-	
-        this->currentState->exit();
-        this->currentState = nullptr;
-		
-    }
 
-    if(this->animation != nullptr){
-	
-        delete this->animation;
-        this->animation = nullptr;
-		
-    }
+    SAFE_EXIT(this->currentState);
+    SAFE_DELETE(this->animation);
 	
     destroyStates();
 }

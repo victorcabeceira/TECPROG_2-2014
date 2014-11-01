@@ -1,5 +1,6 @@
 #include "InputHandler.h"
 #include "Logger.h"
+#include "SafeDeallocation.h"
 
 InputHandler::InputHandler() :
 
@@ -14,12 +15,8 @@ InputHandler::InputHandler() :
 
 InputHandler::~InputHandler(){
 
-	if(this->controllerHandler != nullptr){
+	SAFE_DELETE(this->controllerHandler);
 
-		delete this->controllerHandler;
-		this->controllerHandler = nullptr;
-
-	}	
 }
 
 void InputHandler::handleInput(){

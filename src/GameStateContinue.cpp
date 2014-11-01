@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "Util.h"
 #include <string>
+#include "SafeDeallocation.h"
+
 
 GameStateContinue::GameStateContinue() :
 
@@ -23,26 +25,10 @@ GameStateContinue::GameStateContinue() :
 
 GameStateContinue::~GameStateContinue(){
 
-	if(this->slot1 != nullptr){
-
-		delete this->slot1;
-		this->slot1 = nullptr;
-
-	}
-
-	if(this->slot2 != nullptr){
-
-		delete this->slot2;
-		this->slot2 = nullptr;
-
-	}
-
-	if(this->slot3 != nullptr){
-
-		delete this->slot3;
-		this->slot3 = nullptr;
+	SAFE_DELETE(this->slot1);
+	SAFE_DELETE(this->slot2);
+	SAFE_DELETE(this->slot3);
 	
-	}
 }
 
 void GameStateContinue::load(){

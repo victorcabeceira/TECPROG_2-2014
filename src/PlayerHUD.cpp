@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Util.h"
 #include "Logger.h"
+#include "SafeDeallocation.h"
 
 PlayerHUD::PlayerHUD(Player* const player_):
 	player(player_),
@@ -24,12 +25,9 @@ PlayerHUD::PlayerHUD(Player* const player_):
 }
 
 PlayerHUD::~PlayerHUD(){
-	if(this->potionsLeft != nullptr){
-	
-		delete this->potionsLeft;
-		this->potionsLeft = nullptr;
-		
-	}
+
+	SAFE_DELETE(this->potionsLeft);
+
 }
 
 void PlayerHUD::update(){

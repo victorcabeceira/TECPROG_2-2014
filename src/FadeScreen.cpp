@@ -1,6 +1,8 @@
 #include "FadeScreen.h"
 #include "Game.h"
 #include "Logger.h"
+#include "SafeDeallocation.h"
+
 
 FadeScreen::FadeScreen() :
 
@@ -12,6 +14,7 @@ FadeScreen::FadeScreen() :
 
 FadeScreen::~FadeScreen() {
 
+	SAFE_DELETE(this->fadeHandler);
 	if(this->fadeHandler != nullptr){
 
 		delete this->fadeHandler;

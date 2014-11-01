@@ -1,5 +1,6 @@
 #include "Text.h"
 #include "Logger.h"
+#include "SafeDeallocation.h"
  
 // Contructor of Text class, initializes the font and set the surface.
 Text::Text(const double x_, const double y_, const char* path_, const int size_,
@@ -84,11 +85,7 @@ void Text::createSurfaceWithColor(const char* text_){
 // Destructor method, runs when the class is deallocated.
 Text::~Text(){
 
-	if(this->sprite != nullptr){
-		delete this->sprite;
-		this->sprite = nullptr;
-		
-	}
+	SAFE_DELETE(this->sprite);
 
 	TTF_CloseFont(this->font);
 }
