@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Logger.h"
 
+// Method that creates de Audio Handler of the game.
 AudioHandler::AudioHandler() :
 
 	currentMusic(nullptr),
@@ -11,6 +12,7 @@ AudioHandler::AudioHandler() :
 
 }
 
+// Destructor method, runs when the class is deallocated.
 AudioHandler::~AudioHandler(){
 
 	if(this->currentMusic != nullptr){
@@ -19,8 +21,6 @@ AudioHandler::~AudioHandler(){
 		this->currentMusic = nullptr;
 
 	}
-
-	// Log(DEBUG) << "Still had " << this->currentEffects.size() << " sfx on vector.";
 
 	for(auto sfx : this->currentEffects){
 
@@ -32,19 +32,23 @@ AudioHandler::~AudioHandler(){
 
 }
 
+// Change the current music.
 void AudioHandler::setCurrentMusic(const std::string& path_){
 
 	if(this->currentMusic != nullptr){
-
+	
+		// Free the current music running.
 		Mix_FreeMusic(this->currentMusic);
 		this->currentMusic = nullptr;
 
 	}
 
+	// Loads the new music.
 	this->currentMusic = Mix_LoadMUS(path_.c_str());
 
 }
 
+// Play the current music, a determined number of times.
 void AudioHandler::playMusic(const int times_){
 
 	if(this->currentMusic){
@@ -59,12 +63,14 @@ void AudioHandler::playMusic(const int times_){
 	}
 }
 
+// Stop the current music.
 void AudioHandler::stopMusic(){
 
 	Mix_HaltMusic();	
 
 }
 
+// Change the volume of the music running.
 void AudioHandler::setMusicVolume(const unsigned int percent_){
 
 	const int value = percent_ * MIX_MAX_VOLUME/100;
@@ -72,11 +78,14 @@ void AudioHandler::setMusicVolume(const unsigned int percent_){
 
 }
 
+// Add a new sound effect.
 void AudioHandler::addSoundEffect(const std::string& path_){
 
+	// Loads the new sound effect.
 	Mix_Chunk* effect = Mix_LoadWAV(path_.c_str());
 	SoundEffect sfx = {effect, -1};
 
+	// Gives it a error if the effect didn't load.
 	if(effect == nullptr){
 
 		Log(DEBUG) << "Loaded null chunk " << path_ << " " << Mix_GetError();
@@ -84,12 +93,14 @@ void AudioHandler::addSoundEffect(const std::string& path_){
 	}
 
 	/// @todo Resource manager for audio.
+	
+	// Put the effect in the vector of effects, and plays it.
 	this->currentEffects.push_back(sfx);
-
 	playEffect(0);
 
 }
 
+// Plays the effects.
 void AudioHandler::playEffect(const int times_){
 
 	const int playedChannel = Mix_PlayChannel(-1, this->currentEffects.back().effect, times_);
@@ -106,6 +117,7 @@ void AudioHandler::playEffect(const int times_){
 
 }
 
+// Change the effect volume.
 void AudioHandler::setEffectVolume(const unsigned int percent_){
 
 	const int value = percent_ * MIX_MAX_VOLUME/100;
@@ -113,6 +125,7 @@ void AudioHandler::setEffectVolume(const unsigned int percent_){
 
 }
 
+// Change the volume.
 void AudioHandler::changeMusic(const std::string& path_){
 
 	stopMusic();
@@ -121,6 +134,7 @@ void AudioHandler::changeMusic(const std::string& path_){
 
 }
 
+// Deletes all the sound playing.
 void AudioHandler::clearChannel(const int channel_){
 
 	std::vector<SoundEffect>::iterator it;
@@ -143,7 +157,6 @@ void AudioHandler::clearChannel(const int channel_){
 }
 
 void AudioHandler::notifyChannelDone(int channel_){
-	// Log(DEBUG) << "Channel [" << channel_ << "] done. (CALLBACK)";
 
 	Game::instance().getAudioHandler().clearChannel(channel_);
 	
