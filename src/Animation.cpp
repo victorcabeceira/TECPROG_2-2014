@@ -40,6 +40,7 @@ void Animation::update(SDL_Rect& clip, const double deltaTime_){
 	*/
 	bool endOfAnimation = ((animationCount + 1) >= this->numberOfImages);
 
+	// The interval of time that the animation will be updated.
 	const double deltaT = (this->totalTime / this->numberOfImages);
 
 	// Check if the frame has changed.
@@ -50,13 +51,16 @@ void Animation::update(SDL_Rect& clip, const double deltaTime_){
         this->totalElapsedTime = 0;
         animationCount += 1;
 
+        // Check if the count is in the end of the number of images in the animation.
         if(Animation::animationCount <= this->numberOfImages){
 
+        	// Updates the x position if it's not the horizontal limit.
 	        if(this->x < (int)ANIMATION_LIMIT){
 
 	        	this->x += 1;
 
 	        }
+	        // Go to the next line of images if got the horizontal limit.
 	        else{
 
 	        	this->y += 1;
@@ -65,6 +69,7 @@ void Animation::update(SDL_Rect& clip, const double deltaTime_){
 	        }
     	}
 
+    	// Go to the start of the animation if reach it's end.
     	if(endOfAnimation){
 
     		this->x= this->initialX;
@@ -74,6 +79,7 @@ void Animation::update(SDL_Rect& clip, const double deltaTime_){
     	}
     }
 
+    // Update the position of the animation on the clip pointer, used to renred.
    	const int positionX_ = this->x * this->spriteWidth;
 	const int positionY_ = this->y * this->spriteHeight;
 	updateClip(clip, positionX_, positionY_);
@@ -95,6 +101,7 @@ void Animation::changeAnimation(const int x_, const int y_, const unsigned int n
 
 }
 
+// Update the values of the clip.
 void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
 
 	clip.x = x_;
