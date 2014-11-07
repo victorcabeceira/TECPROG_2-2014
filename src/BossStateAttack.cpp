@@ -5,26 +5,32 @@
 #include <cstdlib>
 #include <ctime>
 
+// Initialize the boss state attack.
 void BossStateAttack::enter(){
 
 	Log(DEBUG) << "STATE ATTACK BOSS";
+
+	// Change animation and choose randomcally the next attack.
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 	this->boss->sawPlayer = false;
 	this->attackIndex = rand()%this->RANDOM_ATTACK;
 	
 }
 
+// Exit from the boss state attack.
 void BossStateAttack::exit(){
 
 	this->boss->canWalk = false;
 
 }
 
-//Update eh state of boss skills
+//Update the state of boss skills
 void BossStateAttack::update(const double deltaTime_){
 
-	((void)deltaTime_); // Unused.
+	// Prevent warning of unused.
+	((void)deltaTime_);
 
+	// Acording with the chose attack, change the state.
 	if(this->attackIndex == 3){
 
 		this->boss->changEnemyState(Boss::BossStates::SHIELD);
@@ -49,6 +55,7 @@ void BossStateAttack::update(const double deltaTime_){
 	}
 }
 
+// Constructor, creates the boss state attack.
 BossStateAttack::BossStateAttack(Boss* const boss_) :
 
 	StateBoss(boss_)
