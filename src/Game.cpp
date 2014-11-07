@@ -20,10 +20,8 @@
 #include "GameStateTransition.h"
 #include "GameStateVictory.h"
 #include "Sprite.h"
-#include "SafeDeallocation.h"
 
 #include "Logger.h"
-
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GameStates, StateGame*>(stateEnum, new stateClass()))
@@ -36,10 +34,11 @@ Game& Game::instance(){
 }
 
 Game::Game() :
-	transitionTo(LEVEL_ONE),
-	itsCutscene(false),
+
+	isCutscene(false),
 	isPaused(false),
 	currentLine(0),
+	transitionTo(LEVEL_ONE),
 	window(nullptr),
 	isRunning(false),
 	pauseImage(nullptr),
@@ -93,16 +92,44 @@ Game::Game() :
 
 Game::~Game(){
 
-	SAFE_UNLOAD(this->currentState);
+	if(this->currentState != nullptr){
+
+		this->currentState->unload();
+
+	}
 
 	destroyStates();
 
-	SAFE_DELETE(this->audioHandler);
-	SAFE_DELETE(this->inputHandler);
-	SAFE_DELETE(this->resourceManager);
-	SAFE_DELETE(this->fadeScreen);
-	SAFE_DELETE(this->window);
+	if(this->audioHandler != nullptr){
 
+		delete this->audioHandler;
+
+	}
+
+	if(this->inputHandler != nullptr){
+
+		delete this->inputHandler;
+
+	}
+
+	if(this->resourceManager != nullptr){
+
+		delete this->resourceManager;
+
+	}
+
+	if(this->fadeScreen != nullptr){
+
+		delete this->fadeScreen;
+
+	}
+
+	if(this->window != nullptr){
+
+		delete this->window;
+		this->window = nullptr;
+
+	}
 }
 
 void Game::runGame(){
@@ -151,7 +178,7 @@ void Game::runGame(){
 		
 			}
 		
-			else if(!this->itsCutscene){
+			else if(!this->isCutscene){
 		
 				this->passedTime += deltaTime;
 				updatePause();
@@ -170,11 +197,7 @@ void Game::runGame(){
 			totalGameTime += deltaTime;
 		}
 
-
-	}
-}
-void Game::renderWindow(){
-	// Render.
+		// Render.
 		window->clear();
 		
 		this->currentState->render();				    
@@ -185,14 +208,14 @@ void Game::renderWindow(){
 		
 		}
 		
-		else if(this->itsCutscene){
+		else if(this->isCutscene){
 		
-			if(this->currentLine < numLines)
+			if(currentLine < numLines)
 				renderDialog();	
 			else{
 		
-				this->currentLine = 0;
-				this->itsCutscene = false;
+				currentLine = 0;
+				isCutscene = false;
 			
 			}
 		}
@@ -200,8 +223,10 @@ void Game::renderWindow(){
 		this->fadeScreen->render();
 
 		window->render();
-}
 	
+	}
+}
+
 void Game::setState(const GameStates state_){
 
 	/// @todo Implement the transition between states.
@@ -236,15 +261,15 @@ void Game::initializEnemyStates(){
 
 void Game::renderDialog(){
 
-	if(this->currentLine > numLines){
+	if(currentLine > numLines){
 
-		this->currentLine = 0;
+		currentLine = 0;
 		return;
 
 	}
 
-	if(this->dialog[this->currentLine])
-		this->dialog[this->currentLine]->render(0,0,nullptr,true);
+	if(this->dialog[currentLine])
+		this->dialog[currentLine]->render(0,0,nullptr,true);
 		
 }
 
@@ -258,7 +283,7 @@ void Game::handleDialog(){
 
 		if(this->passedTime >= selectorDelayTime){
 
-			this->currentLine++;
+			currentLine++;
 
 		}
 	}

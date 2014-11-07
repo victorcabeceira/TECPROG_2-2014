@@ -96,12 +96,13 @@ class Game {
 		void clearKeyFromInput(const GameKeys key_);
 		void resizeWindow(const unsigned int width_, const unsigned int height_);
 
-		
+		bool isCutscene;
+		bool isPaused;
 
 		unsigned int currentSlot;
 
 		static const int numLines = 14; 
-	
+		unsigned int currentLine;
 		Sprite* dialog[numLines];
 
 		GameStates transitionTo;
@@ -137,10 +138,6 @@ class Game {
 
 		void updateDialog();
 
-		void renderWindow();
-		bool itsCutscene;
-		bool isPaused;
-		unsigned int currentLine;
 		Window* window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */
 
