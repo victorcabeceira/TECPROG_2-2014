@@ -1,22 +1,24 @@
 #include "Collision.h"
 #include <cmath>
 
-bool Collision::rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_){
+// Says if 2 rectangles are colliding.
+bool Collision::rectsCollided(const SDL_Rect& firstRectangle, const SDL_Rect& secondRectangle){
 
     // Calculate the sides of rect A.
-    const int leftA = a_.x;
-    const int rightA = a_.x + a_.w;
-    const int topA = a_.y;
-    const int bottomA = a_.y + a_.h;
+    const int leftFirstRectangle = firstRectangle.x;
+    const int rightFirstRectangle = firstRectangle.x + firstRectangle.w;
+    const int topFirstRectangle = firstRectangle.y;
+    const int bottomFirstRectangle = firstRectangle.y + firstRectangle.h;
 
     // Calculate the sides of rect B.
-    const int leftB = b_.x;
-    const int rightB = b_.x + b_.w;
-    const int topB = b_.y;
-    const int bottomB = b_.y + b_.h;
+    const int leftSecondRectangle = secondRectangle.x;
+    const int rightSecondRectangle = secondRectangle.x + secondRectangle.w;
+    const int topSecondRectangle = secondRectangle.y;
+    const int bottomSecondRectangle = secondRectangle.y + secondRectangle.h;
 
     // If any of the sides from A are outside of B.
-    if(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB){
+    if(bottomFirstRectangle <= topSecondRectangle || topFirstRectangle >= bottomSecondRectangle || 
+        rightFirstRectangle <= leftSecondRectangle || leftFirstRectangle >= rightSecondRectangle){
 
         return false;
 
@@ -29,28 +31,29 @@ bool Collision::rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_){
     }
 }
 
-Collision::RectangleSide Collision::rectsCollidedSide(const SDL_Rect& a_, const SDL_Rect& b_){
+// Return the side that first rectangle collides with the second rectangle. 
+Collision::RectangleSide Collision::rectsCollidedSide(const SDL_Rect& firstRectangle, const SDL_Rect& secondRectangle){
 
-    const double w = 0.5 * (a_.w + b_.w);
-    const double h = 0.5 * (a_.h + b_.h);
+    const double width = 0.5 * (firstRectangle.w + secondRectangle.w);
+    const double height = 0.5 * (firstRectangle.h + secondRectangle.h);
 
-    const double centerAx = a_.x + (a_.w / 2);
-    const double centerAy = a_.y + (a_.h / 2);
-    const double centerBx = b_.x + (b_.w / 2);
-    const double centerBy = b_.y + (b_.h / 2);
+    const double centerFirstRectangleOnX = firstRectangle.x + (firstRectangle.w / 2);
+    const double centerFirstRectangleOnY = firstRectangle.y + (firstRectangle.h / 2);
+    const double centerSecondRectangleOnX = secondRectangle.x + (secondRectangle.w / 2);
+    const double centerSecondRectangleOnY = secondRectangle.y + (secondRectangle.h / 2);
 
-    const double dx = centerAx - centerBx;
-    const double dy = centerAy - centerBy;
+    const double dx = centerFirstRectangleOnX - centerSecondRectangleOnX;
+    const double dy = centerFirstRectangleOnY - centerSecondRectangleOnY;
 
-    if (abs(dx) <= w && abs(dy) <= h){
+    if (abs(dx) <= width && abs(dy) <= height){
 
-        /* collision! */
-        const double wy = w * dy;
-        const double hx = h * dx;
+        // collision is calculated here.
+        const double relativeWidth = width * dy;
+        const double relativeHeight = height * dx;
 
-        if (wy > hx){
+        if (relativeWidth > relativeHeight){
 
-            if (wy > -hx){
+            if (relativeWidth > -relativeHeight){
 
                 return RectangleSide::TOP;
 
@@ -63,7 +66,7 @@ Collision::RectangleSide Collision::rectsCollidedSide(const SDL_Rect& a_, const 
         }
         else{
 
-            if (wy > -hx){
+            if (relativeWidth > -relativeHeight){
             
                 return RectangleSide::RIGHT;
             
