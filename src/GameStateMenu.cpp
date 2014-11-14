@@ -31,12 +31,8 @@ GameStateMenu::GameStateMenu() :
 
 GameStateMenu::~GameStateMenu(){
 
-	if(this->shwingAnimation != nullptr){
+	SAFE_DELETE(this->shwingAnimation);
 
-		delete this->shwingAnimation;
-		this->shwingAnimation = nullptr;
-
-	}
 }
 
 void GameStateMenu::load(){
