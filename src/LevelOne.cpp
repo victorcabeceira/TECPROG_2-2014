@@ -69,6 +69,9 @@ void LevelOne::refillPotion(Player* lPlayer){
 // Load all the enemies from the tileMap.
 void LevelOne::loadEnemiesFromTileMap(){
 
+	bool checkSave = Game::instance().getSaves().isSaved(Game::instance().currentSlot);
+	int savedLevel = Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot);
+
 	LuaScript luaLevel1("lua/Level1.lua");
 
 	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
@@ -81,7 +84,7 @@ void LevelOne::loadEnemiesFromTileMap(){
 
 		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) ){
 			
-			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
+			if(checkSave && savedLevel == 1){
 				
 				enemy->setDead(true);
 			
@@ -94,7 +97,10 @@ void LevelOne::loadEnemiesFromTileMap(){
 
 
 void LevelOne::load(){
-	
+
+	bool checkSave = Game::instance().getSaves().isSaved(Game::instance().currentSlot);
+	int savedLevel = Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot);
+
 	Log(DEBUG) << "Loading level 1...";
 
 	// Loading the tile/tilemap.
@@ -122,7 +128,7 @@ void LevelOne::load(){
 
 	Player* lPlayer = nullptr;
 	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
+	if(checkSave && savedLevel == 1){
 		
 		double savedPX = 0.0;
 		double savedPY = 0.0;

@@ -172,12 +172,14 @@ void LevelBoss::update(const double deltaTime_){
 		}
 	}
 
+	bool isAttackState = this->player->isCurrentState(Player::PlayerStates::ATTACK);
+	bool isAttackMovingState = this->player->isCurrentState(Player::PlayerStates::ATTACKMOVING);
+	bool isAttackJumpingState = this->player->isCurrentState(Player::PlayerStates::ATTACKJUMPING);
+
 	// Updating the player attack/boss collision.
 	if(Collision::rectsCollided(this->player->getBoundingBox(), this->boss->getBoundingBox())){
 		
-		if(this->player->isCurrentState(Player::PlayerStates::ATTACK) || this->player->isCurrentState(Player::PlayerStates::ATTACKMOVING)
-			
-			|| this->player->isCurrentState(Player::PlayerStates::ATTACKJUMPING)){
+		if(isAttackState || isAttackMovingState || isAttackJumpingState){
 			
 			if(this->boss->hasShield && this->player->canAttack){
 				

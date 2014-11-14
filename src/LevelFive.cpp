@@ -52,6 +52,9 @@ void LevelFive::settingInstances(){
 // Load all the enemies from the tileMap.
 void LevelFive::loadEnemiesFromTileMap(){
 
+	bool checkSave = Game::instance().getSaves().isSaved(Game::instance().currentSlot);
+	int savedLevel = Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot);
+
 	LuaScript luaLevel1("lua/Level1.lua");
 
 	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
@@ -62,7 +65,7 @@ void LevelFive::loadEnemiesFromTileMap(){
 			this->tileMap->getEnemiesY().at(i), pathEnemy,
 			this->tileMap->getEnemiesPatrol().at(i), 0.0);
 
-		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5){
+		if(checkSave && savedLevel == 5){
 			
 			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot)){
 				
@@ -77,6 +80,9 @@ void LevelFive::loadEnemiesFromTileMap(){
 }
 
 void LevelFive::load(){
+
+	bool checkSave = Game::instance().getSaves().isSaved(Game::instance().currentSlot);
+	int savedLevel = Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot);
 
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic("res/audio/lv5.wav");
@@ -104,7 +110,7 @@ void LevelFive::load(){
 	// Loading the player and the camera.
 	Player* lPlayer = nullptr;
 	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5){
+	if(checkSave && savedLevel == 5){
 		
 		double savedPX = 0.0;
 		double savedPY = 0.0;
