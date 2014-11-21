@@ -1,6 +1,7 @@
 #include "CollisionRect.h"
 #include "Logger.h"
 
+// Constructor receiving the coordinates.
 CollisionRect::CollisionRect(const int x_, const int y_, const int w_, const int h_,
 							 const TypeCollision type_) :
 	
@@ -9,7 +10,8 @@ CollisionRect::CollisionRect(const int x_, const int y_, const int w_, const int
 
 {
 }
-		
+
+// Constructor receiving a rectangle.		
 CollisionRect::CollisionRect(const SDL_Rect rect_, const TypeCollision type_) :
 
 	type(type_),
@@ -18,10 +20,12 @@ CollisionRect::CollisionRect(const SDL_Rect rect_, const TypeCollision type_) :
 {
 }
 
+// Empty Destructor.
 CollisionRect::~CollisionRect()
 {
 }
 
+// Transform a string to a collision type.
 TypeCollision CollisionRect::stringToType(const std::string& strType_){
 
 	if(strType_ == "collision"){
