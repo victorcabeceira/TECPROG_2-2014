@@ -3,18 +3,21 @@
 
 #include <iostream>
 
+// Constructor of the ControllerHandler.
 ControllerHandler::ControllerHandler() :
 
     gameController(nullptr)
 
 {
 
+    // Verify if there is a joystick connected.
 	if(SDL_NumJoysticks() > 0){
 
          this->gameController = SDL_GameControllerOpen(0);
 
  	}
 
+    //Set the controller to the keyboard.
 	if(this->gameController == nullptr){
 
 		Log(INFO) << "Unable to find a controller, defaulting to keyboard.";
@@ -25,6 +28,7 @@ ControllerHandler::ControllerHandler() :
 
 }
 
+// Handle the input events.
 void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 
     this->keyStates[GameKeys::SPACE]  = false;
@@ -35,6 +39,7 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 
     static int pressed = 0;
 
+    // Handle the pressed button.
     if(sdlEvent_.type == SDL_CONTROLLERBUTTONDOWN){
 
         switch(sdlEvent_.cbutton.button){
@@ -132,7 +137,7 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 
     }
 
-    // On keyup.
+    // Handle the released button.
     if(sdlEvent_.type == SDL_CONTROLLERBUTTONUP){
 
         switch(sdlEvent_.cbutton.button){
@@ -204,6 +209,7 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
         }
 	}
 	
+    // Handle the analogic axis.
 	if(sdlEvent_.type == SDL_CONTROLLERAXISMOTION){
 			
 		switch(sdlEvent_.caxis.axis){
