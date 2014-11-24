@@ -57,7 +57,15 @@ class Sprite {
 		*/
 		unsigned int getWidth();
 
+		/**
+		* Sets the sprite width
+		*/
+
 		void setWidth(unsigned int width_);
+
+		/**
+		* Sets the sprite height
+		*/
 
 		void setHeight(unsigned int height_);
 

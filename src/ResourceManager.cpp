@@ -1,6 +1,11 @@
 #include "ResourceManager.h"
 #include "Logger.h"
 
+	/**
+	* The constructor.
+	* Initializes attributes.
+	*/
+
 ResourceManager::ResourceManager() :
 	
 	resources()
@@ -8,6 +13,11 @@ ResourceManager::ResourceManager() :
 {
 
 }
+
+	/**
+	* The destructor.
+	* @note Warns about resources being deleted with references still pointing to them.
+	*/
 
 ResourceManager::~ResourceManager(){
 	std::map<std::string, Sprite::SpritePtr>::const_iterator it;
@@ -21,6 +31,12 @@ ResourceManager::~ResourceManager(){
 		}
 	}
 }
+
+	/**
+	* Retrieves the sprite from the resources.
+	* @return The pointer to the wanted sprite. Creates it, if not already in resources.
+	* @param path_ : Path to the desired sprite.
+	*/
 
 Sprite* ResourceManager::get(const std::string& path_){
 	
@@ -39,10 +55,21 @@ Sprite* ResourceManager::get(const std::string& path_){
 	
 }
 
+	/**
+	* Registers the resource on the resources map.
+	* @param path_ : Path to the sprite. Will be the key value.
+	* @param resource_ : The shared pointer for the resource.
+	*/
+
 void ResourceManager::registerResource(const std::string& path_, Sprite::SpritePtr resource_){
 	
 	this->resources.insert( std::make_pair(path_, resource_) );
 }
+
+	/**
+	* Unregisters the resource on the resources map.
+	* @param path_ : The key (path to sprite) on the map.
+	*/
 
 void ResourceManager::unregisterResource(const std::string& path_){
 	
@@ -54,6 +81,11 @@ void ResourceManager::unregisterResource(const std::string& path_){
 		this->resources.erase(it);
 	}
 }
+
+	/**
+	* Constructs the desired sprite.
+	* @param path_ : Path to the desired sprite.
+	*/
 
 Sprite::SpritePtr ResourceManager::load(const std::string& path_){
 	
