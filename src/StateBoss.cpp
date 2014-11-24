@@ -1,6 +1,10 @@
 #include "StateBoss.h"
 
-// Constructor of StateBoss, set the boss.
+	/**
+	* The constructor.
+	* @param boss_ : Reference to the Boss.
+	*/
+
 StateBoss::StateBoss(Boss* const boss_) :
 
 	boss(boss_)
@@ -9,7 +13,10 @@ StateBoss::StateBoss(Boss* const boss_) :
 
 }
 
-// Destructor method, runs when the class is deallocated.
+	/**
+	* The destructor.
+	*/
+	
 StateBoss::~StateBoss(){
 	
 	this->boss = nullptr;

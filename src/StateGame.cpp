@@ -1,5 +1,9 @@
 #include "StateGame.h"
 
+	/**
+	* The destructor.
+	*/
+
 StateGame::~StateGame(){
 
 	// Should be called in each state unload.
@@ -7,11 +11,19 @@ StateGame::~StateGame(){
 
 }
 
+	/**
+	* Adds an entity to the vector.
+	*/
+
 void StateGame::addEntity(Entity* const entity){
 
 	this->entities.push_back(entity);
 
 }
+
+	/**
+	* Deletes all the entities inside the vector.
+	*/
 
 void StateGame::cleanEntities(){
 

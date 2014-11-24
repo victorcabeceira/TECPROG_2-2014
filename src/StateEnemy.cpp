@@ -1,6 +1,10 @@
 #include "StateEnemy.h"
 
-// Constructor of StateEnemy, set the enemy.
+	/**
+	* The constructor.
+	* @param enemy_ : Reference to the Enemy.
+	*/
+
 StateEnemy::StateEnemy(Enemy* const enemy_) :
 	
 	enemy(enemy_)
@@ -9,7 +13,10 @@ StateEnemy::StateEnemy(Enemy* const enemy_) :
 
 }
 
-// Destructor method, runs when the class is deallocated.
+	/**
+	* The destructor.
+	*/
+	
 StateEnemy::~StateEnemy(){
 
 	this->enemy = nullptr;
