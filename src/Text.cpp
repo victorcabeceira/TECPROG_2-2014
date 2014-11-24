@@ -151,12 +151,21 @@ void Text::changeText(const char* text_){
 
 }
 
-// Update.
+	/**
+	* Updates the text.
+	* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+	*/
+
 void Text::update(const double deltaTime_){
 	(void(deltaTime_)); //unused
 }
 
-// Render the text on the screen.
+	/**
+	* Renders the text.
+	* @param cameraX_ : The x position of the camera.
+	* @param cameraY_ : The y position of the camera.
+	*/
+		
 void Text::render(const double cameraX_, const double cameraY_){
 	const int dx = this->x - cameraX_;
 	const int dy = this->y - cameraY_;
