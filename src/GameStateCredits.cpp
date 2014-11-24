@@ -5,6 +5,10 @@
 
 #include <string>
 
+/**
+* The state for the initial menu screen.
+* Game state that will contain the game over screen.
+*/
 GameStateCredits::GameStateCredits() :
 
 	creditsImage(nullptr),
@@ -17,7 +21,10 @@ GameStateCredits::GameStateCredits() :
 
 GameStateCredits::~GameStateCredits(){
 }
-
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateCredits::update(const double deltaTime_){
 
 	(void(deltaTime_)); //unused
@@ -29,7 +36,10 @@ void GameStateCredits::update(const double deltaTime_){
 
 	}
 }
-
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateCredits::load(){
 
 	Log(DEBUG) << "Loading credits...";
@@ -41,7 +51,10 @@ void GameStateCredits::load(){
     this->creditsClip.w = this->creditsImage->getWidth();
 
 }
-
+/**
+* Unloads everything that was loaded.
+* @see GameStateCredits::load
+*/
 void GameStateCredits::unload(){
 
 	Log(DEBUG) << "\tUnloading credits...";
@@ -49,7 +62,11 @@ void GameStateCredits::unload(){
 	cleanEntities();
 
 }
-
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateCredits::render(){
 
 	if(this->creditsImage != nullptr){
