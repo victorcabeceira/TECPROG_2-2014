@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Collision.h"
 
+// State of boss ice prision.
 void BossStateIcePrision::enter(){
 
 	// Log(DEBUG) << "STATE ICE PRISION BOSS";
@@ -19,7 +20,7 @@ void BossStateIcePrision::enter(){
 	this->prisionTime = 0.0;
 
 }
-
+//State finish 
 void BossStateIcePrision::exit(){
 
 	this->boss->powerIsActivated = false;
@@ -29,7 +30,7 @@ void BossStateIcePrision::exit(){
 	this->boss->player->canMove = true;
 
 }
-
+//State update
 void BossStateIcePrision::update(const double deltaTime_){
 
 	this->prisionTime += deltaTime_;
@@ -51,7 +52,7 @@ void BossStateIcePrision::update(const double deltaTime_){
 			}
 		}
 	}
-
+//Prision total time
 	if(this->prisionTime > 4){
 
 		this->boss->changEnemyState(Boss::BossStates::IDLE);
