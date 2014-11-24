@@ -4,6 +4,10 @@
 
 #include <string>
 
+/**
+* The state for the initial splash screen.
+* Game state that will contain the initial splash images, before the main menu state is called.
+*/
 GameStateSplash::GameStateSplash() :
 
 	currentSplash(0),
@@ -21,7 +25,10 @@ GameStateSplash::GameStateSplash() :
 
 GameStateSplash::~GameStateSplash(){
 }
-
+/**
+* Loads the level.
+* From the Splash.lua script, loads all the necessary objects.
+*/
 void GameStateSplash::load(){
 
 	Log(DEBUG) << "Loading splash screens...";
@@ -41,7 +48,10 @@ void GameStateSplash::load(){
 	this->lifeTime = luaLifeTime;
 
 }
-
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateSplash::unload(){
 
 	Log(DEBUG) << "\tUnloading splash screens...";
@@ -49,7 +59,10 @@ void GameStateSplash::unload(){
 	cleanEntities();
 
 }
-
+/**
+* Unloads everything that was loaded.
+* @see GameStateSplash::load
+*/
 void GameStateSplash::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -91,7 +104,11 @@ void GameStateSplash::update(const double deltaTime_){
 	}
 
 }
-
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateSplash::render(){
 
 	if(this->images[this->currentSplash] != nullptr){
