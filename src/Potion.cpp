@@ -3,6 +3,9 @@
 #include "Window.h"
 #include <cmath>
 
+	/**
+	* The constructor.
+	*/
 Potion::Potion(const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_,
 	const int distance_, const bool isRight_) :
 
@@ -38,7 +41,9 @@ Potion::Potion(const double x_, const double y_, const std::string& path_, const
 	this->vy = 5;
 
 }
-
+	/**
+	* The destructor.
+	*/
 Potion::~Potion(){
 
 }

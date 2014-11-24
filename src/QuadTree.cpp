@@ -22,6 +22,10 @@ QuadTree::~QuadTree(){
 
 }
 
+	/**
+	* Clears the QuadTree.
+	*/
+
 void QuadTree::clear(){
 
 	this->objects.clear();
@@ -36,6 +40,10 @@ void QuadTree::clear(){
 		}
 	}
 }
+
+	/**
+	* Splits the node into four subnodes.
+	*/
 
 void QuadTree::split(){
 
@@ -55,6 +63,11 @@ void QuadTree::split(){
 	this->nodes[3] = new QuadTree(this->level+1, rect3);
 
 }
+
+	/**
+	* Determine which node the object belongs to.
+	* -1 means object cannot completely fit within a child node and is part of the parent node.
+	*/
 
 int QuadTree::getIndex(SDL_Rect rect_){
 
@@ -103,6 +116,11 @@ int QuadTree::getIndex(SDL_Rect rect_){
 
 }
 
+	/**
+	* Insert the object into the quadtree.
+	* If the node exceeds the capacity, it will split and add all objects to their corresponding nodes.
+	*/
+
 void QuadTree::insert(CollisionRect rect_){
 
 	if (nodes[0] != nullptr) {
@@ -148,6 +166,10 @@ void QuadTree::insert(CollisionRect rect_){
 		}
 	}
 }
+
+	/**
+	* Return all objects that could collide with the given object.
+	*/
 
 std::vector<CollisionRect> QuadTree::retrieve(std::vector<CollisionRect>& returnObjects_, SDL_Rect rect_){
 

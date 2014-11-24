@@ -2,6 +2,10 @@
 #include "Logger.h"
 #include "Game.h"
 
+	/**
+	* @see StatePlayer::enter
+	*/
+
 void PlayerStateRolling::enter(){
 	
 	this->box.x = 58;
@@ -16,10 +20,18 @@ void PlayerStateRolling::enter(){
 
 }
 
+	/**
+	* @see StatePlayer::exit
+	*/
+
 void PlayerStateRolling::exit(){
 
 }
 
+	/**
+	* @see StatePlayer::handleInput
+	*/
+	
 void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
@@ -49,6 +61,11 @@ void PlayerStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keySt
     
     }
 }
+
+	/**
+	* The constructor.
+	* @param player_ : Reference to the player.
+	*/
 
 PlayerStateRolling::PlayerStateRolling(Player* const player_) :
     
