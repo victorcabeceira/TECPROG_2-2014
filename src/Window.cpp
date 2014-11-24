@@ -6,7 +6,15 @@
 
 SDL_Renderer* Window::sdlRenderer = nullptr;
 
-// Constructor of window class, creates a window.
+/**
+* The constructor.
+* Sets all attributes, and calls the initialize method.
+* @param width_ : The desired window width.
+* @param height_ : The desired window height.
+* @param title_ : The desired window title.
+* @note If omitted, window title will be "SDL Window".
+* @see Window::initialize
+*/
 Window::Window(const unsigned int width_, const unsigned int height_, const std::string& title_) :
 	
 	windowTitle(title_),
@@ -15,15 +23,23 @@ Window::Window(const unsigned int width_, const unsigned int height_, const std:
 {
 	create(width_, height_);
 }
+	/**
+	* The destructor.
+	* Uses the destroy method to delete window.
+	* @see Window::destroy
+	*/
 
-// Destructor method, runs when the class is deallocated.
 Window::~Window(){
 
 	destroy();
 
 }
 
-// Deallocate all resourses used in this class.
+	/**
+	* Frees allocated members.
+	* Frees the SDL_Renderer and the SDL_Window.
+	*/
+
 void Window::destroy(){
 
 	// Destroys the Window renderer.
@@ -36,14 +52,22 @@ void Window::destroy(){
 
 }
 
-// Method that minimizes the window.
+	/**
+	* Minimizes window.
+	* Uses SDLs internal method to minimize the window.
+	*/
+
 void Window::minimize(){
 
 	SDL_MinimizeWindow(this->sdlWindow);
 
 }
 
-// Method that maximizes the window.
+	/**
+	* Maximizes window.
+	* Uses SDLs internal method to maximize the window.
+	*/
+
 void Window::maximize(){
 
 	SDL_MaximizeWindow(this->sdlWindow);
@@ -58,14 +82,22 @@ void Window::clear(){
 
 }
 
-// Render the window
+	/**
+	* Renders to screen.
+	* Updates the screen with every change in the renderer.
+	*/
+
 void Window::render(){
 
 	SDL_RenderPresent(Window::sdlRenderer);
 
 }
 
-// Creates the SDL window, with the width and height.
+	/**
+	* Creates the Window, with specified width and height.
+	* Can be used either as the creator, or as the resizer.
+	*/
+
 void Window::create(const unsigned int width_, const unsigned int height_){
 	/// @todo Toggle VSync.
 
@@ -113,14 +145,28 @@ void Window::create(const unsigned int width_, const unsigned int height_){
 	}
 }
 
-// Resize the window with a new width and height.
+	/**
+	* Resizes the window.
+	* @todo Instead of directly choosing width and height, choose from a pre-defined list
+	* 	of resolutions.
+	*/
+		
 void Window::resize(const unsigned int width_, const unsigned int height_){
 
 	SDL_SetWindowSize(this->sdlWindow, width_, height_);
 
 }
 
-// Apply a scale on the screen.
+	/**
+	* Rescales the renderization.
+	* Set a device independent resolution for rendering.
+	* @param size_ : Multiplies Configuration::resolutionWidth and
+	* 	Configuration::resolutionHeight for the new resolution.
+	* @note Practically, it looks like the camera has a larger field of view, the bigger
+	* 	the size_ parameter is.
+	* @see SDL_RenderSetLogicalSize
+	*/
+
 void Window::rescale(unsigned int size_){
 	// Just a precaution, so there is no abuse on the size.
 	if(size_ > 10){

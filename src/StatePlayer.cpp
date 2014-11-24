@@ -1,6 +1,9 @@
 #include "StatePlayer.h"
 
-// Constructor of StatePlayer, set the player.
+	/**
+	* The constructor.
+	* @param player_ : Reference to the player.
+	*/
 StatePlayer::StatePlayer(Player* const player_) :
 	
 	player(player_),
@@ -10,7 +13,9 @@ StatePlayer::StatePlayer(Player* const player_) :
 
 }
 
-// Destructor method, runs when the class is deallocated.
+	/**
+	* The destructor.
+	*/
 StatePlayer::~StatePlayer(){
 	
 	this->player = nullptr;
