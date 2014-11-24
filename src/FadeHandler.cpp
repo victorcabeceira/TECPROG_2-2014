@@ -1,6 +1,9 @@
 #include "FadeHandler.h"
 #include "Logger.h"
 
+/**
+* Handles the fades.
+*/
 FadeHandler::FadeHandler(Sprite* const sprite_) :
 
 	shouldFadeIn(false),
@@ -23,6 +26,9 @@ FadeHandler::~FadeHandler() {
 
 }
 
+/**
+* Fades in.
+*/
 void FadeHandler::fadeIn(const double percentage_, const double time_){
 
 	this->shouldFadeIn = true;
@@ -33,6 +39,9 @@ void FadeHandler::fadeIn(const double percentage_, const double time_){
 
 }
 
+/**
+* Fades out.
+*/
 void FadeHandler::fadeOut(const double percentage_, const double time_){
 
 	this->shouldFadeOut = true;
@@ -42,7 +51,9 @@ void FadeHandler::fadeOut(const double percentage_, const double time_){
 	this->rate = (this->currentPercentage - this->percentageOfStop)/time_;
 
 }
-
+/**
+* Updates the sprite.
+*/
 void FadeHandler::update(const double deltaTime_){
 
 	if(this->sprite == nullptr){
@@ -87,6 +98,9 @@ void FadeHandler::update(const double deltaTime_){
 	}
 }
 
+/**
+* Gets the current percentage of fading.
+*/
 double FadeHandler::getCurrentPercentage(){
 
 	return this->currentPercentage;
