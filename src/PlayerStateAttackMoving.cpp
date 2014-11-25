@@ -1,6 +1,7 @@
 #include "PlayerStateAttackMoving.h"
 #include "Logger.h"
 
+//Entering the Moving State Attack
 void PlayerStateAttackMoving::enter(){
 	
 	this->box.x = 58;
@@ -12,12 +13,14 @@ void PlayerStateAttackMoving::enter(){
 
 }
 
+//Exiting the Moving State Attack
 void PlayerStateAttackMoving::exit(){
 	
 	this->player->canAttack = true;
 
 }
 
+//Handles the Input
 void PlayerStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
