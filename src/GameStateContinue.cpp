@@ -35,9 +35,11 @@ void GameStateContinue::load(){
 	
 	Log(DEBUG) << "Loading Continue Screen...";
 	
-	if(Game::instance().getSaves().isSaved(SLOT_1)){
+	bool game_instance_save_slot1 = Game::instance().getSaves().isSaved(SLOT_1);
+
+	if(game_instance_save_slot1){
 		
-		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_1);
+		const int levelFromSave = game_instance_save_slot1;
 
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 		
@@ -57,10 +59,11 @@ void GameStateContinue::load(){
 	
 	}
 
+	bool game_instance_save_slot2 = Game::instance().getSaves().isSaved(SLOT_2);
 
-	if(Game::instance().getSaves().isSaved(SLOT_2)){
+	if(game_instance_save_slot2){
 		
-		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_2);
+		const int levelFromSave = game_instance_save_slot2;
 
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 		
@@ -79,10 +82,11 @@ void GameStateContinue::load(){
 	
 	}
 
+	bool game_instance_save_slot3 = Game::instance().getSaves().isSaved(SLOT_3);
 
-	if(Game::instance().getSaves().isSaved(SLOT_3)){
+	if(game_instance_save_slot3){
 		
-		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_3);
+		const int levelFromSave = game_instance_save_slot3;
 
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 			
@@ -101,9 +105,12 @@ void GameStateContinue::load(){
 	
 	}
 
+	std::string imageBackground ("continue.images.background");
+	std::string imageSelector ("continue.images.selector");
+
 	LuaScript luaMenu("lua/Continue.lua");
-	const std::string pathBackground = luaMenu.unlua_get<std::string>("continue.images.background");
-	const std::string pathSelector = luaMenu.unlua_get<std::string>("continue.images.selector");
+	const std::string pathBackground = luaMenu.unlua_get<std::string>(imageBackground);
+	const std::string pathSelector = luaMenu.unlua_get<std::string>(imageSelector);
 
 	this->background = Game::instance().getResources().get(pathBackground);
     this->selector = Game::instance().getResources().get(pathSelector);
@@ -145,7 +152,8 @@ void GameStateContinue::render(){
 	if(this->background != nullptr){
 
 		this->background->render(0, 0, nullptr, true);
-		this->selector->render(selectorXPosition, selectorYPosition[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+		this->selector->render(selectorXPosition, selectorYPosition[currentSelection],
+							   nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
 	
 		this->slot1->render(0, 0);
 		this->slot2->render(0, 0);
@@ -211,6 +219,7 @@ void GameStateContinue::handleSelectorMenu(){
 
 		}
 	}
+
 
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
 
