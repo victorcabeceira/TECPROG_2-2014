@@ -4,7 +4,15 @@
 #include "SafeDeallocation.h"
 
 #include <string>
+/**
+* The state for the initial menu screen.
+* Game state that will contain the main menu.
+*/
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GameStateMenu::GameStateMenu() :
 	
 	shouldIgnore(false),
@@ -28,13 +36,18 @@ GameStateMenu::GameStateMenu() :
 
 {
 }
-
+/**
+* The destructor.
+*/
 GameStateMenu::~GameStateMenu(){
 
 	SAFE_DELETE(this->shwingAnimation);
 
 }
-
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateMenu::load(){
 
 	Log(DEBUG) << "Loading menu...";
@@ -60,7 +73,10 @@ void GameStateMenu::load(){
     Game::instance().getFade().fadeOut(0, 0.002);
 
 }
-
+/**
+* Unloads everything that was loaded.
+* @see GameStateMenu::load
+*/
 void GameStateMenu::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
@@ -68,7 +84,10 @@ void GameStateMenu::unload(){
 	cleanEntities();
 
 }
-
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateMenu::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -93,7 +112,11 @@ void GameStateMenu::update(const double deltaTime_){
 	}
 
 }
-
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateMenu::render(){
 
 	if(this->passedTime>10){
@@ -141,7 +164,9 @@ void GameStateMenu::render(){
 	}
 
 }
-
+/**
+* Handles the Selector Menu.
+*/
 void GameStateMenu::handleSelectorMenu(){
 	
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
