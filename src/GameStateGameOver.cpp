@@ -4,6 +4,10 @@
 
 #include <string>
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GameStateGameOver::GameStateGameOver() :
 
 	gameOverImage(nullptr),
@@ -12,10 +16,15 @@ GameStateGameOver::GameStateGameOver() :
 
 {
 }
-
+/**
+* The destructor.
+*/
 GameStateGameOver::~GameStateGameOver(){
 }
-
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateGameOver::load(){
 
 	Log(DEBUG) << "Loading Game Over...";
@@ -31,7 +40,10 @@ void GameStateGameOver::load(){
 	Game::instance().getAudioHandler().changeMusic("res/audio/Game_Over.mid");
 
 }
-
+/**
+* Unloads everything that was loaded.
+* @see GameStateGameOver::load
+*/
 void GameStateGameOver::unload(){
 
 	Log(DEBUG) << "\tUnloading Game Over...";
@@ -43,7 +55,10 @@ void GameStateGameOver::unload(){
 	Game::instance().getAudioHandler().stopMusic();
 
 }
-
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateGameOver::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -64,7 +79,11 @@ void GameStateGameOver::update(const double deltaTime_){
 
 	}
 }
-
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateGameOver::render(){
 
 	if(this->gameOverImage != nullptr){
