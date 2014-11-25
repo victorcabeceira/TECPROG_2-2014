@@ -10,6 +10,7 @@
 #define MAX_DISTANCE 300
 #define MIN_DISTANCE 50
 
+//Entering the Aiming State
 void PlayerStateAiming::enter(){
 
 	this->box.x = 58;
@@ -34,12 +35,14 @@ void PlayerStateAiming::enter(){
 
 }
 
+//Exiting the Aiming State
 void PlayerStateAiming::exit(){
 
 	this->player->crosshair->activated = false;
 
 }
 
+//Handles the Input
 void PlayerStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	this->player->crosshair->render(0.0, 0.0);
@@ -116,6 +119,7 @@ PlayerStateAiming::PlayerStateAiming(Player* const player_) :
 
 }
 
+//The absolute position of the crosshair of the player
 int PlayerStateAiming::absoluteCrosshairPlayerDistance(){
 
 	int distance = 0;
