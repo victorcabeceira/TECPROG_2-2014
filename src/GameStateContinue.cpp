@@ -5,6 +5,10 @@
 #include <string>
 #include "SafeDeallocation.h"
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 
 GameStateContinue::GameStateContinue() :
 
@@ -23,6 +27,10 @@ GameStateContinue::GameStateContinue() :
 
 }
 
+/**
+* The destructor.
+*/
+
 GameStateContinue::~GameStateContinue(){
 
 	SAFE_DELETE(this->slot1);
@@ -30,6 +38,11 @@ GameStateContinue::~GameStateContinue(){
 	SAFE_DELETE(this->slot3);
 	
 }
+
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 
 void GameStateContinue::load(){
 	
@@ -117,12 +130,22 @@ void GameStateContinue::load(){
 
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GameStateContinue::load
+*/
+
 void GameStateContinue::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 
 }
+
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 
 void GameStateContinue::update(const double deltaTime_){
 
@@ -139,6 +162,12 @@ void GameStateContinue::update(const double deltaTime_){
 	}
 
 }
+
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 
 void GameStateContinue::render(){
 
@@ -157,6 +186,10 @@ void GameStateContinue::render(){
 
 	}
 }
+
+/**
+* Handles the selector menu.
+*/
 
 void GameStateContinue::handleSelectorMenu(){
 
