@@ -24,8 +24,10 @@ void PlayerStateAttackMoving::exit(){
 void PlayerStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	
 	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
+
+	int currentFrame = this->player->getAnimation()->getCurrentFrame();
 	
-	if(this->player->getAnimation()->getCurrentFrame() == 9){
+	if( currentFrame == 9 ){
 		
 		this->player->changEnemyState(Player::PlayerStates::MOVING);
 	

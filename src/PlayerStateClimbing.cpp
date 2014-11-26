@@ -5,7 +5,9 @@ bool isMoving = false;
 
 void PlayerStateClimbing::enter(){
 	
-	Log(DEBUG) << "STATE CLIMBING";
+	std::string debug_enter ("STATE CLIMBING");
+
+	Log(DEBUG) << debug_enter;
 
 	this->player->isClimbing = true;
 	
@@ -17,9 +19,13 @@ void PlayerStateClimbing::enter(){
     this->player->getAnimation()->changeAnimation(0, 6, 4, false, 1);
 
     this->player->vy = 0;
+
+    
+    
     if(!this->player->isRight){
 		
 		this->player->vx = -0.001;
+
     }
 	else{
 		
@@ -38,11 +44,15 @@ void PlayerStateClimbing::exit(){
 
 void PlayerStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
+	int valueYAxis = this->player->vy;
+
+    int currentFrame = this->player->getAnimation()->getCurrentFrame();
+
 	this->player->moveVertical(keyStates_[GameKeys::UP], keyStates_[GameKeys::DOWN]);
 
-	if(abs(this->player->vy)<1){
+	if(abs(valueYAxis)<1){
 		
-		this->player->getAnimation()->changeAnimation(this->player->getAnimation()->getCurrentFrame() - 1,
+		this->player->getAnimation()->changeAnimation(currentFrame - 1,
 			6, 1, false, 0);
 			isMoving = true;
 	
@@ -60,7 +70,9 @@ void PlayerStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyS
 	// Jump
 	if(keyStates_[GameKeys::SPACE]){
 		
-		Log(DEBUG) << "entrou";		
+		std::string debug_handle("entrou");
+
+		Log(DEBUG) << debug_handle;		
 		this->player->vy = -700;
 
 		if(this->player->isRight){
@@ -75,13 +87,16 @@ void PlayerStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyS
 		}
 
 		this->player->changEnemyState(Player::PlayerStates::AERIAL);
+
 		return;
 	}
 
 	if(!this->player->isClimbing){
 		
 		this->player->vy = -1000;
+
 		this->player->changEnemyState(Player::PlayerStates::AERIAL);
+
 		return;
 	
 	}
