@@ -1,7 +1,15 @@
 #include "InputHandler.h"
 #include "Logger.h"
 #include "SafeDeallocation.h"
+/**
+* Handles player input.
+* Using SDL event handling, recieves the player input accordingly.
+*/
 
+/**
+* The constructor.
+* Used to create the input handler instance.
+*/
 InputHandler::InputHandler() :
 
 	controllerHandler(new ControllerHandler()),
@@ -13,12 +21,20 @@ InputHandler::InputHandler() :
 
 }
 
+/**
+* The destructor.
+* Deletes the InputHandler instance.
+*/
 InputHandler::~InputHandler(){
 
 	SAFE_DELETE(this->controllerHandler);
 
 }
 
+/**
+* Handles the input.
+* Detects the pending events, and handles them appropriately.
+*/
 void InputHandler::handleInput(){
 
 	this->keyStates[GameKeys::SPACE]  = false;
@@ -221,18 +237,27 @@ void InputHandler::handleInput(){
 	} while(pendingEvent != 0);
 }
 
+/**
+* @return InputHandler::keyStates
+*/
 std::array<bool, GameKeys::MAX> InputHandler::getKeyStates(){
 
 	return this->keyStates;
 
 }
 
+/**
+* @return InputHandler::quitFlag
+*/
 bool InputHandler::isQuitFlag(){
 
 	return this->quitFlag;
 
 }
 
+/**
+* Sets InputHandler::quitFlag to true.
+*/
 void InputHandler::signalExit(){
 
 	this->quitFlag = true;

@@ -1,7 +1,15 @@
 #include "GameStateTransition.h"
 #include "Game.h"
 #include "Logger.h"
+/**
+* The state for the initial splash screen.
+* Game state that will contain the initial splash images, before the main menu state is called.
+*/
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GameStateTransition::GameStateTransition() :
 
 	passedTime(0.0),
@@ -12,9 +20,16 @@ GameStateTransition::GameStateTransition() :
 {
 }
 
+/**
+* The destructor.
+*/
 GameStateTransition::~GameStateTransition(){
 }
 
+/**
+* Loads the level.
+* From the Splash.lua script, loads all the necessary objects.
+*/
 void GameStateTransition::load(){
 
 	Log(DEBUG) << "Loading transition...";
@@ -38,6 +53,10 @@ void GameStateTransition::load(){
 
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GameStateTransition::load
+*/
 void GameStateTransition::unload(){
 
 	Log(DEBUG) << "\tUnloading transition...";
@@ -49,6 +68,10 @@ void GameStateTransition::unload(){
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateTransition::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -61,6 +84,11 @@ void GameStateTransition::update(const double deltaTime_){
 
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateTransition::render(){
 
 	this->loading->render(0, 0, nullptr, true);
