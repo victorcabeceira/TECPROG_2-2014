@@ -1,6 +1,9 @@
 #include "BossStateIdle.h"
 #include "Logger.h"
 
+/**
+* @see StateBoss::enter.
+*/
 void BossStateIdle::enter(){
 
 	Log(DEBUG) << "STATE IDLE BOSS";
@@ -8,9 +11,15 @@ void BossStateIdle::enter(){
 
 }
 
+/**
+* @see StateBoss::exit.
+*/
 void BossStateIdle::exit(){
 }
 
+/**
+* @see StateBoss::update.
+*/
 void BossStateIdle::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
@@ -45,6 +54,10 @@ void BossStateIdle::update(const double deltaTime_){
 
 }
 
+/**
+* The constructor.
+* @param boss_ : Reference to the Boss.
+*/
 BossStateIdle::BossStateIdle(Boss* const boss_) :
 
 	StateBoss(boss_)

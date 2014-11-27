@@ -6,6 +6,9 @@
 #include <cmath>
 
 
+/**
+* @see StateBoss::enter.
+*/		
 void BossStateMagicProjectile::enter(){
 
 	// Log(DEBUG) << "STATE MAGIC PROJECTILE BOSS";
@@ -26,6 +29,9 @@ void BossStateMagicProjectile::enter(){
 
 }
 
+/**
+* @see StateBoss::exit.
+*/
 void BossStateMagicProjectile::exit(){
 
 	this->boss->powerIsActivated = false;
@@ -37,6 +43,9 @@ void BossStateMagicProjectile::exit(){
 
 }
 
+/**
+* @see StateBoss::update.
+*/
 void BossStateMagicProjectile::update(const double deltaTime_){
 
 	this->projectileTime += deltaTime_;
@@ -59,6 +68,10 @@ void BossStateMagicProjectile::update(const double deltaTime_){
 	}
 }
 
+/**
+* The constructor.
+* @param boss_ : Reference to the Boss.
+*/
 BossStateMagicProjectile::BossStateMagicProjectile(Boss* const boss_) :
 
 	StateBoss(boss_)
