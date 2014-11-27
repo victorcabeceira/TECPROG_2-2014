@@ -7,6 +7,14 @@
 
 #include <string>
 
+/**
+* The state for the Continue menu screen.
+*/
+
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GameStateNewGame::GameStateNewGame() :
 
 	background(nullptr),
@@ -24,6 +32,9 @@ GameStateNewGame::GameStateNewGame() :
 
 }
 
+/**
+* The destructor.
+*/
 GameStateNewGame::~GameStateNewGame(){
 
 	SAFE_DELETE(this->slot1);
@@ -31,6 +42,10 @@ GameStateNewGame::~GameStateNewGame(){
 	SAFE_DELETE(this->slot3);
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateNewGame::load(){
 	
 	Log(DEBUG) << "Loading Choose Slot Screen...";
@@ -118,6 +133,10 @@ void GameStateNewGame::load(){
 
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GameStateNewGame::load
+*/
 void GameStateNewGame::unload(){
 
 	Log(DEBUG) << "\tUnloading menu...";
@@ -125,6 +144,10 @@ void GameStateNewGame::unload(){
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateNewGame::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -139,6 +162,11 @@ void GameStateNewGame::update(const double deltaTime_){
 	}
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateNewGame::render(){
 
 	if(this->background != nullptr){
@@ -159,6 +187,9 @@ void GameStateNewGame::render(){
 	}
 }
 
+/**
+* Handles the Selector Menu.
+*/
 void GameStateNewGame::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

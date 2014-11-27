@@ -7,6 +7,9 @@ std::string filePath = "";
 GameSave::GameSave(){
 }
 
+/**
+* Sets the save slot.
+*/
 void GameSave::setSlot(int saveSelection_){	
 	
 	switch(saveSelection_){
@@ -28,6 +31,9 @@ void GameSave::setSlot(int saveSelection_){
 	}
 }
 
+/**
+* Creates the save.
+*/
 void GameSave::createSave(){
 	
 	this->saveFile.open(this->filePath.c_str());	
@@ -45,6 +51,9 @@ void GameSave::createSave(){
 
 }
 
+/**
+* Saves the level.
+*/
 void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies, unsigned slot_){
 
 	this->setSlot(slot_);	
@@ -75,6 +84,9 @@ void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy
 		Log(DEBUG) << "Could not open save file at " + this->filePath;
 }
 
+/**
+* Gets the saved level.
+*/
 int GameSave::getSavedLevel(int continueSelection_){
 	
 	this->saveSelection = continueSelection_;
@@ -107,6 +119,9 @@ int GameSave::getSavedLevel(int continueSelection_){
 
 }
 
+/**
+* Check if the game is saved.
+*/
 bool GameSave::isSaved(const int saveSlot_){
 
 	this->setSlot(saveSlot_);	
@@ -136,6 +151,9 @@ bool GameSave::isSaved(const int saveSlot_){
 	}
 }
 
+/**
+* Gets the player position.
+*/
 void GameSave::getPlayerPosition(double& playerX_, double& playerY_, const int slot_){
 	
 	setSlot(slot_);
@@ -151,6 +169,9 @@ void GameSave::getPlayerPosition(double& playerX_, double& playerY_, const int s
 
 }
 
+/**
+* Checks if the enemy is dead.
+*/
 bool GameSave::isEnemyDead(const int numEnemy_, const int slot_){
 
 	double skip = 0;

@@ -20,12 +20,23 @@
 #include "GameStateTransition.h"
 #include "GameStateVictory.h"
 #include "Sprite.h"
+#include "SafeDeallocation.h"
 
 #include "Logger.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GameStates, StateGame*>(stateEnum, new stateClass()))
+/*
+*
+* Main structure class for the game.
+* Contains all the necessary functionalities to loop and update the game.
+* 	Is the state machine (controls current state), contains all the different possible states.
+*/
 
+/**
+* Singleton imeplementation for Game.
+* @return The instance for a Game.
+*/
 Game& Game::instance(){
 
 	static Game* instance = new Game();
@@ -90,48 +101,26 @@ Game::Game() :
 
 }
 
+/**
+* The destructor.
+* Destroys the game's Window and states, and unloads current state.
+*/
 Game::~Game(){
 
-	if(this->currentState != nullptr){
-
-		this->currentState->unload();
-
-	}
-
+	SAFE_UNLOAD(this->currentState);
 	destroyStates();
-
-	if(this->audioHandler != nullptr){
-
-		delete this->audioHandler;
-
-	}
-
-	if(this->inputHandler != nullptr){
-
-		delete this->inputHandler;
-
-	}
-
-	if(this->resourceManager != nullptr){
-
-		delete this->resourceManager;
-
-	}
-
-	if(this->fadeScreen != nullptr){
-
-		delete this->fadeScreen;
-
-	}
-
-	if(this->window != nullptr){
-
-		delete this->window;
-		this->window = nullptr;
-
-	}
+	SAFE_DELETE(this->audioHandler);
+	SAFE_DELETE(this->inputHandler);
+	SAFE_DELETE(this->resourceManager);
+	SAFE_DELETE(this->fadeScreen);
+	SAFE_DELETE(this->window);
+	
 }
 
+/**
+* The main game loop.
+* Orders the game structure, such as inputs, updates, and rendering.
+*/
 void Game::runGame(){
 
 	this->fadeScreen = new FadeScreen();
@@ -227,6 +216,12 @@ void Game::runGame(){
 	}
 }
 
+/**
+* Sets the current game state.
+* @see StateGame::load()
+* @see StateGame::unload()
+* @param state_ : The state you want to be changed into.
+*/
 void Game::setState(const GameStates state_){
 
 	/// @todo Implement the transition between states.
@@ -236,11 +231,12 @@ void Game::setState(const GameStates state_){
 
 }
 
+/**
+* Loads all the states.
+* Every new state implemented should be initialized here.
+*/
 void Game::initializEnemyStates(){
 
-	// Initialize all the states in Game here.
-
-	// Emplace the states pointers onto the map.
 	ADD_STATE_INSERT(SPLASH, GameStateSplash);
 	ADD_STATE_INSERT(MENU, GameStateMenu);
 	ADD_STATE_INSERT(NEW_GAME, GameStateNewGame);
@@ -379,6 +375,10 @@ void Game::handleSelectorMenu(){
 	}
 }
 
+/**
+* Deletes all the loaded states.
+* Every new state implemented should be deleted here.
+*/
 void Game::destroyStates(){
 
 	std::map<GameStates, StateGame*>::const_iterator it;
@@ -390,18 +390,27 @@ void Game::destroyStates(){
     }
 }
 
+/**
+* @return The Game audioHandler.
+*/
 AudioHandler& Game::getAudioHandler(){
 
 	return (*(this->audioHandler));
 
 }
 
+/**
+* @return The boolean array recieved from the InputHandler.
+*/
 std::array<bool, GameKeys::MAX> Game::getInput(){
 
 	return this->inputHandler->getKeyStates();
 
 }
 
+/**
+* @return The resource manager.
+*/
 ResourceManager& Game::getResources(){
 
 	return (*(this->resourceManager));
@@ -414,6 +423,9 @@ GameSave& Game::getSaves(){
 
 }
 
+/**
+* Stops execution and closes the game.
+*/
 void Game::stop(){
 
 	this->isRunning = false;

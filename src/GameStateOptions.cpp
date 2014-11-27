@@ -8,7 +8,15 @@
 #include <string>
 
 const std::string GameStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
+/**
+* The state for the initial menu screen.
+* Game state that will contain the game over screen.
+*/
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GameStateOptions::GameStateOptions() :
 
 	elapsedTime(0.0),
@@ -34,6 +42,9 @@ GameStateOptions::GameStateOptions() :
 
 }
 
+/**
+* The destructor.
+*/
 GameStateOptions::~GameStateOptions(){
 
 	SAFE_DELETE(this->resolution);
@@ -42,6 +53,10 @@ GameStateOptions::~GameStateOptions(){
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateOptions::update(const double deltaTime_){
 
 	this->elapsedTime += deltaTime_;
@@ -198,6 +213,11 @@ void GameStateOptions::update(const double deltaTime_){
 	}
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateOptions::render(){
 	
 	if(this->optionsImage != nullptr){
@@ -232,6 +252,10 @@ void GameStateOptions::render(){
 
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateOptions::load(){
 	
 	Log(DEBUG) << "Loading options...";
@@ -250,6 +274,10 @@ void GameStateOptions::load(){
 
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GameStateOptions::load
+*/
 void GameStateOptions::unload(){
 
 	Log(DEBUG) << "\tUnloading options...";
@@ -257,6 +285,9 @@ void GameStateOptions::unload(){
 
 }
 
+/**
+* Apllies the changes in the options.
+*/
 void GameStateOptions::applyOptions(){
 
 	// Apply resolution
