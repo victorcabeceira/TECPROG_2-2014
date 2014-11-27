@@ -3,6 +3,7 @@
 #include "Collision.h"
 #include "Math.h"
 
+// Constructor of the dynamic entity class.
 DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string& path_) :
 
 	Entity(x_, y_, path_),
@@ -25,9 +26,11 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
 {
 }
 
+// Desconstructor, do nothing.
 DynamicEntity::~DynamicEntity(){
 }
 
+// Set the width and height of the level.
 void DynamicEntity::setLevelWidthHeight(const unsigned int width_, const unsigned int height_){
 
 	this->levelWidth = width_;
@@ -35,9 +38,10 @@ void DynamicEntity::setLevelWidthHeight(const unsigned int width_, const unsigne
 
 }
 
+// Update the position of a entity.
 void DynamicEntity::updatePosition(const double deltaTime_){
 
-	((void)deltaTime_); // Unused?
+	((void)deltaTime_);
 
 	this->x = this->nextX;
 	this->y = this->nextY;
@@ -45,6 +49,8 @@ void DynamicEntity::updatePosition(const double deltaTime_){
 
 }
 
+
+// Simulate the next movement to scout the position.
 void DynamicEntity::scoutPosition(const double deltaTime_){
 
 	this->nextX += this->vx * deltaTime_;
@@ -52,6 +58,7 @@ void DynamicEntity::scoutPosition(const double deltaTime_){
 
 }
 
+// Check if there are any collision with the dinamic entity.
 std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 	std::array<bool, CollisionSide::SOLID_TOTAL> detections;
@@ -165,12 +172,14 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 }
 
+// Applies a force in the axis y to jump.
 void DynamicEntity::jump(){
 
 	this->vy = (-1) * 1210.0;
 
 }
 
+// Applies a force in the axis y to simulate gravity.
 void DynamicEntity::applyGravity(){
 
 	if(this->vy + 50 < this->maxSpeed*2){
@@ -180,6 +189,7 @@ void DynamicEntity::applyGravity(){
 	}
 }
 
+// Applies a force in the axis x to move the dinamic entity.
 void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
 
 	const double turnHandle = 5.5;
@@ -276,6 +286,7 @@ void DynamicEntity::moveVertical(const bool movingUp_, const bool movingDown_){
 
 }
 
+// Simulate friction with the ground.
 void DynamicEntity::slowVx(){
 
 	const int vsign = Math::sign(this->vx);
@@ -288,6 +299,7 @@ void DynamicEntity::slowVx(){
 	}
 }
 
+// Simulate friction with the air.
 void DynamicEntity::slowVy(){
 
 	const int vsign = Math::sign(this->vy);
@@ -300,6 +312,7 @@ void DynamicEntity::slowVy(){
 	}
 }
 
+// Applies a force in the axis x to roll.
 void DynamicEntity::roll(){
 
 	const double rollStrength = 120.0;
@@ -316,6 +329,7 @@ void DynamicEntity::roll(){
 	}
 }
 
+// Aim the potion.
 void DynamicEntity::aim(Crosshair* const crosshair, const double direction){
 
 	const double velocity = 10.0;
@@ -323,6 +337,7 @@ void DynamicEntity::aim(Crosshair* const crosshair, const double direction){
 
 }
 
+// Return the horizontal direction of the entity.
 SDL_RendererFlip DynamicEntity::getFlip(){
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
