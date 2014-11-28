@@ -3,6 +3,7 @@
 #include "SDLWrapper.h"
 #include "Logger.h"
 
+// Enter the state and initialize the variables.
 void EnemyStateIdle::enter(){
 
 	this->enemy->isGrounded = true;
@@ -15,9 +16,11 @@ void EnemyStateIdle::enter(){
 	}
 }
 
+// Exit the state, place to deallocate anything if necessary.
 void EnemyStateIdle::exit(){
 }
 
+// Updates the state, doing the state logic.
 void EnemyStateIdle::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
@@ -46,6 +49,7 @@ void EnemyStateIdle::update(const double deltaTime_){
 
 }
 
+// Constructor of the enemy state idle, sets the enemy.
 EnemyStateIdle::EnemyStateIdle(Enemy* const enemy_) :
 	
 	StateEnemy(enemy_)
