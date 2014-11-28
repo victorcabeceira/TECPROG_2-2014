@@ -3,6 +3,8 @@
 #include "SDLWrapper.h"
 #include "Logger.h"
 
+
+//The Constructor of the Entity
 Entity::Entity(const double x_, const double y_, const std::string& path_) :
 
     x(x_),
@@ -28,11 +30,14 @@ Entity::Entity(const double x_, const double y_, const std::string& path_) :
     }
     else{
 
-        Log(WARN) << "Entity sprite is null, width and height will be undefined.";
+        std::string warn_entity ("Entity sprite is null, width and height will be undefined.");
+
+        Log(WARN) << warn_entity;
 
     }
 }
 
+//Initializer of the Entity and derived classes, as shown below.
 Entity::Entity(const double x_, const double y_) :
    
     x(x_),
@@ -48,33 +53,39 @@ Entity::Entity(const double x_, const double y_) :
     // Only serves as the initializer for the derived classes.
 }
 
+//Empty Constructor of the Entity class
 Entity::~Entity(){
 }
 
+//Gets the width of the Entity
 unsigned int Entity::getWidth(){
 
 	return this->width;
 
 }
 
+//Gets the height of the Entity
 unsigned int Entity::getHeight(){
 
 	return this->height;
 
 }
 
+//Gest the clip to be shown by the library
 SDL_Rect& Entity::getAnimationClip(){
 
 	return this->animationClip;
 
 }
 
+//Gets the Box Collision Detection
 SDL_Rect& Entity::getBoundingBox(){
 
     return this->boundingBox;
 
 }
 
+//Sets the collision
 void Entity::setCollisionRects(const std::vector<CollisionRect>& collisionRects_){
 
     this->collisionRects = collisionRects_;   
