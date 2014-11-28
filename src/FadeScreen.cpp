@@ -4,6 +4,7 @@
 #include "SafeDeallocation.h"
 
 
+// Constructor, creates the fade handler.
 FadeScreen::FadeScreen() :
 
 	fadeImage(Game::instance().getResources().get("res/images/black_screen.png")),
@@ -12,6 +13,7 @@ FadeScreen::FadeScreen() :
 {
 }
 
+// Deallocate the resources used by fade screen.
 FadeScreen::~FadeScreen() {
 
 	SAFE_DELETE(this->fadeHandler);
@@ -23,12 +25,14 @@ FadeScreen::~FadeScreen() {
 	}
 }
 
+// Update the fade screen.
 void FadeScreen::update(const double deltaTime_){
 
 	fadeHandler->update(deltaTime_);
 
 }
 
+// Render the fade screen.
 void FadeScreen::render(){
 
 	if(this->fadeImage != nullptr){
@@ -38,6 +42,7 @@ void FadeScreen::render(){
 	}
 }
 
+// Check if the fade is concluded.
 bool FadeScreen::isFaded(){
 
 	bool faded = false;
@@ -54,12 +59,14 @@ bool FadeScreen::isFaded(){
 
 }
 
+// Fade the screen out.
 void FadeScreen::fadeOut(const double percentage_, const double time_){
 
 	this->fadeHandler->fadeOut(percentage_, time_);
 
 }
 
+// Fade the screen in.
 void FadeScreen::fadeIn(const double percentage_, const double time_){
 
 	this->fadeHandler->fadeIn(percentage_, time_);
