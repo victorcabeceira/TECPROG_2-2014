@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include "Game.h"
 
+//The Constructor of Document
 Document::Document(const double x_, const double y_, const std::string& path_, const std::string& pathDocumentText_) :
 
 	Entity(x_, y_, path_),
@@ -17,15 +18,18 @@ Document::Document(const double x_, const double y_, const std::string& path_, c
 	}
 }
 
+//Empty constructor
 Document::~Document(){
 }
 
+//Updates the Document
 void Document::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused;
 
 }
 
+//Renders the document
 void Document::render(const double cameraX_, const double cameraY_){
 
 	const double dx = this->x - cameraX_;
@@ -38,11 +42,14 @@ void Document::render(const double cameraX_, const double cameraY_){
 	}
 	else{
 
-		Log(ERROR) << "Failed to render document sprite.";
+		std::string error_render_document ("Failed to render document sprite.");
+
+		Log(ERROR) << error_render_document;
 	
 	}
 }
 
+//Renders the Text of the Document
 void Document::renderDocumentText(){
 
 	this->documentText->render(0, 0, nullptr, true);
