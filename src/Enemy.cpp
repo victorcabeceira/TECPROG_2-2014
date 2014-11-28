@@ -12,7 +12,6 @@
 #include "EnemyStateDead.h"
 #include "SafeDeallocation.h"
 
-
 #include "Window.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
@@ -25,6 +24,7 @@ bool Enemy::pVulnerable = false;
 double Enemy::alertRange = 300.0;
 double Enemy::curiousRange = 600.0;
 
+//The constructor of Enemy Class
 Enemy::Enemy(const double x_, const double y_, const std::string& path_, const bool patrol_,
 	const double patrolLength_) :
 
@@ -65,6 +65,7 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 
 }
 
+//The destructor of the enemy class
 Enemy::~Enemy(){
 
 	SAFE_EXIT(this->currentState);
@@ -74,6 +75,7 @@ Enemy::~Enemy(){
 
 }
 
+//Updates the state of Enemy
 void Enemy::update(const double deltaTime_){
 	
 	this->currentState->update(deltaTime_);
@@ -92,6 +94,7 @@ void Enemy::update(const double deltaTime_){
 
 }
 
+//Renders the enemy
 void Enemy::render(const double cameraX_, const double cameraY_){
 
 	const double dx = this->x - cameraX_;
@@ -112,6 +115,7 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 	}
 }
 
+//Initializes all Enemy States
 void Enemy::initializEnemyStates(){
 
 	// Initialize all the states in Enemy here.
@@ -125,6 +129,7 @@ void Enemy::initializEnemyStates(){
 
 }
 
+//Destroy all enemy States
 void Enemy::destroyStates(){
 
 	// Delete all the states in Enemy here.
@@ -136,6 +141,7 @@ void Enemy::destroyStates(){
 	}
 }
 
+//Changes the Enemy State
 void Enemy::changEnemyState(const EnemyStates state_){
 
 	this->currentState->exit();
@@ -144,6 +150,7 @@ void Enemy::changEnemyState(const EnemyStates state_){
 
 }
 
+//Handles the collision of the Enemy, considering its position and collision box
 void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
 
 	if(detections_.at(CollisionSide::SOLID_TOP)){ 
@@ -202,6 +209,7 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 	}
 }
 
+//Forces the enemy to use its maximum speed
 void Enemy::forceMaxSpeed(){
 
 	this->vx = (this->vx >= this->maxSpeed) ? this->maxSpeed : this->vx ;
@@ -209,24 +217,28 @@ void Enemy::forceMaxSpeed(){
 
 }
 
+//Gets the animation to be used
 Animation *Enemy::getAnimation(){
 
 	return (this->animation);
 
 }
 
+//Sets the enemy as dead
 void Enemy::setDead(bool isDead_){
 
 	this->dead = isDead_;
 
 }
 
+//Check the enemy as dead
 bool Enemy::isDead(){
 
 	return this->dead;
 
 }
 
+//Updates the Bounding Box (collision) of the Enemy
 void Enemy::updateBoundingBox(){
 
 	this->boundingBox.x = (int) this->nextX + 40;
