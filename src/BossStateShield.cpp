@@ -1,6 +1,10 @@
 #include "BossStateShield.h"
 #include "Logger.h"
 
+
+/**
+* @see StateBoss::enter.
+*/
 void BossStateShield::enter(){
 
 	Log(DEBUG) << "STATE SHIELD BOSS";
@@ -9,9 +13,15 @@ void BossStateShield::enter(){
 
 }
 
+/**
+* @see StateBoss::exit.
+*/
 void BossStateShield::exit(){
 }
 
+/**
+* @see StateBoss::update.
+*/
 void BossStateShield::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused. Variable necessary for the update state.
@@ -20,6 +30,10 @@ void BossStateShield::update(const double deltaTime_){
 
 }
 
+/**
+* The constructor.
+* @param boss_ : Reference to the Boss.
+*/
 BossStateShield::BossStateShield(Boss* const boss_) :
 
 	StateBoss(boss_)

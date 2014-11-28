@@ -3,8 +3,9 @@
 #include "Collision.h"
 #include "Logger.h"
 
-
-
+/**
+* @see StateBoss::enter.
+*/
 void BossStateTeleport::enter(){
 
 	// Log(DEBUG) << "STATE TELEPORT BOSS";
@@ -17,6 +18,9 @@ void BossStateTeleport::enter(){
 
 }
 
+/**
+* @see StateBoss::exit.
+*/
 void BossStateTeleport::exit(){
 
 	this->boss->powerIsActivated = false;
@@ -28,6 +32,9 @@ void BossStateTeleport::exit(){
 
 }
 
+/**
+* @see StateBoss::update.
+*/
 void BossStateTeleport::update(const double deltaTime_){
 
 	this->teleportTime += deltaTime_;
@@ -157,6 +164,10 @@ void BossStateTeleport::update(const double deltaTime_){
 	}
 }
 
+/**
+* The constructor.
+* @param boss_ : Reference to the Boss.
+*/
 BossStateTeleport::BossStateTeleport(Boss* const boss_) :
 
 	StateBoss(boss_)
