@@ -1,5 +1,6 @@
 #include "Math.h"
 
+// Return if a number is positive.
 int Math::sign(const int number_){
 	
     if(number_ > 0){ 
@@ -18,6 +19,7 @@ int Math::sign(const int number_){
     }
 }
 
+// Return if a number is positive.
 int Math::sign(const double number_){
 	
     if(number_ > 0.0){ 
