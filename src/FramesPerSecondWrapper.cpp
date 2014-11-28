@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 
+// Initialize the FPS handle of SDL.
 void FramesPerSecondWrapper::initialize(FPSmanager& fpsManager_){
 
 	SDL_initFramerate(&fpsManager_);
@@ -20,6 +21,7 @@ void FramesPerSecondWrapper::initialize(FPSmanager& fpsManager_){
 	}
 }
 
+// Apllies a delay on the FPS.
 double FramesPerSecondWrapper::delay(FPSmanager& fpsManager_){
 
 	return (double)(SDL_framerateDelay(&fpsManager_)/1000.0);
