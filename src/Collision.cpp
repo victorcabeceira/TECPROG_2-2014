@@ -1,7 +1,13 @@
 #include "Collision.h"
 #include <cmath>
+/**
+* Simple collision detection.
+*/
 
-// Says if 2 rectangles are colliding.
+/**
+* @return Whether two SDL_Rects collided.
+* @param a_ , b_ : The rectangles to check.
+*/
 bool Collision::rectsCollided(const SDL_Rect& firstRectangle, const SDL_Rect& secondRectangle){
 
     // Calculate the sides of rect A.
@@ -31,7 +37,10 @@ bool Collision::rectsCollided(const SDL_Rect& firstRectangle, const SDL_Rect& se
     }
 }
 
-// Return the side that first rectangle collides with the second rectangle. 
+/**
+* @return The side (RectangleSide) which two SDL_Rects collided on.
+* @param a_ , b_ : The rectangles to check.
+*/
 Collision::RectangleSide Collision::rectsCollidedSide(const SDL_Rect& firstRectangle, const SDL_Rect& secondRectangle){
 
     const double width = 0.5 * (firstRectangle.w + secondRectangle.w);
