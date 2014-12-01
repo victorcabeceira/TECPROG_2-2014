@@ -30,6 +30,13 @@ PlayerHUD::~PlayerHUD(){
 
 }
 
+/**
+* Updates the HUD.
+* @see Player::updateInput, Player::updatePosition
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
+* 	of processing speed.
+*/
+
 void PlayerHUD::update(){
 	if(this->player != nullptr){
 	
@@ -62,6 +69,13 @@ void PlayerHUD::update(){
 
 	}
 }
+/**
+* Renders the HUD.
+* Uses the HUD's sprite render method.
+* @see Sprite::render
+* @param cameraX_ : The x position of the camera.
+* @param cameraY_ : The y position of the camera.
+*/
 
 void PlayerHUD::render(){
 	for(int i = 0; i < TOTAL_HUD; i++){
