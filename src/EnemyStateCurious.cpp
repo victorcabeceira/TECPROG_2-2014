@@ -3,6 +3,7 @@
 
 #define MAX_CURIOUS_TIME 4.666
 
+//Enters the Curious State - Constructor
 void EnemyStateCurious::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 1.2);
@@ -16,9 +17,11 @@ void EnemyStateCurious::enter(){
 	}
 }
 
+//Exits the Curious State - Destructor
 void EnemyStateCurious::exit(){
 }
 
+//Updates the Curious State
 void EnemyStateCurious::update(const double deltaTime_){
 
 	this->timeElapsed += deltaTime_;

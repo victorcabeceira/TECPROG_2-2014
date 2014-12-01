@@ -1,6 +1,7 @@
 #include "EnemyStateAlert.h"
 #include "Logger.h"
 
+//Enters the Alert State - Constructor
 void EnemyStateAlert::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 0.9);
@@ -14,9 +15,11 @@ void EnemyStateAlert::enter(){
 	}
 }
 
+//Exits the Alert State - Destructor
 void EnemyStateAlert::exit(){
 }
 
+//Updates the Alert State
 void EnemyStateAlert::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.

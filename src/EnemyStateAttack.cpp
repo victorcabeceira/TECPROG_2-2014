@@ -3,6 +3,7 @@
 
 double attackTime; // NO
 
+//Enters the Attack State - Constructor
 void EnemyStateAttack::enter(){
 
 	this->enemy->getAnimation()->changeAnimation(2, 1, 6, false, 0.6);
@@ -17,9 +18,11 @@ void EnemyStateAttack::enter(){
 	}
 }
 
+//Exits the Attack State - Destructor
 void EnemyStateAttack::exit(){
 }
 
+//Updates the Attack State
 void EnemyStateAttack::update(const double deltaTime_){
 
 	attackTime += deltaTime_;

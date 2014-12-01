@@ -3,6 +3,7 @@
 
 double deadTime;
 
+//Enters the Dead State - Constructor
 void EnemyStateDead::enter(){
 
 	this->enemy->life = 0;
@@ -11,9 +12,11 @@ void EnemyStateDead::enter(){
 
 }
 
+//Exits the Dead State - Destructor
 void EnemyStateDead::exit(){
 }
 
+//Updates the Dead State
 void EnemyStateDead::update(const double deltaTime_){
 	
 	deadTime += deltaTime_;

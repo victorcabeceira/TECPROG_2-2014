@@ -1,15 +1,18 @@
 #include "EnemyStateAerial.h"
 #include "Logger.h"
 
+//Enters the Aerial State - The Constructor
 void EnemyStateAerial::enter(){
 
 	this->enemy->isGrounded = false;
 
 }
 
+//Exits the Aerial State - The Destructor
 void EnemyStateAerial::exit(){
 }
 
+//Updates the Aerial State
 void EnemyStateAerial::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.

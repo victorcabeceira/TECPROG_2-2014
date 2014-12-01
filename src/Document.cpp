@@ -13,7 +13,9 @@ Document::Document(const double x_, const double y_, const std::string& path_, c
 
 	if(documentText == nullptr){
 
-		Log(ERROR) << "Could not load document text sprite.";
+		std::string error_DocumentText("Could not load document text sprite.")
+
+		Log(ERROR) << error_DocumentText;
 
 	}
 }
