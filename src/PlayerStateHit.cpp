@@ -1,6 +1,6 @@
 #include "PlayerStateHit.h"
 #include "Logger.h"
-
+// Enter on state hit
 void PlayerStateHit::enter(){
 	
 	Log(DEBUG) << "STATE ATTACK JUMPING";
@@ -21,7 +21,7 @@ void PlayerStateHit::enter(){
 	this->player->vy = -130;
 	this->player->vx = 5000 * direction;
 }
-
+//Exiting of state hit
 void PlayerStateHit::exit(){
 
 	if(this->player->isRight){
