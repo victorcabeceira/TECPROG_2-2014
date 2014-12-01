@@ -34,7 +34,11 @@ Level::~Level(){
 	SAFE_DELETE(this->quadTree);
 
 }
-
+/**
+* @param camera_ : Sets the camera for the level.
+* @note You should only set the camera after setting the player. Will warn if you
+* 	didn't.
+*/
 void Level::changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,
 		std::vector <double> checkpointsY_){
 	
@@ -55,7 +59,9 @@ unsigned int Level::getHeight(){
 	return this->height;
 
 }
-
+/**
+* @param player_ : Sets the player for the level.
+*/
 void Level::setPlayer(Player* const player_){
 	
 	this->player = player_;
