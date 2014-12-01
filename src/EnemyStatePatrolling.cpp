@@ -2,6 +2,7 @@
 #include <cfloat>
 #include "Logger.h"
 
+//Enters the Patrolling State - Constructor
 void EnemyStatePatrolling::enter(){
 
 	this->enemy->isGrounded = true;
@@ -16,18 +17,23 @@ void EnemyStatePatrolling::enter(){
 	}
 }
 
+//Exits the Patrolling State - Destructor
 void EnemyStatePatrolling::exit(){
 }
 
+
+//Updates the Patrolling State - Constructor
 void EnemyStatePatrolling::update(const double deltaTime_){
 
 	((void)deltaTime_); // Unused.
 	
+	int enemyPatrolArea = this->enemy->x - this->enemy->originalX;
+
 	// Patrol.
-	if(abs(this->enemy->x - this->enemy->originalX) > this->enemy->patrolLength){
+	if(abs(enemyPatrolArea) > this->enemy->patrolLength){
 	
 		// right
-		if(this->enemy->x - this->enemy->originalX < 0.0){
+		if(enemyPatrolArea < 0.0){
 	
 			this->direction = RIGHT_DIRECTION;
 	
@@ -46,14 +52,16 @@ void EnemyStatePatrolling::update(const double deltaTime_){
 	this->enemy->vx += this->enemy->speed * this->direction;
 
 	/// @todo Make the range be only in the direciton the enemy is facing.
-	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
+	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && 
+	   abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
 	
 		this->enemy->changEnemyState(Enemy::EnemyStates::ALERT);
 		return;
 	
 	}
 	
-	else if(abs(this->enemy->x - Enemy::px) < Enemy::curiousRange && abs(this->enemy->y - Enemy::py) < Enemy::curiousRange){
+	else if(abs(this->enemy->x - Enemy::px) < Enemy::curiousRange &&
+			abs(this->enemy->y - Enemy::py) < Enemy::curiousRange){
 	
 		this->enemy->changEnemyState(Enemy::EnemyStates::CURIOUS);
 		return;

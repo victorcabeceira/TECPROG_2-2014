@@ -3,6 +3,7 @@
 
 /**
 * Handles the fades.
+* The Constructor
 */
 FadeHandler::FadeHandler(Sprite* const sprite_) :
 
@@ -20,6 +21,9 @@ FadeHandler::FadeHandler(Sprite* const sprite_) :
 
 }
 
+/**
+*  The Destructor
+*/
 FadeHandler::~FadeHandler() {
 
 	this->sprite = nullptr;
