@@ -64,6 +64,13 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     }
 
 }
+/**
+* The constructor.
+* Creates the player by setting the position and sprite.
+* @param x_ : position in x axis.
+* @param y_ : position in y axis.
+* @param sprite_ : which sprite to use.
+*/
 
 Player::~Player(){
 
@@ -72,6 +79,12 @@ Player::~Player(){
 	
     destroyStates();
 }
+/**
+* Updates the player.
+* @see Player::updateInput, Player::updatePosition
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other, independent
+*   of processing speed.
+*/
 
 void Player::update(const double deltaTime_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
@@ -172,6 +185,13 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 
 }
 
+/**
+* Renders the player.
+* Uses the player's sprite render method.
+* @see Sprite::render
+* @param cameraX_ : The x position of the camera.
+* @param cameraY_ : The y position of the camera.
+*/
 void Player::render(const double cameraX_, const double cameraY_){
 
     const double dx = this->x - cameraX_;
@@ -258,16 +278,28 @@ void Player::destroyStates(){
     }
 }
 
+/**
+* Sets the current game state.
+* @see StatePlayer::load
+* @see StatePlayer::unload
+* @param state_ : The state you want to be changed into. All states are inside Player.
+*/
 void Player::changEnemyState(const PlayerStates state_){
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();
 }
 
+/**
+* @return The players current animation setting.
+*/
 Animation* Player::getAnimation(){
     return (this->animation);
 }
 
+/**
+* @return Whether the player is currently in PlayerStates::state_ or not.
+*/
 bool Player::isCurrentState(const PlayerStates state_){
     return (this->currentState == this->statesMap.at(state_));
 }
