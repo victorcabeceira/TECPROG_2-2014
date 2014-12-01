@@ -14,6 +14,10 @@ GameStateVictory::GameStateVictory() :
 GameStateVictory::~GameStateVictory(){
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GameStateVictory::load(){
 
 	Log(DEBUG) << "Loading victory...";
@@ -26,7 +30,10 @@ void GameStateVictory::load(){
 	Game::instance().getAudioHandler().changeMusic("res/audio/Tema_Victory_01.wav");
 
 }
-
+/**
+* Unloads everything that was loaded.
+* @see GameStateVictory::load
+*/
 void GameStateVictory::unload(){
 
 	Log(DEBUG) << "\tUnloading victory...";
@@ -36,7 +43,10 @@ void GameStateVictory::unload(){
 	this->lifeTime = 0.0;
 
 }
-
+/**
+* Updates the objects within the StateGame.
+* @param deltaTime_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GameStateVictory::update(const double deltaTime_){
 
 	this->passedTime += deltaTime_;
@@ -49,6 +59,11 @@ void GameStateVictory::update(const double deltaTime_){
 	}
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GameStateVictory::render(){
 
 	if(this->victoryImage != nullptr){
